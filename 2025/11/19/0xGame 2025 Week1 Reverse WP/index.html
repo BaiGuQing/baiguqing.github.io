@@ -35,9 +35,9 @@
 <meta property="og:image" content="http://example.com/Images/084045u6lmrcckk0epr6p3.png">
 <meta property="og:image" content="http://example.com/Images/084047d8wpz0iaqmimzi3g.png">
 <meta property="article:published_time" content="2025-11-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T05:32:51.321Z">
+<meta property="article:modified_time" content="2025-12-18T08:09:03.317Z">
 <meta property="article:author" content="GuQing">
-<meta property="article:tag" content="Reverse Writeup">
+<meta property="article:tag" content="Reverse_Writeup">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/Images/083720wzd4p1zx66f8pfp4.png">
 
@@ -199,7 +199,7 @@
     
     <div class="categories text-uppercase">
     
-      <a href="/categories/CTF-WP/">CTF WP</a>
+      <a href="/categories/CTF-WP/">CTF_WP</a>
     
     </div>
     
@@ -264,7 +264,7 @@
 <h1 id="DyDebug"><a href="#DyDebug" class="headerlink" title="DyDebug"></a>DyDebug</h1><ul>
 <li>看了看官方的WriteUp用的IDA调试，IDA的调试并没有那么好，所以这边我们用x64dbg来解题  </li>
 <li>拿到题当然也是先去IDA看一看，看一下伪代码，理解一下题之后才能知道需要调试  </li>
-<li>丢到IDA里面看到主函数出来特别⻓、特别复杂一大串，其中的加密也很复杂难懂，但实际上可以注意到这里的比对是拿我们的输入去和解密出来的字符串比较，因此在程序运行的时候<br>其实flag就在程序内部，我们要做的其实只是让程序“停”在某个位置，然后查看一下解出来的v6，这<br>个就是flag  </li>
+<li>丢到IDA里面看到主函数出来特别⻓、特别复杂一大串，其中的加密也很复杂难懂，但实际上可以注意到这里的比对是拿我们的输入去和解密出来的字符串比较，因此在程序运行的时候其实flag就在程序内部，我们要做的其实只是让程序“停”在某个位置，然后查看一下解出来的v6，这个就是flag </li>
 <li>把程序拖进x64dbg，配置和之前的一样，然后也和之前一样，只不过这次搜索的是&#x3D;&#x3D;字符串&#x3D;&#x3D;  </li>
 <li>我们会发现有个”Pity!”字样双击进入反汇编窗口  </li>
 <li><img src="/Images/084039l02058iw5ldi0x88.png"></li>
@@ -306,7 +306,7 @@
     <p class="tags">
       <i class="bi bi-tags icon"></i>
       
-      <a href="/tags/Reverse-Writeup/" class="tag">#Reverse Writeup</a>
+      <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
       
     </p>
     
@@ -316,14 +316,21 @@
 
   <div class="container post-prev-next" data-pagefind-ignore>
     
-    <a href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/" class="next">
+    <a href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/" class="next">
       <div class="text">
         <p class="label">下一篇</p>
+        <h3 class="title">0xGame 2025 Week2 Reverse WP</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/" class="prev">
+      <div class="text">
+        <p class="label">上一篇</p>
         <h3 class="title">Python反编译</h3>
       </div>
     </a>
     
-    <a class="prev"></a>
   </div>
 
   
