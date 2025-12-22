@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>Base64编码 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.jpg">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="编码过程演示让我们通过一个具体的例子来看看它是如何工作的。假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M &#x3D; 77 &#x3D; 01001101 a &#x3D; 97 &#x3D; 01100001 n &#x3D; 110 &#x3D; 01101110将它们连成一串 24 bit 的数据流：010011010110000101101110  第二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Base64编码">
+<meta property="og:url" content="http://example.com/2025/12/22/Base64%E7%BC%96%E7%A0%81/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="编码过程演示让我们通过一个具体的例子来看看它是如何工作的。假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M &#x3D; 77 &#x3D; 01001101 a &#x3D; 97 &#x3D; 01100001 n &#x3D; 110 &#x3D; 01101110将它们连成一串 24 bit 的数据流：010011010110000101101110  第二">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-22T11:55:04.628Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="Note_For_Reverse">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+
+  
+
+  
+<script src="/js/head.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/categories/Notes/">Notes</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2025-12-22T00:00:00+08:00">
+      2025-12-22
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">Base64编码</h1>
+  </div>
+
+  <div class="content">
+    <h1 id="编码过程演示"><a href="#编码过程演示" class="headerlink" title="编码过程演示"></a>编码过程演示</h1><p>让我们通过一个具体的例子来看看它是如何工作的。<br>假设我们要编码字符串：”Man”</p>
+<h2 id="第一步：获取-ASCII-码并转换为二进制"><a href="#第一步：获取-ASCII-码并转换为二进制" class="headerlink" title="第一步：获取 ASCII 码并转换为二进制"></a>第一步：获取 ASCII 码并转换为二进制</h2><ul>
+<li><code>M</code> &#x3D; 77 &#x3D; <code>01001101</code></li>
+<li><code>a</code> &#x3D; 97 &#x3D; <code>01100001</code></li>
+<li><code>n</code> &#x3D; 110 &#x3D; <code>01101110</code><br>将它们连成一串 24 bit 的数据流：<br>010011010110000101101110</li>
+</ul>
+<h2 id="第二步：按-6-bit-一组进行拆分"><a href="#第二步：按-6-bit-一组进行拆分" class="headerlink" title="第二步：按 6 bit 一组进行拆分"></a>第二步：按 6 bit 一组进行拆分</h2><p>我们将上面的 24 bit 拆分为 4 组：</p>
+<ol>
+<li><code>010011</code></li>
+<li><code>010110</code></li>
+<li><code>000101</code></li>
+<li><code>101110</code></li>
+</ol>
+<h2 id="第三步：计算十进制值并查表"><a href="#第三步：计算十进制值并查表" class="headerlink" title="第三步：计算十进制值并查表"></a>第三步：计算十进制值并查表</h2><ol>
+<li><code>010011</code> &#x3D; <strong>19</strong> $\rightarrow$ 查表得 <strong>T</strong></li>
+<li><code>010110</code> &#x3D; <strong>22</strong> $\rightarrow$ 查表得 <strong>W</strong></li>
+<li><code>000101</code> &#x3D; <strong>5</strong> $\rightarrow$ 查表得 <strong>F</strong></li>
+<li><code>101110</code> &#x3D; <strong>46</strong> $\rightarrow$ 查表得 <strong>u</strong><br><strong>结果：</strong> “Man” 的 Base64 编码结果为 <strong><code>TWFu</code></strong>。</li>
+</ol>
+<h1 id="关于“-”号（Padding-补位）"><a href="#关于“-”号（Padding-补位）" class="headerlink" title="关于“&#x3D;”号（Padding 补位）"></a>关于“&#x3D;”号（Padding 补位）</h1><p>你经常会看到 Base64 字符串的末尾有一个或两个等号 <code>==</code>。这是为什么？<br>因为并不是所有数据都能刚好被 3 整除。</p>
+<ul>
+<li>如果剩 1 个字节（8 bit）：需要补 4 bit 的 0 凑成 12 bit（2 个 6 bit 组）。结果会产生 2 个 Base64 字符，剩下 2 个位置用 <code>=</code> 填充。</li>
+<li>如果剩 2 个字节（16 bit）：需要补 2 bit 的 0 凑成 18 bit（3 个 6 bit 组）。结果会产生 3 个 Base64 字符，剩下 1 个位置用 <code>=</code> 填充。<br><strong>例子：编码字母 “A”</strong></li>
+</ul>
+<ol>
+<li><strong>ASCII:</strong> 65 (<code>01000001</code>)</li>
+<li><strong>分组:</strong><ul>
+<li>第一组 6 bit: <code>010000</code> (16 $\rightarrow$ <strong>Q</strong>)</li>
+<li>剩余 2 bit <code>01</code>，后面补四个 0: <code>010000</code> (16 $\rightarrow$ <strong>Q</strong>)</li>
+</ul>
+</li>
+<li><strong>结果:</strong> <code>QQ</code>。</li>
+<li><strong>填充:</strong> Base64 要求输出长度必须是 4 的倍数，所以补两个等号。</li>
+<li><strong>最终结果:</strong> <strong><code>QQ==</code></strong></li>
+</ol>
+<h1 id="变异的Base64"><a href="#变异的Base64" class="headerlink" title="变异的Base64"></a>变异的Base64</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此题为0xGame 2025 Week4的题目</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> __cdecl <span class="title function_">sub_191070</span><span class="params">(<span class="type">int</span> a1, <span class="type">int</span> a2, <span class="type">int</span> i_1)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">char</span> v4; <span class="comment">// [esp+Ah] [ebp-56h]</span></span><br><span class="line">  <span class="type">int</span> i; <span class="comment">// [esp+Ch] [ebp-54h]</span></span><br><span class="line">  <span class="type">char</span> n61_1; <span class="comment">// [esp+12h] [ebp-4Eh]</span></span><br><span class="line">  <span class="type">char</span> n61; <span class="comment">// [esp+13h] [ebp-4Dh]</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// [esp+14h] [ebp-4Ch]</span></span><br><span class="line">  <span class="type">int</span> v9; <span class="comment">// [esp+14h] [ebp-4Ch]</span></span><br><span class="line">  <span class="type">char</span> ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_[<span class="number">68</span>]; <span class="comment">// [esp+18h] [ebp-48h] BYREF</span></span><br><span class="line"></span><br><span class="line">  v8 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">strcpy</span>(</span><br><span class="line">    ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_,</span><br><span class="line">    <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; i_1; i += <span class="number">3</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    n61 = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_[(((<span class="type">int</span>)*(<span class="type">unsigned</span> __int8 *)(i + a1 + <span class="number">1</span>) &gt;&gt; <span class="number">4</span>)</span><br><span class="line"> | (<span class="type">unsigned</span> __int8)(<span class="number">16</span> * *(_BYTE *)(i + a1))) &amp; <span class="number">0x3F</span>];</span><br><span class="line">    <span class="keyword">if</span> ( i + <span class="number">1</span> &gt;= i_1 )</span><br><span class="line">      n61 = <span class="number">61</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      v4 = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_[(((<span class="type">int</span>)*(<span class="type">unsigned</span> __int8 *)(i + a1 + <span class="number">2</span>) &gt;&gt; <span class="number">6</span>) | (<span class="type">unsigned</span> __int8)(<span class="number">4</span> * *(_BYTE *)(i + a1 + <span class="number">1</span>)))  &amp; <span class="number">0x3F</span>];</span><br><span class="line">    <span class="keyword">if</span> ( i + <span class="number">2</span> &gt;= i_1 )</span><br><span class="line">      n61_1 = <span class="number">61</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      n61_1 = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_[*(_BYTE *)(i + a1 + <span class="number">2</span>) &amp; <span class="number">0x3F</span>];</span><br><span class="line">    *(_BYTE *)(v8 + a2) = ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_[((<span class="type">int</span>)*(<span class="type">unsigned</span> __int8 *)(i + a1) &gt;&gt; <span class="number">2</span>)  &amp; <span class="number">0x3F</span>];</span><br><span class="line">    v9 = v8 + <span class="number">1</span>;</span><br><span class="line">    *(_BYTE *)(v9 + a2) = v4;</span><br><span class="line">    *(_BYTE *)(++v9 + a2) = n61;</span><br><span class="line">    *(_BYTE *)(++v9 + a2) = n61_1;</span><br><span class="line">    v8 = v9 + <span class="number">1</span>;</span><br><span class="line">    result = i + <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  *(_BYTE *)(v8 + a2) = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个代码看起来困难</li>
+<li>其实确实有点困难</li>
+<li>首先这个a2并非int类型，ida分析的只是&#x3D;&#x3D;伪代码&#x3D;&#x3D;，并非正式代码，这个是一个指针<code>*(_BYTE *)(v8 + a2)</code>这里就能看出来，v8明明是int类型的，<code>*</code>还为取值符，更能证明a2是一个指针</li>
+<li><code>(i + a1) &gt;&gt; 2) &amp; 0x3F</code>这里计算的其实是第一个字符的前六个字节，算为第一部分</li>
+<li><code>(i + a1 + 1) &gt;&gt; 4) | (unsigned __int8)(16 * *(_BYTE *)(i + a1))) &amp; 0x3F</code>这里计算的是第二部分，16 * 一个字节，就相当于左移4位（乘2的n次幂相当于左移n位）</li>
+<li><code>(((int)*(unsigned __int8 *)(i + a1 + 2) &gt;&gt; 6) | (unsigned __int8)(4 * *(_BYTE *)(i + a1 + 1)))  &amp; 0x3F</code>这里就是第三部分了</li>
+<li><code>((int)*(unsigned __int8 *)(i + a1) &gt;&gt; 2)  &amp; 0x3F</code>这就是最后部分了，第四部分了</li>
+<li>最后就可以看出来第二部分和第三部分顺序错误了，找脚本改一下就好了</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">enc=[<span class="number">0x4D</span>, <span class="number">0x41</span>, <span class="number">0x50</span>, <span class="number">0x44</span>, <span class="number">0x63</span>, <span class="number">0x33</span>, <span class="number">0x47</span>, <span class="number">0x74</span>, <span class="number">0x50</span>, <span class="number">0x51</span>, <span class="number">0x33</span>, <span class="number">0x34</span>, <span class="number">0x76</span>, <span class="number">0x4D</span>, <span class="number">0x33</span>, <span class="number">0x70</span>, <span class="number">0x4E</span>, <span class="number">0x42</span>, <span class="number">0x62</span>, <span class="number">0x31</span>, <span class="number">0x50</span>, <span class="number">0x57</span>, <span class="number">0x47</span>, <span class="number">0x78</span>, <span class="number">0x63</span>, <span class="number">0x63</span>, <span class="number">0x48</span>, <span class="number">0x74</span>, <span class="number">0x76</span>, <span class="number">0x78</span>, <span class="number">0x48</span>, <span class="number">0x31</span>, <span class="number">0x4E</span>, <span class="number">0x56</span>, <span class="number">0x61</span>, <span class="number">0x39</span>, <span class="number">0x4A</span>, <span class="number">0x50</span>, <span class="number">0x54</span>, <span class="number">0x74</span>, <span class="number">0x61</span>, <span class="number">0x63</span>, <span class="number">0x53</span>, <span class="number">0x35</span>, <span class="number">0x37</span>, <span class="number">0x49</span>, <span class="number">0x69</span>, <span class="number">0x6C</span>, <span class="number">0x4E</span>, <span class="number">0x35</span>, <span class="number">0x75</span>, <span class="number">0x78</span>, <span class="number">0x4A</span>, <span class="number">0x53</span>, <span class="number">0x57</span>, <span class="number">0x35</span>, <span class="number">0x49</span>, <span class="number">0x77</span>, <span class="number">0x6D</span>, <span class="number">0x3D</span>]</span><br><span class="line">basedecoded=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(enc),<span class="number">4</span>):</span><br><span class="line">    basedecoded+=<span class="built_in">chr</span>(enc[i])</span><br><span class="line">    basedecoded+=<span class="built_in">chr</span>(enc[i+<span class="number">2</span>])</span><br><span class="line">    basedecoded+=<span class="built_in">chr</span>(enc[i+<span class="number">1</span>])</span><br><span class="line">    basedecoded+=<span class="built_in">chr</span>(enc[i+<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(basedecoded)</span><br><span class="line"><span class="comment">#MPADcG3tP3Q4v3MpNbB1PGWxcHctvHx1NaV9JTPtaSc57iIlNu5xJWS5Imw=</span></span><br><span class="line">xorencoded=base64.b64decode(basedecoded)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/tags/Note-For-Reverse/" class="tag">#Note_For_Reverse</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    <a class="next"></a>
+    
+    <a href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" class="prev">
+      <div class="text">
+        <p class="label">上一篇</p>
+        <h3 class="title">小端序</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">主页</a>
+        
+        <a href="/About-Me" class="item">关于我</a>
+        
+        <a href="/archives" class="item">归档</a>
+        
+        <a href="/tags" class="item">标签</a>
+        
+        <a href="/categories" class="item">分类</a>
+        
+        <a href="/search" class="item">搜索</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Related</h2>
+        
+        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>浅色</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>深色</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>自动</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
