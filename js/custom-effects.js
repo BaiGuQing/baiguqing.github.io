@@ -21,44 +21,10 @@
     }, 3000);
   });
 
-  // 视差滚动效果
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero, .card');
+  // 移除视差滚动效果 - 与其他动画冲突
+  // 卡片悬停效果已在 CSS 中处理，不需要 JS
 
-    parallaxElements.forEach((el, index) => {
-      const speed = 0.5 + (index * 0.1);
-      const yPos = -(scrolled * speed / 10);
-      el.style.transform = `translateY(${yPos}px)`;
-    });
-  });
-
-  // 卡片3D倾斜效果
-  document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card, .post-list-item');
-
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  });
-
-  // 粒子背景效果
+  // 简约粒子背景 - 单色科技感
   function createParticles() {
     const canvas = document.createElement('canvas');
     canvas.id = 'particles-canvas';
@@ -69,7 +35,7 @@
     canvas.style.height = '100%';
     canvas.style.zIndex = '-2';
     canvas.style.pointerEvents = 'none';
-    canvas.style.opacity = '0.3';
+    canvas.style.opacity = '0.15';
     document.body.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
@@ -89,11 +55,12 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
-        this.opacity = Math.random() * 0.5 + 0.2;
-        this.color = ['#8a2be2', '#00bfff', '#ff69b4'][Math.floor(Math.random() * 3)];
+        this.size = Math.random() * 1.2 + 0.3;
+        this.speedX = Math.random() * 0.2 - 0.1;
+        this.speedY = Math.random() * 0.2 - 0.1;
+        this.opacity = Math.random() * 0.3 + 0.15;
+        // 单色：使用灰蓝色调
+        this.color = 'rgba(100, 120, 150, 0.6)';
       }
 
       update() {
@@ -115,7 +82,8 @@
 
     function init() {
       particles = [];
-      const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 100);
+      // 减少粒子数量
+      const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 30000), 40);
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
@@ -129,24 +97,25 @@
         particle.draw();
       });
 
-      // 绘制连接线
-      ctx.globalAlpha = 0.1;
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach(p2 => {
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
+      // 简化连接线 - 单色，更细
+      ctx.globalAlpha = 0.03;
+      ctx.strokeStyle = 'rgba(100, 120, 150, 0.4)';
+      ctx.lineWidth = 0.2;
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 100) {
-            ctx.strokeStyle = p1.color;
-            ctx.lineWidth = 0.5;
             ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
           }
-        });
-      });
+        }
+      }
 
       animationId = requestAnimationFrame(animate);
     }
@@ -199,54 +168,7 @@
     document.body.classList.add('loaded');
   });
 
-  // 彩虹光标轨迹
-  const trail = [];
-  const trailLength = 20;
-
-  document.addEventListener('mousemove', (e) => {
-    trail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
-
-    if (trail.length > trailLength) {
-      trail.shift();
-    }
-  });
-
-  function drawTrail() {
-    const existingTrails = document.querySelectorAll('.cursor-trail');
-    existingTrails.forEach(t => {
-      const opacity = parseFloat(t.style.opacity);
-      if (opacity > 0) {
-        t.style.opacity = opacity - 0.05;
-      } else {
-        t.remove();
-      }
-    });
-
-    trail.forEach((point, index) => {
-      if (index % 3 === 0) { // 每3个点绘制一次，减少性能开销
-        const dot = document.createElement('div');
-        dot.className = 'cursor-trail';
-        dot.style.cssText = `
-          position: fixed;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          background: linear-gradient(45deg, #8a2be2, #00bfff);
-          pointer-events: none;
-          z-index: 9998;
-          left: ${point.x}px;
-          top: ${point.y}px;
-          opacity: ${(index / trail.length) * 0.5};
-          transform: translate(-50%, -50%);
-        `;
-        document.body.appendChild(dot);
-      }
-    });
-
-    requestAnimationFrame(drawTrail);
-  }
-
-  drawTrail();
+  // 移除彩虹光标轨迹 - 性能开销太大，会造成页面卡顿
 
   // 打字机效果（如果页面有特定元素）
   const typewriterElements = document.querySelectorAll('[data-typewriter]');
