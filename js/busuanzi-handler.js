@@ -4,10 +4,16 @@
 
   // 检查不蒜子是否加载完成
   function checkBusuanzi() {
-    // 检查不蒜子脚本是否已加载
-    if (typeof busuanzi !== 'undefined') {
+    // busuanzi.pure.mini.js exposes bszCaller/bszTag, not a busuanzi global.
+    if (typeof bszCaller !== 'undefined' || typeof bszTag !== 'undefined') {
       return true;
     }
+
+    const valueEl = document.getElementById('busuanzi_value_page_pv');
+    if (valueEl && valueEl.textContent.trim() !== '') {
+      return true;
+    }
+
     return false;
   }
 
@@ -31,7 +37,7 @@
 
   // 隐藏浏览量统计（如果加载失败）
   function hideViewCounts() {
-    const containers = document.querySelectorAll('#busuanzi_container_page_pv, .busuanzi-view');
+    const containers = document.querySelectorAll('#busuanzi_container_page_pv');
     containers.forEach(el => {
       el.style.display = 'none';
     });
