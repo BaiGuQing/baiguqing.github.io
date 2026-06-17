@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>LitCTF2026_WP - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  <link rel='manifest' href='/manifest.json'>
+  
+
+  <meta name="description" content="Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了  lit_xor_chain 丢到IDA中分析一下    发现就是异或后加一个数  用赛博厨子即可    lit_b64_alphabet 改了字母表  依旧赛博厨子    lit_tea_standard 考点题目说的很明确了  搓个脚本即可   1234567891011121314151617181920212223242">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LitCTF2026_WP">
+<meta property="og:url" content="http://example.com/2026/05/25/LitCTF2026_WP/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了  lit_xor_chain 丢到IDA中分析一下    发现就是异或后加一个数  用赛博厨子即可    lit_b64_alphabet 改了字母表  依旧赛博厨子    lit_tea_standard 考点题目说的很明确了  搓个脚本即可   1234567891011121314151617181920212223242">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ODQwN2E0ZWUxZGQwYjJiN2NkNTU1MWJjNDgyMGMyOTVfYzE2ZGM4NWZlY2QzOGJiZWJmNDNkYmI1MzMxZWE2MmZfSUQ6NzY0Mzc1NjM0NzY3NTIzMzQ4MV8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM">
+<meta property="og:image" content="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OGEzZDA4YTQ0Yzk3YmU1OGY3MmU4MTk2YjZjOTI2M2RfNWU3YWNiMjY1YjMzOTdjNTgwZDQzNjMzNzE3M2EyMDJfSUQ6NzY0Mzc1NjY3NzgwMTg3MjU5Nl8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM">
+<meta property="og:image" content="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OGM1MGJhZDcwZTg2M2U3MDUwOTFkNzI0ZDg0M2VkOTdfZmM2ZThiYTBkNzRjNGQyZTM4YTI2ZWNiMGExMTk1NGVfSUQ6NzY0Mzc1NzEzODA3OTU5OTgxMl8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM">
+<meta property="og:image" content="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NWVlNWMxOTQyN2QwOGNmZTc5ZjA4ZGQwNTdjNWY4N2FfOGI4YzhiYjk0M2QyNTdlODJhNDgwNjMwYTdmMjA4MzFfSUQ6NzY0NTk1MjE1MTYyOTM4NDY2NF8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM">
+<meta property="article:published_time" content="2026-05-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T07:42:41.781Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="Reverse_Writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ODQwN2E0ZWUxZGQwYjJiN2NkNTU1MWJjNDgyMGMyOTVfYzE2ZGM4NWZlY2QzOGJiZWJmNDNkYmI1MzMxZWE2MmZfSUQ6NzY0Mzc1NjM0NzY3NTIzMzQ4MV8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  <!-- 不蒜子统计 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="2"
+    
+    
+    
+    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <div class="nav-arrow"></div>
+    <div class="nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="meta">
+    
+    <div class="categories text-uppercase">
+    
+      <a href="/categories/CTF-WP/">CTF_WP</a>
+    
+    </div>
+    
+
+    
+    <time class="date" datetime="2026-05-25T00:00:00+08:00">
+      2026-5-25
+    </time>
+    
+
+    <h1 class="title" data-pagefind-meta="title">LitCTF2026_WP</h1>
+
+    <div class="post-stats">
+      <span class="post-views">
+        <span class="icon">👁️</span>
+        <span id="busuanzi_container_page_pv">
+          <span id="busuanzi_value_page_pv"></span>
+        </span>
+        <span class="label">views</span>
+      </span>
+      <span class="post-words">
+        <span class="icon">📝</span>
+        <span>24.2k words</span>
+      </span>
+      
+      <span class="post-reading-time">
+        <span class="icon">⏱️</span>
+        <span>61 min read</span>
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h1><ul>
+<li>Re题的考点基本在题目中都说了，非常的贴心，爱了爱了</li>
+</ul>
+<h2 id="lit-xor-chain"><a href="#lit-xor-chain" class="headerlink" title="lit_xor_chain"></a><strong>lit_xor_chain</strong></h2><ul>
+<li>丢到IDA中分析一下</li>
+</ul>
+<p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ODQwN2E0ZWUxZGQwYjJiN2NkNTU1MWJjNDgyMGMyOTVfYzE2ZGM4NWZlY2QzOGJiZWJmNDNkYmI1MzMxZWE2MmZfSUQ6NzY0Mzc1NjM0NzY3NTIzMzQ4MV8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM" alt="Image"></p>
+<ul>
+<li><p>发现就是异或后加一个数</p>
+</li>
+<li><p>用赛博厨子即可</p>
+</li>
+</ul>
+<p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OGEzZDA4YTQ0Yzk3YmU1OGY3MmU4MTk2YjZjOTI2M2RfNWU3YWNiMjY1YjMzOTdjNTgwZDQzNjMzNzE3M2EyMDJfSUQ6NzY0Mzc1NjY3NzgwMTg3MjU5Nl8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM" alt="Image"></p>
+<h2 id="lit-b64-alphabet"><a href="#lit-b64-alphabet" class="headerlink" title="lit_b64_alphabet"></a><strong>lit_b64_alphabet</strong></h2><ul>
+<li><p>改了字母表</p>
+</li>
+<li><p>依旧赛博厨子</p>
+</li>
+</ul>
+<p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OGM1MGJhZDcwZTg2M2U3MDUwOTFkNzI0ZDg0M2VkOTdfZmM2ZThiYTBkNzRjNGQyZTM4YTI2ZWNiMGExMTk1NGVfSUQ6NzY0Mzc1NzEzODA3OTU5OTgxMl8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM" alt="Image"></p>
+<h2 id="lit-tea-standard"><a href="#lit-tea-standard" class="headerlink" title="lit_tea_standard"></a><strong>lit_tea_standard</strong></h2><ul>
+<li><p>考点题目说的很明确了</p>
+</li>
+<li><p>搓个脚本即可</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tea_decrypt</span>(<span class="params">v: <span class="built_in">bytes</span>, k: <span class="built_in">bytes</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">  v0, v1 = struct.unpack(<span class="string">&#x27;&gt;II&#x27;</span>, v)</span><br><span class="line">  k0, k1, k2, k3 = struct.unpack(<span class="string">&#x27;&gt;IIII&#x27;</span>, k)</span><br><span class="line">  delta = <span class="number">0x9E3779B9</span></span><br><span class="line">  _<span class="built_in">sum</span> = (delta * <span class="number">32</span>) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">  <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">      v1 = (v1 - (((v0 &lt;&lt; <span class="number">4</span>) + k2) ^ (v0 + _<span class="built_in">sum</span>) ^ ((v0 &gt;&gt; <span class="number">5</span>) + k3))) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">      v0 = (v0 - (((v1 &lt;&lt; <span class="number">4</span>) + k0) ^ (v1 + _<span class="built_in">sum</span>) ^ ((v1 &gt;&gt; <span class="number">5</span>) + k1))) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">      _<span class="built_in">sum</span> = (_<span class="built_in">sum</span> - delta) &amp; <span class="number">0xFFFFFFFF</span></span><br><span class="line">  <span class="keyword">return</span> struct.pack(<span class="string">&#x27;&gt;II&#x27;</span>, v0, v1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 IDA 提取的密钥 (k0, k1, k2, k3)</span></span><br><span class="line">key = struct.pack(<span class="string">&#x27;&gt;IIII&#x27;</span>, <span class="number">0x21524111</span>, <span class="number">0x35014542</span>, <span class="number">0x4FF4E200</span>, <span class="number">0x5EE31054</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 g_cipher (0x140012040) 读取的 32 字节密文</span></span><br><span class="line">cipher = <span class="built_in">bytes</span>([</span><br><span class="line">  <span class="number">0xed</span>, <span class="number">0xef</span>, <span class="number">0x21</span>, <span class="number">0xfe</span>, <span class="number">0xb7</span>, <span class="number">0x9b</span>, <span class="number">0x3c</span>, <span class="number">0xb0</span>,</span><br><span class="line">  <span class="number">0x1e</span>, <span class="number">0x93</span>, <span class="number">0x72</span>, <span class="number">0xe2</span>, <span class="number">0x02</span>, <span class="number">0x3e</span>, <span class="number">0x29</span>, <span class="number">0xbc</span>,</span><br><span class="line">  <span class="number">0x36</span>, <span class="number">0xf7</span>, <span class="number">0x0c</span>, <span class="number">0x92</span>, <span class="number">0x2e</span>, <span class="number">0x5a</span>, <span class="number">0xae</span>, <span class="number">0x46</span>,</span><br><span class="line">  <span class="number">0x44</span>, <span class="number">0xfa</span>, <span class="number">0x45</span>, <span class="number">0x25</span>, <span class="number">0x1a</span>, <span class="number">0xe5</span>, <span class="number">0x8c</span>, <span class="number">0x87</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># TEA 每次处理 8 字节，32 字节分 4 块解密</span></span><br><span class="line">plaintext = <span class="string">b&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(cipher), <span class="number">8</span>):</span><br><span class="line">  plaintext += tea_decrypt(cipher[i:i+<span class="number">8</span>], key)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 去掉 PKCS7 填充</span></span><br><span class="line">pad_len = plaintext[-<span class="number">1</span>]</span><br><span class="line">plaintext = plaintext[:-pad_len]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Flag: <span class="subst">&#123;plaintext.decode()&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="lit-xtea-tweak"><a href="#lit-xtea-tweak" class="headerlink" title="lit_xtea_tweak"></a><strong>lit_xtea_tweak</strong></h2><ul>
+<li><p>题目啥都告诉你了</p>
+</li>
+<li><p>搓脚本就ok了</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">xtea_decrypt</span>(<span class="params">v: <span class="built_in">bytes</span>, k: <span class="built_in">bytes</span></span>) -&gt; <span class="built_in">bytes</span>:</span><br><span class="line">    v0, v1 = struct.unpack(<span class="string">&#x27;&lt;II&#x27;</span>, v)</span><br><span class="line">    k0, k1, k2, k3 = struct.unpack(<span class="string">&#x27;&lt;IIII&#x27;</span>, k)</span><br><span class="line">    delta, mask = <span class="number">0x21524111</span>, <span class="number">0xFFFFFFFF</span></span><br><span class="line">    _<span class="built_in">sum</span> = (-delta * <span class="number">32</span>) &amp; mask</span><br><span class="line">    keys = (k0, k1, k2, k3)</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>):</span><br><span class="line">        v1 = (v1 - ((_<span class="built_in">sum</span> + keys[(_<span class="built_in">sum</span> &gt;&gt; <span class="number">11</span>) &amp; <span class="number">3</span>]) ^ (v0 + ((v0 &lt;&lt; <span class="number">4</span>) ^ (v0 &gt;&gt; <span class="number">5</span>))))) &amp; mask</span><br><span class="line">        _<span class="built_in">sum</span> = (_<span class="built_in">sum</span> + delta) &amp; mask</span><br><span class="line">        v0 = (v0 - ((_<span class="built_in">sum</span> + keys[_<span class="built_in">sum</span> &amp; <span class="number">3</span>]) ^ (v1 + ((v1 &lt;&lt; <span class="number">4</span>) ^ (v1 &gt;&gt; <span class="number">5</span>))))) &amp; mask</span><br><span class="line">    <span class="keyword">return</span> struct.pack(<span class="string">&#x27;&lt;II&#x27;</span>, v0, v1)</span><br><span class="line"></span><br><span class="line">key = struct.pack(<span class="string">&#x27;&lt;IIII&#x27;</span>, <span class="number">0x11111111</span>, <span class="number">0x22222222</span>, <span class="number">0x33333333</span>, <span class="number">0x44444444</span>)</span><br><span class="line">cipher = <span class="built_in">bytes</span>([</span><br><span class="line">    <span class="number">0xE3</span>, <span class="number">0xEE</span>, <span class="number">0x1E</span>, <span class="number">0xE7</span>, <span class="number">0xD3</span>, <span class="number">0xA7</span>, <span class="number">0x96</span>, <span class="number">0x6F</span>,</span><br><span class="line">    <span class="number">0xC6</span>, <span class="number">0xA7</span>, <span class="number">0xB9</span>, <span class="number">0xE1</span>, <span class="number">0xB9</span>, <span class="number">0x4E</span>, <span class="number">0x67</span>, <span class="number">0x86</span>,</span><br><span class="line">    <span class="number">0x5F</span>, <span class="number">0x03</span>, <span class="number">0x04</span>, <span class="number">0xA6</span>, <span class="number">0xDB</span>, <span class="number">0xBB</span>, <span class="number">0xB9</span>, <span class="number">0x40</span>,</span><br><span class="line">    <span class="number">0x56</span>, <span class="number">0x3A</span>, <span class="number">0xF7</span>, <span class="number">0x9E</span>, <span class="number">0xEE</span>, <span class="number">0x64</span>, <span class="number">0xD4</span>, <span class="number">0x06</span>,</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">plaintext = <span class="string">b&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(cipher), <span class="number">8</span>):</span><br><span class="line">    plaintext += xtea_decrypt(cipher[i:i+<span class="number">8</span>], key)</span><br><span class="line"></span><br><span class="line">pad_len = plaintext[-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="number">1</span> &lt;= pad_len &lt;= <span class="number">8</span>:</span><br><span class="line">    plaintext = plaintext[:-pad_len]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Flag: <span class="subst">&#123;plaintext.decode()&#125;</span>&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="lit-rc4-variant"><a href="#lit-rc4-variant" class="headerlink" title="lit_rc4_variant"></a><strong>lit_rc4_variant</strong></h2><ul>
+<li><p>魔改rc4</p>
+</li>
+<li><p>魔改的点也告诉你了</p>
+</li>
+<li><p>冷知识，rc4加密和解密是一样的</p>
+</li>
+<li><p>所以把ida的伪c复制过来，简单改一下就可以用了</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="type">uint8_t</span> g_key[<span class="number">12</span>] = &#123;</span><br><span class="line">        <span class="number">0x6C</span>, <span class="number">0x69</span>, <span class="number">0x74</span>, <span class="number">0x5F</span>, <span class="number">0x72</span>, <span class="number">0x63</span>, <span class="number">0x34</span>, <span class="number">0x5F</span>, <span class="number">0x6B</span>, <span class="number">0x65</span>, <span class="number">0x79</span>, <span class="number">0x21</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="type">uint8_t</span> g_cipher[<span class="number">29</span>] = &#123;</span><br><span class="line">            <span class="number">0x7B</span>, <span class="number">0x3D</span>, <span class="number">0x38</span>, <span class="number">0x77</span>, <span class="number">0x4E</span>, <span class="number">0x72</span>, <span class="number">0x42</span>, <span class="number">0x7D</span>, <span class="number">0x45</span>, <span class="number">0x37</span>, <span class="number">0x76</span>, <span class="number">0x0F</span>, <span class="number">0x53</span>, <span class="number">0x53</span>, <span class="number">0x4F</span>, <span class="number">0x66</span>, </span><br><span class="line">            <span class="number">0x37</span>, <span class="number">0x17</span>, <span class="number">0x75</span>, <span class="number">0x37</span>, <span class="number">0x5F</span>, <span class="number">0x49</span>, <span class="number">0x58</span>, <span class="number">0x72</span>, <span class="number">0x74</span>, <span class="number">0x7F</span>, <span class="number">0x79</span>, <span class="number">0x1F</span>, <span class="number">0x3A</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="type">int</span> v3; <span class="comment">// ebx</span></span><br><span class="line">        <span class="type">uint8_t</span> *v5; <span class="comment">// rcx</span></span><br><span class="line">        <span class="type">uint8_t</span> *v6; <span class="comment">// r8</span></span><br><span class="line">        <span class="type">uint8_t</span> *v7; <span class="comment">// r11</span></span><br><span class="line">        <span class="type">uint8_t</span> *v8; <span class="comment">// r10</span></span><br><span class="line">        <span class="type">int</span> i; <span class="comment">// edx</span></span><br><span class="line">        <span class="type">int</span> v10; <span class="comment">// edx</span></span><br><span class="line">        <span class="type">char</span> v11; <span class="comment">// r9</span></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">int</span> v12; <span class="comment">// edx</span></span><br><span class="line">        <span class="type">char</span> v13; <span class="comment">// kr00_1</span></span><br><span class="line">        <span class="type">uint8_t</span> *Buf1_1; <span class="comment">// r8</span></span><br><span class="line">        <span class="type">int</span> v15; <span class="comment">// r11d</span></span><br><span class="line">        <span class="type">int</span> v16; <span class="comment">// r10d</span></span><br><span class="line">        <span class="type">uint8_t</span> v17; <span class="comment">// cl</span></span><br><span class="line">        <span class="type">uint8_t</span> v18[<span class="number">64</span>]; <span class="comment">// [rsp+20h] [rbp-498h] BYREF</span></span><br><span class="line">        <span class="type">uint8_t</span> v19[<span class="number">64</span>]; <span class="comment">// [rsp+60h] [rbp-458h] BYREF</span></span><br><span class="line">        <span class="type">uint8_t</span> Buf1[<span class="number">29</span>]; <span class="comment">// [rsp+A0h] [rbp-418h] BYREF</span></span><br><span class="line">        <span class="type">char</span> v21; <span class="comment">// [rsp+BDh] [rbp-3FBh] BYREF</span></span><br><span class="line">        <span class="type">char</span> Str[<span class="number">16</span>]; <span class="comment">// [rsp+2A0h] [rbp-218h] BYRE</span></span><br><span class="line">        v5 = v18;</span><br><span class="line">        v6 = v19;</span><br><span class="line">        v7 = v19;</span><br><span class="line">        v8 = v18;</span><br><span class="line">        <span class="keyword">for</span> ( i = <span class="number">0</span>; i != <span class="number">64</span>; ++i )</span><br><span class="line">        &#123;</span><br><span class="line">                *v8 = i;</span><br><span class="line">                *v7 = g_key[i % <span class="number">12</span>];</span><br><span class="line">                ++v8;</span><br><span class="line">                ++v7;</span><br><span class="line">        &#125;</span><br><span class="line">        v10 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; <span class="number">64</span>;i++)&#123;</span><br><span class="line">                v11 = *v5;</span><br><span class="line">                v13 = v10 + *v5 + *v6;</span><br><span class="line">                v12 = (v10 + (<span class="type">uint8_t</span>)*v5 + (<span class="type">uint8_t</span>)*v6) &gt;&gt; <span class="number">31</span>;</span><br><span class="line">                v10 = (((v12 &gt;&gt; <span class="number">26</span>) + v13) &amp; <span class="number">0x3F</span>) - (v12 &gt;&gt; <span class="number">26</span>);</span><br><span class="line">                *v5 = v18[v10];</span><br><span class="line">                v18[v10] = v11;</span><br><span class="line">                ++v6;</span><br><span class="line">                ++v5;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memcpy</span>(Buf1, g_cipher, <span class="number">29</span>);</span><br><span class="line">        Buf1_1 = Buf1;</span><br><span class="line">        v15 = <span class="number">0</span>;</span><br><span class="line">        v16 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt; <span class="number">29</span>;i++)&#123;</span><br><span class="line">                v16 = (v16 + <span class="number">1</span>) % <span class="number">64</span>;</span><br><span class="line">                v17 = v18[v16];</span><br><span class="line">                v15 = (v15 + v17) % <span class="number">64</span>;</span><br><span class="line">                v18[v16] = v18[v15];</span><br><span class="line">                v18[v15] = v17;</span><br><span class="line">                *Buf1_1++ ^= v18[(v18[v16] + v17) &amp; <span class="number">0x3F</span>] + v18[v16];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Flag:%s\n&quot;</span>,Buf1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>后记：</p>
+</li>
+<li><p>经过了学姐的点播，发现了更快的方法</p>
+</li>
+<li><p>把加密之前的输入数据改成对比数据</p>
+</li>
+</ul>
+<p><img src="https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NWVlNWMxOTQyN2QwOGNmZTc5ZjA4ZGQwNTdjNWY4N2FfOGI4YzhiYjk0M2QyNTdlODJhNDgwNjMwYTdmMjA4MzFfSUQ6NzY0NTk1MjE1MTYyOTM4NDY2NF8xNzgxNjgxOTUyOjE3ODE3NjgzNTJfVjM" alt="Image"></p>
+<ul>
+<li><p>然后打个断点运行就可以拿到flag了</p>
+</li>
+<li><p>原理就是因为rc4是加解密流程一样，即便简单魔改（这里严谨下，不知道所有魔改是不是都是加解密流程一样）</p>
+</li>
+<li><p>因为对比密文一般都是不可输入的16进制数字，所以只能在输入后patch成对比密文</p>
+</li>
+<li><p>这样就可以不在乎rc4怎么魔改了，还可以不写脚本</p>
+</li>
+<li><p>这个办法给到一个夯，我怎么没想到，还是没有逆向思维哇</p>
+</li>
+<li><p>hmmm，还是太笨了0.0</p>
+</li>
+</ul>
+
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+    
+    <p class="tags">
+      <i class="bi bi-tags icon"></i>
+      
+      <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
+      
+    </p>
+    
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    <a class="next"></a>
+    
+    <a href="/2025/12/30/ret2libc/" class="prev">
+      <div class="text">
+        <p class="label">上一篇</p>
+        <h3 class="title">ret2libc</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <footer>
+  <div class="inner">
+    <div class="links">
+      
+      <div class="group">
+        <h2 class="title">Blog</h2>
+        
+        <a href="/" class="item">主页</a>
+        
+        <a href="/About-Me" class="item">关于我</a>
+        
+        <a href="/archives" class="item">归档</a>
+        
+        <a href="/tags" class="item">标签</a>
+        
+        <a href="/categories" class="item">分类</a>
+        
+        <a href="/search" class="item">搜索</a>
+        
+      </div>
+      
+      <div class="group">
+        <h2 class="title">Related</h2>
+        
+        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
+        
+      </div>
+      
+    </div>
+    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
+    
+    
+      <br>
+      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+        <label>
+          <input type="radio" value="light">
+          <span>浅色</span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span>深色</span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span>自动</span>
+        </label>
+      </div>
+    
+  </div>
+</footer>
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+    
+<script src="/js/busuanzi-handler.js"></script>
+
+    
+<script src="/js/custom-effects.js"></script>
+
+    
+<script src="/js/hero-stats.js"></script>
+
+    
+  </body>
+</html>
