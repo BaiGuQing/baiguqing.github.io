@@ -283,8 +283,7 @@ body {
 .post > .content p, .post > .content h1, .post > .content h2, .post > .content h3, .post > .content h4, .post > .content h5, .post > .content h6, .post > .content figure, .post > .content > pre,
 .post .divider,
 .post .container,
-.post hr,
-.post .toc, .post > .content blockquote, .post > .content table, .post > .content video, .post > .content ul, .post > .content ol, .post > .content > mjx-container, .post > .content > .katex,
+.post hr, .post > .content blockquote, .post > .content table, .post > .content video, .post > .content ul, .post > .content ol, .post > .content > mjx-container, .post > .content > .katex,
 .post .about {
   max-width: 800px;
   margin-left: auto;

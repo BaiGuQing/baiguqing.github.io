@@ -102,14 +102,25 @@
         href:
           heading.getElementsByClassName('headerlink')[0]?.attributes['href']
             .value ?? null,
+        level: parseInt(heading.tagName.substring(1)),
       }))
       .filter(heading => heading.href)
 
     const tocContainer = document.createElement('aside')
+    tocContainer.classList.add('toc-sidebar')
     const toc = document.createElement('div')
     toc.classList.add('toc')
+
+    // 添加标题
+    const tocTitle = document.createElement('div')
+    tocTitle.classList.add('toc-title')
+    tocTitle.textContent = '目录'
+    toc.appendChild(tocTitle)
+
     for (const i in source) {
       const item = document.createElement('p')
+      item.classList.add('toc-item')
+      item.setAttribute('data-level', source[i].level)
       const link = document.createElement('a')
       link.href = source[i].href
       link.innerHTML = source[i].html
@@ -119,11 +130,46 @@
     }
     tocContainer.appendChild(toc)
 
-    if (toc.children.length > 0) {
-      document
-        .getElementsByClassName('post')[0]
-        .getElementsByClassName('meta')[0]
-        .after(tocContainer)
+    if (toc.children.length > 1) {  // > 1 因为包含了标题
+      document.body.appendChild(tocContainer)
+
+      // 高亮当前阅读位置
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id')
+          if (id) {
+            const tocLink = toc.querySelector(`a[href="#${id}"]`)
+            if (entry.isIntersecting) {
+              // 移除所有活动状态
+              toc.querySelectorAll('a').forEach(a => a.classList.remove('active'))
+              // 添加当前活动状态
+              if (tocLink) {
+                tocLink.classList.add('active')
+              }
+            }
+          }
+        })
+      }, {
+        rootMargin: '-20% 0px -70% 0px'
+      })
+
+      headings.forEach(heading => {
+        if (heading.id) {
+          observer.observe(heading)
+        }
+      })
+
+      // 平滑滚动
+      toc.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault()
+          const targetId = link.getAttribute('href').substring(1)
+          const targetElement = document.getElementById(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        })
+      })
     }
   }
 
