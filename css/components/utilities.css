@@ -1,91 +1,116 @@
 :root {
-  --filter-blur: blur(32px);
-  --radius-tiny: 4px;
-  --radius-small: 8px;
-  --radius-medium: 12px;
-  --radius-large: 16px;
+  --filter-blur: blur(24px) saturate(150%);
+  --radius-tiny: 8px;
+  --radius-small: 12px;
+  --radius-medium: 16px;
+  --radius-large: 24px;
   --radius-full: 999px;
-  --font-sans-serif: Inter, sans-serif, system-ui;
-  --font-sans-serif-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+  /* Clean, modern, sans-serif font */
+  --font-sans-serif: "Inter", "Google Sans", system-ui, -apple-system, sans-serif;
+  --font-sans-serif-feature-settings: 'liga' 1, 'calt' 1;
 }
 @supports (font-variation-settings: normal) {
   :root {
-    --font-sans-serif: InterVariable, sans-serif, system-ui;
+    --font-sans-serif: "InterVariable", "Google Sans", system-ui, -apple-system, sans-serif;
   }
 }
 
 body[data-color-scheme=auto],
 body[data-color-scheme=light] {
-  --color-background-underlying: #ffffff;
-  --color-background-primary: #fafbff;
-  --color-background-primary-hover: #ffffff;
-  --color-background-primary-active: #f5f7ff;
-  --color-background-primary-translucent: #fafbff33;
-  --color-background-secondary: #ffffff;
-  --color-background-secondary-hover: #f0f4ff;
-  --color-background-secondary-translucent: #ffffffdd;
-  --color-background-accent: #8a2be2;
+  /* Clean, bright background for light mode */
+  --color-background-underlying: #f8f9fc;
+  /* Light Glassmorphism card backgrounds */
+  --color-background-primary: rgba(255, 255, 255, 0.7);
+  --color-background-primary-hover: rgba(255, 255, 255, 0.9);
+  --color-background-primary-active: rgba(245, 247, 255, 0.8);
+  --color-background-primary-translucent: rgba(255, 255, 255, 0.5);
+  /* Secondary backgrounds */
+  --color-background-secondary: rgba(245, 247, 250, 0.6);
+  --color-background-secondary-hover: rgba(250, 252, 255, 0.8);
+  --color-background-secondary-translucent: rgba(255, 255, 255, 0.9);
+  /* Antigravity Purple/Blue accent (slightly darker for contrast on white) */
+  --color-background-accent: #8b5cf6;
   --color-background-accent-contrast: #ffffff;
-  --color-background-accent-hover: #9d4eed;
-  --color-background-accent-active: #7722d0;
-  --color-text-primary: #1a1a2e;
+  --color-background-accent-hover: #7c3aed;
+  --color-background-accent-active: #6d28d9;
+  /* Text colors for light mode */
+  --color-text-primary: #1a1a24;
   --color-text-primary-hover: #000000;
-  --color-text-primary-active: #4a4a5e;
-  --color-text-secondary: #5a5a7a;
-  --color-text-secondary-hover: #2a2a4e;
-  --color-text-tertiary: #8a8aa0;
-  --color-text-accent: #8a2be2;
-  --color-border-primary: #8a2be222;
-  --color-border-secondary: #e6e6f6;
+  --color-text-primary-active: #3a3a48;
+  /* Muted text */
+  --color-text-secondary: #64748b;
+  --color-text-secondary-hover: #475569;
+  --color-text-tertiary: #94a3b8;
+  /* Accent text */
+  --color-text-accent: #8b5cf6;
+  /* Subtle glass borders */
+  --color-border-primary: rgba(139, 92, 246, 0.15);
+  --color-border-secondary: rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
   body[data-color-scheme=auto] {
-    --color-background-underlying: #0a0a0f;
-    --color-background-primary: #13131a;
-    --color-background-primary-hover: #1a1a24;
-    --color-background-primary-active: #16161e;
-    --color-background-primary-translucent: #13131a33;
-    --color-background-secondary: #1a1a24;
-    --color-background-secondary-hover: #22222e;
-    --color-background-secondary-translucent: #00000088;
-    --color-background-accent: #9d4eed;
-    --color-background-accent-contrast: #ffffff;
-    --color-background-accent-hover: #b166f5;
-    --color-background-accent-active: #8a2be2;
-    --color-text-primary: #e8e8f0;
+    /* Extreme dark background for the depth */
+    --color-background-underlying: #0a0a0c;
+    /* Glassmorphism card backgrounds: semi-transparent */
+    --color-background-primary: rgba(30, 30, 36, 0.6);
+    --color-background-primary-hover: rgba(45, 45, 54, 0.7);
+    --color-background-primary-active: rgba(35, 35, 42, 0.8);
+    --color-background-primary-translucent: rgba(20, 20, 25, 0.4);
+    /* Secondary backgrounds for nested elements */
+    --color-background-secondary: rgba(40, 40, 48, 0.5);
+    --color-background-secondary-hover: rgba(60, 60, 70, 0.6);
+    --color-background-secondary-translucent: rgba(10, 10, 12, 0.8);
+    /* Antigravity Purple/Blue accent */
+    --color-background-accent: #a87ffb;
+    --color-background-accent-contrast: #121212;
+    --color-background-accent-hover: #b998fc;
+    --color-background-accent-active: #9461fa;
+    /* High contrast text */
+    --color-text-primary: #f0f0f5;
     --color-text-primary-hover: #ffffff;
-    --color-text-primary-active: #b8b8c8;
-    --color-text-secondary: #a8a8c0;
-    --color-text-secondary-hover: #d8d8e8;
-    --color-text-tertiary: #8888a0;
-    --color-text-accent: #b166f5;
-    --color-border-primary: #9d4eed44;
-    --color-border-secondary: #2a2a36;
+    --color-text-primary-active: #d0d0d8;
+    /* Muted text */
+    --color-text-secondary: #a0a0b0;
+    --color-text-secondary-hover: #c0c0d0;
+    --color-text-tertiary: #707080;
+    /* Accent text */
+    --color-text-accent: #a87ffb;
+    /* Inner glow / glass borders */
+    --color-border-primary: rgba(255, 255, 255, 0.08);
+    --color-border-secondary: rgba(255, 255, 255, 0.04);
   }
 }
 body[data-color-scheme=dark] {
-  --color-background-underlying: #0a0a0f;
-  --color-background-primary: #13131a;
-  --color-background-primary-hover: #1a1a24;
-  --color-background-primary-active: #16161e;
-  --color-background-primary-translucent: #13131a33;
-  --color-background-secondary: #1a1a24;
-  --color-background-secondary-hover: #22222e;
-  --color-background-secondary-translucent: #00000088;
-  --color-background-accent: #9d4eed;
-  --color-background-accent-contrast: #ffffff;
-  --color-background-accent-hover: #b166f5;
-  --color-background-accent-active: #8a2be2;
-  --color-text-primary: #e8e8f0;
+  /* Extreme dark background for the depth */
+  --color-background-underlying: #0a0a0c;
+  /* Glassmorphism card backgrounds: semi-transparent */
+  --color-background-primary: rgba(30, 30, 36, 0.6);
+  --color-background-primary-hover: rgba(45, 45, 54, 0.7);
+  --color-background-primary-active: rgba(35, 35, 42, 0.8);
+  --color-background-primary-translucent: rgba(20, 20, 25, 0.4);
+  /* Secondary backgrounds for nested elements */
+  --color-background-secondary: rgba(40, 40, 48, 0.5);
+  --color-background-secondary-hover: rgba(60, 60, 70, 0.6);
+  --color-background-secondary-translucent: rgba(10, 10, 12, 0.8);
+  /* Antigravity Purple/Blue accent */
+  --color-background-accent: #a87ffb;
+  --color-background-accent-contrast: #121212;
+  --color-background-accent-hover: #b998fc;
+  --color-background-accent-active: #9461fa;
+  /* High contrast text */
+  --color-text-primary: #f0f0f5;
   --color-text-primary-hover: #ffffff;
-  --color-text-primary-active: #b8b8c8;
-  --color-text-secondary: #a8a8c0;
-  --color-text-secondary-hover: #d8d8e8;
-  --color-text-tertiary: #8888a0;
-  --color-text-accent: #b166f5;
-  --color-border-primary: #9d4eed44;
-  --color-border-secondary: #2a2a36;
+  --color-text-primary-active: #d0d0d8;
+  /* Muted text */
+  --color-text-secondary: #a0a0b0;
+  --color-text-secondary-hover: #c0c0d0;
+  --color-text-tertiary: #707080;
+  /* Accent text */
+  --color-text-accent: #a87ffb;
+  /* Inner glow / glass borders */
+  --color-border-primary: rgba(255, 255, 255, 0.08);
+  --color-border-secondary: rgba(255, 255, 255, 0.04);
 }
 
 .block-large {
@@ -126,17 +151,17 @@ body[data-color-scheme=dark] {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .corner-squircle {
     corner-shape: squircle;
-    --radius-tiny: 10px;
-    --radius-small: 20px;
-    --radius-medium: 30px;
-    --radius-large: 40px;
+    --radius-tiny: 12px;
+    --radius-small: 16px;
+    --radius-medium: 24px;
+    --radius-large: 32px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .corner-squircle * {
-    --radius-tiny: 4px;
-    --radius-small: 8px;
-    --radius-medium: 12px;
-    --radius-large: 16px;
+    --radius-tiny: 8px;
+    --radius-small: 12px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
     --radius-full: 999px;
   }
 }
@@ -144,10 +169,10 @@ body[data-color-scheme=dark] {
 @supports (corner-shape: initial) {
   [data-corner-squircle=true] .no-corner-squircle {
     corner-shape: initial;
-    --radius-tiny: 4px;
-    --radius-small: 8px;
-    --radius-medium: 12px;
-    --radius-large: 16px;
+    --radius-tiny: 8px;
+    --radius-small: 12px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
     --radius-full: 999px;
   }
 }

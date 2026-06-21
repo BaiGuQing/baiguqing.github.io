@@ -63,6 +63,41 @@ nav .inner .nav-items .nav-item.is-icon {
 nav .inner .nav-items .nav-item-home {
   display: none;
 }
+nav .inner .nav-items .color-scheme-toggle {
+  display: flex;
+  padding: 1px;
+  gap: 1px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-primary);
+  margin-left: 16px;
+  align-items: center;
+}
+nav .inner .nav-items .color-scheme-toggle label {
+  display: flex;
+  margin: 0;
+}
+nav .inner .nav-items .color-scheme-toggle label input {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin: 0;
+  opacity: 0;
+}
+nav .inner .nav-items .color-scheme-toggle label input:checked + span {
+  color: var(--color-background-accent-contrast);
+  background-color: var(--color-background-accent);
+}
+nav .inner .nav-items .color-scheme-toggle label span {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+nav .inner .nav-items .color-scheme-toggle label span:hover {
+  color: var(--color-text-primary);
+}
 @media (max-width: 600px) {
   nav {
     height: 48px;

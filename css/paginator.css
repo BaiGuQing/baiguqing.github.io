@@ -2,6 +2,8 @@
   display: block;
   text-align: center;
   margin: 32px 8px;
+  position: relative;
+  z-index: 10;
 }
 .paginator > a, .paginator > span {
   height: 32px;

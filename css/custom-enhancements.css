@@ -1,78 +1,91 @@
 body {
   position: relative;
-  overflow-x: hidden;
+  background-color: var(--color-background-underlying);
 }
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   z-index: -1;
-  opacity: 0.03;
-  background: radial-gradient(circle at 20% 30%, rgba(100, 120, 150, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(80, 100, 130, 0.12) 0%, transparent 50%);
-  animation: gradientShift 25s ease infinite;
+  pointer-events: none;
+  /* Soft purple and blue ambient light */
+  background: radial-gradient(ellipse at 50% 10%, rgba(168, 127, 251, 0.08) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(80, 100, 255, 0.05) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(120, 80, 255, 0.04) 0%, transparent 50%);
+  animation: slowDrift 30s ease-in-out infinite alternate;
 }
 
-@keyframes gradientShift {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
+@keyframes slowDrift {
+  0% {
+    transform: rotate(0deg) scale(1);
   }
-  50% {
-    transform: translate(3%, 3%) scale(1.05);
+  100% {
+    transform: rotate(3deg) scale(1.05);
   }
 }
 .card,
 .nav,
-#skip-to-content {
-  backdrop-filter: blur(12px) saturate(120%);
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
+#skip-to-content,
+.post-list .post-item {
+  background-color: var(--color-background-primary) !important;
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-large);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover,
+.post-list .post-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 127, 251, 0.3); /* Subtle purple border on hover */
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(168, 127, 251, 0.1); /* Subtle purple glow */
 }
 
 .hero .title {
-  text-shadow: 0 0 20px rgba(100, 120, 150, 0.2), 0 0 40px rgba(100, 120, 150, 0.1);
-  animation: subtleGlow 4s ease-in-out infinite;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  /* Use a slightly transparent text-shadow instead of hardcoded white */
+  text-shadow: 0 4px 24px var(--color-border-primary);
 }
 
-@keyframes subtleGlow {
-  0%, 100% {
-    text-shadow: 0 0 20px rgba(100, 120, 150, 0.2), 0 0 40px rgba(100, 120, 150, 0.1);
-  }
-  50% {
-    text-shadow: 0 0 25px rgba(100, 120, 150, 0.3), 0 0 50px rgba(100, 120, 150, 0.15);
-  }
-}
-.scroll-reveal {
-  animation-duration: 0.6s;
-  animation-fill-mode: both;
-}
-.scroll-reveal.is-visible {
-  animation-name: fadeInUp;
+.hero .subtitle {
+  color: var(--color-text-secondary);
+  font-weight: 400;
 }
 
-@keyframes fadeInUp {
+.button,
+button {
+  border-radius: var(--radius-full);
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-secondary);
+  color: var(--color-text-primary);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+.button:hover,
+button:hover {
+  background: var(--color-background-accent-translucent, rgba(168, 127, 251, 0.15));
+  border-color: var(--color-background-accent);
+  color: var(--color-text-primary-hover);
+  box-shadow: 0 0 15px rgba(168, 127, 251, 0.2);
+}
+
+@keyframes pageLoadFade {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px) scale(0.99);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes pageLoad {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 .container {
-  animation: pageLoad 0.5s ease-out;
+  animation: pageLoadFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 :root {
@@ -83,14 +96,14 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100, 120, 150, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 127, 251, 0.04) 0%, transparent 60%);
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
   mix-blend-mode: screen;
   left: var(--cursor-x);
   top: var(--cursor-y);
@@ -100,14 +113,30 @@ body.cursor-active::after {
   opacity: 1;
 }
 
-.nav {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.1);
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-body[data-color-scheme=dark] .hero .title {
-  text-shadow: 0 0 25px rgba(150, 170, 200, 0.3), 0 0 50px rgba(150, 170, 200, 0.15);
+::-webkit-scrollbar-track {
+  background: var(--color-background-underlying);
 }
-body[data-color-scheme=dark]::before {
-  opacity: 0.05;
-  background: radial-gradient(circle at 20% 30%, rgba(120, 140, 170, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(100, 120, 150, 0.15) 0%, transparent 50%);
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+::-moz-selection {
+  background: rgba(168, 127, 251, 0.3);
+  color: #ffffff;
+}
+
+::selection {
+  background: rgba(168, 127, 251, 0.3);
+  color: #ffffff;
 }

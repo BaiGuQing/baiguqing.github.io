@@ -1,10 +1,11 @@
 :root {
-  scroll-behavior: smooth;
+  /* Removed scroll-behavior: smooth to prevent conflict with Lenis */
 }
 
 body {
   margin: 0;
   margin-top: 56px;
+  min-height: 100vh;
   color: var(--color-text-primary);
   background-color: var(--color-background-primary);
   font-family: var(--font-sans-serif);

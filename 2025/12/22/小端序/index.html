@@ -157,7 +157,7 @@
     
     
     
-    data-scroll-reveal-disappear="false"
+    data-scroll-reveal-disappear="true"
     data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
     
     data-nav-blur-gradient="false"
@@ -186,6 +186,23 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      
+      
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light">
+          <span><i class="bi bi-sun"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark">
+          <span><i class="bi bi-moon-stars"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto">
+          <span><i class="bi bi-display"></i></span>
+        </label>
+      </div>
       
     </div>
   </div>
@@ -328,23 +345,7 @@
     </div>
     <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
     
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
+
   </div>
 </footer>
 
