@@ -266,7 +266,7 @@
         });
 
         ctx.globalAlpha = 1.0;
-        requestAnimationFrame(animateParticles);
+        particlesAnimFrame = requestAnimationFrame(animateParticles);
       }
 
       // smoothstep 辅助函数
@@ -275,7 +275,34 @@
         return t * t * (3 - 2 * t);
       }
 
-      animateParticles();
+      // 粒子开关控制
+      window.themeParticlesEnabled = localStorage.getItem('particles_enabled') !== 'false';
+      let particlesAnimFrame;
+
+      const particleToggle = document.getElementById('theme-particle-toggle');
+      if (particleToggle) {
+        // 初始化图标状态
+        particleToggle.innerHTML = window.themeParticlesEnabled ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-star"></i>';
+        
+        particleToggle.addEventListener('click', () => {
+          window.themeParticlesEnabled = !window.themeParticlesEnabled;
+          localStorage.setItem('particles_enabled', window.themeParticlesEnabled);
+          particleToggle.innerHTML = window.themeParticlesEnabled ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-star"></i>';
+          
+          if (window.themeParticlesEnabled) {
+            animateParticles();
+          } else {
+            cancelAnimationFrame(particlesAnimFrame);
+            ctx.clearRect(0, 0, width, height);
+          }
+        });
+      }
+
+      if (window.themeParticlesEnabled) {
+        animateParticles();
+      } else {
+        ctx.clearRect(0, 0, width, height);
+      }
     }
 
     // 文本乱码解码入场动效 (Cryptic Text Decode)
