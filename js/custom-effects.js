@@ -314,17 +314,34 @@
 
   // 平滑滚动到锚点
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // 排除目录链接，因为 main.js 中已经有专门处理目录点击的逻辑
+    if (anchor.closest('.toc') || anchor.closest('.toc-sidebar') || anchor.classList.contains('toc-link')) {
+      return;
+    }
+    
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
 
       e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+      try {
+        // 使用 getElementById 避免 querySelector 对特殊字符 id 报错
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = window.innerHeight * 0.25;
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+          if (window.lenis) {
+            window.lenis.scrollTo(targetPosition);
+          } else {
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Scroll error:', err);
       }
     });
   });

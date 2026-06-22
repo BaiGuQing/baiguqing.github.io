@@ -1,7 +1,7 @@
-const lenis = new Lenis()
+window.lenis = new Lenis()
 
 function raf(time) {
-  lenis.raf(time)
+  window.lenis.raf(time)
   requestAnimationFrame(raf)
 }
 

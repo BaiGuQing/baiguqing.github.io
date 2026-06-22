@@ -133,8 +133,15 @@
     if (toc.children.length > 1) {  // > 1 因为包含了标题
       document.body.appendChild(tocContainer)
 
+      // 添加一个标志位，用于防止点击跳转时的滚动被观察者覆盖状态
+      let isTocScrolling = false;
+      let tocScrollTimeout = null;
+
       // 高亮当前阅读位置
       const observer = new IntersectionObserver(entries => {
+        // 如果正在因为点击目录而滚动，暂停观察者的状态更新
+        if (isTocScrolling) return;
+
         entries.forEach(entry => {
           const id = entry.target.getAttribute('id')
           if (id) {
@@ -171,15 +178,32 @@
           const targetId = link.getAttribute('href').substring(1)
           const targetElement = document.getElementById(targetId)
           if (targetElement) {
+            // 开始平滑滚动前设置标志位
+            isTocScrolling = true;
+            clearTimeout(tocScrollTimeout);
+
             // 计算适合观察者 (IntersectionObserver) 高亮区间的位置
-            // rootMargin 为 '-20% 0px -70% 0px'，因此 25% 的视口高度是最理想的落点
             const offset = window.innerHeight * 0.25
             const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset
             
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            })
+            if (window.lenis) {
+              // 使用 Lenis 的 API，避免与虚拟滚动动量冲突导致跳转失败
+              window.lenis.scrollTo(targetPosition)
+            } else {
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              })
+            }
+
+            // 滚动结束后解除锁定，允许正常的高亮观察
+            // 使用 scrollend 事件（现代浏览器）或定时器作为后备
+            const unlockObserver = () => {
+              isTocScrolling = false;
+              window.removeEventListener('scrollend', unlockObserver);
+            };
+            window.addEventListener('scrollend', unlockObserver);
+            tocScrollTimeout = setTimeout(unlockObserver, 1200); // 1200ms 后备解锁，适应 Lenis 的持续时间
           }
         })
       })
