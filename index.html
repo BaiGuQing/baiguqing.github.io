@@ -228,7 +228,7 @@
   <div class="hero-hud-stats">
     <div class="hud-item">
       <span class="hud-label">文章</span>
-      <span class="hud-number stat-number" data-target="11">0</span><span class="blinking-cursor">_</span>
+      <span class="hud-number stat-number" data-target="13">0</span><span class="blinking-cursor">_</span>
     </div>
     <div class="hud-item">
       <span class="hud-label">归类</span>
@@ -342,6 +342,96 @@
   </article>
   
   
+  <article class="post-list-item has-cover scroll-reveal">
+    <a href="/2026/02/13/FurryCTF/">
+      
+      <div class="cover-img">
+        <img src="/Images/202602011856.png" alt="FurryCTF" loading="lazy">
+      </div>
+      
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+          <div class="title">
+            FurryCTF
+          </div>
+          
+          <div class="excerpt">
+            Reverse 签到题 丢进DIE查了下 发现有VMP的壳子，直接找工具脱掉（之前正好参加了Lilac CTF，官方wp中提到了个脱壳工具，在这正好用上了） 再丢进IDA 未来程序 有个c++的源码，因为不会c++，所以让ai协助我理解了下...
+          </div>
+          
+        </div>
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-02-13T00:00:00+08:00">
+              2026-2-13
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <span class="icon">📝</span>
+                <span>67.3k</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item has-cover scroll-reveal">
+    <a href="/2026/01/31/UniCTF2026_WP/">
+      
+      <div class="cover-img">
+        <img src="/Images/202601262057.png" alt="UniCTF2026_WP" loading="lazy">
+      </div>
+      
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+          <div class="title">
+            UniCTF2026_WP
+          </div>
+          
+          <div class="excerpt">
+            Reverse cpolynomial 这道题我一开始还以为是一道动态调试的题目，发现并不是，直接静态就可以看 发现是一个道很综合的计算题 丢给ai写出计算脚本 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 ...
+          </div>
+          
+        </div>
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-01-31T00:00:00+08:00">
+              2026-1-31
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <span class="icon">📝</span>
+                <span>313.6k</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
   <article class="post-list-item scroll-reveal">
     <a href="/2025/12/30/ret2libc/">
       
@@ -384,47 +474,6 @@
   
   
   <article class="post-list-item scroll-reveal">
-    <a href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/">
-      
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-          <div class="title">
-            简单栈溢出
-          </div>
-          
-          <div class="excerpt">
-            例子 1 2 3 4 5 6 7 8 9 10 11 int fastcall main(int argc, const char argv, const char envp) { BYTE buf48; // rsp+0h rbp-30h...
-          </div>
-          
-        </div>
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2025-12-27T00:00:00+08:00">
-              2025-12-27
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <span class="icon">📝</span>
-                <span>4.1k</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal">
     <a href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/">
       
       <div class="content">
@@ -456,6 +505,47 @@
               <span class="stat-item">
                 <span class="icon">📝</span>
                 <span>0.1k</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal">
+    <a href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/">
+      
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+          <div class="title">
+            简单栈溢出
+          </div>
+          
+          <div class="excerpt">
+            例子 1 2 3 4 5 6 7 8 9 10 11 int fastcall main(int argc, const char argv, const char envp) { BYTE buf48; // rsp+0h rbp-30h...
+          </div>
+          
+        </div>
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-27T00:00:00+08:00">
+              2025-12-27
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <span class="icon">📝</span>
+                <span>4.1k</span>
               </span>
             </div>
           </div>
@@ -583,92 +673,6 @@
               <span class="stat-item">
                 <span class="icon">📝</span>
                 <span>75.9k</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item has-cover scroll-reveal">
-    <a href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/">
-      
-      <div class="cover-img">
-        <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy">
-      </div>
-      
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>CTF_WP</span>
-          
-          </div>
-          
-          <div class="title">
-            0xGame 2025 Week2 Reverse WP
-          </div>
-          
-          <div class="excerpt">
-            引言 我是一名CTF萌新啊，做这么详细的WP，也是希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ 16 bit 这个官方文档写的比较详细，那我就仔细的讲一下过程 运行这个exe会发现运行不了，据官方WP所说，这个是1...
-          </div>
-          
-        </div>
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2025-11-20T00:00:00+08:00">
-              2025-11-20
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <span class="icon">📝</span>
-                <span>36.0k</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal">
-    <a href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/">
-      
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-          <div class="title">
-            Python反编译
-          </div>
-          
-          <div class="excerpt">
-            ✅ 1. 使用 uncompyle6 （最常用） 支持 Python 2.7 3.7 的 .pyc。 安装 pip install uncompyle6 反编译 .pyc 到 .py uncompyle6 -o . yourfile.pyc...
-          </div>
-          
-        </div>
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2025-11-19T00:00:00+08:00">
-              2025-11-19
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <span class="icon">📝</span>
-                <span>2.0k</span>
               </span>
             </div>
           </div>

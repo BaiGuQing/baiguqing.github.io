@@ -163,10 +163,23 @@
       toc.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault()
+          
+          // 点击时立即提供反馈
+          toc.querySelectorAll('a').forEach(a => a.classList.remove('active'))
+          link.classList.add('active')
+
           const targetId = link.getAttribute('href').substring(1)
           const targetElement = document.getElementById(targetId)
           if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            // 计算适合观察者 (IntersectionObserver) 高亮区间的位置
+            // rootMargin 为 '-20% 0px -70% 0px'，因此 25% 的视口高度是最理想的落点
+            const offset = window.innerHeight * 0.25
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            })
           }
         })
       })
