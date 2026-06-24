@@ -7,7 +7,7 @@
   --radius-full: 999px;
   /* Clean, modern, sans-serif font */
   --font-sans-serif: "Inter", "Google Sans", system-ui, -apple-system, sans-serif;
-  --font-sans-serif-feature-settings: 'liga' 1, 'calt' 1;
+  --font-sans-serif-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 }
 @supports (font-variation-settings: normal) {
   :root {
@@ -151,10 +151,10 @@ body[data-color-scheme=dark] {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .corner-squircle {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .corner-squircle * {
@@ -208,10 +208,10 @@ body[data-color-scheme=dark] {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .card {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .card * {

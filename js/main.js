@@ -170,7 +170,7 @@
       toc.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault()
-          
+
           // 点击时立即提供反馈
           toc.querySelectorAll('a').forEach(a => a.classList.remove('active'))
           link.classList.add('active')
@@ -185,7 +185,7 @@
             // 计算适合观察者 (IntersectionObserver) 高亮区间的位置
             const offset = window.innerHeight * 0.25
             const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset
-            
+
             if (window.lenis) {
               // 使用 Lenis 的 API，避免与虚拟滚动动量冲突导致跳转失败
               window.lenis.scrollTo(targetPosition)

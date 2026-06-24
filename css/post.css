@@ -7,7 +7,7 @@
   --radius-full: 999px;
   /* Clean, modern, sans-serif font */
   --font-sans-serif: "Inter", "Google Sans", system-ui, -apple-system, sans-serif;
-  --font-sans-serif-feature-settings: 'liga' 1, 'calt' 1;
+  --font-sans-serif-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 }
 @supports (font-variation-settings: normal) {
   :root {
@@ -151,10 +151,10 @@ body[data-color-scheme=dark] {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .corner-squircle {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .corner-squircle * {
@@ -213,49 +213,6 @@ body {
   font-size: 48px;
   margin-top: 16px;
 }
-#main-content > * > .meta .post-stats {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-top: 20px;
-  padding: 16px 20px;
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(0, 191, 255, 0.05));
-  border: 1px solid rgba(138, 43, 226, 0.15);
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-}
-@media (max-width: 600px) {
-  #main-content > * > .meta .post-stats {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-}
-#main-content > * > .meta .post-stats > span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
-}
-#main-content > * > .meta .post-stats > span .icon {
-  font-size: 16px;
-}
-#main-content > * > .meta .post-stats > span:hover {
-  color: var(--color-text-accent);
-  transform: translateY(-2px);
-}
-#main-content > * > .meta .post-stats .post-views {
-  cursor: help;
-}
-#main-content > * > .meta .post-stats .post-views:hover .count {
-  color: var(--color-text-accent);
-  transform: scale(1.1);
-}
 
 .post > .cover {
   max-width: 100%;
@@ -308,7 +265,8 @@ body {
 .post > .content p, .post > .content h1, .post > .content h2, .post > .content h3, .post > .content h4, .post > .content h5, .post > .content h6, .post > .content figure, .post > .content > pre,
 .post .divider,
 .post .container,
-.post hr, .post > .content blockquote, .post > .content table, .post > .content video, .post > .content ul, .post > .content ol, .post > .content > mjx-container, .post > .content > .katex,
+.post hr,
+.post .toc, .post > .content blockquote, .post > .content table, .post > .content video, .post > .content ul, .post > .content ol, .post > .content > mjx-container, .post > .content > .katex,
 .post .about {
   max-width: 800px;
   margin-left: auto;
@@ -321,10 +279,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content p img, [data-corner-squircle=true] .post > .content .block-large img, [data-corner-squircle=true] .post > .content figure img {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content p img *, [data-corner-squircle=true] .post > .content .block-large img *, [data-corner-squircle=true] .post > .content figure img * {
@@ -351,10 +309,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content table {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content table * {
@@ -389,10 +347,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content table thead tr th:first-child {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content table thead tr th:first-child * {
@@ -409,10 +367,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content table thead tr th:last-child {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content table thead tr th:last-child * {
@@ -429,10 +387,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content table tbody tr:last-child td:first-child {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content table tbody tr:last-child td:first-child * {
@@ -449,10 +407,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content table tbody tr:last-child td:last-child {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content table tbody tr:last-child td:last-child * {
@@ -485,10 +443,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post > .content .highlight, [data-corner-squircle=true] .post > .content > pre {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post > .content .highlight *, [data-corner-squircle=true] .post > .content > pre * {
@@ -564,10 +522,10 @@ body {
 @supports (corner-shape: squircle) {
   [data-corner-squircle=true] .post .about {
     corner-shape: squircle;
-    --radius-tiny: 12px;
-    --radius-small: 16px;
-    --radius-medium: 24px;
-    --radius-large: 32px;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
     --radius-full: 999px;
   }
   [data-corner-squircle=true] .post .about * {

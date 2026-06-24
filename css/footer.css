@@ -2,8 +2,8 @@ footer {
   background-color: var(--color-background-underlying);
   border-top: 1px solid var(--color-border-primary);
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 footer > .inner {
   max-width: 980px;

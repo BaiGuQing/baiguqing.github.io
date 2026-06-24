@@ -23,6 +23,13 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(100, 120, 150, 0.15);
   border-color: rgba(100, 120, 150, 0.3);
 }
+.post-list-item:hover .title {
+  color: var(--color-text-accent);
+}
+.post-list-item:hover .cover-img img {
+  transform: scale(1.03);
+  opacity: 1;
+}
 .post-list-item a {
   display: block;
   text-decoration: none;
@@ -46,10 +53,6 @@
   .post-list-item .cover-img {
     height: 200px;
   }
-}
-.post-list-item:hover .cover-img img {
-  transform: scale(1.03);
-  opacity: 1;
 }
 .post-list-item .content {
   padding: 28px 32px 32px;
@@ -92,9 +95,6 @@
   .post-list-item .title {
     font-size: 20px;
   }
-}
-.post-list-item:hover .title {
-  color: var(--color-text-accent);
 }
 .post-list-item .excerpt {
   font-size: 14px;

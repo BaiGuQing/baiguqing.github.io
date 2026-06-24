@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   position: relative;
   background-color: var(--color-background-underlying);
@@ -139,4 +140,89 @@ body.cursor-active::after {
 ::selection {
   background: rgba(168, 127, 251, 0.3);
   color: #ffffff;
+}
+
+.nav-item.color-scheme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 2px;
+  gap: 2px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-background-primary-translucent);
+  backdrop-filter: blur(8px);
+  margin-top: 0;
+  width: -moz-max-content;
+  width: max-content;
+  transition: all 0.3s ease;
+}
+.nav-item.color-scheme-toggle:hover {
+  box-shadow: 0 0 10px rgba(168, 127, 251, 0.2);
+  border-color: rgba(168, 127, 251, 0.3);
+}
+.nav-item.color-scheme-toggle label {
+  display: flex;
+  margin: 0;
+}
+.nav-item.color-scheme-toggle label input {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  margin: 0;
+  opacity: 0;
+}
+.nav-item.color-scheme-toggle label input:checked + span {
+  color: var(--color-background-accent-contrast);
+  background-color: var(--color-background-accent);
+  box-shadow: 0 2px 8px rgba(168, 127, 251, 0.4);
+}
+.nav-item.color-scheme-toggle label span {
+  font-size: 14px;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.nav-item.color-scheme-toggle label span:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(168, 127, 251, 0.1);
+}
+
+#theme-particle-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 36px;
+  height: 36px;
+  padding: 0; /* 抵消 nav-item 默认的 padding，防止被撑成椭圆 */
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-background-primary-translucent);
+  backdrop-filter: blur(8px);
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+#theme-particle-toggle:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(168, 127, 251, 0.1);
+  border-color: rgba(168, 127, 251, 0.3);
+  box-shadow: 0 0 10px rgba(168, 127, 251, 0.2);
+}
+#theme-particle-toggle.active {
+  color: var(--color-background-accent-contrast);
+  background-color: var(--color-background-accent);
+  border-color: var(--color-background-accent);
+  box-shadow: 0 2px 8px rgba(168, 127, 251, 0.4);
 }

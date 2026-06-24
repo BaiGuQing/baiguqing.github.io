@@ -14,16 +14,16 @@
       const rect = hero.getBoundingClientRect();
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      
+
       // 直接把相对坐标交给 CSS 变量，实现 0 延迟手电筒追踪
       const relativeX = e.clientX - rect.left;
       const relativeY = e.clientY - rect.top;
       tracker.style.setProperty('--mouse-x', `${relativeX}px`);
       tracker.style.setProperty('--mouse-y', `${relativeY}px`);
-      
+
       // 全息文字光影：仅当鼠标在英雄区域内触发交互
       const isOverHero = e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right;
-      
+
       if (isOverHero) {
         // 更新文字的 3D 微倾斜
         const tiltX = (e.clientY - rect.top - centerY) * -0.01;
@@ -65,7 +65,7 @@
       // Antigravity 配色（光暗双主题）
       const colorsLight = [
         {r:44, g:100, b:237},   // #2c64ed Blue
-        {r:248, g:66, b:66},    // #f84242 Red  
+        {r:248, g:66, b:66},    // #f84242 Red
         {r:255, g:207, b:3},    // #ffcf03 Yellow
       ];
       const colorsDark = [
@@ -87,19 +87,19 @@
       function initSetup() {
         particles = [];
         // 适当回调粒子间距，增加一点粒子数量
-        const spacing = 50; 
+        const spacing = 50;
         const cols = Math.ceil(width / spacing);
         const rows = Math.ceil(height / spacing);
-        
+
         for (let i = 0; i < cols; i++) {
           for (let j = 0; j < rows; j++) {
             const homeX = i * spacing + (Math.random() - 0.5) * spacing * 0.8;
             const homeY = j * spacing + (Math.random() - 0.5) * spacing * 0.8;
-            
+
             if (homeX < 0 || homeX > width || homeY < 0 || homeY > height) continue;
 
             const seed = Math.random();
-            
+
             particles.push({
               homeX, homeY,
               x: homeX, y: homeY,
@@ -129,36 +129,36 @@
 
       function animateParticles() {
         ctx.clearRect(0, 0, width, height);
-        time += 0.016; 
+        time += 0.016;
 
         const isLight = document.documentElement.getAttribute('data-color-scheme') === 'light';
-        
+
         const lerpFactor = mouseInside ? 0.03 : 0.015;
         const noiseOffX = Math.sin(time * 0.66 + 94.234) * 15;
         const noiseOffY = Math.cos(time * 0.75 + 21.028) * 10;
-        
+
         const targetRingX = mouseInside ? mouseX + noiseOffX : width/2 + noiseOffX * 3;
         const targetRingY = mouseInside ? mouseY + noiseOffY : height/2 + noiseOffY * 2;
-        
+
         ringX += (targetRingX - ringX) * lerpFactor;
         ringY += (targetRingY - ringY) * lerpFactor;
-        
+
         // 🔑 大幅降低聚集频率：让游走变得极其缓慢（time 乘数降到 0.08）
         const radiusState = (smoothNoise(time * 0.15, 123.45) + 1) * 0.5;
         // 让聚散偶尔才发生一次
         const radiusFactor = smoothstep(0.3, 0.7, radiusState);
-        
+
         // 🔑 让总体圈保持在一个很大的状态
-        const maxRadius = Math.max(500, Math.min(width, height) * 0.45); 
+        const maxRadius = Math.max(500, Math.min(width, height) * 0.45);
         // 🔑 大幅缩小变化范围，聚拢时也保持庞大（从 280 提升到 400）
-        const minRadius = 400; 
+        const minRadius = 400;
         const currentBaseRadius = minRadius + (maxRadius - minRadius) * radiusFactor;
-        
+
         // 环的尺寸和波动幅度，都会随着当前基础半径同比例缩放
         const ringRadius = currentBaseRadius + Math.sin(time * 1.5) * (5 * radiusFactor);
         // 🔑 增大外圈宽度，让外围发光层延伸得更广
-        const ringWidth = Math.max(30, currentBaseRadius * 0.7);    
-        const ringWidth2 = Math.max(12, currentBaseRadius * 0.3);  
+        const ringWidth = Math.max(30, currentBaseRadius * 0.7);
+        const ringWidth2 = Math.max(12, currentBaseRadius * 0.3);
 
         particles.forEach((p) => {
           const dx = p.homeX - ringX;
@@ -179,30 +179,30 @@
           const t1Fall = smoothstep(ringRadius, ringRadius + ringWidth, dist);
           const t2Rise = smoothstep(ringRadius - ringWidth2 * 2, ringRadius, dist);
           const t2Fall = smoothstep(ringRadius, ringRadius + ringWidth2, dist);
-          
+
           let t2 = Math.pow(t2Rise - t2Fall, 3);
-          
+
           // 拆分外圈和内圈的逻辑
           let outerRing = Math.pow(t1Rise - t1Fall, 2) * 0.4 + t2 * 0.6;
-          
+
           // 🔑 极大地压缩内圈大小，让它们看起来像小圆点（从 0.6 压低到 0.15）
-          let innerFill = smoothstep(ringRadius, 0, dist) * 0.15; 
+          let innerFill = smoothstep(ringRadius, 0, dist) * 0.15;
 
           // 记录基础的骨架亮度，用于稳定透明度
-          const baseT = outerRing + innerFill * 2.0; 
-          
+          const baseT = outerRing + innerFill * 2.0;
+
           // 🔑 进一步缩小粒子尺度的变化幅度，同时拉高底座，让它们一直保持粗壮
-          const smoothBreath = (Math.sin(realDist * 0.02 - time * 4) + 1) * 0.5; 
-          outerRing *= (1.6 + smoothBreath * 0.1); 
-          
+          const smoothBreath = (Math.sin(realDist * 0.02 - time * 4) + 1) * 0.5;
+          outerRing *= (1.6 + smoothBreath * 0.1);
+
           let t = outerRing + innerFill;
 
           const bgNoise = smoothNoise(p.homeX * 0.003, p.homeY * 0.003 + time * 0.25);
           t += Math.pow((bgNoise + 1.5) * 0.5, 2) * 0.15;
 
           p.targetScale = t;
-          p.scale += (p.targetScale - p.scale) * 0.05; 
-          
+          p.scale += (p.targetScale - p.scale) * 0.05;
+
           if(p.baseScale === undefined) p.baseScale = 0;
           p.baseScale += (baseT - p.baseScale) * 0.05;
 
@@ -210,7 +210,7 @@
           let pushX = 0, pushY = 0;
           if (dist > 1 && outerRing > 0.01) {
             const diff = dist - ringRadius;
-            const pullForce = -diff * outerRing * 0.04; 
+            const pullForce = -diff * outerRing * 0.04;
             pushX = (dx / dist) * pullForce;
             pushY = (dy / dist) * pullForce;
           }
@@ -226,8 +226,8 @@
           const dashAngle = angleToRing + noiseAngle + twist;
 
           // 🔑 缩小粒子的长和宽
-          const size = p.scale * 10; 
-          if (size < 0.2) return; 
+          const size = p.scale * 10;
+          if (size < 0.2) return;
 
           // 🔑 显著减慢色彩变换的速度：time 系数从 150 骤降到 40
           const hue = (dist * 0.3 - time * 40 + p.noisePhase) % 360;
@@ -245,7 +245,7 @@
           ctx.globalAlpha = alpha;
           // 直接使用 HSL 实现多彩，亮度适当提高
           ctx.fillStyle = `hsl(${hue >= 0 ? hue : hue + 360}, 95%, 65%)`;
-          
+
           // 圆角矩形路径
           const r = Math.min(dashH * 0.5, dashW * 0.25);
           const x = -dashW / 2, y = -dashH / 2;
@@ -261,7 +261,7 @@
           ctx.quadraticCurveTo(x, y, x + r, y);
           ctx.closePath();
           ctx.fill();
-          
+
           ctx.restore();
         });
 
@@ -283,12 +283,12 @@
       if (particleToggle) {
         // 初始化图标状态
         particleToggle.innerHTML = window.themeParticlesEnabled ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-star"></i>';
-        
+
         particleToggle.addEventListener('click', () => {
           window.themeParticlesEnabled = !window.themeParticlesEnabled;
           localStorage.setItem('particles_enabled', window.themeParticlesEnabled);
           particleToggle.innerHTML = window.themeParticlesEnabled ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-star"></i>';
-          
+
           if (window.themeParticlesEnabled) {
             animateParticles();
           } else {
@@ -316,7 +316,7 @@
           if (index < iterations) return char;
           return chars[Math.floor(Math.random() * chars.length)];
         }).join('');
-        
+
         if (iterations >= originalText.length) {
           clearInterval(interval);
           // 确保换行渲染正确
@@ -325,7 +325,7 @@
         iterations += 1/3; // 控制解码速度
       }, 30);
     }
-    
+
     // 延迟一点启动解码
     setTimeout(decodeTextAnimation, 300);
 
@@ -345,7 +345,7 @@
     if (anchor.closest('.toc') || anchor.closest('.toc-sidebar') || anchor.classList.contains('toc-link')) {
       return;
     }
-    
+
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
       if (href === '#') return;

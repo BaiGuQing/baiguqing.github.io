@@ -166,43 +166,34 @@
   animation: blink 1s step-end infinite;
   margin-left: 2px;
 }
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
 @supports (animation-timeline: scroll()) {
   .hero.exit-while-scroll {
-    --range: calc(var(--current-hero-height) * 0.5px);
+    --range: calc(var(--current-hero-height) * 0.8px);
   }
   @keyframes hero-exit-with-blur {
     0% {
-      margin-top: 56px;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
     }
     100% {
       opacity: 0;
-      margin-top: calc(var(--range) + 56px);
-      margin-bottom: calc(-1 * var(--range));
-      scale: 0.95;
+      transform: translateY(var(--range)) scale(0.95);
       filter: var(--filter-blur);
     }
   }
   @keyframes hero-exit {
     0% {
-      margin-top: 56px;
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
     100% {
       opacity: 0;
-      margin-top: calc(var(--range) + 56px);
-      margin-bottom: calc(-1 * var(--range));
-      scale: 0.95;
+      transform: translateY(var(--range)) scale(0.95);
     }
   }
   .hero.exit-while-scroll {
-    will-change: filter, margin-top, margin-bottom, opacity, scale;
+    will-change: filter, transform, opacity;
     animation-name: hero-exit;
     animation-timing-function: linear;
     animation-fill-mode: both;
@@ -215,6 +206,14 @@
   }
 }
 
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
 .posts-section {
   margin-top: 80px;
   margin-bottom: 40px;
