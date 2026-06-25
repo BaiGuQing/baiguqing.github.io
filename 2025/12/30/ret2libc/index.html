@@ -10,8 +10,6 @@
     <link rel="shortcut icon" href="/favicon.png">
   
   
-  <link rel='manifest' href='/manifest.json'>
-  
 
   <meta name="description" content="题目要想实现ret2libc，有以下几个必要条件：  存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。 另外这类题目往往还有以下的特点，暗示我们要可能要使用ret2libc的方法：">
 <meta property="og:type" content="article">
@@ -109,6 +107,14 @@
   
   
   
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
   
   
   
@@ -140,8 +146,7 @@
 <script src="/js/head.js"></script>
 
 
-  <!-- 不蒜子统计 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 
   
 <meta name="generator" content="Hexo 8.1.1"></head>
@@ -158,7 +163,7 @@
     
     
     data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
     
     data-nav-blur-gradient="false"
     data-corner-squircle="true"
@@ -172,8 +177,8 @@
 <nav id="theme-nav">
   <div class="inner">
     <a class="title" href="/">GuQing&#39;s Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
       <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
 
       
@@ -190,29 +195,29 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
         <label>
-          <input type="radio" value="light">
-          <span><i class="bi bi-sun"></i></span>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="dark">
-          <span><i class="bi bi-moon-stars"></i></span>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="auto">
-          <span><i class="bi bi-circle-half"></i></span>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
         </label>
       </div>
       
-      <div class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px; cursor: pointer;" title="Toggle Particles">
-        <i class="bi bi-stars"></i>
-      </div>
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
       
     </div>
   </div>
@@ -222,22 +227,35 @@
       
 <article class="post">
   
-  <div class="meta">
-    
-    <div class="categories text-uppercase">
-    
-      <a href="/categories/Notes/">Notes</a>
-    
-    </div>
-    
-
-    
-    <time class="date" datetime="2025-12-30T00:00:00+08:00">
-      2025-12-30
-    </time>
-    
-
+  <div class="meta-card">
     <h1 class="title" data-pagefind-meta="title">ret2libc</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2025-12-30T00:00:00+08:00">2025-12-30</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/Notes/">Notes</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/Note-For-Pwn/" class="tag">#Note_For_Pwn</a>
+        
+      </span>
+      
+    </div>
   </div>
 
   <div class="content">
@@ -282,14 +300,7 @@
     <div class="details">
       <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
     </div>
-    
-    <p class="tags">
-      <i class="bi bi-tags icon"></i>
-      
-      <a href="/tags/Note-For-Pwn/" class="tag">#Note_For_Pwn</a>
-      
-    </p>
-    
+
     
   </div>
   
@@ -321,56 +332,7 @@
 
 
     </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
-        
-        <a href="/" class="item">主页</a>
-        
-        <a href="/About-Me" class="item">关于我</a>
-        
-        <a href="/archives" class="item">归档</a>
-        
-        <a href="/tags" class="item">标签</a>
-        
-        <a href="/categories" class="item">分类</a>
-        
-        <a href="/search" class="item">搜索</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Related</h2>
-        
-        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
-        
-      </div>
-      
-    </div>
-    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
-  </div>
-</footer>
+    <!-- Footer removed by user request -->
 
 
     
@@ -390,12 +352,19 @@
     
 
     
-<script src="/js/busuanzi-handler.js"></script>
-
 
     
 <script src="/js/custom-effects.js"></script>
 
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
 
     
 <script src="/js/hero-stats.js"></script>

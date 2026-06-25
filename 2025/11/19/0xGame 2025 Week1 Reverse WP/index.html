@@ -10,8 +10,6 @@
     <link rel="shortcut icon" href="/favicon.png">
   
   
-  <link rel='manifest' href='/manifest.json'>
-  
 
   <meta name="description" content="引言 我是一名入门的CTF玩家，看了看0xGame 2025 Week1 Reverse官方的WriteUp，感觉写的太简略了，这边以新手的视角开启0xGame 2025 Week1 Reverse  SignIn 这个题目我们需要准备好IDA，我在这里下载的[原创] IDA Pro 9 安装和插件配置-安全工具-看雪论坛-安全社区|非营利性质技术交流社区 (kanxue.com)，下载的那个打包">
 <meta property="og:type" content="article">
@@ -124,6 +122,14 @@
   
   
   
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
   
   
   
@@ -155,29 +161,12 @@
 <script src="/js/head.js"></script>
 
 
-  <!-- 不蒜子统计 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 
   
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body
-    data-color-scheme="auto"
-    data-uppercase-categories="true"
-    
-    data-config-root="/"
-    
-    data-toc="true"
-    data-toc-max-depth="2"
-    
-    
-    
-    data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
-    
-    data-nav-blur-gradient="false"
-    data-corner-squircle="true"
-  >
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="2" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
     
 <script src="/js/body-top.js"></script>
 
@@ -187,8 +176,8 @@
 <nav id="theme-nav">
   <div class="inner">
     <a class="title" href="/">GuQing&#39;s Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
       <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
 
       
@@ -205,29 +194,29 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
         <label>
-          <input type="radio" value="light">
-          <span><i class="bi bi-sun"></i></span>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="dark">
-          <span><i class="bi bi-moon-stars"></i></span>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="auto">
-          <span><i class="bi bi-circle-half"></i></span>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
         </label>
       </div>
       
-      <div class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px; cursor: pointer;" title="Toggle Particles">
-        <i class="bi bi-stars"></i>
-      </div>
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
       
     </div>
   </div>
@@ -237,22 +226,35 @@
       
 <article class="post">
   
-  <div class="meta">
-    
-    <div class="categories text-uppercase">
-    
-      <a href="/categories/CTF-WP/">CTF_WP</a>
-    
-    </div>
-    
-
-    
-    <time class="date" datetime="2025-11-19T00:00:00+08:00">
-      2025-11-19
-    </time>
-    
-
+  <div class="meta-card">
     <h1 class="title" data-pagefind-meta="title">0xGame 2025 Week1 Reverse WP</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2025-11-19T00:00:00+08:00">2025-11-19</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/CTF-WP/">CTF_WP</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
+        
+      </span>
+      
+    </div>
   </div>
 
   <div class="content">
@@ -265,22 +267,22 @@
 <li>进入之后可以按空格 (space) 键可以将线性视图切换为 CFG，展示该函数的控制流程图。  </li>
 <li>该题并没有用到这个东西哈  </li>
 <li>这个WriteUp写的也是很直接，直接Shift+F12就能看到flag了  </li>
-<li><img src="/Images/083720wzd4p1zx66f8pfp4.png"></li>
+<li><img src="/Images/083720wzd4p1zx66f8pfp4.png" alt="083720wzd4p1zx66f8pfp4" loading="lazy" decoding="async" width="1920" height="1002"></li>
 <li>因为字符串是硬编码在程序内部，因此用记事本、winhex等文本编辑工具其实也能看  </li>
 <li>用x64dbg也是可以的，在<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/x64dbg/files/snapshots/%E4%B8%AD%E4%B8%8B%E8%BD%BD">https://sourceforge.net/projects/x64dbg/files/snapshots/中下载</a>  </li>
 <li>打开x64dbg  </li>
-<li><img src="/Images/084050agln5iigwx5gqxs4.png"></li>
+<li><img src="/Images/084050agln5iigwx5gqxs4.png" alt="084050agln5iigwx5gqxs4" loading="lazy" decoding="async" width="1600" height="973"></li>
 <li>这样配置一下dbg，将signin的exe文件拖进去，在反汇编窗口右键（就是左上角的窗口）  </li>
-<li><img src="/Images/084052a2q9nq3829j2k8ok.png"></li>
+<li><img src="/Images/084052a2q9nq3829j2k8ok.png" alt="084052a2q9nq3829j2k8ok" loading="lazy" decoding="async" width="1600" height="973"></li>
 <li>搜索一下匹配特征，在ASCII栏中输入0xGame，然后回车  </li>
-<li><img src="/Images/084052nrlyuwmnynptltvm.png"></li>
+<li><img src="/Images/084052nrlyuwmnynptltvm.png" alt="084052nrlyuwmnynptltvm" loading="lazy" decoding="async" width="1600" height="778"></li>
 <li>双击第一个就能看到flag了  </li>
-<li><img src="/Images/084053i2gem6b5e22kbee2.png"></li>
+<li><img src="/Images/084053i2gem6b5e22kbee2.png" alt="084053i2gem6b5e22kbee2" loading="lazy" decoding="async" width="1602" height="808"></li>
 </ul>
 <h1 id="SignIn2"><a href="#SignIn2" class="headerlink" title="SignIn2"></a>SignIn2</h1><ul>
 <li>这个需要下载赛博厨子（cyberchef），下载链接<a target="_blank" rel="noopener" href="https://github.com/gchq/CyberChef/releases/">https://github.com/gchq/CyberChef/releases/</a>  </li>
 <li>点开SignIn2文件后，记得回车一下，然后按照流程走可以得到一个加密的@<em>Wq}u-guAs@}CoBo</em>yq!<em>y~</em>yuo##oA@F@DDIE@I&#x2F;，我们复制到cyberchef的input里面，在signin2中有提示告诉我们是ROT47 Brust Force，然后我们在Search中搜索ROT47 Brute Force，不知道是提示故意给错的还是怎么样，应该是搜索ROT47 Brute Force，然后你就会发现出现了一堆东西，我们只需要在Crib框中输入0xGame就能看到flag了  </li>
-<li><img src="/Images/084054k1u1ii6ss33ru610.png"></li>
+<li><img src="/Images/084054k1u1ii6ss33ru610.png" alt="084054k1u1ii6ss33ru610" loading="lazy" decoding="async" width="1865" height="981"></li>
 </ul>
 <h1 id="EasyXor"><a href="#EasyXor" class="headerlink" title="EasyXor"></a>EasyXor</h1><ul>
 <li>这是一个未知的文件，按照WriteUp所写，一般遇到不认识的文件，先扔到DIE或者其它的文件查询工具里面查查看。下载一下DIE，<a target="_blank" rel="noopener" href="https://github.com/horsicq/DIE-engine/releases%EF%BC%8C%E4%B8%8B%E8%BD%BDdie_win64_portable_3.10_x64.zip%E6%96%87%E4%BB%B6%E3%80%82">https://github.com/horsicq/DIE-engine/releases，下载die_win64_portable_3.10_x64.zip文件。</a>  </li>
@@ -292,16 +294,16 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enc=[<span class="number">0x42</span>,<span class="number">0x1A</span>,<span class="number">0x39</span>,<span class="number">0x17</span>,<span class="number">0x1D</span>,<span class="number">0x9</span>,<span class="number">0x51</span>,<span class="number">0x55</span>,<span class="number">0x2C</span>,<span class="number">0x5F</span>,<span class="number">0x63</span>,<span class="number">0xC</span>,<span class="number">0xD</span>,<span class="number">0x16</span>,<span class="number">0x62</span>,<span class="number">0x27</span>,<span class="number">0x55</span>,<span class="number">0x64</span>,<span class="number">0x55</span>,<span class="number">0x26</span>,<span class="number">0x6D</span>,<span class="number">0x6A</span>,<span class="number">0x18</span>,<span class="number">0x34</span>,<span class="number">0x88</span>,<span class="number">0x65</span>,<span class="number">0x6E</span>,<span class="number">0x1C</span>,<span class="number">0x21</span>,<span class="number">0x6E</span>,<span class="number">0x3D</span>,<span class="number">0x23</span>,  </span><br><span class="line"><span class="number">0x6A</span>,<span class="number">0x25</span>,<span class="number">0x6B</span>,<span class="number">0x63</span>,<span class="number">0x68</span>,<span class="number">0x7E</span>,<span class="number">0x77</span>,<span class="number">0x75</span>,<span class="number">0x9A</span>,<span class="number">0x7D</span>,<span class="number">0x39</span>,<span class="number">0x43</span>]  </span><br><span class="line">key = <span class="string">&#x27;raputa0xGame2025&#x27;</span>  </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(enc)):  </span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>((enc[i]-i)^<span class="built_in">ord</span>(key[i % <span class="built_in">len</span>(key)])),end=<span class="string">&#x27;&#x27;</span>)  </span><br></pre></td></tr></table></figure>
 <ul>
 <li>然后就是这个enc哪来的，返回到伪代码页面  </li>
-<li><img src="/Images/084054ky1mmri8l1m1nzmj.png"></li>
+<li><img src="/Images/084054ky1mmri8l1m1nzmj.png" alt="084054ky1mmri8l1m1nzmj" loading="lazy" decoding="async" width="908" height="565"></li>
 <li>双击它就能看到存储的信息了  </li>
-<li><img src="/Images/084031svvacmvvccmwv9ok.png"></li>
+<li><img src="/Images/084031svvacmvvccmwv9ok.png" alt="084031svvacmvvccmwv9ok" loading="lazy" decoding="async" width="1920" height="1002"></li>
 <li>如果你是下载的那个9.2.7z的话会自带插件，可以一键dump数据，不过有点bug？光选择那些不行，我得多选择一行才能完全dump出来，<strong>所以dump出来的数据需要删一点</strong>  </li>
-<li><img src="/Images/084034m2t7tu9fm00w2m76.png"></li>
+<li><img src="/Images/084034m2t7tu9fm00w2m76.png" alt="084034m2t7tu9fm00w2m76" loading="lazy" decoding="async" width="1920" height="1002"></li>
 <li>Dump as python list（byte）  </li>
 <li>我只是讲一下这个数据的来源哈  </li>
 <li>那个脚本可以直接复制进最下方的python栏执行  </li>
 <li>复制到python栏中回车，再回车一下就出来了  </li>
-<li><img src="/Images/084036vizri6ssryykjsk2.png"></li>
+<li><img src="/Images/084036vizri6ssryykjsk2.png" alt="084036vizri6ssryykjsk2" loading="lazy" decoding="async" width="1920" height="1002"></li>
 </ul>
 <h1 id="DyDebug"><a href="#DyDebug" class="headerlink" title="DyDebug"></a>DyDebug</h1><ul>
 <li>看了看官方的WriteUp用的IDA调试，IDA的调试并没有那么好，所以这边我们用x64dbg来解题  </li>
@@ -309,14 +311,14 @@
 <li>丢到IDA里面看到主函数出来特别⻓、特别复杂一大串，其中的加密也很复杂难懂，但实际上可以注意到这里的比对是拿我们的输入去和解密出来的字符串比较，因此在程序运行的时候其实flag就在程序内部，我们要做的其实只是让程序“停”在某个位置，然后查看一下解出来的v6，这个就是flag </li>
 <li>把程序拖进x64dbg，配置和之前的一样，然后也和之前一样，只不过这次搜索的是&#x3D;&#x3D;字符串&#x3D;&#x3D;  </li>
 <li>我们会发现有个”Pity!”字样双击进入反汇编窗口  </li>
-<li><img src="/Images/084039l02058iw5ldi0x88.png"></li>
+<li><img src="/Images/084039l02058iw5ldi0x88.png" alt="084039l02058iw5ldi0x88" loading="lazy" decoding="async" width="1602" height="808"></li>
 <li>可以搜索一下jg，je和jz的区别啊，这里在je下个端点（F2），重新运行一下，F9，输入数字  </li>
 <li>![](Images&#x2F;084041qlss8llk1lhsdgxc 1.png)</li>
 <li>然后你就会发现flag已经出现了，直接在右边窗口复制<strong>复制符号</strong>即可</li>
 </ul>
 <h1 id="BaseUpx"><a href="#BaseUpx" class="headerlink" title="BaseUpx"></a>BaseUpx</h1><ul>
 <li>根据这个名字可知是个加Upx壳的程序，我们也可以用exeinfo PE查看一下什么壳，下载链接在这<a target="_blank" rel="noopener" href="https://github.com/ExeinfoASL/ASL/releases/%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%8E%BB%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E4%B8%8A%E6%89%BE%E4%B8%80%E4%B8%8B%E6%B1%89%E5%8C%96+%E6%8F%92%E4%BB%B6%E7%89%88%E6%9C%AC%EF%BC%8C%E7%84%B6%E5%90%8Eupx%E5%A3%B3%E5%9C%A8%E8%BF%99%E4%B8%AAblog%E4%B8%8A%E7%9C%8B%E5%90%A7https://blog.csdn.net/qq_43633973/article/details/102573376%EF%BC%8C%E6%9C%89%E7%82%B9%E6%87%92%E5%BE%97%E6%89%93%E5%AD%97%E4%BA%86%E3%80%82%E6%80%BB%E4%B9%8B%E8%84%B1%E5%A3%B3%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%86%8D%E6%8B%96%E8%BF%9BIDA%EF%BC%8CF5%E7%9C%8B%E4%B8%8B%E4%BC%AA%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%B3%A8%E9%87%8A%E4%B8%AD%E7%BB%99%E4%BA%86%E5%8A%A0%E5%AF%86%E6%96%87%E6%9C%AC%EF%BC%8C%E7%9C%8B%E4%BC%AA%E4%BB%A3%E7%A0%81%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%9F%A5%E9%81%93%E6%98%AFBase64%E5%8A%A0%E5%AF%86%EF%BC%8C%E7%BB%A7%E7%BB%AD%E5%88%A9%E7%94%A8%E8%B5%9B%E5%8D%9A%E5%8E%A8%E5%AD%90%E5%B7%A5%E5%85%B7%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%BE%97%E5%88%B0flag%E4%BA%86">https://github.com/ExeinfoASL/ASL/releases/，也可以去吾爱破解上找一下汉化+插件版本，然后upx壳在这个blog上看吧https://blog.csdn.net/qq_43633973/article/details/102573376，有点懒得打字了。总之脱壳之后，再拖进IDA，F5看下伪代码，注释中给了加密文本，看伪代码也可以知道是Base64加密，继续利用赛博厨子工具就可以得到flag了</a>  </li>
-<li><img src="/Images/084043cqizgc1ixzg53p2j.png"></li>
+<li><img src="/Images/084043cqizgc1ixzg53p2j.png" alt="084043cqizgc1ixzg53p2j" loading="lazy" decoding="async" width="1865" height="981"></li>
 </ul>
 <h1 id="zzz"><a href="#zzz" class="headerlink" title="zzz"></a>zzz</h1><ul>
 <li>拖进IDA，看伪代码，发现x的方程不仅有加法乘法，还有位运算，这种问题适合用z3求解器来做，也可以根据题目得知是z3  </li>
@@ -324,13 +326,13 @@
 <li>简单说下怎么在IDA内置的Python上安装z3吧</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pip  </span><br><span class="line">pip.main([<span class="string">&#x27;install&#x27;</span>,<span class="string">&#x27;z3-solver&#x27;</span>])  </span><br></pre></td></tr></table></figure>
-<p>  <img src="/Images/084045u6lmrcckk0epr6p3.png"></p>
+<p>  <img src="/Images/084045u6lmrcckk0epr6p3.png" alt="084045u6lmrcckk0epr6p3" loading="lazy" decoding="async" width="879" height="435"></p>
 <ul>
 <li>具体看图片吧，懒得打字了，我先卸载了一遍，后安装了一遍。然后就是把WriteUp的脚本复制到Python栏中回车再回车</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> z3 <span class="keyword">import</span> *  </span><br><span class="line"><span class="keyword">import</span> hashlib  </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sha256</span>(<span class="params">s</span>):  </span><br><span class="line">    <span class="keyword">return</span> hashlib.sha256(s.encode()).hexdigest()  </span><br><span class="line">s = Solver()  </span><br><span class="line">x1, x2, x3, x4 = BitVecs(<span class="string">&quot;x1 x2 x3 x4&quot;</span>, <span class="number">32</span>)  </span><br><span class="line">s.add(<span class="number">3</span> * x2 + <span class="number">5</span> * x1 + <span class="number">7</span> * x4 + <span class="number">2</span> * x3 == -<span class="number">1445932505</span>)  </span><br><span class="line">s.add(<span class="number">2</span> * (<span class="number">2</span> * (<span class="number">2</span> * x2 + x3) + x1) + x4 == -<span class="number">672666814</span>)  </span><br><span class="line">s.add(<span class="number">7</span> * x2 + <span class="number">3</span> * x1 + <span class="number">5</span> * x4 + <span class="number">4</span> * x3 == <span class="number">958464147</span>)  </span><br><span class="line">s.add(((x1 ^ x2) &lt;&lt; <span class="number">6</span>) + ((x3 &gt;&gt; <span class="number">6</span>) ^ <span class="number">0x4514</span>) == <span class="number">123074281</span>)  </span><br><span class="line"><span class="keyword">if</span> s.check() == sat:  </span><br><span class="line">    m = s.model()  </span><br><span class="line">    <span class="built_in">print</span>(m)  </span><br><span class="line">solutions = []  </span><br><span class="line"><span class="keyword">while</span> s.check() == sat:  </span><br><span class="line">    m = s.model()  </span><br><span class="line">    solutions.append(m)  </span><br><span class="line">    s.add(Or(x1 != m[x1], x2 != m[x2], x3 != m[x3], x4 != m[x4]))  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;找到 <span class="subst">&#123;<span class="built_in">len</span>(solutions)&#125;</span> 个解&quot;</span>)  </span><br><span class="line"><span class="keyword">for</span> sol <span class="keyword">in</span> solutions:  </span><br><span class="line">    X1, X2, X3, X4 = (  </span><br><span class="line">        sol[x1].as_long(),  </span><br><span class="line">        sol[x2].as_long(),  </span><br><span class="line">        sol[x3].as_long(),  </span><br><span class="line">        sol[x4].as_long(),  </span><br><span class="line">    )  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;X1, X2, X3, X4 = <span class="subst">&#123;X1&#125;</span>, <span class="subst">&#123;X2&#125;</span>, <span class="subst">&#123;X3&#125;</span>, <span class="subst">&#123;X4&#125;</span>&quot;</span>)  </span><br><span class="line">    flag = <span class="string">f&quot;0xGame&#123;&#123;<span class="subst">&#123;X1:08x&#125;</span><span class="subst">&#123;X2:08x&#125;</span><span class="subst">&#123;X3:08x&#125;</span><span class="subst">&#123;X4:08x&#125;</span>&#125;&#125;&quot;</span>  </span><br><span class="line">    <span class="keyword">if</span> (  </span><br><span class="line">        sha256(flag)  </span><br><span class="line">        == <span class="string">&quot;4aba519d4666f5421488afaaf89efdcbe48e7a53f814ce5c1d82b46b55032651&quot;</span>  </span><br><span class="line">    ):  </span><br><span class="line">        <span class="built_in">print</span>(flag)  </span><br></pre></td></tr></table></figure>
 <ul>
-<li><img src="/Images/084047d8wpz0iaqmimzi3g.png"></li>
+<li><img src="/Images/084047d8wpz0iaqmimzi3g.png" alt="084047d8wpz0iaqmimzi3g" loading="lazy" decoding="async" width="647" height="791"></li>
 <li>脚本怎么写我也不会，慢慢学吧，只能慢慢攒经验了  </li>
 <li>写题解还真挺累的XD</li>
 </ul>
@@ -344,14 +346,7 @@
     <div class="details">
       <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
     </div>
-    
-    <p class="tags">
-      <i class="bi bi-tags icon"></i>
-      
-      <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
-      
-    </p>
-    
+
     
   </div>
   
@@ -383,56 +378,7 @@
 
 
     </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
-        
-        <a href="/" class="item">主页</a>
-        
-        <a href="/About-Me" class="item">关于我</a>
-        
-        <a href="/archives" class="item">归档</a>
-        
-        <a href="/tags" class="item">标签</a>
-        
-        <a href="/categories" class="item">分类</a>
-        
-        <a href="/search" class="item">搜索</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Related</h2>
-        
-        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
-        
-      </div>
-      
-    </div>
-    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
-  </div>
-</footer>
+    <!-- Footer removed by user request -->
 
 
     
@@ -452,12 +398,19 @@
     
 
     
-<script src="/js/busuanzi-handler.js"></script>
-
 
     
 <script src="/js/custom-effects.js"></script>
 
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
 
     
 <script src="/js/hero-stats.js"></script>

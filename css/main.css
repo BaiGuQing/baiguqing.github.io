@@ -7,9 +7,15 @@ body {
   margin-top: 56px;
   min-height: 100vh;
   color: var(--color-text-primary);
-  background-color: var(--color-background-primary);
   font-family: var(--font-sans-serif);
   font-feature-settings: var(--font-sans-serif-feature-settings);
+  background-color: var(--color-background-underlying);
+  background-image: radial-gradient(at 10% 0%, rgba(var(--color-accent-rgb), 0.15) 0, transparent 60%), radial-gradient(at 90% 10%, rgba(var(--color-accent-rgb), 0.1) 0, transparent 50%), radial-gradient(at 30% 100%, rgba(var(--color-accent-rgb), 0.12) 0, transparent 60%), radial-gradient(at 80% 90%, rgba(var(--color-accent-rgb), 0.08) 0, transparent 60%), linear-gradient(var(--color-background-primary), var(--color-background-primary)), url("../Blossom.png");
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, cover, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: background-color 0.3s ease;
 }
 
 a {

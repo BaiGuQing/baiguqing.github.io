@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* Neutral shadow tokens — one consistent elevation system instead of
+   scattered hard-coded rgba shadows. Used by cards, nav, buttons, etc. */
 :root {
   --filter-blur: blur(24px) saturate(150%);
   --radius-tiny: 8px;
@@ -29,6 +32,7 @@ body[data-color-scheme=light] {
   --color-background-secondary-hover: rgba(250, 252, 255, 0.8);
   --color-background-secondary-translucent: rgba(255, 255, 255, 0.9);
   /* Antigravity Purple/Blue accent (slightly darker for contrast on white) */
+  --color-accent-rgb: 139, 92, 246; /* #8b5cf6 — raw RGB for rgba() use */
   --color-background-accent: #8b5cf6;
   --color-background-accent-contrast: #ffffff;
   --color-background-accent-hover: #7c3aed;
@@ -46,6 +50,15 @@ body[data-color-scheme=light] {
   /* Subtle glass borders */
   --color-border-primary: rgba(139, 92, 246, 0.15);
   --color-border-secondary: rgba(0, 0, 0, 0.05);
+  /* Soft, low-elevation resting shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* Card resting elevation */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  /* Card hover elevation */
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+  /* Subtle purple accent glow (derived from accent) */
+  --glow-accent: 0 0 24px rgba(var(--color-accent-rgb), 0.12);
+  --glow-accent-strong: 0 0 20px rgba(var(--color-accent-rgb), 0.22);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,6 +75,7 @@ body[data-color-scheme=light] {
     --color-background-secondary-hover: rgba(60, 60, 70, 0.6);
     --color-background-secondary-translucent: rgba(10, 10, 12, 0.8);
     /* Antigravity Purple/Blue accent */
+    --color-accent-rgb: 168, 127, 251; /* #a87ffb — raw RGB for rgba() use */
     --color-background-accent: #a87ffb;
     --color-background-accent-contrast: #121212;
     --color-background-accent-hover: #b998fc;
@@ -79,6 +93,15 @@ body[data-color-scheme=light] {
     /* Inner glow / glass borders */
     --color-border-primary: rgba(255, 255, 255, 0.08);
     --color-border-secondary: rgba(255, 255, 255, 0.04);
+    /* Soft, low-elevation resting shadow */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+    /* Card resting elevation */
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    /* Card hover elevation */
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+    /* Subtle purple accent glow (derived from accent) */
+    --glow-accent: 0 0 24px rgba(var(--color-accent-rgb), 0.12);
+    --glow-accent-strong: 0 0 20px rgba(var(--color-accent-rgb), 0.22);
   }
 }
 body[data-color-scheme=dark] {
@@ -94,6 +117,7 @@ body[data-color-scheme=dark] {
   --color-background-secondary-hover: rgba(60, 60, 70, 0.6);
   --color-background-secondary-translucent: rgba(10, 10, 12, 0.8);
   /* Antigravity Purple/Blue accent */
+  --color-accent-rgb: 168, 127, 251; /* #a87ffb — raw RGB for rgba() use */
   --color-background-accent: #a87ffb;
   --color-background-accent-contrast: #121212;
   --color-background-accent-hover: #b998fc;
@@ -111,6 +135,15 @@ body[data-color-scheme=dark] {
   /* Inner glow / glass borders */
   --color-border-primary: rgba(255, 255, 255, 0.08);
   --color-border-secondary: rgba(255, 255, 255, 0.04);
+  /* Soft, low-elevation resting shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* Card resting elevation */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  /* Card hover elevation */
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+  /* Subtle purple accent glow (derived from accent) */
+  --glow-accent: 0 0 24px rgba(var(--color-accent-rgb), 0.12);
+  --glow-accent-strong: 0 0 20px rgba(var(--color-accent-rgb), 0.22);
 }
 
 .block-large {
@@ -214,6 +247,102 @@ body {
   margin-top: 16px;
 }
 
+#main-content > * > .meta-card {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  padding: 40px 32px;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+}
+@supports (corner-shape: squircle) {
+  [data-corner-squircle=true] #main-content > * > .meta-card {
+    corner-shape: squircle;
+    --radius-tiny: 10px;
+    --radius-small: 20px;
+    --radius-medium: 30px;
+    --radius-large: 40px;
+    --radius-full: 999px;
+  }
+  [data-corner-squircle=true] #main-content > * > .meta-card * {
+    --radius-tiny: 8px;
+    --radius-small: 12px;
+    --radius-medium: 16px;
+    --radius-large: 24px;
+    --radius-full: 999px;
+  }
+}
+#main-content > * > .meta-card {
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-border-primary);
+}
+#main-content > * > .meta-card .title {
+  font-size: 38px;
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+  font-weight: 700;
+}
+#main-content > * > .meta-card .meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 24px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+#main-content > * > .meta-card .meta-info .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#main-content > * > .meta-card .meta-info .meta-item i {
+  font-size: 16px;
+  color: var(--color-text-tertiary);
+}
+#main-content > * > .meta-card .meta-info .meta-item a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+#main-content > * > .meta-card .meta-info .meta-item a:hover {
+  color: var(--color-text-accent);
+}
+#main-content > * > .meta-card .meta-info .categories a {
+  color: var(--color-text-accent);
+  font-weight: 600;
+}
+#main-content > * > .meta-card .meta-info .tags .tag {
+  background: var(--color-background-primary);
+  padding: 4px 10px;
+  border-radius: var(--radius-small);
+  font-size: 13px;
+  border: 1px solid var(--color-border-primary);
+}
+#main-content > * > .meta-card .meta-info .tags .tag:hover {
+  background: rgba(var(--color-accent-rgb), 0.08);
+  border-color: rgba(var(--color-accent-rgb), 0.3);
+  color: var(--color-text-accent);
+}
+@media (max-width: 800px) {
+  #main-content > * > .meta-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 32px 16px;
+    margin-top: 64px;
+  }
+  #main-content > * > .meta-card .title {
+    font-size: 28px;
+  }
+}
+
 .post > .cover {
   max-width: 100%;
   overflow: clip visible;
@@ -292,6 +421,18 @@ body {
     --radius-large: 24px;
     --radius-full: 999px;
   }
+}
+.post {
+  /* Centre standalone images (a paragraph containing only an image) so they
+     read cleanly now that images keep their native width. Inline images mixed
+     with text are left untouched. */
+}
+.post > .content p:has(img:only-child), .post > .content li:has(img:only-child), .post > .content li:has(> p:only-child > img:only-child) {
+  text-align: center;
+  list-style: none;
+}
+.post > .content p:has(img:only-child) img, .post > .content li:has(img:only-child) img, .post > .content figure img {
+  display: inline-block;
 }
 @media (max-width: 1000px) {
   .post > .content .block-large img {
@@ -504,17 +645,41 @@ body {
 .post .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 12px 8px;
+  align-items: center;
 }
 .post .tags .icon {
-  font-size: 14px;
-  display: block;
-  margin-right: 2px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  color: var(--color-text-tertiary);
 }
 .post .tags .tag {
   font-size: 14px;
-  display: block;
-  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-background-primary);
+  padding: 6px 14px;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--color-border-primary);
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+}
+.post .tags .tag:hover {
+  background: rgba(var(--color-accent-rgb), 0.08);
+  border-color: rgba(var(--color-accent-rgb), 0.3);
+  color: var(--color-text-accent);
+  transform: translateY(-1px);
+}
+.post .tags .tag .count {
+  margin-left: 6px;
+  font-size: 12px;
+  opacity: 0.6;
+  background: var(--color-background-secondary);
+  padding: 2px 6px;
+  border-radius: 12px;
 }
 .post .about {
   border-radius: var(--radius-medium);

@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* Neutral shadow tokens — one consistent elevation system instead of
+   scattered hard-coded rgba shadows. Used by cards, nav, buttons, etc. */
 :root {
   --filter-blur: blur(24px) saturate(150%);
   --radius-tiny: 8px;
@@ -29,6 +32,7 @@ body[data-color-scheme=light] {
   --color-background-secondary-hover: rgba(250, 252, 255, 0.8);
   --color-background-secondary-translucent: rgba(255, 255, 255, 0.9);
   /* Antigravity Purple/Blue accent (slightly darker for contrast on white) */
+  --color-accent-rgb: 139, 92, 246; /* #8b5cf6 — raw RGB for rgba() use */
   --color-background-accent: #8b5cf6;
   --color-background-accent-contrast: #ffffff;
   --color-background-accent-hover: #7c3aed;
@@ -46,6 +50,15 @@ body[data-color-scheme=light] {
   /* Subtle glass borders */
   --color-border-primary: rgba(139, 92, 246, 0.15);
   --color-border-secondary: rgba(0, 0, 0, 0.05);
+  /* Soft, low-elevation resting shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* Card resting elevation */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  /* Card hover elevation */
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+  /* Subtle purple accent glow (derived from accent) */
+  --glow-accent: 0 0 24px rgba(var(--color-accent-rgb), 0.12);
+  --glow-accent-strong: 0 0 20px rgba(var(--color-accent-rgb), 0.22);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,6 +75,7 @@ body[data-color-scheme=light] {
     --color-background-secondary-hover: rgba(60, 60, 70, 0.6);
     --color-background-secondary-translucent: rgba(10, 10, 12, 0.8);
     /* Antigravity Purple/Blue accent */
+    --color-accent-rgb: 168, 127, 251; /* #a87ffb — raw RGB for rgba() use */
     --color-background-accent: #a87ffb;
     --color-background-accent-contrast: #121212;
     --color-background-accent-hover: #b998fc;
@@ -79,6 +93,15 @@ body[data-color-scheme=light] {
     /* Inner glow / glass borders */
     --color-border-primary: rgba(255, 255, 255, 0.08);
     --color-border-secondary: rgba(255, 255, 255, 0.04);
+    /* Soft, low-elevation resting shadow */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+    /* Card resting elevation */
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    /* Card hover elevation */
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+    /* Subtle purple accent glow (derived from accent) */
+    --glow-accent: 0 0 24px rgba(var(--color-accent-rgb), 0.12);
+    --glow-accent-strong: 0 0 20px rgba(var(--color-accent-rgb), 0.22);
   }
 }
 body[data-color-scheme=dark] {
@@ -94,6 +117,7 @@ body[data-color-scheme=dark] {
   --color-background-secondary-hover: rgba(60, 60, 70, 0.6);
   --color-background-secondary-translucent: rgba(10, 10, 12, 0.8);
   /* Antigravity Purple/Blue accent */
+  --color-accent-rgb: 168, 127, 251; /* #a87ffb — raw RGB for rgba() use */
   --color-background-accent: #a87ffb;
   --color-background-accent-contrast: #121212;
   --color-background-accent-hover: #b998fc;
@@ -111,6 +135,15 @@ body[data-color-scheme=dark] {
   /* Inner glow / glass borders */
   --color-border-primary: rgba(255, 255, 255, 0.08);
   --color-border-secondary: rgba(255, 255, 255, 0.04);
+  /* Soft, low-elevation resting shadow */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* Card resting elevation */
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  /* Card hover elevation */
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.06);
+  /* Subtle purple accent glow (derived from accent) */
+  --glow-accent: 0 0 24px rgba(var(--color-accent-rgb), 0.12);
+  --glow-accent-strong: 0 0 20px rgba(var(--color-accent-rgb), 0.22);
 }
 
 .block-large {

@@ -10,8 +10,6 @@
     <link rel="shortcut icon" href="/favicon.png">
   
   
-  <link rel='manifest' href='/manifest.json'>
-  
 
   <meta name="description" content="Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了  lit_xor_chain 丢到IDA中分析一下 发现就是异或后加一个数 用赛博厨子即可  lit_b64_alphabet 改了字母表  依旧赛博厨子   lit_tea_standard 考点题目说的很明确了  搓个脚本即可   12345678910111213141516171819202122232425262728">
 <meta property="og:type" content="article">
@@ -114,6 +112,14 @@
   
   
   
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
   
   
   
@@ -145,29 +151,12 @@
 <script src="/js/head.js"></script>
 
 
-  <!-- 不蒜子统计 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 
   
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body
-    data-color-scheme="auto"
-    data-uppercase-categories="true"
-    
-    data-config-root="/"
-    
-    data-toc="true"
-    data-toc-max-depth="2"
-    
-    
-    
-    data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
-    
-    data-nav-blur-gradient="false"
-    data-corner-squircle="true"
-  >
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="2" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
     
 <script src="/js/body-top.js"></script>
 
@@ -177,8 +166,8 @@
 <nav id="theme-nav">
   <div class="inner">
     <a class="title" href="/">GuQing&#39;s Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
       <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
 
       
@@ -195,29 +184,29 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
         <label>
-          <input type="radio" value="light">
-          <span><i class="bi bi-sun"></i></span>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="dark">
-          <span><i class="bi bi-moon-stars"></i></span>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="auto">
-          <span><i class="bi bi-circle-half"></i></span>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
         </label>
       </div>
       
-      <div class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px; cursor: pointer;" title="Toggle Particles">
-        <i class="bi bi-stars"></i>
-      </div>
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
       
     </div>
   </div>
@@ -227,22 +216,35 @@
       
 <article class="post">
   
-  <div class="meta">
-    
-    <div class="categories text-uppercase">
-    
-      <a href="/categories/CTF-WP/">CTF_WP</a>
-    
-    </div>
-    
-
-    
-    <time class="date" datetime="2026-05-25T00:00:00+08:00">
-      2026-5-25
-    </time>
-    
-
+  <div class="meta-card">
     <h1 class="title" data-pagefind-meta="title">LitCTF2026_WP</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-05-25T00:00:00+08:00">2026-5-25</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/CTF-WP/">CTF_WP</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
+        
+      </span>
+      
+    </div>
   </div>
 
   <div class="content">
@@ -250,14 +252,14 @@
 <li>Re题的考点基本在题目中都说了，非常的贴心，爱了爱了</li>
 </ul>
 <h2 id="lit-xor-chain"><a href="#lit-xor-chain" class="headerlink" title="lit_xor_chain"></a><strong>lit_xor_chain</strong></h2><ul>
-<li>丢到IDA中分析一下<br><img src="/Images/2bb2b475-3def-44e1-b41f-2d6d8621cb69.png"></li>
+<li>丢到IDA中分析一下<br><img src="/Images/2bb2b475-3def-44e1-b41f-2d6d8621cb69.png" alt="2bb2b475 3def 44e1 b41f 2d6d8621cb69" loading="lazy" decoding="async" width="791" height="576"></li>
 <li>发现就是异或后加一个数</li>
-<li>用赛博厨子即可<br><img src="/Images/406363c0-3d6e-4634-9a2b-9732096245ab%201.png"></li>
+<li>用赛博厨子即可<br><img src="/Images/406363c0-3d6e-4634-9a2b-9732096245ab%201.png" alt="406363c0 3d6e 4634 9a2b 9732096245ab 1" loading="lazy" decoding="async" width="1280" height="676"></li>
 </ul>
 <h2 id="lit-b64-alphabet"><a href="#lit-b64-alphabet" class="headerlink" title="lit_b64_alphabet"></a><strong>lit_b64_alphabet</strong></h2><ul>
 <li><p>改了字母表</p>
 </li>
-<li><p>依旧赛博厨子<br><img src="/Images/a7c2ebac-9c68-4096-ace1-a24c3a040138%201.png"></p>
+<li><p>依旧赛博厨子<br><img src="/Images/a7c2ebac-9c68-4096-ace1-a24c3a040138%201.png" alt="a7c2ebac 9c68 4096 ace1 a24c3a040138 1" loading="lazy" decoding="async" width="1280" height="676"></p>
 </li>
 </ul>
 <h2 id="lit-tea-standard"><a href="#lit-tea-standard" class="headerlink" title="lit_tea_standard"></a><strong>lit_tea_standard</strong></h2><ul>
@@ -295,7 +297,7 @@
 </li>
 <li><p>把加密之前的输入数据改成对比数据</p>
 </li>
-<li><p>然后打个断点运行就可以拿到flag了<br><img src="/Images/b02a8dfe-2ebf-4ead-943f-abaeb1dd3cfc.png"></p>
+<li><p>然后打个断点运行就可以拿到flag了<br><img src="/Images/b02a8dfe-2ebf-4ead-943f-abaeb1dd3cfc.png" alt="b02a8dfe 2ebf 4ead 943f abaeb1dd3cfc" loading="lazy" decoding="async" width="1280" height="688"></p>
 </li>
 <li><p>原理就是因为rc4是加解密流程一样，即便简单魔改（这里严谨下，不知道所有魔改是不是都是加解密流程一样）</p>
 </li>
@@ -317,14 +319,7 @@
     <div class="details">
       <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
     </div>
-    
-    <p class="tags">
-      <i class="bi bi-tags icon"></i>
-      
-      <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
-      
-    </p>
-    
+
     
   </div>
   
@@ -356,56 +351,7 @@
 
 
     </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
-        
-        <a href="/" class="item">主页</a>
-        
-        <a href="/About-Me" class="item">关于我</a>
-        
-        <a href="/archives" class="item">归档</a>
-        
-        <a href="/tags" class="item">标签</a>
-        
-        <a href="/categories" class="item">分类</a>
-        
-        <a href="/search" class="item">搜索</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Related</h2>
-        
-        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
-        
-      </div>
-      
-    </div>
-    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
-  </div>
-</footer>
+    <!-- Footer removed by user request -->
 
 
     
@@ -425,12 +371,19 @@
     
 
     
-<script src="/js/busuanzi-handler.js"></script>
-
 
     
 <script src="/js/custom-effects.js"></script>
 
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
 
     
 <script src="/js/hero-stats.js"></script>

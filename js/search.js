@@ -4,6 +4,8 @@
   const searchBox = document.getElementById('searchbox')
   const searchResults = document.getElementById('search-results')
 
+  if (!searchForm || !searchBox || !searchResults) return
+
   searchBox.select()
 
   const doSearch = keyword => {

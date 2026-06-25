@@ -1,21 +1,24 @@
 ;(() => {
   var navEl = document.getElementById('theme-nav')
-  navEl.addEventListener('click', e => {
-    if (window.innerWidth <= 600) {
-      if (!document.body.classList.contains('nav-open')) {
-        document.body.style.setProperty(
-          '--open-height',
-          48 +
-            document.querySelector('#theme-nav .nav-items').clientHeight +
-            'px',
-        )
-      }
+  var navToggleEl = document.getElementById('theme-nav-toggle')
 
-      document.body.classList.toggle('nav-open')
+  const setNavOpen = open => {
+    if (open && window.innerWidth <= 600) {
+      document.body.style.setProperty(
+        '--open-height',
+        48 + document.querySelector('#theme-nav .nav-items').clientHeight + 'px',
+      )
+      document.body.classList.add('nav-open')
     } else {
       document.body.style.removeProperty('--open-height')
       document.body.classList.remove('nav-open')
     }
+    navToggleEl?.setAttribute('aria-expanded', String(document.body.classList.contains('nav-open')))
+  }
+
+  navToggleEl?.addEventListener('click', e => {
+    e.stopPropagation()
+    setNavOpen(!document.body.classList.contains('nav-open'))
   })
 
   window.addEventListener('resize', () => {
@@ -28,31 +31,25 @@
       )
     }
     if (window.innerWidth > 600) {
-      document.body.style.removeProperty('--open-height')
-      document.body.classList.remove('nav-open')
+      setNavOpen(false)
     }
   })
 
-  if (document.getElementById('theme-color-scheme-toggle')) {
-    var themeColorSchemeToggleEl = document.getElementById(
-      'theme-color-scheme-toggle',
-    )
-    var options = themeColorSchemeToggleEl.getElementsByTagName('input')
+  const syncColorSchemeToggles = value => {
+    document.querySelectorAll('.color-scheme-toggle input').forEach(option => {
+      option.checked = option.value == value
+    })
+  }
 
-    for (const option of options) {
-      if (option.value == document.body.dataset.colorScheme) {
-        option.checked = true
-      }
+  if (document.querySelector('.color-scheme-toggle')) {
+    syncColorSchemeToggles(document.body.dataset.colorScheme)
+    document.querySelectorAll('.color-scheme-toggle input').forEach(option => {
       option.addEventListener('change', ev => {
         var value = ev.target.value
         ThemeCupertino.ColorScheme.set(value)
-        for (const o of options) {
-          if (o.value != value) {
-            o.checked = false
-          }
-        }
+        syncColorSchemeToggles(value)
       })
-    }
+    })
   }
 
   if (document.body.attributes['data-rainbow-banner']) {

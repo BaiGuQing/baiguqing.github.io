@@ -10,8 +10,6 @@
     <link rel="shortcut icon" href="/favicon.png">
   
   
-  <link rel='manifest' href='/manifest.json'>
-  
 
   <meta name="description" content="ReverseDocking Check  红线部分是编译器优化 实际上v7就应该是strlen(input) 加密方式也给出来了，就可以写脚本了  12345678910111213141516171819202122232425enc &#x3D; [0x77, 0x4C, 0x3A, 0xD6, 0xE0, 0x27, 0xD5, 0x33, 0x14, 0xD6, 0xFA, 0xE9, 0xE0,">
 <meta property="og:type" content="article">
@@ -116,6 +114,14 @@
   
   
   
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
   
   
   
@@ -147,29 +153,12 @@
 <script src="/js/head.js"></script>
 
 
-  <!-- 不蒜子统计 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 
   
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body
-    data-color-scheme="auto"
-    data-uppercase-categories="true"
-    
-    data-config-root="/"
-    
-    data-toc="true"
-    data-toc-max-depth="2"
-    
-    
-    
-    data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
-    
-    data-nav-blur-gradient="false"
-    data-corner-squircle="true"
-  >
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="2" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
     
 <script src="/js/body-top.js"></script>
 
@@ -179,8 +168,8 @@
 <nav id="theme-nav">
   <div class="inner">
     <a class="title" href="/">GuQing&#39;s Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
       <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
 
       
@@ -197,29 +186,29 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
         <label>
-          <input type="radio" value="light">
-          <span><i class="bi bi-sun"></i></span>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="dark">
-          <span><i class="bi bi-moon-stars"></i></span>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="auto">
-          <span><i class="bi bi-circle-half"></i></span>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
         </label>
       </div>
       
-      <div class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px; cursor: pointer;" title="Toggle Particles">
-        <i class="bi bi-stars"></i>
-      </div>
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
       
     </div>
   </div>
@@ -229,27 +218,40 @@
       
 <article class="post">
   
-  <div class="meta">
-    
-    <div class="categories text-uppercase">
-    
-      <a href="/categories/CTF-WP/">CTF_WP</a>
-    
-    </div>
-    
-
-    
-    <time class="date" datetime="2026-05-26T00:00:00+08:00">
-      2026-5-26
-    </time>
-    
-
+  <div class="meta-card">
     <h1 class="title" data-pagefind-meta="title">ZeroG_CTF2026</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-05-26T00:00:00+08:00">2026-5-26</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/CTF-WP/">CTF_WP</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
+        
+      </span>
+      
+    </div>
   </div>
 
   <div class="content">
     <h1 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h1><h2 id="Docking-Check"><a href="#Docking-Check" class="headerlink" title="Docking Check"></a>Docking Check</h2><ul>
-<li><img src="/Images/202606171551.png"></li>
+<li><img src="/Images/202606171551.png" alt="截图 202606171551" loading="lazy" decoding="async" width="2049" height="1146"></li>
 <li>红线部分是编译器优化</li>
 <li>实际上v7就应该是strlen(input)</li>
 <li>加密方式也给出来了，就可以写脚本了</li>
@@ -257,9 +259,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">enc = [<span class="number">0x77</span>, <span class="number">0x4C</span>, <span class="number">0x3A</span>, <span class="number">0xD6</span>, <span class="number">0xE0</span>, <span class="number">0x27</span>, <span class="number">0xD5</span>, <span class="number">0x33</span>, <span class="number">0x14</span>, <span class="number">0xD6</span>, <span class="number">0xFA</span>, <span class="number">0xE9</span>, <span class="number">0xE0</span>, <span class="number">0x37</span>, <span class="number">0x29</span>, <span class="number">0x7E</span>, <span class="number">0x3D</span>, <span class="number">0x94</span>, <span class="number">0x6D</span>, <span class="number">0xB3</span>, <span class="number">0x7A</span>, <span class="number">0x56</span>, <span class="number">0xA0</span>, <span class="number">0xBA</span>, <span class="number">0xBF</span>, <span class="number">0x07</span>, <span class="number">0xA3</span>, <span class="number">0x7B</span>]</span><br><span class="line">flag = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ror1</span>(<span class="params">v,n</span>):</span><br><span class="line">	v &amp;= <span class="number">0xff</span></span><br><span class="line">	n %= <span class="number">8</span></span><br><span class="line">	<span class="keyword">return</span> ((v &gt;&gt; n) | ( v &lt;&lt; (<span class="number">8</span> - n))) &amp; <span class="number">0xff</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n1 = <span class="number">23</span>;</span><br><span class="line">n2 = <span class="number">6</span>;</span><br><span class="line">n3 = <span class="number">60</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">28</span>):</span><br><span class="line">	tmp = enc[i] ^ n3</span><br><span class="line">	tmp = tmp ^ <span class="number">0xa5</span></span><br><span class="line">	tmp = ror1(tmp,i%<span class="number">7</span>+<span class="number">1</span>)</span><br><span class="line">	tmp = (tmp - n1) &amp; <span class="number">0xff</span></span><br><span class="line">	s_i = (tmp ^ n2) &amp; <span class="number">0xff</span>;</span><br><span class="line">	flag.append(<span class="built_in">chr</span>(s_i))</span><br><span class="line">	n2 += <span class="number">13</span>;</span><br><span class="line">	n1 += <span class="number">17</span>;</span><br><span class="line">	n3 = enc[i]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&#x27;</span>.join(flag))</span><br></pre></td></tr></table></figure>
 <h2 id="Nebula-VM"><a href="#Nebula-VM" class="headerlink" title="Nebula VM"></a>Nebula VM</h2><ul>
 <li>根据题目并把文件拖到IDA中分析可知这是一个vm题</li>
-<li><img src="/Images/202606171553.png"></li>
+<li><img src="/Images/202606171553.png" alt="截图 202606171553" loading="lazy" decoding="async" width="2049" height="1183"></li>
 <li>这里可以看到对opcode进行了个解密</li>
-<li><img src="/Images/202606171556.png"></li>
+<li><img src="/Images/202606171556.png" alt="截图 202606171556" loading="lazy" decoding="async" width="2049" height="1183"></li>
 <li>这里可以看到把v49简单初始化了一下</li>
 <li>然后用v17代替v9作为了解密后的opcode</li>
 <li>然后就可以分析这个vm在干什么了，可以用ai进行辅助分析</li>
@@ -275,9 +277,9 @@
 <li>然后就可以发现这是两段解密</li>
 <li>如果第一段不对的话，flag自然就解不出来</li>
 <li>其实把第一段加密写一个逆向脚本即可，然后用调试器跳过反调试</li>
-<li><img src="/Images/202606171616.png"></li>
+<li><img src="/Images/202606171616.png" alt="截图 202606171616" loading="lazy" decoding="async" width="2560" height="1392"></li>
 <li>这个是断点位置，改下ZF就可以跳到输入license环节</li>
-<li><img src="/Images/202606171617.png"></li>
+<li><img src="/Images/202606171617.png" alt="截图 202606171617" loading="lazy" decoding="async" width="796" height="253"></li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> byte_2110[<span class="number">18</span>] = &#123;</span><br><span class="line">    <span class="number">0x04</span>, <span class="number">0x8E</span>, <span class="number">0xB3</span>, <span class="number">0x88</span>, <span class="number">0xFA</span>, <span class="number">0x73</span>, <span class="number">0xD9</span>, <span class="number">0x1F</span>, <span class="number">0x81</span>, <span class="number">0x04</span>, <span class="number">0x8B</span>, <span class="number">0x0C</span>, <span class="number">0xAA</span>, <span class="number">0x3A</span>, <span class="number">0x56</span>, <span class="number">0xA1</span>, </span><br><span class="line">    <span class="number">0x37</span>, <span class="number">0x85</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __ROR1__(x,n) ((uint8_t)(x) &gt;&gt; ((n)&amp;7)) | ((uint8_t)(x) &lt;&lt; (8-((n)&amp;7)))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">uint8_t</span> license[<span class="number">18</span>];</span><br><span class="line">	<span class="type">int</span> n23 = <span class="number">23</span>;</span><br><span class="line">	<span class="type">int</span> n103 = <span class="number">103</span>;</span><br><span class="line">	<span class="type">int</span> n109 = <span class="number">109</span>;</span><br><span class="line">	<span class="type">int</span> n18_1;</span><br><span class="line">	<span class="keyword">for</span>(n18_1 = <span class="number">0</span>;n18_1 &lt; <span class="number">18</span>;n18_1++)&#123;</span><br><span class="line">		<span class="type">int</span> n109_new = byte_2110[n18_1];</span><br><span class="line">		<span class="type">uint8_t</span> v16 = (n109 ^ n109_new) - n23;</span><br><span class="line">		v16 = __ROR1__(v16, n18_1 % <span class="number">6</span> + <span class="number">1</span>);</span><br><span class="line">		license[n18_1] = v16 ^ n103;</span><br><span class="line">		n103 += <span class="number">11</span>;</span><br><span class="line">        n23 += <span class="number">23</span>;</span><br><span class="line">		n109 = n109_new;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;License : %s\n&quot;</span>,license);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -287,7 +289,7 @@
 <li>其实这个和上一个题的解密逻辑差不多</li>
 <li>也是两段加密</li>
 <li>只不过不用跳过反调试而已</li>
-<li><img src="/Images/202606171621.png"></li>
+<li><img src="/Images/202606171621.png" alt="截图 202606171621" loading="lazy" decoding="async" width="645" height="181"></li>
 <li>直接给脚本吧</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __ROR1__(x,n) (((uint8_t)(x) &gt;&gt; ((n)&amp;7)) | ((uint8_t)(x) &lt;&lt; (8-((n)&amp;7))))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __ROL4__(x,n) (((uint32_t)(x) <span class="string">&lt;&lt; ((n)&amp;31)) | ((uint32_t)(x) &gt;</span>&gt; (32-((n)&amp;31))))</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> byte_5555555560F0[] = &#123;<span class="number">0xB4</span>,<span class="number">0x68</span>,<span class="number">0x6E</span>,<span class="number">0xBD</span>,<span class="number">0xEB</span>,<span class="number">0xFD</span>,<span class="number">0x0D</span>,<span class="number">0xC7</span>,<span class="number">0xB7</span>,<span class="number">0x86</span>,<span class="number">0xAC</span>,<span class="number">0x6D</span>,<span class="number">0x3A</span>,<span class="number">0x2E</span>,<span class="number">0x68</span>,<span class="number">0x8D</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">uint8_t</span> ptr_2[<span class="number">16</span>],license[<span class="number">16</span>];</span><br><span class="line">	<span class="type">uint8_t</span> v15 =<span class="number">0</span>,n39 = <span class="number">39</span>;</span><br><span class="line">	<span class="type">uint32_t</span> n1280659026 = <span class="number">0x4C554E52</span>;</span><br><span class="line">	<span class="type">int</span> n16;</span><br><span class="line">	<span class="keyword">for</span>(n16 = <span class="number">0</span> ;n16 &lt; <span class="number">16</span> ;n16++)&#123;</span><br><span class="line">		<span class="type">uint8_t</span> v19 = byte_5555555560F0[n16];</span><br><span class="line">		<span class="type">int</span> x = n16 - (n16 / <span class="number">5</span> + (((<span class="number">0xCCCCCCCCCCCCCCCDL</span>L * (<span class="type">unsigned</span> __int128)n16) &gt;&gt; <span class="number">64</span>) &amp; <span class="number">0xFC</span>)) + <span class="number">1</span>;</span><br><span class="line">		<span class="type">uint8_t</span> y = (v19 ^ v15 ^ <span class="number">0x5c</span>) - n39;</span><br><span class="line">		<span class="type">uint8_t</span> key = n1280659026 &gt;&gt; (<span class="number">8</span> * (n16 &amp; <span class="number">3</span>));</span><br><span class="line">		<span class="type">uint8_t</span> tmp = __ROR1__(y,x);</span><br><span class="line">		ptr_2[n16] = tmp ^ key;</span><br><span class="line">		license[n16] = ptr_2[n16];</span><br><span class="line">		</span><br><span class="line">		n39 += <span class="number">19</span>;</span><br><span class="line">		v15 += <span class="number">7</span>;</span><br><span class="line">		n1280659026 = __ROL4__(n1280659026 ^ v19 ^ <span class="number">0xA5A5A5A5</span>, <span class="number">7</span>) + <span class="number">322376503</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (n16 = <span class="number">0</span>; n16 &lt; <span class="number">16</span>; n16++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%02x&quot;</span>, license[n16]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -299,14 +301,7 @@
     <div class="details">
       <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
     </div>
-    
-    <p class="tags">
-      <i class="bi bi-tags icon"></i>
-      
-      <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
-      
-    </p>
-    
+
     
   </div>
   
@@ -331,56 +326,7 @@
 
 
     </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
-        
-        <a href="/" class="item">主页</a>
-        
-        <a href="/About-Me" class="item">关于我</a>
-        
-        <a href="/archives" class="item">归档</a>
-        
-        <a href="/tags" class="item">标签</a>
-        
-        <a href="/categories" class="item">分类</a>
-        
-        <a href="/search" class="item">搜索</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Related</h2>
-        
-        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
-        
-      </div>
-      
-    </div>
-    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
-  </div>
-</footer>
+    <!-- Footer removed by user request -->
 
 
     
@@ -400,12 +346,19 @@
     
 
     
-<script src="/js/busuanzi-handler.js"></script>
-
 
     
 <script src="/js/custom-effects.js"></script>
 
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
 
     
 <script src="/js/hero-stats.js"></script>

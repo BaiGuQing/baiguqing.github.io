@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   
-  <title>GuQing&#39;s Blog</title>
+  <title>搜索 - GuQing&#39;s Blog</title>
   
     <link rel="shortcut icon" href="/favicon.png">
   
-  
-  <link rel='manifest' href='/manifest.json'>
   
 
   <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
@@ -20,7 +18,7 @@
 <meta property="og:site_name" content="GuQing&#39;s Blog">
 <meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-17T17:46:06.852Z">
+<meta property="article:published_time" content="2026-06-25T01:55:24.173Z">
 <meta property="article:modified_time" content="2025-12-17T17:46:06.852Z">
 <meta property="article:author" content="GuQing">
 <meta property="article:tag" content="CTF,Reverse,Note">
@@ -111,6 +109,17 @@
   
   
   
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+
+  
+<script src="/pagefind/pagefind-ui.js"></script>
+
+  
+<link rel="stylesheet" href="/css/search.css">
+
+  
+  
+  
   
   
 <link rel="stylesheet" href="/css/scroll-reveal.css">
@@ -140,8 +149,7 @@
 <script src="/js/head.js"></script>
 
 
-  <!-- 不蒜子统计 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 
   
 <meta name="generator" content="Hexo 8.1.1"></head>
@@ -156,9 +164,11 @@
     data-toc-max-depth="2"
     
     
+    data-search-path=""
+    
     
     data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
     
     data-nav-blur-gradient="false"
     data-corner-squircle="true"
@@ -172,8 +182,8 @@
 <nav id="theme-nav">
   <div class="inner">
     <a class="title" href="/">GuQing&#39;s Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
       <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
 
       
@@ -190,29 +200,29 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
         <label>
-          <input type="radio" value="light">
-          <span><i class="bi bi-sun"></i></span>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="dark">
-          <span><i class="bi bi-moon-stars"></i></span>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="auto">
-          <span><i class="bi bi-circle-half"></i></span>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
         </label>
       </div>
       
-      <div class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px; cursor: pointer;" title="Toggle Particles">
-        <i class="bi bi-stars"></i>
-      </div>
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
       
     </div>
   </div>
@@ -220,103 +230,25 @@
 
     <main id="main-content">
       
-<article class="post">
-  
-  <div class="meta">
-    
+  <div class="container search-page">
+  <h1 class="search-title">搜索</h1>
+  <div id="search"></div>
+  <script>window.addEventListener('DOMContentLoaded', () => { new PagefindUI({ element: "#search", showSubResults: true }) })</script>
+</div>
 
-    
-    <time class="date" datetime="2025-12-18T01:46:06+08:00">
-      2025-12-18
-    </time>
-    
-
-    <h1 class="title" data-pagefind-meta="title"></h1>
-  </div>
-
-  <div class="content">
-    
-  </div>
-
-  
-  <div class="about" data-pagefind-ignore>
-    <h2>关于本文</h2>
-    <div class="details">
-      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
-    </div>
-    
-    
-  </div>
-  
-
-  <div class="container post-prev-next" data-pagefind-ignore>
-    <a class="next"></a>
-    <a class="prev"></a>
-  </div>
-
-  
-    
-    
-  
-</article>
 
 
     </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
-        
-        <a href="/" class="item">主页</a>
-        
-        <a href="/About-Me" class="item">关于我</a>
-        
-        <a href="/archives" class="item">归档</a>
-        
-        <a href="/tags" class="item">标签</a>
-        
-        <a href="/categories" class="item">分类</a>
-        
-        <a href="/search" class="item">搜索</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Related</h2>
-        
-        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
-        
-      </div>
-      
-    </div>
-    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
-  </div>
-</footer>
+    <!-- Footer removed by user request -->
 
 
     
 <script src="/js/main.js"></script>
 
+
+    
+    
+<script src="/js/search.js"></script>
 
     
 
@@ -331,12 +263,12 @@
     
 
     
-<script src="/js/busuanzi-handler.js"></script>
-
 
     
 <script src="/js/custom-effects.js"></script>
 
+
+    
 
     
 <script src="/js/hero-stats.js"></script>

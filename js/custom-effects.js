@@ -4,11 +4,13 @@
 
   // Antigravity 英雄区域无界全息交互
   function initHeroInteraction() {
+    console.log("[custom-effects] initHeroInteraction called");
     const hero = document.getElementById('hero-interactive');
     const hologramText = document.querySelector('.text-hologram');
     const tracker = document.querySelector('.hero-ambient-tracker');
 
     if (!hero || !hologramText || !tracker) return;
+
 
     document.addEventListener('mousemove', (e) => {
       const rect = hero.getBoundingClientRect();
@@ -42,8 +44,10 @@
     // 🌌 Antigravity 粒子场 — 精准复刻版
     // 基于 antigravity.google 源码分析：Ring-based scaling + Noise displacement + 3-color mixing
     function initParticles() {
+      console.log("[custom-effects] initParticles called");
       const canvas = document.getElementById('hero-particles');
       if (!canvas) return;
+      console.log("[custom-effects] canvas found:", canvas);
       const ctx = canvas.getContext('2d');
       let width, height;
       let particles = [];
@@ -80,7 +84,7 @@
         height = rect.height;
         canvas.width = width * window.devicePixelRatio;
         canvas.height = height * window.devicePixelRatio;
-        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
         if (particles.length === 0) initSetup();
       }
 
@@ -128,10 +132,18 @@
       });
 
       function animateParticles() {
+        if (!window.themeParticlesEnabled || document.hidden) {
+          if (particlesAnimFrame) {
+            cancelAnimationFrame(particlesAnimFrame);
+            particlesAnimFrame = null;
+          }
+          return;
+        }
+
         ctx.clearRect(0, 0, width, height);
         time += 0.016;
 
-        const isLight = document.documentElement.getAttribute('data-color-scheme') === 'light';
+        const isLight = document.body.dataset.currentColorScheme === 'light';
 
         const lerpFactor = mouseInside ? 0.03 : 0.015;
         const noiseOffX = Math.sin(time * 0.66 + 94.234) * 15;
@@ -276,33 +288,70 @@
       }
 
       // 粒子开关控制
-      window.themeParticlesEnabled = localStorage.getItem('particles_enabled') !== 'false';
-      let particlesAnimFrame;
+      let storedParticlesEnabled = null;
+      try {
+        storedParticlesEnabled = localStorage.getItem('particles_enabled');
+      } catch (err) {}
+
+      const isSmallViewport = window.matchMedia('(max-width: 768px)').matches;
+      window.themeParticlesEnabled = storedParticlesEnabled === null
+        ? !isSmallViewport
+        : storedParticlesEnabled !== 'false';
+      let particlesAnimFrame = null;
+      console.log("[custom-effects] themeParticlesEnabled:", window.themeParticlesEnabled);
 
       const particleToggle = document.getElementById('theme-particle-toggle');
+
+      function updateParticleToggle() {
+        if (!particleToggle) return;
+        particleToggle.innerHTML = window.themeParticlesEnabled
+          ? '<i class="bi bi-stars" aria-hidden="true"></i>'
+          : '<i class="bi bi-star" aria-hidden="true"></i>';
+        particleToggle.setAttribute('aria-pressed', String(window.themeParticlesEnabled));
+        particleToggle.classList.toggle('active', window.themeParticlesEnabled);
+      }
+
+      function stopParticles() {
+        if (particlesAnimFrame) {
+          cancelAnimationFrame(particlesAnimFrame);
+          particlesAnimFrame = null;
+        }
+        ctx.clearRect(0, 0, width, height);
+      }
+
+      function startParticles() {
+        if (!window.themeParticlesEnabled || document.hidden) return;
+        if (particlesAnimFrame) return;
+        animateParticles();
+      }
+
       if (particleToggle) {
-        // 初始化图标状态
-        particleToggle.innerHTML = window.themeParticlesEnabled ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-star"></i>';
+        updateParticleToggle();
 
         particleToggle.addEventListener('click', () => {
           window.themeParticlesEnabled = !window.themeParticlesEnabled;
-          localStorage.setItem('particles_enabled', window.themeParticlesEnabled);
-          particleToggle.innerHTML = window.themeParticlesEnabled ? '<i class="bi bi-stars"></i>' : '<i class="bi bi-star"></i>';
-
+          try {
+            localStorage.setItem('particles_enabled', String(window.themeParticlesEnabled));
+          } catch (err) {}
+          updateParticleToggle();
           if (window.themeParticlesEnabled) {
-            animateParticles();
+            startParticles();
           } else {
-            cancelAnimationFrame(particlesAnimFrame);
-            ctx.clearRect(0, 0, width, height);
+            stopParticles();
           }
         });
       }
 
-      if (window.themeParticlesEnabled) {
-        animateParticles();
-      } else {
-        ctx.clearRect(0, 0, width, height);
-      }
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopParticles();
+        } else {
+          startParticles();
+        }
+      });
+
+      updateParticleToggle();
+      startParticles();
     }
 
     // 文本乱码解码入场动效 (Cryptic Text Decode)
@@ -328,6 +377,7 @@
 
     // 延迟一点启动解码
     setTimeout(decodeTextAnimation, 300);
+    console.log("[custom-effects] calling initParticles...");
 
     initParticles();
   }

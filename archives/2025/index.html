@@ -10,8 +10,6 @@
     <link rel="shortcut icon" href="/favicon.png">
   
   
-  <link rel='manifest' href='/manifest.json'>
-  
 
   <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
 <meta property="og:type" content="website">
@@ -107,6 +105,7 @@
   
   
   
+  
 <link rel="stylesheet" href="/css/archive.css">
 
   
@@ -142,29 +141,12 @@
 <script src="/js/head.js"></script>
 
 
-  <!-- 不蒜子统计 -->
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
 
   
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body
-    data-color-scheme="auto"
-    data-uppercase-categories="true"
-    
-    data-config-root="/"
-    
-    data-toc="true"
-    data-toc-max-depth="2"
-    
-    
-    
-    data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content .block-large img"
-    
-    data-nav-blur-gradient="false"
-    data-corner-squircle="true"
-  >
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="2" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
     
 <script src="/js/body-top.js"></script>
 
@@ -174,8 +156,8 @@
 <nav id="theme-nav">
   <div class="inner">
     <a class="title" href="/">GuQing&#39;s Blog</a>
-    <div class="nav-arrow"></div>
-    <div class="nav-items">
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
       <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
 
       
@@ -192,29 +174,29 @@
       <a class="nav-item" href="/categories" style="--index: 4">分类</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5"><i class="bi bi-search"></i></a>
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
         <label>
-          <input type="radio" value="light">
-          <span><i class="bi bi-sun"></i></span>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="dark">
-          <span><i class="bi bi-moon-stars"></i></span>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
         </label>
         <label>
-          <input type="radio" value="auto">
-          <span><i class="bi bi-circle-half"></i></span>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
         </label>
       </div>
       
-      <div class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px; cursor: pointer;" title="Toggle Particles">
-        <i class="bi bi-stars"></i>
-      </div>
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
       
     </div>
   </div>
@@ -265,12 +247,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-12-30T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-12-30
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>10.9k</span>
               </span>
             </div>
@@ -306,12 +290,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-12-27T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-12-27
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>110</span>
               </span>
             </div>
@@ -347,12 +333,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-12-27T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-12-27
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>4.1k</span>
               </span>
             </div>
@@ -388,12 +376,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-12-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-12-22
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>12.8k</span>
               </span>
             </div>
@@ -429,12 +419,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-12-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-12-22
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>4.8k</span>
               </span>
             </div>
@@ -449,7 +441,7 @@
       
       
       <div class="cover-img">
-        <img src="/Images/20251123174856.png" alt="0xGame 2025 Week3 Reverse WP" loading="lazy">
+        <img src="/Images/20251123174856.png" alt="0xGame 2025 Week3 Reverse WP" loading="lazy" decoding="async" width="1374" height="630">
       </div>
       
       <div class="content">
@@ -474,12 +466,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-12-16T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-12-16
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>75.9k</span>
               </span>
             </div>
@@ -494,7 +488,7 @@
       
       
       <div class="cover-img">
-        <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy">
+        <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy" decoding="async" width="594" height="50">
       </div>
       
       <div class="content">
@@ -519,12 +513,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-11-20T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-11-20
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>36.0k</span>
               </span>
             </div>
@@ -539,7 +535,7 @@
       
       
       <div class="cover-img">
-        <img src="/Images/083720wzd4p1zx66f8pfp4.png" alt="0xGame 2025 Week1 Reverse WP" loading="lazy">
+        <img src="/Images/083720wzd4p1zx66f8pfp4.png" alt="0xGame 2025 Week1 Reverse WP" loading="lazy" decoding="async" width="1920" height="1002">
       </div>
       
       <div class="content">
@@ -564,12 +560,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-11-19T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-11-19
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>13.3k</span>
               </span>
             </div>
@@ -605,12 +603,14 @@
           <div class="meta-info">
             
             <time class="time" datetime="2025-11-19T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
               2025-11-19
             </time>
             
             <div class="stats">
               <span class="stat-item">
-                <span class="icon">📝</span>
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
                 <span>2.0k</span>
               </span>
             </div>
@@ -628,56 +628,7 @@
 
 
     </main>
-    <footer>
-  <div class="inner">
-    <div class="links">
-      
-      <div class="group">
-        <h2 class="title">Blog</h2>
-        
-        <a href="/" class="item">主页</a>
-        
-        <a href="/About-Me" class="item">关于我</a>
-        
-        <a href="/archives" class="item">归档</a>
-        
-        <a href="/tags" class="item">标签</a>
-        
-        <a href="/categories" class="item">分类</a>
-        
-        <a href="/search" class="item">搜索</a>
-        
-      </div>
-      
-      <div class="group">
-        <h2 class="title">Related</h2>
-        
-        <a target="_blank" rel="noopener" href="https://hexo.io/" class="item">Hexo</a>
-        
-      </div>
-      
-    </div>
-    <span>&copy; 2026 GuQing<br>由 <a href="http://hexo.io/" target="_blank">Hexo</a> 驱动</span>
-    
-    
-      <br>
-      <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-        <label>
-          <input type="radio" value="light">
-          <span>浅色</span>
-        </label>
-        <label>
-          <input type="radio" value="dark">
-          <span>深色</span>
-        </label>
-        <label>
-          <input type="radio" value="auto">
-          <span>自动</span>
-        </label>
-      </div>
-    
-  </div>
-</footer>
+    <!-- Footer removed by user request -->
 
 
     
@@ -697,12 +648,12 @@
     
 
     
-<script src="/js/busuanzi-handler.js"></script>
-
 
     
 <script src="/js/custom-effects.js"></script>
 
+
+    
 
     
 <script src="/js/hero-stats.js"></script>

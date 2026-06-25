@@ -61,17 +61,27 @@
   }
 }
 .hero .hero-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  font-size: 11px;
-  font-weight: 700;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 32px;
+  font-size: 20px;
+  font-weight: 800;
   color: var(--color-text-accent);
-  background: transparent;
-  border: 1px solid var(--color-border-primary);
-  margin-bottom: 30px;
-  letter-spacing: 4px;
+  background: rgba(var(--color-accent-rgb), 0.15);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
+  border-radius: 100px;
+  margin-bottom: 32px;
+  letter-spacing: 8px;
   text-transform: uppercase;
-  box-shadow: 0 0 20px rgba(var(--color-background-accent), 0.1);
+  box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.1);
+  animation: float-badge 6s ease-in-out infinite;
+  opacity: 0.85; /* Not too eye-catching */
+  transition: all 0.3s ease;
+}
+.hero .hero-badge:hover {
+  opacity: 1;
 }
 .hero .hero-title {
   font-size: 110px;
@@ -212,6 +222,14 @@
   }
   50% {
     opacity: 0;
+  }
+}
+@keyframes float-badge {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 .posts-section {

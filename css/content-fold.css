@@ -1,0 +1,221 @@
+.fold-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-tiny);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.25s ease;
+  padding: 0;
+}
+.fold-toggle:hover {
+  background: rgba(var(--color-accent-rgb), 0.18);
+  border-color: rgba(var(--color-accent-rgb), 0.35);
+  color: rgba(255, 255, 255, 0.9);
+}
+.fold-toggle:focus-visible {
+  outline: 2px solid rgba(var(--color-accent-rgb), 0.7);
+  outline-offset: 2px;
+}
+
+.fold-toggle-heading {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+.fold-toggle-heading svg {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+h1:hover .fold-toggle-heading, h1:focus-within .fold-toggle-heading, h2:hover .fold-toggle-heading, h2:focus-within .fold-toggle-heading, h3:hover .fold-toggle-heading, h3:focus-within .fold-toggle-heading, h4:hover .fold-toggle-heading, h4:focus-within .fold-toggle-heading, h5:hover .fold-toggle-heading, h5:focus-within .fold-toggle-heading, h6:hover .fold-toggle-heading, h6:focus-within .fold-toggle-heading {
+  opacity: 1;
+}
+h1[aria-expanded=false] .fold-toggle-heading, h2[aria-expanded=false] .fold-toggle-heading, h3[aria-expanded=false] .fold-toggle-heading, h4[aria-expanded=false] .fold-toggle-heading, h5[aria-expanded=false] .fold-toggle-heading, h6[aria-expanded=false] .fold-toggle-heading {
+  opacity: 1;
+}
+h1[aria-expanded=false] .fold-toggle-heading svg, h2[aria-expanded=false] .fold-toggle-heading svg, h3[aria-expanded=false] .fold-toggle-heading svg, h4[aria-expanded=false] .fold-toggle-heading svg, h5[aria-expanded=false] .fold-toggle-heading svg, h6[aria-expanded=false] .fold-toggle-heading svg {
+  transform: rotate(90deg);
+}
+
+.fold-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fold-body .fold-body-inner {
+  overflow: hidden;
+  min-height: 0;
+  transition: opacity 0.25s ease;
+  opacity: 1;
+}
+.fold-body.folded {
+  grid-template-rows: 0fr;
+}
+.fold-body.folded .fold-body-inner {
+  opacity: 0;
+}
+
+.code-fold-wrapper {
+  max-width: 768px;
+  margin: 16px auto;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 800px) {
+  .code-fold-wrapper {
+    max-width: 100%;
+    margin: 16px 0;
+  }
+}
+.code-fold-wrapper .code-fold-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom-color: transparent;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.code-fold-wrapper .code-fold-lang {
+  pointer-events: none;
+}
+.code-fold-wrapper .fold-toggle-code,
+.code-fold-wrapper .copy-toggle-code {
+  width: 22px;
+  height: 22px;
+}
+.code-fold-wrapper .fold-toggle-code svg {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.code-fold-wrapper .code-fold-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.code-fold-wrapper .code-fold-body .code-fold-body-inner {
+  overflow: hidden;
+  min-height: 0;
+  transition: opacity 0.25s ease;
+  opacity: 1;
+}
+.code-fold-wrapper .code-fold-body .code-fold-body-inner > pre,
+.code-fold-wrapper .code-fold-body .code-fold-body-inner > figure.highlight {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.code-fold-wrapper.folded .code-fold-header {
+  border-radius: var(--radius-small);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.code-fold-wrapper.folded .fold-toggle-code svg {
+  transform: rotate(-180deg);
+}
+.code-fold-wrapper.folded .code-fold-body {
+  grid-template-rows: 0fr;
+}
+.code-fold-wrapper.folded .code-fold-body .code-fold-body-inner {
+  opacity: 0;
+}
+
+body[data-color-scheme=dark] .code-fold-header {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: transparent;
+}
+body[data-color-scheme=dark] .code-fold-wrapper.folded .code-fold-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+body[data-color-scheme=dark] .fold-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body[data-color-scheme=light] .code-fold-header,
+body[data-color-scheme=auto] .code-fold-header {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+  border-bottom-color: transparent;
+  color: rgba(0, 0, 0, 0.45);
+}
+body[data-color-scheme=light] .code-fold-wrapper.folded .code-fold-header,
+body[data-color-scheme=auto] .code-fold-wrapper.folded .code-fold-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+body[data-color-scheme=light] .fold-toggle,
+body[data-color-scheme=auto] .fold-toggle {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.55);
+}
+body[data-color-scheme=light] .fold-toggle:hover,
+body[data-color-scheme=auto] .fold-toggle:hover {
+  background: rgba(var(--color-accent-rgb), 0.12);
+  border-color: rgba(var(--color-accent-rgb), 0.3);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+  body[data-color-scheme=auto] .code-fold-header {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+    border-bottom-color: transparent;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  body[data-color-scheme=auto] .code-fold-wrapper.folded .code-fold-header {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+  body[data-color-scheme=auto] .fold-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.65);
+  }
+  body[data-color-scheme=auto] .fold-toggle:hover {
+    background: rgba(var(--color-accent-rgb), 0.18);
+    border-color: rgba(var(--color-accent-rgb), 0.35);
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+.code-fold-body-inner > pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+  max-width: 752px;
+  padding: 20px 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.code-fold-body-inner > pre code {
+  background-color: transparent;
+}
+
+.fold-body-inner > pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-medium);
+  max-width: 752px;
+  padding: 20px 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fold-body-inner > pre code {
+  background-color: transparent;
+}
