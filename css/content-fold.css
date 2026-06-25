@@ -36,11 +36,14 @@
 h1:hover .fold-toggle-heading, h1:focus-within .fold-toggle-heading, h2:hover .fold-toggle-heading, h2:focus-within .fold-toggle-heading, h3:hover .fold-toggle-heading, h3:focus-within .fold-toggle-heading, h4:hover .fold-toggle-heading, h4:focus-within .fold-toggle-heading, h5:hover .fold-toggle-heading, h5:focus-within .fold-toggle-heading, h6:hover .fold-toggle-heading, h6:focus-within .fold-toggle-heading {
   opacity: 1;
 }
+h1 .fold-toggle-heading svg, h2 .fold-toggle-heading svg, h3 .fold-toggle-heading svg, h4 .fold-toggle-heading svg, h5 .fold-toggle-heading svg, h6 .fold-toggle-heading svg {
+  transform: rotate(90deg);
+}
 h1[aria-expanded=false] .fold-toggle-heading, h2[aria-expanded=false] .fold-toggle-heading, h3[aria-expanded=false] .fold-toggle-heading, h4[aria-expanded=false] .fold-toggle-heading, h5[aria-expanded=false] .fold-toggle-heading, h6[aria-expanded=false] .fold-toggle-heading {
   opacity: 1;
 }
 h1[aria-expanded=false] .fold-toggle-heading svg, h2[aria-expanded=false] .fold-toggle-heading svg, h3[aria-expanded=false] .fold-toggle-heading svg, h4[aria-expanded=false] .fold-toggle-heading svg, h5[aria-expanded=false] .fold-toggle-heading svg, h6[aria-expanded=false] .fold-toggle-heading svg {
-  transform: rotate(90deg);
+  transform: rotate(0deg);
 }
 
 .fold-body {
