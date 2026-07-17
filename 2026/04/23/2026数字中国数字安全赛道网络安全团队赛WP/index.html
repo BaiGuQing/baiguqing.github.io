@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>2026数字中国数字安全赛道网络安全团队赛WP - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="2026数字中国数字安全赛道网络安全团体赛决赛WPReverse Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。  FlagVault 这题题目说的很明确了，加密在Native层  定位到关键函数  发现整体逻辑较为简单，且有用函数为getFlag  用Bandizip解压apk（这里主要是我没到现场，队员说问ai用apkt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2026数字中国数字安全赛道网络安全团队赛WP">
+<meta property="og:url" content="http://example.com/2026/04/23/2026%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E8%B5%9BWP/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="2026数字中国数字安全赛道网络安全团体赛决赛WPReverse Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。  FlagVault 这题题目说的很明确了，加密在Native层  定位到关键函数  发现整体逻辑较为简单，且有用函数为getFlag  用Bandizip解压apk（这里主要是我没到现场，队员说问ai用apkt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/Images/202606220922.png">
+<meta property="og:image" content="http://example.com/Images/202606220922-1.png">
+<meta property="og:image" content="http://example.com/Images/202606220922-2.png">
+<meta property="og:image" content="http://example.com/Images/202606220922-4.png">
+<meta property="og:image" content="http://example.com/Images/202606220923.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-1.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-2.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-3.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-4.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-5.png">
+<meta property="og:image" content="http://example.com/Images/202606221451.png">
+<meta property="og:image" content="http://example.com/Images/202606221507.png">
+<meta property="og:image" content="http://example.com/Images/202606221513.png">
+<meta property="og:image" content="http://example.com/Images/202606221518-1.png">
+<meta property="og:image" content="http://example.com/Images/202606221519.png">
+<meta property="og:image" content="http://example.com/Images/202606221520.png">
+<meta property="og:image" content="http://example.com/Images/202606221523.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-6.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-7.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-8.png">
+<meta property="og:image" content="http://example.com/Images/202606220923-9.png">
+<meta property="og:image" content="http://example.com/Images/202606220924.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-1.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-2.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-3.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-4.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-5.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-6.png">
+<meta property="og:image" content="http://example.com/Images/202606220924-7.png">
+<meta property="og:image" content="http://example.com/Images/202606220925.png">
+<meta property="og:image" content="http://example.com/Images/202606230803.png">
+<meta property="og:image" content="http://example.com/Images/202606230810.png">
+<meta property="og:image" content="http://example.com/Images/202606230813.png">
+<meta property="og:image" content="http://example.com/Images/202606230814.png">
+<meta property="og:image" content="http://example.com/Images/202606230815.png">
+<meta property="og:image" content="http://example.com/Images/202606230911.png">
+<meta property="article:published_time" content="2026-04-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-17T11:47:20.569Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="Reverse_Writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Images/202606220922.png">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
+    
+<script src="/js/body-top.js"></script>
+
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+<article class="post">
+  
+  <div class="meta-card">
+    <h1 class="title" data-pagefind-meta="title">2026数字中国数字安全赛道网络安全团队赛WP</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-04-23T00:00:00+08:00">2026-4-23</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/CTF-WP/">CTF_WP</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup</a>
+        
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="2026数字中国数字安全赛道网络安全团体赛决赛WP"><a href="#2026数字中国数字安全赛道网络安全团体赛决赛WP" class="headerlink" title="2026数字中国数字安全赛道网络安全团体赛决赛WP"></a>2026数字中国数字安全赛道网络安全团体赛决赛WP</h1><h1 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h1><ul>
+<li>Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。</li>
+</ul>
+<h2 id="FlagVault"><a href="#FlagVault" class="headerlink" title="FlagVault"></a>FlagVault</h2><ul>
+<li><p>这题题目说的很明确了，加密在Native层<br><img src="/Images/202606220922.png" alt="截图 202606220922" loading="lazy" decoding="async" width="1737" height="929"></p>
+</li>
+<li><p>定位到关键函数</p>
+</li>
+<li><p>发现整体逻辑较为简单，且有用函数为getFlag</p>
+</li>
+<li><p>用Bandizip解压apk（这里主要是我没到现场，队员说问ai用apktool解压，但她没有，所以有点小可惜）<br><img src="/Images/202606220922-1.png" alt="202606220922 1" loading="lazy" decoding="async" width="1920" height="1032"></p>
+</li>
+<li><p>定位到getflag</p>
+</li>
+<li><p>发现加密很简单<br><img src="/Images/202606220922-2.png" alt="202606220922 2" loading="lazy" decoding="async" width="1870" height="989"></p>
+</li>
+</ul>
+<h2 id="SystemMonitor"><a href="#SystemMonitor" class="headerlink" title="SystemMonitor"></a>SystemMonitor</h2><ul>
+<li><p>这道题题目明确说明是个恶意软件</p>
+</li>
+<li><p>且丢到IDA发现没有明显flag相关函数</p>
+</li>
+<li><p>可以合理怀疑是把敏感信息换为了flag，然后传到恶意网站或服务器<br><img src="/Images/202606220922-4.png" alt="202606220922 4" loading="lazy" decoding="async" width="1920" height="1032"></p>
+</li>
+<li><p>大概看了下主要函数</p>
+</li>
+<li><p>这两个很可疑</p>
+</li>
+<li><p>审阅后可以发现 sub_1400015FE()为关键函数</p>
+</li>
+<li><p>这个函数行数较多，可以丢给本地ai进行分析，也完全能跑出来流程<br><img src="/Images/202606220923.png" alt="截图 202606220923" loading="lazy" decoding="async" width="1920" height="1032"></p>
+</li>
+<li><p>然后就可以大胆猜测是把flag传出去了，打个断点动态调试即可<br><img src="/Images/202606220923-1.png" alt="202606220923 1" loading="lazy" decoding="async" width="1920" height="1032"></p>
+</li>
+<li><p>以上两道题就是线下赛解出的Re题了，我也是在模拟离线环境下做出来的，非常可惜，如果拿到这两个题的解最少也是个<del>铜奖</del>银奖了（悲）</p>
+</li>
+</ul>
+<h2 id="ChatA"><a href="#ChatA" class="headerlink" title="ChatA"></a>ChatA</h2><ul>
+<li><p>这道题题目说了要分析通讯</p>
+</li>
+<li><p>把apk丢到jadx中发现有好多base64编码</p>
+</li>
+<li><p>主要是StringFog中的解密</p>
+</li>
+<li><p>看了一下就是两个base64异或</p>
+</li>
+<li><p>然后就没什么头绪了<br><img src="/Images/202606220923-2.png" alt="202606220923 2" loading="lazy" decoding="async" width="1737" height="929"></p>
+</li>
+<li><p>只找到了个flag的关键字</p>
+</li>
+<li><p>大概率也是要去翻native层<br><img src="/Images/202606220923-3.png" alt="202606220923 3" loading="lazy" decoding="async" width="851" height="744"></p>
+</li>
+<li><p>丢给GPT进行分析</p>
+</li>
+<li><p>加密方式为AES-256-ECB<br><img src="/Images/202606220923-4.png" alt="202606220923 4" loading="lazy" decoding="async" width="1870" height="989"></p>
+</li>
+<li><p>加个flag头就行了应该</p>
+</li>
+<li><p>不知道正常解是不是这么解，对于ai是怎么分析出来这块我还是很疑惑怎么分析出来的，奈何现在GPT也被限制了，希望有师傅可以解惑</p>
+</li>
+<li><p>还是说我是做题经验太少，这是经验问题<br><img src="/Images/202606220923-5.png" alt="202606220923 5" loading="lazy" decoding="async" width="949" height="412"></p>
+</li>
+</ul>
+<hr>
+<h3 id="后记，2026-06-22"><a href="#后记，2026-06-22" class="headerlink" title="后记，2026.06.22"></a>后记，2026.06.22</h3><ul>
+<li>继上文分析<br><img src="/Images/202606221451.png" alt="截图 202606221451" loading="lazy" decoding="async" width="2560" height="1392"></li>
+<li>这里可以看到初始段有两个解密函数</li>
+<li>肯定是后面要用到的</li>
+<li>现在看JNI_OnLoad函数</li>
+<li>发现是ollvm的混淆，完全看不懂在干什么</li>
+<li>在ai辅助下找到sub_1AA4C80函数（我知道线下赛用不了ai，但我是在复现并学习，我为了绕开更多弯路所必须要做的，没人手把手教我，只有ai，参考wp也找不到）<br><img src="/Images/202606221507.png" alt="截图 202606221507" loading="lazy" decoding="async" width="2126" height="1211"></li>
+<li>可以看到这里有很多有趣的函数<br><img src="/Images/202606221513.png" alt="截图 202606221513" loading="lazy" decoding="async" width="2126" height="1211"></li>
+<li>模仿初始化阶段来写解密脚本，解出部分字符串</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> byte_2D2D2C1[<span class="number">13</span>] = &#123;</span><br><span class="line">   	 <span class="number">0x64</span>, <span class="number">0x6F</span>, <span class="number">0x78</span>, <span class="number">0x6F</span>, <span class="number">0x21</span>, <span class="number">0x67</span>, <span class="number">0x61</span>, <span class="number">0x21</span>, <span class="number">0x48</span>, <span class="number">0x67</span>, <span class="number">0x62</span>, <span class="number">0x6B</span>, <span class="number">0x0E</span></span><br><span class="line">	&#125;;</span><br><span class="line">	  <span class="keyword">for</span> (<span class="type">int</span> i19 = <span class="number">0</span>; i19 != <span class="number">13</span>; ++i19 )</span><br><span class="line">	    byte_2D2D2C1[i19] = byte_2D2D2C1[i19] &amp; <span class="number">0xF1</span> | ~byte_2D2D2C1[i19] &amp; <span class="number">0xE</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i != <span class="number">13</span>;i++)&#123;</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,byte_2D2D2C1[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这是模板，小改一下就可以解字符串了</li>
+<li>可以看出这个assets&#x2F;index.js很重要，但是打开却发现根本看不懂</li>
+<li>就可以知道这被加密了</li>
+<li>继续分析发现sub_1AA3C30函数很关键</li>
+<li>虽然也是很乱，看不出来是什么东西，但可以发现sub_1AAFEE0函数内有aes字样<br><img src="/Images/202606221518-1.png" alt="202606221518 1" loading="lazy" decoding="async" width="2126" height="1211"></li>
+<li>就可以合理推断出这个js脚本是被aes-256-ecb加密的</li>
+<li>密钥的话大概率是这四段<br><img src="/Images/202606221519.png" alt="截图 202606221519" loading="lazy" decoding="async" width="2126" height="1211"></li>
+<li>并且可以发现初始化阶段它们的解密是独立的<br><img src="/Images/202606221520.png" alt="截图 202606221520" loading="lazy" decoding="async" width="2126" height="1211"></li>
+<li>就可以顺利解出密钥<br> <img src="/Images/202606221523.png" alt="截图 202606221523" loading="lazy" decoding="async" width="1509" height="599"></li>
+</ul>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> qword_2D2D400[<span class="number">32</span>] = &#123;</span><br><span class="line">	    <span class="number">0x1E</span>, <span class="number">0x52</span>, <span class="number">0x34</span>, <span class="number">0x1E</span>, <span class="number">0x41</span>, <span class="number">0x4D</span>, <span class="number">0x41</span>, <span class="number">0x14</span>, <span class="number">0x34</span>, <span class="number">0x16</span>, <span class="number">0x0E</span>, <span class="number">0x27</span>, <span class="number">0x34</span>, <span class="number">0x0A</span>, <span class="number">0x0F</span>, <span class="number">0x3E</span>, </span><br><span class="line">	    <span class="number">0x42</span>, <span class="number">0x5E</span>, <span class="number">0x0C</span>, <span class="number">0x10</span>, <span class="number">0x34</span>, <span class="number">0x4D</span>, <span class="number">0x21</span>, <span class="number">0x2F</span>, <span class="number">0x30</span>, <span class="number">0x34</span>, <span class="number">0x2E</span>, <span class="number">0x26</span>, <span class="number">0x57</span>, <span class="number">0x12</span>, <span class="number">0x3E</span>, <span class="number">0x28</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != <span class="number">32</span>; )&#123;</span><br><span class="line">	    qword_2D2D400[i] = (qword_2D2D400[i] &amp; <span class="number">0xC3</span> | ~qword_2D2D400[i] &amp; <span class="number">0x3C</span>) ^ <span class="number">0x5B</span>;</span><br><span class="line">	    ++i;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i != <span class="number">32</span>;i++)&#123;</span><br><span class="line">    	<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,qword_2D2D400[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后解密环节就和之前一样了</li>
+</ul>
+<h2 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h2><ul>
+<li><p>这是一个鸿蒙系统下的程序</p>
+</li>
+<li><p>需要用到abc-decompiler工具<br><img src="/Images/202606220923-6.png" alt="202606220923 6" loading="lazy" decoding="async" width="1696" height="960"></p>
+</li>
+<li><p>找到了Flag的关键函数</p>
+</li>
+<li><p>第一步就是获取用户的token<br><img src="/Images/202606220923-7.png" alt="202606220923 7" loading="lazy" decoding="async" width="1696" height="960"></p>
+</li>
+<li><p>在com.hmos.exam5.pkg&#x2F;entry&#x2F;ets&#x2F;model&#x2F;DatabaseUtil中也给了admin账户和密码</p>
+</li>
+<li><p>也给了盐，生成token使用了sha256<br><img src="/Images/202606220923-8.png" alt="202606220923 8" loading="lazy" decoding="async" width="1870" height="989"></p>
+</li>
+<li><p>回到解密，第一步，再次使用sha256<br><img src="/Images/202606220923-9.png" alt="202606220923 9" loading="lazy" decoding="async" width="1870" height="989"></p>
+</li>
+<li><p>取前32个hex，51a8f50d751a48550f90b3c49439afbe，作为key</p>
+</li>
+<li><p>下一步是解sm4</p>
+</li>
+<li><p>返回到com.hmos.exam5.pkg&#x2F;entry&#x2F;ets&#x2F;model&#x2F;FlagUtil</p>
+</li>
+<li><p>看了一下调取的函数#*#readLocalFlagCipher就是5a52339fbdb9b11b330ed4ffd6f06b453e0d3fb96a624a71b16124065c2d9e3362fa1d5941b0995e559002b759cf91a9<br><img src="/Images/202606220924.png" alt="截图 202606220924" loading="lazy" decoding="async" width="1696" height="960"></p>
+</li>
+<li><p>sm4的相关信息也给了<br><img src="/Images/202606220924-1.png" alt="202606220924 1" loading="lazy" decoding="async" width="1870" height="989"></p>
+</li>
+<li><p>就可以得出flag了！！！</p>
+</li>
+<li><p>其实这里面还可以进行sql注入<br><img src="/Images/202606220924-2.png" alt="202606220924 2" loading="lazy" decoding="async" width="358" height="773"></p>
+</li>
+<li><p>但没什么鸟用</p>
+</li>
+<li><p>也可以在解压的文件夹中看到<br><img src="/Images/202606220924-3.png" alt="202606220924 3" loading="lazy" decoding="async" width="839" height="489"></p>
+</li>
+</ul>
+<h2 id="Dedebug"><a href="#Dedebug" class="headerlink" title="Dedebug"></a>Dedebug</h2><ul>
+<li><p>这道题做的我好痛苦</p>
+</li>
+<li><p>怎么弄也绕不过这个检测</p>
+</li>
+<li><p>用了apktool把apk改成了这样子<br><img src="/Images/202606220924-4.png" alt="202606220924 4" loading="lazy" decoding="async" width="1696" height="960"></p>
+</li>
+<li><p>还是绕不过去</p>
+</li>
+<li><p>实在没招，问了ai，说初始化段也有反调试<br><img src="/Images/202606220924-5.png" alt="202606220924 5" loading="lazy" decoding="async" width="881" height="553"></p>
+</li>
+<li><p>不听GPT，改来改去，改不动了</p>
+</li>
+<li><p>还是看看GPT给的静态分析吧</p>
+</li>
+<li><p>GPT应该是分析的x86_64下的so库<br><img src="/Images/202606220924-6.png" alt="202606220924 6" loading="lazy" decoding="async" width="856" height="783"></p>
+</li>
+</ul>
+<p><img src="/Images/202606220924-7.png" alt="202606220924 7" loading="lazy" decoding="async" width="911" height="838"></p>
+<p><img src="/Images/202606220925.png" alt="截图 202606220925" loading="lazy" decoding="async" width="947" height="851"></p>
+<ul>
+<li>这是GPT给我的一把梭脚本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> tempfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">so = Path(<span class="string">&quot;libdebugme.so&quot;</span>).read_bytes()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个 ELF 中 .rodata 的 VMA 和文件偏移一致，直接按虚拟地址取即可</span></span><br><span class="line">base = <span class="number">0x4840</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">u8</span>(<span class="params">addr</span>):</span><br><span class="line">    <span class="keyword">return</span> so[addr]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 还原 AES key</span></span><br><span class="line">key = <span class="built_in">bytearray</span>()</span><br><span class="line"><span class="keyword">for</span> rax <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">0x21</span>, <span class="number">3</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        i = rax + j</span><br><span class="line">        key.append(u8(base + <span class="number">0x2F6</span> + (i &amp; <span class="number">0xF</span>)) ^ u8(base + <span class="number">0x306</span> + i))</span><br><span class="line"></span><br><span class="line">key = <span class="built_in">bytes</span>(key).rstrip(<span class="string">b&quot;\x00&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] AES key:&quot;</span>, key.decode())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] AES key hex:&quot;</span>, key.<span class="built_in">hex</span>())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 还原自定义 Base64 alphabet</span></span><br><span class="line">chunk1 = <span class="built_in">bytes</span>(</span><br><span class="line">    u8(<span class="number">0x485E</span> + i) ^ u8(<span class="number">0x485E</span> + i + <span class="number">0x1F</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0x15</span>)</span><br><span class="line">).rstrip(<span class="string">b&quot;\x00&quot;</span>)</span><br><span class="line"></span><br><span class="line">chunk2 = <span class="built_in">bytes</span>(</span><br><span class="line">    u8(<span class="number">0x48AD</span> + i) ^ u8(<span class="number">0x48AD</span> + i + <span class="number">0x1E</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0x15</span>)</span><br><span class="line">).rstrip(<span class="string">b&quot;\x00&quot;</span>)</span><br><span class="line"></span><br><span class="line">chunk3 = <span class="built_in">bytearray</span>(<span class="number">25</span>)</span><br><span class="line">rax = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    esi = rax &amp; <span class="number">0xE</span></span><br><span class="line">    chunk3[rax] = u8(base + <span class="number">0x2B6</span> + esi) ^ u8(base + <span class="number">0x2C6</span> + rax)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> rax == <span class="number">0x18</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    esi = (rax + <span class="number">1</span>) &amp; <span class="number">0xF</span></span><br><span class="line">    chunk3[rax + <span class="number">1</span>] = u8(base + <span class="number">0x2B6</span> + esi) ^ u8(base + <span class="number">0x2C7</span> + rax)</span><br><span class="line">    rax += <span class="number">2</span></span><br><span class="line"></span><br><span class="line">chunk3 = <span class="built_in">bytes</span>(chunk3).rstrip(<span class="string">b&quot;\x00&quot;</span>)</span><br><span class="line"></span><br><span class="line">custom_b64 = chunk1 + chunk2 + chunk3</span><br><span class="line">std_b64 = <span class="string">b&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] custom b64:&quot;</span>, custom_b64.decode())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 还原目标 custom-base64 字符串</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">high64_mul</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="keyword">return</span> (a * b) &gt;&gt; <span class="number">64</span></span><br><span class="line"></span><br><span class="line">target = <span class="built_in">bytearray</span>(<span class="number">45</span>)</span><br><span class="line">r9 = <span class="number">0x842108421084211</span></span><br><span class="line">rsi = <span class="number">0</span></span><br><span class="line">rdi = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    rdx = high64_mul(rsi, r9)</span><br><span class="line">    tmp = rsi - rdx</span><br><span class="line">    tmp &gt;&gt;= <span class="number">1</span></span><br><span class="line">    tmp += rdx</span><br><span class="line">    tmp &gt;&gt;= <span class="number">4</span></span><br><span class="line">    tmp -= tmp &lt;&lt; <span class="number">5</span></span><br><span class="line">    target[rsi] = u8(base + tmp + rsi + <span class="number">0x33C</span>) ^ u8(base + rsi + <span class="number">0x35B</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> rsi == <span class="number">0x2C</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    rcx = high64_mul(rdi, r9)</span><br><span class="line">    tmp = rdi - rcx</span><br><span class="line">    tmp &gt;&gt;= <span class="number">1</span></span><br><span class="line">    tmp += rcx</span><br><span class="line">    tmp &gt;&gt;= <span class="number">4</span></span><br><span class="line">    tmp -= tmp &lt;&lt; <span class="number">5</span></span><br><span class="line">    target[rsi + <span class="number">1</span>] = u8(base + tmp + rsi + <span class="number">0x33D</span>) ^ u8(base + rsi + <span class="number">0x35C</span>)</span><br><span class="line"></span><br><span class="line">    rsi += <span class="number">2</span></span><br><span class="line">    rdi += <span class="number">2</span></span><br><span class="line"></span><br><span class="line">target = <span class="built_in">bytes</span>(target).rstrip(<span class="string">b&quot;\x00&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] target custom b64:&quot;</span>, target.decode())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. custom base64 -&gt; standard base64 -&gt; ciphertext</span></span><br><span class="line">trans = <span class="built_in">bytes</span>.maketrans(custom_b64, std_b64)</span><br><span class="line">standard_target = target.translate(trans)</span><br><span class="line"></span><br><span class="line">ct = base64.b64decode(standard_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] ciphertext:&quot;</span>, ct.<span class="built_in">hex</span>())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. AES-256-ECB decrypt</span></span><br><span class="line"><span class="keyword">with</span> tempfile.NamedTemporaryFile(delete=<span class="literal">False</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(ct)</span><br><span class="line">    ct_path = f.name</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    pt = subprocess.check_output([</span><br><span class="line">        <span class="string">&quot;openssl&quot;</span>, <span class="string">&quot;enc&quot;</span>, <span class="string">&quot;-d&quot;</span>, <span class="string">&quot;-aes-256-ecb&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-K&quot;</span>, key.<span class="built_in">hex</span>(),</span><br><span class="line">        <span class="string">&quot;-nopad&quot;</span>,</span><br><span class="line">        <span class="string">&quot;-in&quot;</span>, ct_path,</span><br><span class="line">    ])</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    os.unlink(ct_path)</span><br><span class="line"></span><br><span class="line">body = pt.decode()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] flag body:&quot;</span>, body)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[+] flag: flag&#123;%s&#125;&quot;</span> % body)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>当然，根据这道题的题意肯定是让选手绕过调试解出flag的</p>
+</li>
+<li><p>用GPT分析了下需要patch的点，但让那个用apktool修改也是需要做得(以x86_64为例）</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line"># ============================================================</span><br><span class="line"># target: libdebugme(12).so</span><br><span class="line"># arch  : x86_64</span><br><span class="line"># rule  : 本 so 的 .text 段 VA == file offset，所以这些地址可直接 dd patch</span><br><span class="line"># goal  : 保留初始化逻辑，只干掉反调试命中后的 kill / syscall kill / 非法地址崩溃</span><br><span class="line"># ============================================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [1] 初始化阶段 Root / Magisk 检测</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x4690: su 路径检测函数</span><br><span class="line"># 原因：</span><br><span class="line">#   .init_array 入口 sub_3FD0 会先调用它。</span><br><span class="line">#   它会检查 /data/local/su、/system/xbin/su、/system/bin/su 等路径。</span><br><span class="line">#   如果返回 1，后续会进入异常处置逻辑。</span><br><span class="line"># patch:</span><br><span class="line">#   xor eax, eax</span><br><span class="line">#   ret</span><br><span class="line"># 效果：</span><br><span class="line">#   永远返回 0，表示没有检测到 su / root。</span><br><span class="line">0x4690 -&gt; 31 C0 C3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 0x4560: Magisk / mounts 检测函数</span><br><span class="line"># 原因：</span><br><span class="line">#   .init_array 入口 sub_3FD0 也会调用它。</span><br><span class="line">#   它会读 /proc/self/mounts，搜索 magisk、core/mirror、core/img 等特征。</span><br><span class="line">#   如果返回 1，后续进入异常处置逻辑。</span><br><span class="line"># patch:</span><br><span class="line">#   xor eax, eax</span><br><span class="line">#   ret</span><br><span class="line"># 效果：</span><br><span class="line">#   永远返回 0，表示没有检测到 Magisk / 可疑挂载。</span><br><span class="line">0x4560 -&gt; 31 C0 C3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [2] 反调试失败后的通用崩溃 helper</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x1B40: 通用非法地址调用 helper</span><br><span class="line"># 原因：</span><br><span class="line">#   .init_array 中 Root/Magisk 检测命中后，会通过这个函数进行异常处置。</span><br><span class="line">#   原逻辑大概是：</span><br><span class="line">#       lea rax, [bad_base + offset]</span><br><span class="line">#       call rax</span><br><span class="line">#       mov eax, [bad_base + offset]</span><br><span class="line">#   这是故意调用/读取非法地址，让进程 SIGSEGV。</span><br><span class="line"># patch:</span><br><span class="line">#   xor eax, eax</span><br><span class="line">#   ret</span><br><span class="line"># 效果：</span><br><span class="line">#   即使有分支走到这个 helper，也不会崩溃。</span><br><span class="line">0x1B40 -&gt; 31 C0 C3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [3] .init_array 中 pthread_create 失败后的 libc kill</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x40D7: 第一次 pthread_create 失败后的 kill(getpid(), 9)</span><br><span class="line"># 原因：</span><br><span class="line">#   0x40B2 创建检测线程 sub_2170。</span><br><span class="line">#   如果 pthread_create 返回非 0，就执行：</span><br><span class="line">#       getpid()</span><br><span class="line">#       kill(pid, 9)</span><br><span class="line"># patch:</span><br><span class="line">#   nop</span><br><span class="line">#   nop</span><br><span class="line"># 注意：</span><br><span class="line">#   原指令是 call rbx，长度 2 字节。</span><br><span class="line">#   只能用 90 90，不要改成 ret。</span><br><span class="line">0x40D7 -&gt; 90 90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 0x4157: 第二次 pthread_create 失败后的 kill(getpid(), 9)</span><br><span class="line"># 原因：</span><br><span class="line">#   0x4132 创建检测线程 sub_1B60。</span><br><span class="line">#   创建失败后会 kill 自己。</span><br><span class="line"># patch:</span><br><span class="line">#   nop</span><br><span class="line">#   nop</span><br><span class="line">0x4157 -&gt; 90 90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 0x419F: 第三次 pthread_create 失败后的 kill(getpid(), 9)</span><br><span class="line"># 原因：</span><br><span class="line">#   0x417A 创建检测线程 sub_EE0。</span><br><span class="line">#   创建失败后会 kill 自己。</span><br><span class="line"># patch:</span><br><span class="line">#   nop</span><br><span class="line">#   nop</span><br><span class="line">0x419F -&gt; 90 90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [4] 直接 syscall kill + 非法 call 崩溃</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x1AC0: 线程检测命中后的 syscall kill 分支入口</span><br><span class="line"># 原因：</span><br><span class="line">#   这里不是 libc kill，而是直接 syscall：</span><br><span class="line">#       syscall nanosleep</span><br><span class="line">#       syscall getpid</span><br><span class="line">#       syscall kill(pid, 9)</span><br><span class="line">#       call rax              ; 后面还会非法 call 崩溃</span><br><span class="line">#</span><br><span class="line">#   所以只 hook / patch libc kill 没用。</span><br><span class="line">#   只 NOP syscall 也不够，因为后面还有 call rax 非法崩溃。</span><br><span class="line">#</span><br><span class="line"># patch:</span><br><span class="line">#   jmp 0xF80</span><br><span class="line"># 机器码：</span><br><span class="line">#   E9 BB F4 FF FF</span><br><span class="line"># 效果：</span><br><span class="line">#   直接跳回正常循环，绕过 syscall kill 和后续非法 call。</span><br><span class="line">0x1AC0 -&gt; E9 BB F4 FF FF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [5] pagemap / mem 检测后的非法地址崩溃点</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x20F0: 检测异常后 call rax + 非法读</span><br><span class="line"># 原因：</span><br><span class="line">#   原逻辑：</span><br><span class="line">#       lea rax, [rbx + 0x9863]</span><br><span class="line">#       call rax</span><br><span class="line">#       mov eax, [rbx + 0x9863]</span><br><span class="line">#   这是故意崩溃，不是正常业务逻辑。</span><br><span class="line"># patch:</span><br><span class="line">#   从 0x20F0 开始 NOP 8 字节</span><br><span class="line"># 效果：</span><br><span class="line">#   跳过 call rax 和后面的非法读。</span><br><span class="line">0x20F0 -&gt; 90 90 90 90 90 90 90 90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 0x210D: 另一处检测异常后的 call rax + 非法读</span><br><span class="line"># 原因：</span><br><span class="line">#   原逻辑：</span><br><span class="line">#       lea rax, [rbx + 0x1234]</span><br><span class="line">#       call rax</span><br><span class="line">#       mov eax, [rbx + 0x1234]</span><br><span class="line"># patch:</span><br><span class="line">#   从 0x210D 开始 NOP 8 字节</span><br><span class="line">0x210D -&gt; 90 90 90 90 90 90 90 90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [6] Frida/Gum 线程名检测后的非法地址崩溃点</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x26DE: gum-js-loop / gmain 检测命中后的非法 call</span><br><span class="line"># 原因：</span><br><span class="line">#   附近会比较线程名，命中后走：</span><br><span class="line">#       mov ebx, 0xDEEE77C8</span><br><span class="line">#       call rbx</span><br><span class="line">#       mov eax, [rbx]</span><br><span class="line">#   0xDEEE77C8 是明显非法地址。</span><br><span class="line">#   如果你挂 Frida，容易触发这里。</span><br><span class="line"># patch:</span><br><span class="line">#   从 0x26DE 开始 NOP 4 字节</span><br><span class="line"># 效果：</span><br><span class="line">#   跳过 call rbx 和后面的非法读。</span><br><span class="line">0x26DE -&gt; 90 90 90 90</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"># [7] linjector / fd 检测后的非法地址崩溃点</span><br><span class="line"># ------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># 0x29D5: /proc/self/fd 检测命中后的非法 call</span><br><span class="line"># 原因：</span><br><span class="line">#   附近会遍历 /proc/self/fd/%s，检测 linjector 等注入痕迹。</span><br><span class="line">#   命中后走：</span><br><span class="line">#       mov ebx, 0xDEEE77C8</span><br><span class="line">#       lea rax, [rbx + 0x1EA]</span><br><span class="line">#       call rax</span><br><span class="line">#       mov eax, [rbx + 0x1EA]</span><br><span class="line"># patch:</span><br><span class="line">#   从 0x29D5 开始 NOP 8 字节</span><br><span class="line"># 效果：</span><br><span class="line">#   跳过非法 call 和非法读。</span><br><span class="line">0x29D5 -&gt; 90 90 90 90 90 90 90 90</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Frida脚本</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">LIB_NAME</span> = <span class="string">&quot;libdebugme.so&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// x86_64 offsets</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">OFF_CORE_CHECK</span> = <span class="number">0x3DA0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">OFF_AES_KEY</span>    = <span class="number">0x7200</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">OFF_B64_TABLE</span>  = <span class="number">0x70F0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">OFF_TARGET</span>     = <span class="number">0x7222</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> solved = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">let</span> nativeHooked = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">log</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">findModuleCompat</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="title class_">Process</span>.<span class="property">findModuleByName</span> === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> m = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(name);</span><br><span class="line">            <span class="keyword">if</span> (m !== <span class="literal">null</span>) <span class="keyword">return</span> m;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> mods = <span class="title class_">Process</span>.<span class="title function_">enumerateModules</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; mods.<span class="property">length</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">const</span> m = mods[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (m.<span class="property">name</span> === name) &#123;</span><br><span class="line">                <span class="keyword">return</span> m;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (m.<span class="property">path</span> &amp;&amp; m.<span class="property">path</span>.<span class="title function_">indexOf</span>(name) !== -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[-] enumerateModules failed: &quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">findExportCompat</span>(<span class="params">moduleName, symbolName</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="title class_">Module</span>.<span class="property">findExportByName</span> === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> p = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(moduleName, symbolName);</span><br><span class="line">            <span class="keyword">if</span> (p !== <span class="literal">null</span>) <span class="keyword">return</span> p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="title class_">Module</span>.<span class="property">getExportByName</span> === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Module</span>.<span class="title function_">getExportByName</span>(moduleName, symbolName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> m = <span class="title function_">findModuleCompat</span>(moduleName);</span><br><span class="line">        <span class="keyword">if</span> (m !== <span class="literal">null</span> &amp;&amp; <span class="keyword">typeof</span> m.<span class="property">enumerateExports</span> === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="built_in">exports</span> = m.<span class="title function_">enumerateExports</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">exports</span>.<span class="property">length</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">exports</span>[i].<span class="property">name</span> === symbolName) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">exports</span>[i].<span class="property">address</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="title class_">Module</span>.<span class="property">enumerateExports</span> === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="built_in">exports</span> = <span class="title class_">Module</span>.<span class="title function_">enumerateExports</span>(moduleName);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="built_in">exports</span>.<span class="property">length</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">exports</span>[i].<span class="property">name</span> === symbolName) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="built_in">exports</span>[i].<span class="property">address</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">readCStringFixed</span>(<span class="params">ptr, maxLen</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ptr === <span class="literal">null</span> || ptr.<span class="title function_">isNull</span>()) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> ptr.<span class="title function_">readCString</span>();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> s = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; maxLen; i++) &#123;</span><br><span class="line">            <span class="keyword">const</span> c = ptr.<span class="title function_">add</span>(i).<span class="title function_">readU8</span>();</span><br><span class="line">            <span class="keyword">if</span> (c === <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">            s += <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">jsStringToJavaByteArray</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> arr = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> v = s.<span class="title function_">charCodeAt</span>(i) &amp; <span class="number">0xff</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (v &gt; <span class="number">127</span>) &#123;</span><br><span class="line">            v = v - <span class="number">256</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        arr.<span class="title function_">push</span>(v);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Java</span>.<span class="title function_">array</span>(<span class="string">&quot;byte&quot;</span>, arr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">javaByteArrayToString</span>(<span class="params">jbytes</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> out = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; jbytes.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        out += <span class="title class_">String</span>.<span class="title function_">fromCharCode</span>(jbytes[i] &amp; <span class="number">0xff</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">customB64ToStd</span>(<span class="params">customStr, alphabet</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> std = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> out = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; customStr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> ch = customStr.<span class="title function_">charAt</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (ch === <span class="string">&quot;=&quot;</span>) &#123;</span><br><span class="line">            out += <span class="string">&quot;=&quot;</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> idx = alphabet.<span class="title function_">indexOf</span>(ch);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (idx &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;unknown custom b64 char: &quot;</span> + ch);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        out += std.<span class="title function_">charAt</span>(idx);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">solveWithJavaAes</span>(<span class="params">keyStr, customAlphabet, targetCustom</span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="title class_">Base64</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;android.util.Base64&quot;</span>);</span><br><span class="line">            <span class="keyword">const</span> <span class="title class_">Cipher</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;javax.crypto.Cipher&quot;</span>);</span><br><span class="line">            <span class="keyword">const</span> <span class="title class_">SecretKeySpec</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;javax.crypto.spec.SecretKeySpec&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> targetStd = <span class="title function_">customB64ToStd</span>(targetCustom, customAlphabet);</span><br><span class="line"></span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[+] standard b64 = &quot;</span> + targetStd);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> ciphertext = <span class="title class_">Base64</span>.<span class="title function_">decode</span>(targetStd, <span class="number">2</span>); <span class="comment">// Base64.NO_WRAP = 2</span></span><br><span class="line">            <span class="keyword">const</span> keyBytes = <span class="title function_">jsStringToJavaByteArray</span>(keyStr);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> keySpec = <span class="title class_">SecretKeySpec</span>.$new(keyBytes, <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">            <span class="keyword">const</span> cipher = <span class="title class_">Cipher</span>.<span class="title function_">getInstance</span>(<span class="string">&quot;AES/ECB/NoPadding&quot;</span>);</span><br><span class="line"></span><br><span class="line">            cipher.<span class="title function_">init</span>(<span class="number">2</span>, keySpec); <span class="comment">// Cipher.DECRYPT_MODE = 2</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> plain = cipher.<span class="title function_">doFinal</span>(ciphertext);</span><br><span class="line">            <span class="keyword">const</span> body = <span class="title function_">javaByteArrayToString</span>(plain);</span><br><span class="line"></span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;========================================&quot;</span>);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[+] FLAG BODY = &quot;</span> + body);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[+] FLAG      = flag&#123;&quot;</span> + body + <span class="string">&quot;&#125;&quot;</span>);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;========================================&quot;</span>);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[-] Java AES decrypt failed: &quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">dumpAndSolve</span>(<span class="params">base</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (solved) <span class="keyword">return</span>;</span><br><span class="line">    solved = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> keyPtr = base.<span class="title function_">add</span>(<span class="variable constant_">OFF_AES_KEY</span>);</span><br><span class="line">        <span class="keyword">const</span> b64Ptr = base.<span class="title function_">add</span>(<span class="variable constant_">OFF_B64_TABLE</span>);</span><br><span class="line">        <span class="keyword">const</span> targetPtr = base.<span class="title function_">add</span>(<span class="variable constant_">OFF_TARGET</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> keyStr = <span class="title function_">readCStringFixed</span>(keyPtr, <span class="number">64</span>);</span><br><span class="line">        <span class="keyword">const</span> customAlphabet = <span class="title function_">readCStringFixed</span>(b64Ptr, <span class="number">80</span>);</span><br><span class="line">        <span class="keyword">const</span> targetCustom = <span class="title function_">readCStringFixed</span>(targetPtr, <span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[Dump] AES key          = &quot;</span> + keyStr);</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[Dump] custom alphabet  = &quot;</span> + customAlphabet);</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[Dump] target custom b64= &quot;</span> + targetCustom);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (keyStr === <span class="literal">null</span> || customAlphabet === <span class="literal">null</span> || targetCustom === <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[-] dump failed, offset may be wrong&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (keyStr.<span class="property">length</span> !== <span class="number">32</span>) &#123;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[!] AES key length looks wrong: &quot;</span> + keyStr.<span class="property">length</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (customAlphabet.<span class="property">length</span> !== <span class="number">64</span>) &#123;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[!] custom alphabet length looks wrong: &quot;</span> + customAlphabet.<span class="property">length</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="title function_">solveWithJavaAes</span>(keyStr, customAlphabet, targetCustom);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[-] dumpAndSolve failed: &quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hookJavaCheckFlag</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="title class_">MainActivity</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.debugme.MainActivity&quot;</span>);</span><br><span class="line">            <span class="keyword">const</span> checkFlag = <span class="title class_">MainActivity</span>.<span class="property">checkFlag</span>.<span class="title function_">overload</span>(<span class="string">&quot;java.lang.String&quot;</span>);</span><br><span class="line"></span><br><span class="line">            checkFlag.<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">input</span>) &#123;</span><br><span class="line">                <span class="title function_">log</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">                <span class="title function_">log</span>(<span class="string">&quot;[Java] checkFlag input = &quot;</span> + input);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">const</span> ret = checkFlag.<span class="title function_">call</span>(<span class="variable language_">this</span>, input);</span><br><span class="line"></span><br><span class="line">                <span class="title function_">log</span>(<span class="string">&quot;[Java] checkFlag ret   = &quot;</span> + ret);</span><br><span class="line">                <span class="keyword">return</span> ret;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[+] Java checkFlag hooked&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[-] Java checkFlag hook failed: &quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hookNativeCore</span>(<span class="params">base</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> core = base.<span class="title function_">add</span>(<span class="variable constant_">OFF_CORE_CHECK</span>);</span><br><span class="line"></span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[+] native core sub_3DA0 @ &quot;</span> + core);</span><br><span class="line"></span><br><span class="line">        <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(core, &#123;</span><br><span class="line">            <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">const</span> body = <span class="title function_">readCStringFixed</span>(args[<span class="number">0</span>], <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">                    <span class="title function_">log</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">                    <span class="title function_">log</span>(<span class="string">&quot;[Native] sub_3DA0 called&quot;</span>);</span><br><span class="line">                    <span class="title function_">log</span>(<span class="string">&quot;[Native] candidate body = &quot;</span> + body);</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (body !== <span class="literal">null</span>) &#123;</span><br><span class="line">                        <span class="title function_">log</span>(<span class="string">&quot;[Native] candidate flag = flag&#123;&quot;</span> + body + <span class="string">&quot;&#125;&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                    <span class="title function_">log</span>(<span class="string">&quot;[-] native core onEnter failed: &quot;</span> + e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"></span><br><span class="line">            <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="title function_">log</span>(<span class="string">&quot;[Native] sub_3DA0 ret = &quot;</span> + retval.<span class="title function_">toInt32</span>());</span><br><span class="line">                &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[-] hookNativeCore failed: &quot;</span> + e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hookJniExport</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> sym = <span class="string">&quot;Java_com_debugme_MainActivity_checkFlag&quot;</span>;</span><br><span class="line">    <span class="keyword">const</span> addr = <span class="title function_">findExportCompat</span>(<span class="variable constant_">LIB_NAME</span>, sym);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (addr === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="title function_">log</span>(<span class="string">&quot;[-] JNI export not found: &quot;</span> + sym);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">log</span>(<span class="string">&quot;[+] JNI export &quot;</span> + sym + <span class="string">&quot; @ &quot;</span> + addr);</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[JNI] Java_com_debugme_MainActivity_checkFlag called&quot;</span>);</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">&quot;[JNI] jstring ptr = &quot;</span> + args[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">             * 这里不强行调用 env.getStringUtfChars，</span></span><br><span class="line"><span class="comment">             * 因为你当前 Frida 版本可能没有这个 wrapper。</span></span><br><span class="line"><span class="comment">             * 输入内容已经能从 Java 层 hook 打印出来。</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="title function_">log</span>(<span class="string">&quot;[JNI] ret = &quot;</span> + retval.<span class="title function_">toInt32</span>());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">tryHookNative</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nativeHooked) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> m = <span class="title function_">findModuleCompat</span>(<span class="variable constant_">LIB_NAME</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (m === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    nativeHooked = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">log</span>(<span class="string">&quot;[+] &quot;</span> + <span class="variable constant_">LIB_NAME</span> + <span class="string">&quot; loaded&quot;</span>);</span><br><span class="line">    <span class="title function_">log</span>(<span class="string">&quot;[+] base = &quot;</span> + m.<span class="property">base</span>);</span><br><span class="line">    <span class="title function_">log</span>(<span class="string">&quot;[+] path = &quot;</span> + m.<span class="property">path</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">dumpAndSolve</span>(m.<span class="property">base</span>);</span><br><span class="line">    <span class="title function_">hookJniExport</span>();</span><br><span class="line">    <span class="title function_">hookNativeCore</span>(m.<span class="property">base</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">waitForLib</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">tryHookNative</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nativeHooked) &#123;</span><br><span class="line">            <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">log</span>(<span class="string">&quot;[*] hook_unknown_flag_fixed.js loaded&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">hookJavaCheckFlag</span>();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">waitForLib</span>();</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安卓逆向经验欠佳，试了很久也不能出flag，所以用ai来总结</li>
+</ul>
+<h3 id="后记，2026-06-23"><a href="#后记，2026-06-23" class="headerlink" title="后记，2026.06.23"></a>后记，2026.06.23</h3><ul>
+<li>还是先把apk放在jadx中分析<br><img src="/Images/202606230803.png" alt="截图 202606230803" loading="lazy" decoding="async" width="1180" height="776"></li>
+<li>很明显，发现有个root检测</li>
+<li>使用<code>java -jar .\apktool_3.0.2.jar d -r dedebug.apk -o debugme_src</code>把apk编回smali文件<br><img src="/Images/202606230810.png" alt="截图 202606230810" loading="lazy" decoding="async" width="1920" height="1032"></li>
+<li>装回后发现依旧有检测，怀疑是native层面的检测</li>
+<li>看了看native层的checkflag，发现无法直接逆向<br><img src="/Images/202606230813.png" alt="截图 202606230813" loading="lazy" decoding="async" width="2560" height="1392"></li>
+<li>开始分析反调试检测</li>
+<li>来到初始化阶段<br><img src="/Images/202606230814.png" alt="截图 202606230814" loading="lazy" decoding="async" width="874" height="203"></li>
+<li>发现只有这一个函数，点开看看</li>
+<li>审阅后发现是三个kill<br><img src="/Images/202606230815.png" alt="截图 202606230815" loading="lazy" decoding="async" width="2560" height="1392"></li>
+<li>也就对应三次检测</li>
+<li>改下jmp就可以了</li>
+<li>然后继续分析，发现还是有检测，注释一下，然后patch就行了，也就是nop和改一下jmp<br><img src="/Images/202606230911.png" alt="截图 202606230911" loading="lazy" decoding="async" width="2560" height="1392"></li>
+<li>后面发现sub_EE0，sub_1B60，sub_2170这三个检测函数也调用了kill</li>
+<li>所以直接让它们三个retn就好</li>
+<li>hook代码还是上面的，怎么写出来的我还得再学习学习</li>
+</ul>
+<h2 id="DC"><a href="#DC" class="headerlink" title="DC"></a>DC</h2><ul>
+<li><p>一个core文件</p>
+</li>
+<li><p>查了一下是Core 文件记录了程序在发生异常那一刻的内存映像、寄存器状态和堆栈信息。</p>
+</li>
+<li><p>用ai一把梭吧，找不到主函数（前几个题的wp写的有点燃尽了）</p>
+</li>
+</ul>
+<h3 id="0x00-文件识别"><a href="#0x00-文件识别" class="headerlink" title="0x00 文件识别"></a>0x00 文件识别</h3><p>拿到题目文件 <code>dc.core</code>，先看一下是什么：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ file dc.core</span><br><span class="line">dc.core: ELF 64-bit LSB core file, x86-64, version 1 (SYSV), SVR4-style, from <span class="string">&#x27;/.cmd&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>是一个 ELF 64-bit core dump 文件。Core dump 是程序运行时内存的快照，通常包含了程序的代码段、数据段以及当时的栈&#x2F;堆状态。</p>
+<p>strings 能看到一些有意思的东西：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/tmp/ctf_%08x          # 写入 /tmp 目录，疑似成功时输出 flag</span><br><span class="line">g&#123;EdIiz`sU`k&#125;Ga        # 带有 &#123;&#125; 括号的字符串，flag 格式特征明显</span><br></pre></td></tr></table></figure>
+
+
+
+<p>用 IDA Pro 打开 core dump，设置基址为 <code>0x55C62414E000</code>。</p>
+<h3 id="0x01-定位主逻辑"><a href="#0x01-定位主逻辑" class="headerlink" title="0x01 定位主逻辑"></a>0x01 定位主逻辑</h3><p>Core dump 中有很多 libc 函数，真正的程序代码在 <code>0x55C62414F000</code> 附近。从 <code>survey_binary</code> 可以看到几个关键函数都在这个区域。</p>
+<h4 id="函数清单"><a href="#函数清单" class="headerlink" title="函数清单"></a>函数清单</h4><table>
+<thead>
+<tr>
+<th>地址</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0x55C62414F2C9</code></td>
+<td>XOR 循环</td>
+</tr>
+<tr>
+<td><code>0x55C62414F31A</code></td>
+<td><strong>初始化函数</strong>（解密数据）</td>
+</tr>
+<tr>
+<td><code>0x55C62414F370</code></td>
+<td>RC4 KSA（密钥调度）</td>
+</tr>
+<tr>
+<td><code>0x55C62414F45C</code></td>
+<td>RC4 加&#x2F;解密</td>
+</tr>
+<tr>
+<td><code>0x55C62414F5F8</code></td>
+<td>自定义 Base64 编码</td>
+</tr>
+<tr>
+<td><code>0x55C62414F86C</code></td>
+<td>主验证逻辑</td>
+</tr>
+<tr>
+<td><code>0x55C62414F786</code></td>
+<td>成功回调（写 flag 到 &#x2F;tmp）</td>
+</tr>
+</tbody></table>
+<h3 id="0x02-初始化函数-—-XOR-解密"><a href="#0x02-初始化函数-—-XOR-解密" class="headerlink" title="0x02 初始化函数 — XOR 解密"></a>0x02 初始化函数 — XOR 解密</h3><p>首先吸引注意的是 <code>sub_55C62414F31A</code>，它调用了三次同一个 XOR 函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__int64 <span class="title function_">sub_55C62414F31A</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  sub_55C62414F2C9(byte_55C624152040, <span class="number">64</span>, <span class="number">66</span>);    <span class="comment">// 字母表 XOR 0x42</span></span><br><span class="line">  sub_55C62414F2C9(&amp;unk_55C6241520A0, <span class="number">53</span>, <span class="number">36</span>);    <span class="comment">// 期望串 XOR 0x24</span></span><br><span class="line">  <span class="keyword">return</span> sub_55C62414F2C9(&amp;qword_55C624152020, <span class="number">14</span>, <span class="number">86</span>); <span class="comment">// 密钥 XOR 0x56</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>sub_55C62414F2C9</code> 的逻辑非常简单：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; size; ++i)</span><br><span class="line">    buf[i] ^= xor_byte;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这说明<strong>程序在编译时将关键数据 XOR 加密存储，运行时通过 init 函数解密</strong>。三块数据的 XOR 密钥各不相同：</p>
+<ul>
+<li><p>0x55C624152040（64 字节）← XOR 0x42</p>
+</li>
+<li><p>0x55C6241520A0（53 字节）← XOR 0x24</p>
+</li>
+<li><p>0x55C624152020（14 字节）← XOR 0x56</p>
+</li>
+</ul>
+<p>从 core dump 中读取这三段加密数据，用对应密钥 XOR 解密：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 字母表 (64 bytes)</span><br><span class="line">raw: 24 1c 2e 3b 78 30 6b 1d 6e 69 66 6a 12 3f 6f 06 ...</span><br><span class="line">xor 0x42 后 → &quot;f^ly:r)_,+$(P&#125;-DVONCI;wSx&#123;B#q.Wv2zHmE9%d[617nJc3MG@sia]ZQoY5t&gt;L0&quot;</span><br><span class="line"></span><br><span class="line"># RC4 密钥 (14 bytes)</span><br><span class="line">raw: 15 66 38 10 23 63 3f 66 38 09 1d 65 2f 77</span><br><span class="line">xor 0x56 后 → &quot;C0nFu5i0n_K3y!&quot;</span><br><span class="line"></span><br><span class="line"># 期望密文 (53 bytes, 找到 XOR 后为 0x00 的位置即 null 终止符)</span><br><span class="line">raw: 73 1f 15 67 7b 45 64 49 69 7a 60 73 55 60 6b 7d 47 61 01 08 ...</span><br><span class="line">xor 0x24 后 → &quot;W;1C_a@mM^DWqDOYcE%,LtCl9:BOO$S,MO,%;&#125;$5NZ5^;G%I%H&gt;H&quot; (52 chars)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>RC4 密钥 <code>C0nFu5i0n_K3y!</code>（Confusion_Key 的 leet 写法）明显是人造的，确认解密方向正确。</p>
+<h3 id="0x03-主验证逻辑"><a href="#0x03-主验证逻辑" class="headerlink" title="0x03 主验证逻辑"></a>0x03 主验证逻辑</h3><p><code>sub_55C62414F86C</code> 是核心验证函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">sub_55C62414F86C</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> input[<span class="number">256</span>];   <span class="comment">// v1 — 用户输入</span></span><br><span class="line">    <span class="type">char</span> rc4_out[<span class="number">256</span>]; <span class="comment">// v2 — RC4 输出</span></span><br><span class="line">    <span class="type">char</span> b64_out[<span class="number">512</span>]; <span class="comment">// v3 — Base64 输出</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(input, <span class="number">0</span>, <span class="number">256</span>);</span><br><span class="line">    <span class="comment">// 1. 读取用户输入</span></span><br><span class="line">    <span class="keyword">if</span> (!fgets(input, <span class="number">256</span>, <span class="built_in">stdin</span>)) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">size_t</span> len = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="comment">// 2. 去除尾部换行符</span></span><br><span class="line">    <span class="keyword">if</span> (len &gt; <span class="number">0</span> &amp;&amp; input[len<span class="number">-1</span>] == <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        input[--len] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (len == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. RC4 加密: input → rc4_out</span></span><br><span class="line">    <span class="built_in">memset</span>(rc4_out, <span class="number">0</span>, <span class="number">256</span>);</span><br><span class="line">    sub_55C62414F45C(input, rc4_out, len, &amp;key, <span class="number">14</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 自定义 Base64 编码: rc4_out → b64_out</span></span><br><span class="line">    <span class="built_in">memset</span>(b64_out, <span class="number">0</span>, <span class="number">512</span>);</span><br><span class="line">    sub_55C62414F5F8(rc4_out, len, b64_out);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5. 与期望值比较</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(b64_out, &amp;expected) == <span class="number">0</span>)</span><br><span class="line">        sub_55C62414F786(input, len);  <span class="comment">// 成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>程序流程：<strong>用户输入 → RC4 加密 → 自定义 Base64 编码 → 与期望密文比较</strong>。</p>
+<p>所以逆向求 flag 的路径：<strong>期望密文 → 自定义 Base64 解码 → RC4 解密 → Flag</strong>。</p>
+<h3 id="0x04-修改版-RC4"><a href="#0x04-修改版-RC4" class="headerlink" title="0x04 修改版 RC4"></a>0x04 修改版 RC4</h3><h4 id="KSA（密钥调度）"><a href="#KSA（密钥调度）" class="headerlink" title="KSA（密钥调度）"></a>KSA（密钥调度）</h4><p>仔细对比标准 RC4，该程序的 KSA 有改动：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 标准 RC4 KSA:</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++) &#123;</span><br><span class="line">    j = (j + S[i] + key[i % keylen]) % <span class="number">256</span>;</span><br><span class="line">    swap(S[i], S[j]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 本题的修改版 — 多了一个 + i:</span></span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">256</span>; j++) &#123;</span><br><span class="line">    v7 = (v7 + S[j] + j + key[j % keylen]) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">//         额外加了 ^</span></span><br><span class="line">    swap(S[j], S[v7]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="PRGA（伪随机生成）"><a href="#PRGA（伪随机生成）" class="headerlink" title="PRGA（伪随机生成）"></a>PRGA（伪随机生成）</h4><p>同样被修改了：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 标准 RC4 PRGA:</span></span><br><span class="line">i = (i + <span class="number">1</span>) % <span class="number">256</span>;</span><br><span class="line">j = (j + S[i]) % <span class="number">256</span>;</span><br><span class="line">swap(S[i], S[j]);</span><br><span class="line">k = S[(S[i] + S[j]) % <span class="number">256</span>];  <span class="comment">// 用 S-box 查表</span></span><br><span class="line">output = input ^ k;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 本题的修改版:</span></span><br><span class="line">v8 = (v8 + <span class="number">1</span>) % <span class="number">256</span>;          <span class="comment">// i</span></span><br><span class="line">v9 = (v6 + v9) % <span class="number">256</span>;         <span class="comment">// j</span></span><br><span class="line">k = (S[i] + S[j]) ^ pos;      <span class="comment">// XOR 的是输出位置 pos，而非 S-box 查表</span></span><br><span class="line">output = input ^ k;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>两个关键改动：</p>
+<ol>
+<li><p>KSA 中 <code>j = j + S[i] + i + key[...]</code>（多了 <code>+ i</code>）</p>
+</li>
+<li><p>PRGA 中 <code>k = (S[i] + S[j]) ^ pos</code>（用输出位置 XOR 替代 S-box 索引）</p>
+</li>
+</ol>
+<h3 id="0x05-自定义-Base64"><a href="#0x05-自定义-Base64" class="headerlink" title="0x05 自定义 Base64"></a>0x05 自定义 Base64</h3><p><code>sub_55C62414F5F8</code> 实现了一个带位置相关偏移的 Base64 变体：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">v7 = <span class="number">0</span>;  <span class="comment">// 全局输出位置计数器</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i += <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">// 标准 Base64: 取 3 字节 → 4 个 6-bit 值</span></span><br><span class="line">    v11[<span class="number">0</span>] =  byte0 &gt;&gt; <span class="number">2</span>;</span><br><span class="line">    v11[<span class="number">1</span>] = (byte0 &lt;&lt; <span class="number">4</span> &amp; <span class="number">0x30</span>) | (byte1 &gt;&gt; <span class="number">4</span>);</span><br><span class="line">    v11[<span class="number">2</span>] = (byte1 &lt;&lt; <span class="number">2</span> &amp; <span class="number">0x3C</span>) | (byte2 &gt;&gt; <span class="number">6</span>);</span><br><span class="line">    v11[<span class="number">3</span>] =  byte2 &amp; <span class="number">0x3F</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">        <span class="comment">// 关键改动: 索引加了位置相关的偏移</span></span><br><span class="line">        idx = (v11[j] + (v7 % <span class="number">7</span>) + <span class="number">3</span>) % <span class="number">64</span>;</span><br><span class="line">        output[out_pos++] = alphabet[idx];</span><br><span class="line">        v7++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>与标准 Base64 的区别：</p>
+<ol>
+<li><p><strong>字母表是乱序的</strong>（64 个自定义字符而非标准 <code>A-Za-z0-9+/</code>）</p>
+</li>
+<li><p>**每个位置的编码索引加了偏移量 ****<code>(pos % 7) + 3</code>**</p>
+</li>
+</ol>
+<p>解码时需要逆向这个偏移：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> pos, char <span class="keyword">in</span> <span class="built_in">enumerate</span>(encoded):</span><br><span class="line">    idx = rev_alphabet[char]       <span class="comment"># 反查字母表得到索引</span></span><br><span class="line">    original = (idx - (pos % <span class="number">7</span>) - <span class="number">3</span>) % <span class="number">64</span>  <span class="comment"># 减去位置偏移</span></span><br><span class="line">    <span class="comment"># 然后标准 4×6bit → 3×8bit 解包</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="0x06-解密脚本"><a href="#0x06-解密脚本" class="headerlink" title="0x06 解密脚本"></a>0x06 解密脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 core dump 读取的加密数据</span></span><br><span class="line">raw_alphabet = <span class="built_in">bytes</span>([<span class="number">0x24</span>,<span class="number">0x1c</span>,<span class="number">0x2e</span>,<span class="number">0x3b</span>,<span class="number">0x78</span>,<span class="number">0x30</span>,<span class="number">0x6b</span>,<span class="number">0x1d</span>,<span class="number">0x6e</span>,<span class="number">0x69</span>,<span class="number">0x66</span>,<span class="number">0x6a</span>,</span><br><span class="line">                      <span class="number">0x12</span>,<span class="number">0x3f</span>,<span class="number">0x6f</span>,<span class="number">0x06</span>,<span class="number">0x14</span>,<span class="number">0x0d</span>,<span class="number">0x0c</span>,<span class="number">0x01</span>,<span class="number">0x0b</span>,<span class="number">0x79</span>,<span class="number">0x35</span>,<span class="number">0x11</span>,</span><br><span class="line">                      <span class="number">0x3a</span>,<span class="number">0x39</span>,<span class="number">0x00</span>,<span class="number">0x61</span>,<span class="number">0x33</span>,<span class="number">0x6c</span>,<span class="number">0x15</span>,<span class="number">0x34</span>,<span class="number">0x70</span>,<span class="number">0x38</span>,<span class="number">0x0a</span>,<span class="number">0x2f</span>,</span><br><span class="line">                      <span class="number">0x07</span>,<span class="number">0x7b</span>,<span class="number">0x67</span>,<span class="number">0x26</span>,<span class="number">0x19</span>,<span class="number">0x74</span>,<span class="number">0x73</span>,<span class="number">0x75</span>,<span class="number">0x2c</span>,<span class="number">0x08</span>,<span class="number">0x21</span>,<span class="number">0x71</span>,</span><br><span class="line">                      <span class="number">0x0f</span>,<span class="number">0x05</span>,<span class="number">0x02</span>,<span class="number">0x31</span>,<span class="number">0x2b</span>,<span class="number">0x23</span>,<span class="number">0x1f</span>,<span class="number">0x18</span>,<span class="number">0x13</span>,<span class="number">0x2d</span>,<span class="number">0x1b</span>,<span class="number">0x77</span>,</span><br><span class="line">                      <span class="number">0x36</span>,<span class="number">0x7c</span>,<span class="number">0x0e</span>,<span class="number">0x72</span>])</span><br><span class="line"></span><br><span class="line">raw_key = <span class="built_in">bytes</span>([<span class="number">0x15</span>,<span class="number">0x66</span>,<span class="number">0x38</span>,<span class="number">0x10</span>,<span class="number">0x23</span>,<span class="number">0x63</span>,<span class="number">0x3f</span>,<span class="number">0x66</span>,<span class="number">0x38</span>,<span class="number">0x09</span>,<span class="number">0x1d</span>,<span class="number">0x65</span>,<span class="number">0x2f</span>,<span class="number">0x77</span>])</span><br><span class="line"></span><br><span class="line">raw_expected = <span class="built_in">bytes</span>([<span class="number">0x73</span>,<span class="number">0x1f</span>,<span class="number">0x15</span>,<span class="number">0x67</span>,<span class="number">0x7b</span>,<span class="number">0x45</span>,<span class="number">0x64</span>,<span class="number">0x49</span>,<span class="number">0x69</span>,<span class="number">0x7a</span>,<span class="number">0x60</span>,<span class="number">0x73</span>,</span><br><span class="line">                      <span class="number">0x55</span>,<span class="number">0x60</span>,<span class="number">0x6b</span>,<span class="number">0x7d</span>,<span class="number">0x47</span>,<span class="number">0x61</span>,<span class="number">0x01</span>,<span class="number">0x08</span>,<span class="number">0x68</span>,<span class="number">0x50</span>,<span class="number">0x67</span>,<span class="number">0x48</span>,</span><br><span class="line">                      <span class="number">0x1d</span>,<span class="number">0x1e</span>,<span class="number">0x66</span>,<span class="number">0x6b</span>,<span class="number">0x6b</span>,<span class="number">0x00</span>,<span class="number">0x77</span>,<span class="number">0x08</span>,<span class="number">0x69</span>,<span class="number">0x6b</span>,<span class="number">0x08</span>,<span class="number">0x01</span>,</span><br><span class="line">                      <span class="number">0x1f</span>,<span class="number">0x59</span>,<span class="number">0x00</span>,<span class="number">0x11</span>,<span class="number">0x6a</span>,<span class="number">0x7e</span>,<span class="number">0x11</span>,<span class="number">0x7a</span>,<span class="number">0x1f</span>,<span class="number">0x63</span>,<span class="number">0x01</span>,<span class="number">0x6d</span>,</span><br><span class="line">                      <span class="number">0x01</span>,<span class="number">0x6c</span>,<span class="number">0x1a</span>,<span class="number">0x6c</span>,<span class="number">0x24</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># XOR 解密</span></span><br><span class="line">alphabet = <span class="built_in">bytes</span>([b ^ <span class="number">0x42</span> <span class="keyword">for</span> b <span class="keyword">in</span> raw_alphabet])</span><br><span class="line">rc4_key  = <span class="built_in">bytes</span>([b ^ <span class="number">0x56</span> <span class="keyword">for</span> b <span class="keyword">in</span> raw_key])</span><br><span class="line">decrypted_all = <span class="built_in">bytes</span>([b ^ <span class="number">0x24</span> <span class="keyword">for</span> b <span class="keyword">in</span> raw_expected])</span><br><span class="line">expected = decrypted_all[:decrypted_all.find(<span class="number">0</span>)]  <span class="comment"># 截取到 null</span></span><br><span class="line"><span class="comment"># expected = &quot;W;1C_a@mM^DWqDOYcE%,LtCl9:BOO$S,MO,%;&#125;$5NZ5^;G%I%H&gt;H&quot; (52 字节)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 自定义 Base64 解码 ---</span></span><br><span class="line">rev = &#123;b: i <span class="keyword">for</span> i, b <span class="keyword">in</span> <span class="built_in">enumerate</span>(alphabet)&#125;</span><br><span class="line">indices = [rev[c] <span class="keyword">for</span> c <span class="keyword">in</span> expected]</span><br><span class="line">original = [((indices[pos] - (pos % <span class="number">7</span>) - <span class="number">3</span>) % <span class="number">64</span>) <span class="keyword">for</span> pos <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(indices))]</span><br><span class="line"></span><br><span class="line">decoded = <span class="built_in">bytearray</span>()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(original), <span class="number">4</span>):</span><br><span class="line">    <span class="keyword">if</span> i + <span class="number">3</span> &lt; <span class="built_in">len</span>(original):</span><br><span class="line">        a, b, c, d = original[i:i+<span class="number">4</span>]</span><br><span class="line">        decoded.extend([(a &lt;&lt; <span class="number">2</span>) | (b &gt;&gt; <span class="number">4</span>),</span><br><span class="line">                        ((b &amp; <span class="number">0xF</span>) &lt;&lt; <span class="number">4</span>) | (c &gt;&gt; <span class="number">2</span>),</span><br><span class="line">                        ((c &amp; <span class="number">0x3</span>) &lt;&lt; <span class="number">6</span>) | d])</span><br><span class="line">    <span class="keyword">elif</span> i + <span class="number">2</span> &lt; <span class="built_in">len</span>(original):</span><br><span class="line">        a, b, c = original[i:i+<span class="number">3</span>]</span><br><span class="line">        decoded.extend([(a &lt;&lt; <span class="number">2</span>) | (b &gt;&gt; <span class="number">4</span>),</span><br><span class="line">                        ((b &amp; <span class="number">0xF</span>) &lt;&lt; <span class="number">4</span>) | (c &gt;&gt; <span class="number">2</span>)])</span><br><span class="line">    <span class="keyword">elif</span> i + <span class="number">1</span> &lt; <span class="built_in">len</span>(original):</span><br><span class="line">        a, b = original[i:i+<span class="number">2</span>]</span><br><span class="line">        decoded.append((a &lt;&lt; <span class="number">2</span>) | (b &gt;&gt; <span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 修改版 RC4 解密 ---</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">modified_rc4_ksa</span>(<span class="params">key</span>):</span><br><span class="line">    S = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">256</span>))</span><br><span class="line">    v7 = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">256</span>):</span><br><span class="line">        v7 = (v7 + S[j] + j + key[j % <span class="built_in">len</span>(key)]) &amp; <span class="number">0xFF</span>  <span class="comment"># 多了 +j</span></span><br><span class="line">        S[j], S[v7] = S[v7], S[j]</span><br><span class="line">    <span class="keyword">return</span> S</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">modified_rc4_crypt</span>(<span class="params">key, data</span>):</span><br><span class="line">    S = modified_rc4_ksa(key)</span><br><span class="line">    v8 = <span class="number">0</span>  <span class="comment"># i</span></span><br><span class="line">    v9 = <span class="number">0</span>  <span class="comment"># j</span></span><br><span class="line">    result = <span class="built_in">bytearray</span>()</span><br><span class="line">    <span class="keyword">for</span> pos <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">        v8 = (v8 + <span class="number">1</span>) &amp; <span class="number">0xFF</span></span><br><span class="line">        v6 = S[v8]</span><br><span class="line">        v9 = (v6 + v9) &amp; <span class="number">0xFF</span></span><br><span class="line">        k = ((v6 + S[v9]) ^ pos) &amp; <span class="number">0xFF</span>  <span class="comment"># XOR pos 而非 S-box 查表</span></span><br><span class="line">        S[v8], S[v9] = S[v9], v6</span><br><span class="line">        result.append(data[pos] ^ k)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytes</span>(result)</span><br><span class="line"></span><br><span class="line">flag = modified_rc4_crypt(rc4_key, <span class="built_in">bytes</span>(decoded))</span><br><span class="line"><span class="built_in">print</span>(flag.decode())  <span class="comment"># flag&#123;Tw34k3d_RC4_n_B64_m4k3_1t_h4rd!!!&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="0x07-总结"><a href="#0x07-总结" class="headerlink" title="0x07 总结"></a>0x07 总结</h3><p>本题是一个典型的 CTF 逆向题，考察点包括：</p>
+<ol>
+<li><p><strong>Core dump 分析</strong> — 识别 core dump 文件并加载到 IDA 分析</p>
+</li>
+<li><p><strong>XOR 加密数据识别</strong> — 通过 init 函数发现静态数据在编译时被 XOR 加密</p>
+</li>
+<li><p><strong>魔改 RC4 识别</strong> — 对比标准 RC4 发现 KSA 多了 <code>+i</code> 和 PRGA 的 <code>^pos</code> 改动</p>
+</li>
+<li><p><strong>自定义 Base64</strong> — 位置相关的偏移量 <code>(pos % 7) + 3</code> + 乱序字母表</p>
+</li>
+</ol>
+<p>最终 Flag：</p>
+<figure class="highlight plaintext"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Tw34k3d_RC4_n_B64_m4k3_1t_h4rd!!!&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="第七题题目和附件全部丢失，如果有师傅有附件并愿意给我的话，请联系我，感谢"><a href="#第七题题目和附件全部丢失，如果有师傅有附件并愿意给我的话，请联系我，感谢" class="headerlink" title="第七题题目和附件全部丢失，如果有师傅有附件并愿意给我的话，请联系我，感谢"></a>第七题题目和附件全部丢失，如果有师傅有附件并愿意给我的话，请联系我，感谢</h2>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+
+    
+  </div>
+  
+
+  <div class="container post-prev-next" data-pagefind-ignore>
+    
+    <a href="/2026/05/25/LitCTF2026_WP/" class="next">
+      <div class="text">
+        <p class="label">下一篇</p>
+        <h3 class="title">LitCTF2026_WP</h3>
+      </div>
+    </a>
+    
+    
+    <a href="/2026/02/13/FurryCTF2026/" class="prev">
+      <div class="text">
+        <p class="label">上一篇</p>
+        <h3 class="title">FurryCTF2026</h3>
+      </div>
+    </a>
+    
+  </div>
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>
