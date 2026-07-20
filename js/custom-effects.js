@@ -1,53 +1,53 @@
-// 自定义炫酷交互效果
+// Homepage + post-card interactions
 (function() {
   'use strict';
 
-  // Antigravity 英雄区域无界全息交互
   function initHeroInteraction() {
-    console.log("[custom-effects] initHeroInteraction called");
     const hero = document.getElementById('hero-interactive');
-    const hologramText = document.querySelector('.text-hologram');
-    const tracker = document.querySelector('.hero-ambient-tracker');
+    if (!hero) return;
 
-    if (!hero || !hologramText || !tracker) return;
+    const prefersReducedMotionPointer = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
 
+    // Soft pointer wash
+    if (!prefersReducedMotionPointer && finePointer) {
+      let frame = null;
+      let tx = 70;
+      let ty = 40;
+      let cx = 70;
+      let cy = 40;
 
-    document.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      function render() {
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        hero.style.setProperty('--mx', cx.toFixed(2) + '%');
+        hero.style.setProperty('--my', cy.toFixed(2) + '%');
 
-      // 直接把相对坐标交给 CSS 变量，实现 0 延迟手电筒追踪
-      const relativeX = e.clientX - rect.left;
-      const relativeY = e.clientY - rect.top;
-      tracker.style.setProperty('--mouse-x', `${relativeX}px`);
-      tracker.style.setProperty('--mouse-y', `${relativeY}px`);
-
-      // 全息文字光影：仅当鼠标在英雄区域内触发交互
-      const isOverHero = e.clientY >= rect.top && e.clientY <= rect.bottom && e.clientX >= rect.left && e.clientX <= rect.right;
-
-      if (isOverHero) {
-        // 更新文字的 3D 微倾斜
-        const tiltX = (e.clientY - rect.top - centerY) * -0.01;
-        const tiltY = (e.clientX - rect.left - centerX) * 0.01;
-        hologramText.parentElement.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
-
-        // 更新文字内部的反射高光中心
-        const textRect = hologramText.getBoundingClientRect();
-        hologramText.style.setProperty('--mouse-x', `${e.clientX - textRect.left}px`);
-        hologramText.style.setProperty('--mouse-y', `${e.clientY - textRect.top}px`);
-      } else {
-        hologramText.parentElement.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        if (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) {
+          frame = requestAnimationFrame(render);
+        } else {
+          frame = null;
+        }
       }
-    });
 
-    // 🌌 Antigravity 粒子场 — 精准复刻版
-    // 基于 antigravity.google 源码分析：Ring-based scaling + Noise displacement + 3-color mixing
+      hero.addEventListener('pointermove', event => {
+        const rect = hero.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        tx = ((event.clientX - rect.left) / rect.width) * 100;
+        ty = ((event.clientY - rect.top) / rect.height) * 100;
+        if (!frame) frame = requestAnimationFrame(render);
+      }, { passive: true });
+
+      hero.addEventListener('pointerleave', () => {
+        tx = 70;
+        ty = 40;
+        if (!frame) frame = requestAnimationFrame(render);
+      });
+    }
+
     function initParticles() {
-      console.log("[custom-effects] initParticles called");
       const canvas = document.getElementById('hero-particles');
       if (!canvas) return;
-      console.log("[custom-effects] canvas found:", canvas);
       const ctx = canvas.getContext('2d');
       let width, height;
       let particles = [];
@@ -80,18 +80,19 @@
 
       function resize() {
         const rect = canvas.parentElement.getBoundingClientRect();
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
         width = rect.width;
         height = rect.height;
-        canvas.width = width * window.devicePixelRatio;
-        canvas.height = height * window.devicePixelRatio;
-        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-        if (particles.length === 0) initSetup();
+        canvas.width = Math.round(width * pixelRatio);
+        canvas.height = Math.round(height * pixelRatio);
+        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        initSetup();
       }
 
       function initSetup() {
         particles = [];
         // 适当回调粒子间距，增加一点粒子数量
-        const spacing = 50;
+        const spacing = 58;
         const cols = Math.ceil(width / spacing);
         const rows = Math.ceil(height / spacing);
 
@@ -122,17 +123,22 @@
       let ringX = width / 2, ringY = height / 2;
       let mouseX = width / 2, mouseY = height / 2;
       let mouseInside = false;
+      let heroVisible = true;
       let time = 0;
 
-      document.addEventListener('mousemove', (e) => {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-        mouseInside = (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height);
+      hero.addEventListener('pointermove', event => {
+        const rect = hero.getBoundingClientRect();
+        mouseX = event.clientX - rect.left;
+        mouseY = event.clientY - rect.top;
+        mouseInside = mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height;
+      }, { passive: true });
+
+      hero.addEventListener('pointerleave', () => {
+        mouseInside = false;
       });
 
       function animateParticles() {
-        if (!window.themeParticlesEnabled || document.hidden) {
+        if (!window.themeParticlesEnabled || document.hidden || !heroVisible) {
           if (particlesAnimFrame) {
             cancelAnimationFrame(particlesAnimFrame);
             particlesAnimFrame = null;
@@ -294,11 +300,11 @@
       } catch (err) {}
 
       const isSmallViewport = window.matchMedia('(max-width: 768px)').matches;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.themeParticlesEnabled = storedParticlesEnabled === null
-        ? !isSmallViewport
+        ? !isSmallViewport && !prefersReducedMotion
         : storedParticlesEnabled !== 'false';
       let particlesAnimFrame = null;
-      console.log("[custom-effects] themeParticlesEnabled:", window.themeParticlesEnabled);
 
       const particleToggle = document.getElementById('theme-particle-toggle');
 
@@ -320,7 +326,7 @@
       }
 
       function startParticles() {
-        if (!window.themeParticlesEnabled || document.hidden) return;
+        if (!window.themeParticlesEnabled || document.hidden || !heroVisible) return;
         if (particlesAnimFrame) return;
         animateParticles();
       }
@@ -342,6 +348,16 @@
         });
       }
 
+      const heroObserver = new IntersectionObserver(entries => {
+        heroVisible = entries[0]?.isIntersecting ?? true;
+        if (heroVisible) {
+          startParticles();
+        } else {
+          stopParticles();
+        }
+      }, { rootMargin: '120px 0px' });
+      heroObserver.observe(hero);
+
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           stopParticles();
@@ -354,108 +370,124 @@
       startParticles();
     }
 
-    // 文本乱码解码入场动效 (Cryptic Text Decode)
-    function decodeTextAnimation() {
-      const originalText = hologramText.getAttribute('data-text');
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}|:<>?';
-      let iterations = 0;
-      const interval = setInterval(() => {
-        hologramText.innerText = originalText.split('').map((char, index) => {
-          if (char === '\n' || char === '，' || char === '。') return char;
-          if (index < iterations) return char;
-          return chars[Math.floor(Math.random() * chars.length)];
-        }).join('');
-
-        if (iterations >= originalText.length) {
-          clearInterval(interval);
-          // 确保换行渲染正确
-          hologramText.innerHTML = originalText.replace(/\n/g, '<br>');
-        }
-        iterations += 1/3; // 控制解码速度
-      }, 30);
-    }
-
-    // 延迟一点启动解码
-    setTimeout(decodeTextAnimation, 300);
-    console.log("[custom-effects] calling initParticles...");
-
     initParticles();
+
   }
 
-  // DOM 加载完成后创建粒子效果和交互
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeroInteraction);
-  } else {
-    initHeroInteraction();
-  }
+  function initPostCards() {
+    const cards = document.querySelectorAll('[data-post-card]');
+    if (!cards.length) return;
 
-  // 平滑滚动到锚点
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    // 排除目录链接，因为 main.js 中已经有专门处理目录点击的逻辑
-    if (anchor.closest('.toc') || anchor.closest('.toc-sidebar') || anchor.classList.contains('toc-link')) {
-      return;
-    }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canTilt = !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches;
 
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === '#') return;
+    cards.forEach(card => {
+      let frame = null;
+      let targetX = 50;
+      let targetY = 35;
+      let currentX = 50;
+      let currentY = 35;
+      let targetRx = 0;
+      let targetRy = 0;
+      let currentRx = 0;
+      let currentRy = 0;
+      let hovering = false;
 
-      e.preventDefault();
-      try {
-        // 使用 getElementById 避免 querySelector 对特殊字符 id 报错
-        const targetId = href.substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-          const offset = window.innerHeight * 0.25;
-          const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
-          if (window.lenis) {
-            window.lenis.scrollTo(targetPosition);
-          } else {
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
+      function render() {
+        currentX += (targetX - currentX) * 0.16;
+        currentY += (targetY - currentY) * 0.16;
+        currentRx += (targetRx - currentRx) * 0.14;
+        currentRy += (targetRy - currentRy) * 0.14;
+
+        card.style.setProperty('--mx', currentX.toFixed(2) + '%');
+        card.style.setProperty('--my', currentY.toFixed(2) + '%');
+
+        if (canTilt) {
+          card.style.setProperty('--rx', currentRx.toFixed(3) + 'deg');
+          card.style.setProperty('--ry', currentRy.toFixed(3) + 'deg');
         }
-      } catch (err) {
-        console.error('Scroll error:', err);
+
+        const stillMoving =
+          Math.abs(targetX - currentX) > 0.05 ||
+          Math.abs(targetY - currentY) > 0.05 ||
+          Math.abs(targetRx - currentRx) > 0.01 ||
+          Math.abs(targetRy - currentRy) > 0.01;
+
+        if (stillMoving || hovering) frame = requestAnimationFrame(render);
+        else frame = null;
       }
+
+      function ensureFrame() {
+        if (!frame) frame = requestAnimationFrame(render);
+      }
+
+      card.addEventListener('pointerenter', () => {
+        hovering = true;
+        ensureFrame();
+      });
+
+      card.addEventListener('pointermove', event => {
+        const rect = card.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        const px = (event.clientX - rect.left) / rect.width;
+        const py = (event.clientY - rect.top) / rect.height;
+        targetX = px * 100;
+        targetY = py * 100;
+        if (canTilt) {
+          targetRy = (px - 0.5) * 6;
+          targetRx = (0.5 - py) * 4.5;
+        }
+        ensureFrame();
+      }, { passive: true });
+
+      card.addEventListener('pointerleave', () => {
+        hovering = false;
+        targetX = 50;
+        targetY = 35;
+        targetRx = 0;
+        targetRy = 0;
+        ensureFrame();
+      });
     });
-  });
+  }
 
-  // 添加页面加载动画
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-  });
-
-  // 移除彩虹光标轨迹 - 性能开销太大，会造成页面卡顿
-
-  // 打字机效果（如果页面有特定元素）
-  const typewriterElements = document.querySelectorAll('[data-typewriter]');
-  typewriterElements.forEach(element => {
-    const text = element.textContent;
-    element.textContent = '';
-    let i = 0;
-
-    function type() {
-      if (i < text.length) {
-        element.textContent += text.charAt(i);
-        i++;
-        setTimeout(type, 100);
+  function initAnchorScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      if (anchor.closest('.toc') || anchor.closest('.toc-sidebar') || anchor.classList.contains('toc-link')) {
+        return;
       }
-    }
 
-    // 使用Intersection Observer延迟启动
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          type();
-          observer.disconnect();
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        e.preventDefault();
+        try {
+          const target = document.getElementById(href.substring(1));
+          if (!target) return;
+          const offset = window.innerHeight * 0.1;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          if (window.lenis) window.lenis.scrollTo(top);
+          else window.scrollTo({ top, behavior: 'smooth' });
+        } catch (err) {
+          console.error('Scroll error:', err);
         }
       });
     });
+  }
 
-    observer.observe(element);
+  function boot() {
+    initHeroInteraction();
+    initPostCards();
+    initAnchorScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
   });
-
 })();

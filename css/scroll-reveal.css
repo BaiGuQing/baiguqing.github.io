@@ -1,8 +1,7 @@
 .scroll-reveal {
   opacity: 0;
   transform: translateY(40px) scale(0.85);
-  filter: blur(8px);
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 .scroll-reveal.scroll-reveal-show {
   animation: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards scroll-reveal;
@@ -12,11 +11,9 @@
   from {
     opacity: 0;
     transform: translateY(40px) scale(0.85);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0px);
   }
 }

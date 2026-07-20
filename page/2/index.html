@@ -14,7 +14,7 @@
   <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GuQing&#39;s Blog">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:url" content="https://baiguqing.github.io/page/2/index.html">
 <meta property="og:site_name" content="GuQing&#39;s Blog">
 <meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
 <meta property="og:locale" content="zh_CN">
@@ -204,58 +204,121 @@
 
     <main id="main-content">
       
-<div class="hero exit-while-scroll with-blur" id="hero-interactive">
-  <!-- 赛博底层：噪点与粒子场 -->
-  <div class="hero-noise"></div>
-  <canvas id="hero-particles" class="hero-particles"></canvas>
 
-  <!-- Interactive Background Glow -->
-  <div class="hero-ambient-tracker"></div>
+<section class="hero exit-while-scroll" id="hero-interactive">
+  <canvas id="hero-particles" class="hero-particles" aria-hidden="true"></canvas>
 
-  <!-- 无界主内容容器 -->
-  <div class="hero-content-holographic" id="hero-holographic-text">
-    <div class="hero-badge">骨清</div>
-    <h1 class="hero-title" style="text-align: center;">
-      <span class="text-hologram" id="hero-title-decode" data-text="何须浅碧深红色，&#10;自是花中第一流">何须浅碧深红色，<br>自是花中第一流</span>
-    </h1>
-  </div>
+  <div class="hero-shell">
+    <header class="hero-top">
+      <div class="hero-index">
+        <span class="hero-index-label">Index</span>
+        <span class="hero-index-value">01 / Home</span>
+      </div>
+      <div class="hero-meta-line">
+        <span>GuQing's Blog</span>
+        <span class="hero-meta-sep" aria-hidden="true"></span>
+        <span>2026</span>
+      </div>
+    </header>
 
-  <!-- HUD 微型指示器 (Terminal Style) -->
-  <div class="hero-hud-stats">
-    <div class="hud-item">
-      <span class="hud-label">文章</span>
-      <span class="hud-number stat-number" data-target="14">0</span><span class="blinking-cursor">_</span>
-    </div>
-    <div class="hud-item">
-      <span class="hud-label">归类</span>
-      <span class="hud-number stat-number" data-target="2">0</span><span class="blinking-cursor">_</span>
-    </div>
-    <div class="hud-item">
-      <span class="hud-label">标签</span>
-      <span class="hud-number stat-number" data-target="3">0</span><span class="blinking-cursor">_</span>
-    </div>
-  </div>
-</div>
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">GuQing</p>
+        <h1 class="hero-title">
+          <span class="hero-title-row">何须浅碧深红色，</span>
+          <span class="hero-title-row">自是花中第一流</span>
+        </h1>
 
+        <div class="hero-cta-row">
+          <a class="hero-link" href="#latest-posts">
+            <span>进入文章</span>
+            <span class="hero-link-line" aria-hidden="true"></span>
+          </a>
+          
+          <a class="hero-link hero-link--quiet" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/">
+            <span>最近一篇</span>
+            <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          
+        </div>
 
-<div class="container">
+        <dl class="hero-stats" aria-label="站点统计">
+          <div>
+            <dt>Posts</dt>
+            <dd><span class="stat-number" data-target="14">0</span></dd>
+          </div>
+          <div>
+            <dt>Categories</dt>
+            <dd><span class="stat-number" data-target="2">0</span></dd>
+          </div>
+          <div>
+            <dt>Tags</dt>
+            <dd><span class="stat-number" data-target="3">0</span></dd>
+          </div>
+        </dl>
+      </div>
 
-  
-  <div class="posts-section">
-    <h2 class="section-title">最新文章</h2>
-  </div>
-  
-
-  <div class="post-list">
-  
-  <article class="post-list-item scroll-reveal">
-    <a href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/">
       
+      <a class="hero-feature" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/" data-feature-card>
+        <div class="hero-feature-frame">
+          
+          <img class="hero-feature-media" src="/Images/20251123174856.png" alt="截图 20251123174856" loading="eager" decoding="async" width="1374" height="630">
+          
+          <div class="hero-feature-scrim"></div>
+        </div>
+        <div class="hero-feature-body">
+          <div class="hero-feature-kicker">
+            <span>Latest</span>
+            <time datetime="2025-12-16T00:00:00+08:00">2025-12-16</time>
+          </div>
+          <strong class="hero-feature-title">0xGame 2025 Week3 Reverse WP</strong>
+          <span class="hero-feature-go">
+            Read
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </a>
+      
+    </div>
+
+    <div class="hero-rail" aria-hidden="true">
+      <span class="hero-rail-mark"></span>
+      <span class="hero-rail-text">scroll</span>
+    </div>
+  </div>
+</section>
+
+
+<div class="container home-container">
+  
+  <section class="home-feed" id="latest-posts">
+    <header class="home-feed-header">
+      <div>
+        <span class="home-feed-kicker">Writing</span>
+        <h2 class="section-title">最新文章</h2>
+      </div>
+      <span class="home-feed-count">4 / 14</span>
+    </header>
+  </section>
+  
+
+  <div class="home-post-list">
+    <div class="post-list">
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
       
       <div class="cover-img">
         <img src="/Images/20251123174856.png" alt="0xGame 2025 Week3 Reverse WP" loading="lazy" decoding="async" width="1374" height="630">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
       </div>
       
+
       <div class="content">
         <div class="content-top">
           
@@ -265,15 +328,18 @@
           
           </div>
           
+
           <div class="title">
             0xGame 2025 Week3 Reverse WP
           </div>
+
           
           <div class="excerpt">
             
           </div>
           
         </div>
+
         <div class="content-bottom">
           <div class="meta-info">
             
@@ -290,19 +356,30 @@
               </span>
             </div>
           </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
         </div>
       </div>
     </a>
   </article>
   
-  <article class="post-list-item scroll-reveal">
-    <a href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/">
-      
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
       
       <div class="cover-img">
         <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy" decoding="async" width="594" height="50">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
       </div>
       
+
       <div class="content">
         <div class="content-top">
           
@@ -312,15 +389,18 @@
           
           </div>
           
+
           <div class="title">
             0xGame 2025 Week2 Reverse WP
           </div>
+
           
           <div class="excerpt">
             
           </div>
           
         </div>
+
         <div class="content-bottom">
           <div class="meta-info">
             
@@ -337,62 +417,30 @@
               </span>
             </div>
           </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
         </div>
       </div>
     </a>
   </article>
   
-  <article class="post-list-item scroll-reveal">
-    <a href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/">
-      
-      
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-          <div class="title">
-            Python反编译
-          </div>
-          
-          <div class="excerpt">
-            
-          </div>
-          
-        </div>
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2025-11-19T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2025-11-19
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>2.0k</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
-  </article>
   
-  <article class="post-list-item scroll-reveal">
-    <a href="/2025/11/19/0xGame%202025%20Week1%20Reverse%20WP/">
-      
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/19/0xGame%202025%20Week1%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
       
       <div class="cover-img">
         <img src="/Images/083720wzd4p1zx66f8pfp4.png" alt="0xGame 2025 Week1 Reverse WP" loading="lazy" decoding="async" width="1920" height="1002">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
       </div>
       
+
       <div class="content">
         <div class="content-top">
           
@@ -402,15 +450,18 @@
           
           </div>
           
+
           <div class="title">
             0xGame 2025 Week1 Reverse WP
           </div>
+
           
           <div class="excerpt">
             
           </div>
           
         </div>
+
         <div class="content-bottom">
           <div class="meta-info">
             
@@ -427,6 +478,66 @@
               </span>
             </div>
           </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            Python反编译
+          </div>
+
+          
+          <div class="excerpt">
+            
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-11-19T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-11-19
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.0k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
         </div>
       </div>
     </a>
@@ -434,6 +545,7 @@
   
 </div>
 
+  </div>
 
   
 <div class="paginator">
