@@ -230,3 +230,13 @@ body.cursor-active::after {
   border-color: var(--color-background-accent);
   box-shadow: var(--glow-accent-strong);
 }
+
+.site-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.55;
+}
