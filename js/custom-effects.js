@@ -502,7 +502,9 @@
         feed.style.filter = blurPx < 0.2 ? 'none' : ('blur(' + blurPx.toFixed(2) + 'px)');
         feed.style.transform = 'none';
         feed.style.visibility = feedOpacity < 0.02 ? 'hidden' : 'visible';
-        feed.style.pointerEvents = feedOpacity < 0.35 ? 'none' : 'auto';
+        feed.style.pointerEvents = feedOpacity < 0.15 ? 'none' : 'auto';
+        // Sticky cover is above the feed — never let the wrapper eat clicks.
+        reveal.style.pointerEvents = 'none';
       }
 
     }

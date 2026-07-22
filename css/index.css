@@ -94,7 +94,14 @@ body[data-color-scheme=dark] .hero {
 .hero-panel-inner {
   position: absolute;
   z-index: 2;
+  pointer-events: none;
+}
+
+.hero-link,
+.hero-cover-story {
   pointer-events: auto;
+  position: relative;
+  z-index: 3;
 }
 
 .hero-panel--left .hero-panel-inner {
@@ -119,7 +126,7 @@ body[data-color-scheme=dark] .hero {
   align-items: flex-start;
   max-width: min(100%, 18em);
   z-index: 1;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 .hero-panel--right .hero-panel-inner {
@@ -380,7 +387,12 @@ body[data-color-scheme=dark] .hero {
   animation: hero-enter-fade 1s ease 540ms both;
 }
 
+.hero-reveal {
+  pointer-events: none;
+}
+
 .hero-reveal--split {
+  pointer-events: none;
   position: relative;
   z-index: 7;
   height: 210svh;
