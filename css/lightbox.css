@@ -11,7 +11,7 @@
   -webkit-backdrop-filter: blur(16px) saturate(120%);
   opacity: 0;
   transition: opacity 0.25s ease;
-  cursor: zoom-out;
+  cursor: default;
   overscroll-behavior: none;
   touch-action: none;
 }
@@ -53,7 +53,7 @@
   transform: translate3d(0, 0, 0) scale(1);
   transform-origin: center center;
   will-change: transform;
-  cursor: zoom-in;
+  cursor: default;
   transition: opacity 0.3s ease;
   pointer-events: auto;
   -webkit-user-drag: none;
@@ -65,10 +65,10 @@
   opacity: 1;
 }
 .lightbox .lightbox-stage .lightbox-image.is-zoomed {
-  cursor: grab;
+  cursor: default;
 }
 .lightbox .lightbox-stage .lightbox-image.is-dragging {
-  cursor: grabbing;
+  cursor: default;
   transition: none;
 }
 .lightbox .lightbox-close,
@@ -176,6 +176,33 @@
   opacity: 1;
   transform: translateY(0);
 }
+.lightbox .lightbox-hint {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  max-width: min(42vw, 360px);
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.lightbox .lightbox-hint.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 @media (max-width: 600px) {
   .lightbox {
     padding: 0;
@@ -206,11 +233,17 @@
     top: 16px;
     left: 16px;
   }
+  .lightbox .lightbox-hint {
+    left: 16px;
+    bottom: 16px;
+    max-width: calc(100vw - 32px);
+    font-size: 10px;
+  }
 }
 
 .post .content img,
 .about img {
-  cursor: zoom-in;
+  cursor: default;
 }
 
 body.lightbox-open {

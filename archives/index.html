@@ -113,7 +113,6 @@
   
   
   
-  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -204,7 +203,9 @@
 </nav>
 
     <main id="main-content">
-      <div>
+      
+
+<div>
   <div class="meta">
     <div class="date">
       
@@ -219,8 +220,11 @@
   </div>
 </div>
 
+
+
 <div class="container">
-  <div class="post-list archives">
+  
+<div class="post-list archives">
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
@@ -252,7 +256,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse Docking Check 红线部分是编译器优化 实际上v7就应该是strlen(input) 加密方式也给出来了，就可以写脚本了 Nebula VM 根据题目并把文件拖到IDA中分析可知这是一个vm题 这里可以看到对opcode进行了个解密 这里可以看到把v49简单初始化了一下 然后用v17代替v9作…
           </div>
           
         </div>
@@ -269,7 +273,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>51.7k</span>
+                <span>548</span>
               </span>
             </div>
           </div>
@@ -313,7 +317,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了 lit_xor_chain 丢到IDA中分析一下 发现就是异或后加一个数 用赛博厨子即可 lit_b64_alphabet 改了字母表 依旧赛博厨子 lit_tea_standard 考点题目说的很明确了 搓个脚本即可 lit_xtea_tweak…
           </div>
           
         </div>
@@ -330,7 +334,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>23.4k</span>
+                <span>439</span>
               </span>
             </div>
           </div>
@@ -374,7 +378,7 @@
 
           
           <div class="excerpt">
-            
+            2026数字中国数字安全赛道网络安全团体赛决赛WP Reverse Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。 FlagVault 这题题目说的很明确了，加密在Native层 定位到关键函数 发现整体逻辑较为简单，且有用函数为getFlag…
           </div>
           
         </div>
@@ -391,7 +395,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>121.7k</span>
+                <span>8.5k</span>
               </span>
             </div>
           </div>
@@ -435,7 +439,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse 签到题 丢进DIE查了下 发现有VMP的壳子，直接找工具脱掉（之前正好参加了Lilac CTF，官方wp中提到了个脱壳工具，在这正好用上了） 再丢进IDA 未来程序 有个c++的源码，因为不会c++，所以让ai协助我理解了下代码 发现encoder.txt，把内容按源码改了改 简单了解了下源码 把out…
           </div>
           
         </div>
@@ -452,7 +456,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>67.3k</span>
+                <span>1.0k</span>
               </span>
             </div>
           </div>
@@ -496,7 +500,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse c_polynomial 这道题我一开始还以为是一道动态调试的题目，发现并不是，直接静态就可以看 发现是一个道很综合的计算题 丢给ai写出计算脚本 c_sm4.py 这道题打开ida发现根本分析不明白 查了下壳是UPX的，用的最新版5.1 发现官方脱壳器脱不了 网上搜手动脱壳自己脱了 然后发现是到魔改的…
           </div>
           
         </div>
@@ -513,7 +517,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>313.6k</span>
+                <span>2.2k</span>
               </span>
             </div>
           </div>
@@ -540,7 +544,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -551,7 +555,7 @@
 
           
           <div class="excerpt">
-            
+            题目 要想实现ret2libc，有以下几个必要条件： 存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。…
           </div>
           
         </div>
@@ -568,7 +572,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>10.9k</span>
+                <span>2.0k</span>
               </span>
             </div>
           </div>
@@ -595,7 +599,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -606,7 +610,7 @@
 
           
           <div class="excerpt">
-            
+            在字符串层⾯过滤了”cat”和”sh” 绕过手段很多 在正常命令中加⼊⽆关紧要的分隔符,如:ca\t flag 输⼊$0返回自身的shell
           </div>
           
         </div>
@@ -623,7 +627,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>110</span>
+                <span>66</span>
               </span>
             </div>
           </div>
@@ -650,7 +654,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -661,7 +665,7 @@
 
           
           <div class="excerpt">
-            
+            例子 read(0, buf, 0x100u) 出现了明显的栈溢出 从标准输入（fd=0）中读取 0x100 = 256 字节到 buf 中。 但是 buf 只有 48 字节！所以 直接构成栈缓冲区溢出漏洞 。 当有 溢出漏洞 （比如 buffer overflow）时，程序允许我们“写太多数据”，覆盖重要区域，比如：…
           </div>
           
         </div>
@@ -678,7 +682,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>4.1k</span>
+                <span>380</span>
               </span>
             </div>
           </div>
@@ -705,7 +709,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -716,7 +720,7 @@
 
           
           <div class="excerpt">
-            
+            编码过程演示 让我们通过一个具体的例子来看看它是如何工作的。 假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M = 77 = 01001101 a = 97 = 01100001 n = 110 = 01101110 将它们连成一串 24 bit 的数据流： 01001101011000…
           </div>
           
         </div>
@@ -733,7 +737,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>12.8k</span>
+                <span>1.1k</span>
               </span>
             </div>
           </div>
@@ -760,7 +764,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -771,7 +775,7 @@
 
           
           <div class="excerpt">
-            
+            特征 小端序是以四个字节倒序过来，也就是讲读入的字符转化为一个个32位的整数。 读取的字符在内存中以ACSII码的形式储存，小端序也是讲这些个ACSII码，四个为一组，倒叙过来，组成一个32位整数 小端序拼接 0x66 6E 6A 73 32 位整数 0x666E6A73 后面接什么 后面一般会接MD5、部分SHA、T…
           </div>
           
         </div>
@@ -788,7 +792,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>4.8k</span>
+                <span>163</span>
               </span>
             </div>
           </div>
@@ -820,6 +824,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 

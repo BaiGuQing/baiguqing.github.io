@@ -32,6 +32,7 @@
   let caption = null
   let counter = null
   let zoomHint = null
+  let interactionHint = null
   let current = []
   let activeIndex = -1
   let shownImg = null
@@ -47,6 +48,9 @@
   let originTx = 0
   let originTy = 0
   let wheelBound = false
+  let hintTimer = null
+
+  const HINT_DURATION = 3200
 
   function clamp(v, min, max) {
     return v < min ? min : v > max ? max : v
@@ -72,6 +76,17 @@
     tx = 0
     ty = 0
     applyTransform(false)
+  }
+
+  function showInteractionHint() {
+    if (!interactionHint) return
+
+    interactionHint.classList.add('visible')
+    clearTimeout(hintTimer)
+    hintTimer = setTimeout(() => {
+      interactionHint?.classList.remove('visible')
+      hintTimer = null
+    }, HINT_DURATION)
   }
 
   function zoomAt(nextScale, clientX, clientY) {
@@ -247,7 +262,24 @@
     zoomHint.setAttribute('aria-hidden', 'true')
     zoomHint.textContent = '100%'
 
-    overlay.append(stage, closeBtn, prevBtn, nextBtn, caption, counter, zoomHint)
+    interactionHint = document.createElement('div')
+    interactionHint.className = 'lightbox-hint'
+    interactionHint.setAttribute('role', 'status')
+    interactionHint.setAttribute('aria-live', 'polite')
+    interactionHint.textContent = window.matchMedia?.('(pointer: fine)').matches
+      ? '滚轮缩放 · 拖动查看 · 双击复位'
+      : '拖动查看 · 双击复位'
+
+    overlay.append(
+      stage,
+      closeBtn,
+      prevBtn,
+      nextBtn,
+      caption,
+      counter,
+      zoomHint,
+      interactionHint,
+    )
     overlay.addEventListener('click', e => {
       if (moved) return
       if (e.target === overlay) close()
@@ -265,6 +297,7 @@
     render()
     document.body.classList.add('lightbox-open')
     document.addEventListener('keydown', onKey)
+    showInteractionHint()
     // Pause Lenis while open so wheel can drive zoom instead of page scroll.
     if (window.lenis && typeof window.lenis.stop === 'function') window.lenis.stop()
   }
@@ -331,6 +364,8 @@
       overlay.removeEventListener('transitionend', done)
       document.body.classList.remove('lightbox-open')
       document.removeEventListener('keydown', onKey)
+      clearTimeout(hintTimer)
+      hintTimer = null
       if (window.lenis && typeof window.lenis.start === 'function') {
         window.lenis.start()
       }
@@ -340,6 +375,7 @@
       caption = null
       counter = null
       zoomHint = null
+      interactionHint = null
       shownImg = null
       wheelBound = false
       scale = 1

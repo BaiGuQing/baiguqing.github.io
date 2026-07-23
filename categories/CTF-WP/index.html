@@ -113,7 +113,6 @@
   
   
   
-  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -204,7 +203,9 @@
 </nav>
 
     <main id="main-content">
-      <div>
+      
+
+<div>
   <div class="meta">
     <div class="date">
       分类
@@ -219,12 +220,60 @@
   </div>
 </div>
 
+
+<section class="container taxonomy-detail-sort" aria-labelledby="taxonomy-detail-sort-title">
+  <div class="taxonomy-detail-sort-copy">
+    <p class="taxonomy-detail-sort-kicker" id="taxonomy-detail-sort-title">
+      <i class="bi bi-signpost-split" aria-hidden="true"></i>
+      线路排序
+    </p>
+    <p class="taxonomy-detail-sort-description">排序作用于当前分类或标签的全部文章，翻页后仍会延续同一顺序。</p>
+  </div>
+
+  <div class="taxonomy-detail-sort-options" role="list" aria-label="排序">
+    
+    
+    <a class="taxonomy-detail-sort-option is-active" href="/categories/CTF-WP/" role="listitem" aria-current="page">
+      <i class="bi bi-sort-down-alt" aria-hidden="true"></i>
+      <span>最新优先</span>
+      
+      <i class="bi bi-check2 taxonomy-detail-sort-check" aria-hidden="true"></i>
+      <span class="sr-only">当前排序</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/categories/CTF-WP/sort/date-asc/" role="listitem">
+      <i class="bi bi-sort-up" aria-hidden="true"></i>
+      <span>最早优先</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/categories/CTF-WP/sort/title-asc/" role="listitem">
+      <i class="bi bi-sort-alpha-down" aria-hidden="true"></i>
+      <span>标题 A→Z</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/categories/CTF-WP/sort/title-desc/" role="listitem">
+      <i class="bi bi-sort-alpha-up-alt" aria-hidden="true"></i>
+      <span>标题 Z→A</span>
+      
+    </a>
+    
+  </div>
+</section>
+
+
 <div class="container">
-  <div class="post-list archives">
+  
+<div class="post-list archives">
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2026/05/26/ZeroG_CTF2026/">
+    <a class="post-card-link" href="/2026/05/26/ZeroG_CTF2026/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -252,7 +301,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse Docking Check 红线部分是编译器优化 实际上v7就应该是strlen(input) 加密方式也给出来了，就可以写脚本了 Nebula VM 根据题目并把文件拖到IDA中分析可知这是一个vm题 这里可以看到对opcode进行了个解密 这里可以看到把v49简单初始化了一下 然后用v17代替v9作…
           </div>
           
         </div>
@@ -269,7 +318,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>51.7k</span>
+                <span>548</span>
               </span>
             </div>
           </div>
@@ -285,7 +334,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2026/05/25/LitCTF2026_WP/">
+    <a class="post-card-link" href="/2026/05/25/LitCTF2026_WP/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -313,7 +362,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了 lit_xor_chain 丢到IDA中分析一下 发现就是异或后加一个数 用赛博厨子即可 lit_b64_alphabet 改了字母表 依旧赛博厨子 lit_tea_standard 考点题目说的很明确了 搓个脚本即可 lit_xtea_tweak…
           </div>
           
         </div>
@@ -330,7 +379,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>23.4k</span>
+                <span>439</span>
               </span>
             </div>
           </div>
@@ -346,7 +395,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2026/04/23/2026%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E8%B5%9BWP/">
+    <a class="post-card-link" href="/2026/04/23/2026%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E8%B5%9BWP/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -374,7 +423,7 @@
 
           
           <div class="excerpt">
-            
+            2026数字中国数字安全赛道网络安全团体赛决赛WP Reverse Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。 FlagVault 这题题目说的很明确了，加密在Native层 定位到关键函数 发现整体逻辑较为简单，且有用函数为getFlag…
           </div>
           
         </div>
@@ -391,7 +440,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>121.7k</span>
+                <span>8.5k</span>
               </span>
             </div>
           </div>
@@ -407,7 +456,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2026/02/13/FurryCTF2026/">
+    <a class="post-card-link" href="/2026/02/13/FurryCTF2026/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -435,7 +484,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse 签到题 丢进DIE查了下 发现有VMP的壳子，直接找工具脱掉（之前正好参加了Lilac CTF，官方wp中提到了个脱壳工具，在这正好用上了） 再丢进IDA 未来程序 有个c++的源码，因为不会c++，所以让ai协助我理解了下代码 发现encoder.txt，把内容按源码改了改 简单了解了下源码 把out…
           </div>
           
         </div>
@@ -452,7 +501,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>67.3k</span>
+                <span>1.0k</span>
               </span>
             </div>
           </div>
@@ -468,7 +517,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2026/01/31/UniCTF2026_WP/">
+    <a class="post-card-link" href="/2026/01/31/UniCTF2026_WP/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -496,7 +545,7 @@
 
           
           <div class="excerpt">
-            
+            Reverse c_polynomial 这道题我一开始还以为是一道动态调试的题目，发现并不是，直接静态就可以看 发现是一个道很综合的计算题 丢给ai写出计算脚本 c_sm4.py 这道题打开ida发现根本分析不明白 查了下壳是UPX的，用的最新版5.1 发现官方脱壳器脱不了 网上搜手动脱壳自己脱了 然后发现是到魔改的…
           </div>
           
         </div>
@@ -513,7 +562,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>313.6k</span>
+                <span>2.2k</span>
               </span>
             </div>
           </div>
@@ -529,7 +578,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/">
+    <a class="post-card-link" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -557,7 +606,7 @@
 
           
           <div class="excerpt">
-            
+            引言 我希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ ezVBS 我不得不说，要听劝。原题都告诉我了，不让我打开，我还就偏打开了，然后去网上搜VBS逆向，最后在赛博厨子那里逆向出了 当时没怎么注意文字，就去看官方WP了，结果打开记事本看了看，和WP上的不一样啊，我还以为题出错了，回来又下了一遍…
           </div>
           
         </div>
@@ -574,7 +623,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>75.9k</span>
+                <span>2.1k</span>
               </span>
             </div>
           </div>
@@ -590,7 +639,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/">
+    <a class="post-card-link" href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -618,7 +667,7 @@
 
           
           <div class="excerpt">
-            
+            引言 我是一名CTF萌新啊，做这么详细的WP，也是希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ 16 bit 这个官方文档写的比较详细，那我就仔细的讲一下过程 运行这个exe会发现运行不了，据官方WP所说，这个是16位的应⽤程序，是由汇编语⾔直接编写再编译的，现代操作系统⼀般都无法直接运行，但…
           </div>
           
         </div>
@@ -635,7 +684,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>36.0k</span>
+                <span>2.5k</span>
               </span>
             </div>
           </div>
@@ -651,7 +700,7 @@
   
   
   <article class="post-list-item scroll-reveal has-cover" data-post-card>
-    <a class="post-card-link" href="/2025/11/19/0xGame%202025%20Week1%20Reverse%20WP/">
+    <a class="post-card-link" href="/2025/11/19/0xGame%202025%20Week1%20Reverse%20WP/?line=c%3ACTF-WP&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -679,7 +728,7 @@
 
           
           <div class="excerpt">
-            
+            引言 我是一名入门的CTF玩家，看了看0xGame 2025 Week1 Reverse官方的WriteUp，感觉写的太简略了，这边以新手的视角开启0xGame 2025 Week1 Reverse SignIn 这个题目我们需要准备好IDA，我在这里下载的 [原创] IDA Pro 9 安装和插件配置-安全工具-看雪…
           </div>
           
         </div>
@@ -696,7 +745,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>13.3k</span>
+                <span>2.4k</span>
               </span>
             </div>
           </div>
@@ -724,6 +773,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 

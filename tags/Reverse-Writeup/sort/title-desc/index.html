@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>#Reverse_Writeup - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GuQing&#39;s Blog">
+<meta property="og:url" content="https://baiguqing.github.io/tags/Reverse-Writeup/sort/title-desc/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="CTF,Reverse,Note">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/archive.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+
+<div>
+  <div class="meta">
+    <div class="date">
+      
+      标签
+    </div>
+
+    <h1 class="title">
+      
+      #Reverse_Writeup
+      
+    </h1>
+  </div>
+</div>
+
+
+<section class="container taxonomy-detail-sort" aria-labelledby="taxonomy-detail-sort-title">
+  <div class="taxonomy-detail-sort-copy">
+    <p class="taxonomy-detail-sort-kicker" id="taxonomy-detail-sort-title">
+      <i class="bi bi-signpost-split" aria-hidden="true"></i>
+      线路排序
+    </p>
+    <p class="taxonomy-detail-sort-description">排序作用于当前分类或标签的全部文章，翻页后仍会延续同一顺序。</p>
+  </div>
+
+  <div class="taxonomy-detail-sort-options" role="list" aria-label="排序">
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/tags/Reverse-Writeup/" role="listitem">
+      <i class="bi bi-sort-down-alt" aria-hidden="true"></i>
+      <span>最新优先</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/tags/Reverse-Writeup/sort/date-asc/" role="listitem">
+      <i class="bi bi-sort-up" aria-hidden="true"></i>
+      <span>最早优先</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/tags/Reverse-Writeup/sort/title-asc/" role="listitem">
+      <i class="bi bi-sort-alpha-down" aria-hidden="true"></i>
+      <span>标题 A→Z</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option is-active" href="/tags/Reverse-Writeup/sort/title-desc/" role="listitem" aria-current="page">
+      <i class="bi bi-sort-alpha-up-alt" aria-hidden="true"></i>
+      <span>标题 Z→A</span>
+      
+      <i class="bi bi-check2 taxonomy-detail-sort-check" aria-hidden="true"></i>
+      <span class="sr-only">当前排序</span>
+      
+    </a>
+    
+  </div>
+</section>
+
+
+<div class="container">
+  
+<div class="post-list archives">
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/05/26/ZeroG_CTF2026/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202606171551.png" alt="ZeroG_CTF2026" loading="lazy" decoding="async" width="2049" height="1146">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            ZeroG_CTF2026
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse Docking Check 红线部分是编译器优化 实际上v7就应该是strlen(input) 加密方式也给出来了，就可以写脚本了 Nebula VM 根据题目并把文件拖到IDA中分析可知这是一个vm题 这里可以看到对opcode进行了个解密 这里可以看到把v49简单初始化了一下 然后用v17代替v9作…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-05-26T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-5-26
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>548</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/01/31/UniCTF2026_WP/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202601262057.png" alt="UniCTF2026_WP" loading="lazy" decoding="async" width="1298" height="835">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            UniCTF2026_WP
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse c_polynomial 这道题我一开始还以为是一道动态调试的题目，发现并不是，直接静态就可以看 发现是一个道很综合的计算题 丢给ai写出计算脚本 c_sm4.py 这道题打开ida发现根本分析不明白 查了下壳是UPX的，用的最新版5.1 发现官方脱壳器脱不了 网上搜手动脱壳自己脱了 然后发现是到魔改的…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-01-31T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-1-31
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.2k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/05/25/LitCTF2026_WP/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/2bb2b475-3def-44e1-b41f-2d6d8621cb69.png" alt="LitCTF2026_WP" loading="lazy" decoding="async" width="791" height="576">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            LitCTF2026_WP
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了 lit_xor_chain 丢到IDA中分析一下 发现就是异或后加一个数 用赛博厨子即可 lit_b64_alphabet 改了字母表 依旧赛博厨子 lit_tea_standard 考点题目说的很明确了 搓个脚本即可 lit_xtea_tweak…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-05-25T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-5-25
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>439</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/02/13/FurryCTF2026/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202602011856.png" alt="FurryCTF2026" loading="lazy" decoding="async" width="899" height="520">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            FurryCTF2026
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse 签到题 丢进DIE查了下 发现有VMP的壳子，直接找工具脱掉（之前正好参加了Lilac CTF，官方wp中提到了个脱壳工具，在这正好用上了） 再丢进IDA 未来程序 有个c++的源码，因为不会c++，所以让ai协助我理解了下代码 发现encoder.txt，把内容按源码改了改 简单了解了下源码 把out…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-02-13T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-2-13
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>1.0k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/04/23/2026%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E8%B5%9BWP/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202606220922.png" alt="2026数字中国数字安全赛道网络安全团队赛WP" loading="lazy" decoding="async" width="1737" height="929">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            2026数字中国数字安全赛道网络安全团队赛WP
+          </div>
+
+          
+          <div class="excerpt">
+            2026数字中国数字安全赛道网络安全团体赛决赛WP Reverse Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。 FlagVault 这题题目说的很明确了，加密在Native层 定位到关键函数 发现整体逻辑较为简单，且有用函数为getFlag…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-04-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-4-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>8.5k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/20251123174856.png" alt="0xGame 2025 Week3 Reverse WP" loading="lazy" decoding="async" width="1374" height="630">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week3 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ ezVBS 我不得不说，要听劝。原题都告诉我了，不让我打开，我还就偏打开了，然后去网上搜VBS逆向，最后在赛博厨子那里逆向出了 当时没怎么注意文字，就去看官方WP了，结果打开记事本看了看，和WP上的不一样啊，我还以为题出错了，回来又下了一遍…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-16T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-16
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.1k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy" decoding="async" width="594" height="50">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week2 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我是一名CTF萌新啊，做这么详细的WP，也是希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ 16 bit 这个官方文档写的比较详细，那我就仔细的讲一下过程 运行这个exe会发现运行不了，据官方WP所说，这个是16位的应⽤程序，是由汇编语⾔直接编写再编译的，现代操作系统⼀般都无法直接运行，但…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-11-20T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-11-20
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.5k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/19/0xGame%202025%20Week1%20Reverse%20WP/?line=t%3AReverse_Writeup&amp;sort=title-desc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/083720wzd4p1zx66f8pfp4.png" alt="0xGame 2025 Week1 Reverse WP" loading="lazy" decoding="async" width="1920" height="1002">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week1 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我是一名入门的CTF玩家，看了看0xGame 2025 Week1 Reverse官方的WriteUp，感觉写的太简略了，这边以新手的视角开启0xGame 2025 Week1 Reverse SignIn 这个题目我们需要准备好IDA，我在这里下载的 [原创] IDA Pro 9 安装和插件配置-安全工具-看雪…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-11-19T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-11-19
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.4k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+</div>
+
+</div>
+
+
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

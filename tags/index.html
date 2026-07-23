@@ -110,9 +110,8 @@
   
   
   
-<link rel="stylesheet" href="/css/tags.css">
+<link rel="stylesheet" href="/css/taxonomy.css">
 
-  
   
   
   
@@ -223,20 +222,496 @@
 
     <main id="main-content">
       
-  <div class="container">
-  <div class="meta">
-    <h1 class="title">标签</h1>
+  
+
+<section
+  class="container taxonomy-page taxonomy-page--tags"
+  data-taxonomy-page
+  data-default-sort="count"
+>
+  <header class="taxonomy-hero">
+    <div class="taxonomy-hero-copy">
+      <p class="taxonomy-kicker">内容地图</p>
+      <h1>标签</h1>
+      <p class="taxonomy-description">从标签反向查看它分布在哪些分类中，并沿着分支进入对应文章。</p>
+
+      <div class="taxonomy-route" role="list" aria-label="内容层级">
+        
+        <span class="taxonomy-route-step" role="listitem">
+          <i class="bi bi-tags" aria-hidden="true"></i>
+          <span>标签</span>
+        </span>
+        
+        <i class="bi bi-arrow-right taxonomy-route-arrow" aria-hidden="true"></i>
+        
+        
+        <span class="taxonomy-route-step" role="listitem">
+          <i class="bi bi-folder2-open" aria-hidden="true"></i>
+          <span>分类</span>
+        </span>
+        
+        <i class="bi bi-arrow-right taxonomy-route-arrow" aria-hidden="true"></i>
+        
+        
+        <span class="taxonomy-route-step" role="listitem">
+          <i class="bi bi-file-text" aria-hidden="true"></i>
+          <span>文章</span>
+        </span>
+        
+        
+      </div>
+    </div>
+
+    <dl class="taxonomy-overview" aria-label="内容概览">
+      <div>
+        <dt>分类</dt>
+        <dd>2</dd>
+      </div>
+      <div>
+        <dt>标签</dt>
+        <dd>3</dd>
+      </div>
+      <div>
+        <dt>文章</dt>
+        <dd>14</dd>
+      </div>
+    </dl>
+  </header>
+
+  <div class="taxonomy-controls" data-taxonomy-controls hidden>
+    <label class="taxonomy-search">
+      <span class="sr-only">筛选内容结构</span>
+      <i class="bi bi-search" aria-hidden="true"></i>
+      <input
+        type="search"
+        autocomplete="off"
+        placeholder="筛选标签或分类…"
+        data-taxonomy-filter
+      >
+      <button
+        class="taxonomy-search-clear"
+        type="button"
+        aria-label="清空筛选"
+        data-taxonomy-clear
+        hidden
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+    </label>
+
+    <div class="taxonomy-sort" role="group" aria-label="排序">
+      <span class="taxonomy-sort-label">排序</span>
+      <button
+        type="button"
+        data-taxonomy-sort="recent"
+        aria-pressed="false"
+      >
+        <i class="bi bi-clock-history" aria-hidden="true"></i>
+        <span>最近更新</span>
+      </button>
+      <button
+        type="button"
+        data-taxonomy-sort="count"
+        aria-pressed="true"
+      >
+        <i class="bi bi-bar-chart" aria-hidden="true"></i>
+        <span>文章数量</span>
+      </button>
+    </div>
+
+    <p class="taxonomy-result" role="status" aria-live="polite">
+      <strong data-taxonomy-visible-count>3</strong>
+      <span aria-hidden="true"> / 3</span>
+      <span>标签</span>
+    </p>
   </div>
-  <div class="tags">
+
+  <ul class="taxonomy-tree" data-taxonomy-tree>
     
-    <a href="/tags/Reverse-Writeup/" class="tag">#Reverse_Writeup<span class="count">8</span></a>
+    <li
+      class="taxonomy-root-item"
+      data-taxonomy-branch
+      data-taxonomy-root-search="Reverse_Writeup"
+      data-count="8"
+      data-updated="1784791464905"
+      data-name="Reverse_Writeup"
+    >
+      <details class="taxonomy-branch" open>
+        <summary class="taxonomy-summary taxonomy-root-summary">
+          <span class="taxonomy-chevron" aria-hidden="true">
+            <i class="bi bi-chevron-right"></i>
+          </span>
+          <span class="taxonomy-node-icon" aria-hidden="true">
+            <i class="bi bi-tag"></i>
+          </span>
+          <span class="taxonomy-node-copy">
+            <span class="taxonomy-node-name">Reverse_Writeup</span>
+            <span class="taxonomy-node-meta">
+              <span><strong>8</strong> 篇</span>
+              
+              <span class="taxonomy-meta-separator" aria-hidden="true"></span>
+              <time datetime="2026-07-23T15:24:24+08:00">
+                更新于 2026-7-23
+              </time>
+              
+            </span>
+          </span>
+          <span
+            class="taxonomy-count"
+            aria-label="1 所属分类"
+          >
+            <i class="bi bi-folder2" aria-hidden="true"></i>
+            <span aria-hidden="true">1</span>
+          </span>
+        </summary>
+
+        <div class="taxonomy-branch-body">
+          <div class="taxonomy-branch-heading">
+            <span>
+              <i class="bi bi-folder2" aria-hidden="true"></i>
+              所属分类
+            </span>
+            <a href="/tags/Reverse-Writeup/">
+              查看完整标签
+              <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <ul class="taxonomy-subtree">
+            
+            <li
+              class="taxonomy-subtree-item"
+              data-taxonomy-subbranch
+              data-taxonomy-search="CTF_WP"
+            >
+              <details class="taxonomy-subbranch" open>
+                <summary class="taxonomy-summary taxonomy-subbranch-summary">
+                  <span class="taxonomy-chevron" aria-hidden="true">
+                    <i class="bi bi-chevron-right"></i>
+                  </span>
+                  <span class="taxonomy-node-icon taxonomy-node-icon--small" aria-hidden="true">
+                    <i class="bi bi-folder2"></i>
+                  </span>
+                  <span class="taxonomy-node-copy">
+                    <span class="taxonomy-node-name">CTF_WP</span>
+                    <span class="taxonomy-node-meta">
+                      <strong>8</strong> 篇
+                    </span>
+                  </span>
+                </summary>
+
+                <div class="taxonomy-subbranch-body">
+                  <ul class="taxonomy-posts">
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2026/05/26/ZeroG_CTF2026/">ZeroG_CTF2026</a>
+                      
+                      <time datetime="2026-05-26T00:00:00+08:00">
+                        2026-5-26
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2026/05/25/LitCTF2026_WP/">LitCTF2026_WP</a>
+                      
+                      <time datetime="2026-05-25T00:00:00+08:00">
+                        2026-5-25
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2026/04/23/2026%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E8%B5%9BWP/">2026数字中国数字安全赛道网络安全团队赛WP</a>
+                      
+                      <time datetime="2026-04-23T00:00:00+08:00">
+                        2026-4-23
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2026/02/13/FurryCTF2026/">FurryCTF2026</a>
+                      
+                      <time datetime="2026-02-13T00:00:00+08:00">
+                        2026-2-13
+                      </time>
+                      
+                    </li>
+                    
+                  </ul>
+
+                  
+                  <a class="taxonomy-view-all" href="/categories/CTF-WP/">
+                    <span>查看全部 8 篇</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                  </a>
+                  
+                </div>
+              </details>
+            </li>
+            
+          </ul>
+        </div>
+      </details>
+    </li>
     
-    <a href="/tags/Note-For-Reverse/" class="tag">#Note_For_Reverse<span class="count">3</span></a>
+    <li
+      class="taxonomy-root-item"
+      data-taxonomy-branch
+      data-taxonomy-root-search="Note_For_Pwn"
+      data-count="3"
+      data-updated="1784791455715"
+      data-name="Note_For_Pwn"
+    >
+      <details class="taxonomy-branch" open>
+        <summary class="taxonomy-summary taxonomy-root-summary">
+          <span class="taxonomy-chevron" aria-hidden="true">
+            <i class="bi bi-chevron-right"></i>
+          </span>
+          <span class="taxonomy-node-icon" aria-hidden="true">
+            <i class="bi bi-tag"></i>
+          </span>
+          <span class="taxonomy-node-copy">
+            <span class="taxonomy-node-name">Note_For_Pwn</span>
+            <span class="taxonomy-node-meta">
+              <span><strong>3</strong> 篇</span>
+              
+              <span class="taxonomy-meta-separator" aria-hidden="true"></span>
+              <time datetime="2026-07-23T15:24:15+08:00">
+                更新于 2026-7-23
+              </time>
+              
+            </span>
+          </span>
+          <span
+            class="taxonomy-count"
+            aria-label="1 所属分类"
+          >
+            <i class="bi bi-folder2" aria-hidden="true"></i>
+            <span aria-hidden="true">1</span>
+          </span>
+        </summary>
+
+        <div class="taxonomy-branch-body">
+          <div class="taxonomy-branch-heading">
+            <span>
+              <i class="bi bi-folder2" aria-hidden="true"></i>
+              所属分类
+            </span>
+            <a href="/tags/Note-For-Pwn/">
+              查看完整标签
+              <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <ul class="taxonomy-subtree">
+            
+            <li
+              class="taxonomy-subtree-item"
+              data-taxonomy-subbranch
+              data-taxonomy-search="CTF_Notes"
+            >
+              <details class="taxonomy-subbranch" open>
+                <summary class="taxonomy-summary taxonomy-subbranch-summary">
+                  <span class="taxonomy-chevron" aria-hidden="true">
+                    <i class="bi bi-chevron-right"></i>
+                  </span>
+                  <span class="taxonomy-node-icon taxonomy-node-icon--small" aria-hidden="true">
+                    <i class="bi bi-folder2"></i>
+                  </span>
+                  <span class="taxonomy-node-copy">
+                    <span class="taxonomy-node-name">CTF_Notes</span>
+                    <span class="taxonomy-node-meta">
+                      <strong>3</strong> 篇
+                    </span>
+                  </span>
+                </summary>
+
+                <div class="taxonomy-subbranch-body">
+                  <ul class="taxonomy-posts">
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2025/12/30/ret2libc/">ret2libc</a>
+                      
+                      <time datetime="2025-12-30T00:00:00+08:00">
+                        2025-12-30
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/">不能用cat和sh指令</a>
+                      
+                      <time datetime="2025-12-27T00:00:00+08:00">
+                        2025-12-27
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/">简单栈溢出</a>
+                      
+                      <time datetime="2025-12-27T00:00:00+08:00">
+                        2025-12-27
+                      </time>
+                      
+                    </li>
+                    
+                  </ul>
+
+                  
+                  <a class="taxonomy-view-all" href="/categories/CTF-Notes/">
+                    <span>查看全部 3 篇</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                  </a>
+                  
+                </div>
+              </details>
+            </li>
+            
+          </ul>
+        </div>
+      </details>
+    </li>
     
-    <a href="/tags/Note-For-Pwn/" class="tag">#Note_For_Pwn<span class="count">3</span></a>
+    <li
+      class="taxonomy-root-item"
+      data-taxonomy-branch
+      data-taxonomy-root-search="Note_For_Reverse"
+      data-count="3"
+      data-updated="1784791447935"
+      data-name="Note_For_Reverse"
+    >
+      <details class="taxonomy-branch" open>
+        <summary class="taxonomy-summary taxonomy-root-summary">
+          <span class="taxonomy-chevron" aria-hidden="true">
+            <i class="bi bi-chevron-right"></i>
+          </span>
+          <span class="taxonomy-node-icon" aria-hidden="true">
+            <i class="bi bi-tag"></i>
+          </span>
+          <span class="taxonomy-node-copy">
+            <span class="taxonomy-node-name">Note_For_Reverse</span>
+            <span class="taxonomy-node-meta">
+              <span><strong>3</strong> 篇</span>
+              
+              <span class="taxonomy-meta-separator" aria-hidden="true"></span>
+              <time datetime="2026-07-23T15:24:07+08:00">
+                更新于 2026-7-23
+              </time>
+              
+            </span>
+          </span>
+          <span
+            class="taxonomy-count"
+            aria-label="1 所属分类"
+          >
+            <i class="bi bi-folder2" aria-hidden="true"></i>
+            <span aria-hidden="true">1</span>
+          </span>
+        </summary>
+
+        <div class="taxonomy-branch-body">
+          <div class="taxonomy-branch-heading">
+            <span>
+              <i class="bi bi-folder2" aria-hidden="true"></i>
+              所属分类
+            </span>
+            <a href="/tags/Note-For-Reverse/">
+              查看完整标签
+              <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <ul class="taxonomy-subtree">
+            
+            <li
+              class="taxonomy-subtree-item"
+              data-taxonomy-subbranch
+              data-taxonomy-search="CTF_Notes"
+            >
+              <details class="taxonomy-subbranch" open>
+                <summary class="taxonomy-summary taxonomy-subbranch-summary">
+                  <span class="taxonomy-chevron" aria-hidden="true">
+                    <i class="bi bi-chevron-right"></i>
+                  </span>
+                  <span class="taxonomy-node-icon taxonomy-node-icon--small" aria-hidden="true">
+                    <i class="bi bi-folder2"></i>
+                  </span>
+                  <span class="taxonomy-node-copy">
+                    <span class="taxonomy-node-name">CTF_Notes</span>
+                    <span class="taxonomy-node-meta">
+                      <strong>3</strong> 篇
+                    </span>
+                  </span>
+                </summary>
+
+                <div class="taxonomy-subbranch-body">
+                  <ul class="taxonomy-posts">
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2025/12/22/Base64%E7%BC%96%E7%A0%81/">Base64编码</a>
+                      
+                      <time datetime="2025-12-22T00:00:00+08:00">
+                        2025-12-22
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/">小端序</a>
+                      
+                      <time datetime="2025-12-22T00:00:00+08:00">
+                        2025-12-22
+                      </time>
+                      
+                    </li>
+                    
+                    <li>
+                      <span class="taxonomy-post-line" aria-hidden="true"></span>
+                      <a href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/">Python反编译</a>
+                      
+                      <time datetime="2025-11-19T00:00:00+08:00">
+                        2025-11-19
+                      </time>
+                      
+                    </li>
+                    
+                  </ul>
+
+                  
+                  <a class="taxonomy-view-all" href="/categories/CTF-Notes/">
+                    <span>查看全部 3 篇</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                  </a>
+                  
+                </div>
+              </details>
+            </li>
+            
+          </ul>
+        </div>
+      </details>
+    </li>
     
+  </ul>
+
+  <div class="taxonomy-empty" data-taxonomy-empty hidden>
+    <i class="bi bi-diagram-3" aria-hidden="true"></i>
+    <p>没有匹配的结构，换个名称试试。</p>
   </div>
-</div>
+</section>
+
 
 
 
@@ -247,6 +722,12 @@
     
 <script src="/js/main.js"></script>
 
+
+    
+
+    
+    
+<script src="/js/taxonomy.js"></script>
 
     
 

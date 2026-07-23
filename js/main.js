@@ -82,52 +82,62 @@
     }
   }
 
-  if (document.body.attributes['data-toc']) {
-    const content = document.getElementsByClassName('content')[0]
-    const maxDepth = document.body.attributes['data-toc-max-depth'].value
+  const tocContent = document.querySelector('article.post .content')
+  if (document.body.attributes['data-toc'] && tocContent) {
+    const configuredMaxDepth = parseInt(
+      document.body.attributes['data-toc-max-depth']?.value || '6',
+      10,
+    )
+    const maxDepth = Number.isInteger(configuredMaxDepth)
+      ? Math.min(Math.max(configuredMaxDepth, 1), 6)
+      : 6
 
     var headingSelector = ''
     for (var i = 1; i <= maxDepth; i++) {
       headingSelector += 'h' + i + ','
     }
     headingSelector = headingSelector.slice(0, -1)
-    const headings = Array.from(content.querySelectorAll(headingSelector))
+    const headings = Array.from(tocContent.querySelectorAll(headingSelector))
 
     var source = headings
-      .map(heading => ({
-        html: heading.innerHTML,
-        href:
-          heading.getElementsByClassName('headerlink')[0]?.attributes['href']
-            .value ?? null,
-        level: parseInt(heading.tagName.substring(1)),
-      }))
-      .filter(heading => heading.href)
+      .map(heading => {
+        const headerlink = heading.querySelector('.headerlink')
+        const label = heading.cloneNode(true)
+        label.querySelectorAll('.headerlink').forEach(link => link.remove())
 
-    const tocContainer = document.createElement('aside')
-    tocContainer.classList.add('toc-sidebar')
-    const toc = document.createElement('div')
-    toc.classList.add('toc')
+        return {
+          html: label.innerHTML.trim(),
+          text: label.textContent.trim(),
+          href: headerlink?.getAttribute('href') || null,
+          level: parseInt(heading.tagName.substring(1), 10),
+        }
+      })
+      .filter(heading => heading.href && heading.text)
 
-    // 添加标题
-    const tocTitle = document.createElement('div')
-    tocTitle.classList.add('toc-title')
-    tocTitle.textContent = '目录'
-    toc.appendChild(tocTitle)
+    if (source.length) {
+      const tocContainer = document.createElement('aside')
+      tocContainer.classList.add('toc-sidebar')
+      const toc = document.createElement('div')
+      toc.classList.add('toc')
 
-    for (const i in source) {
-      const item = document.createElement('p')
-      item.classList.add('toc-item')
-      item.setAttribute('data-level', source[i].level)
-      const link = document.createElement('a')
-      link.href = source[i].href
-      link.innerHTML = source[i].html
-      link.removeChild(link.getElementsByClassName('headerlink')[0])
-      item.appendChild(link)
-      toc.appendChild(item)
-    }
-    tocContainer.appendChild(toc)
+      // 添加标题
+      const tocTitle = document.createElement('div')
+      tocTitle.classList.add('toc-title')
+      tocTitle.textContent = '目录'
+      toc.appendChild(tocTitle)
 
-    if (toc.children.length > 1) {  // > 1 因为包含了标题
+      source.forEach(entry => {
+        const item = document.createElement('p')
+        item.classList.add('toc-item')
+        item.setAttribute('data-level', entry.level)
+        const link = document.createElement('a')
+        link.href = entry.href
+        link.innerHTML = entry.html
+        item.appendChild(link)
+        toc.appendChild(item)
+      })
+      tocContainer.appendChild(toc)
+
       document.body.appendChild(tocContainer)
 
       // 添加一个标志位，用于防止点击跳转时的滚动被观察者覆盖状态

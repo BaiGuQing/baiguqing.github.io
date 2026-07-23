@@ -113,7 +113,6 @@
   
   
   
-  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -204,7 +203,9 @@
 </nav>
 
     <main id="main-content">
-      <div>
+      
+
+<div>
   <div class="meta">
     <div class="date">
       
@@ -219,8 +220,11 @@
   </div>
 </div>
 
+
+
 <div class="container">
-  <div class="post-list archives">
+  
+<div class="post-list archives">
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
@@ -235,7 +239,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -246,7 +250,7 @@
 
           
           <div class="excerpt">
-            
+            题目 要想实现ret2libc，有以下几个必要条件： 存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。…
           </div>
           
         </div>
@@ -263,7 +267,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>10.9k</span>
+                <span>2.0k</span>
               </span>
             </div>
           </div>
@@ -290,7 +294,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -301,7 +305,7 @@
 
           
           <div class="excerpt">
-            
+            在字符串层⾯过滤了”cat”和”sh” 绕过手段很多 在正常命令中加⼊⽆关紧要的分隔符,如:ca\t flag 输⼊$0返回自身的shell
           </div>
           
         </div>
@@ -318,7 +322,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>110</span>
+                <span>66</span>
               </span>
             </div>
           </div>
@@ -345,7 +349,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -356,7 +360,7 @@
 
           
           <div class="excerpt">
-            
+            例子 read(0, buf, 0x100u) 出现了明显的栈溢出 从标准输入（fd=0）中读取 0x100 = 256 字节到 buf 中。 但是 buf 只有 48 字节！所以 直接构成栈缓冲区溢出漏洞 。 当有 溢出漏洞 （比如 buffer overflow）时，程序允许我们“写太多数据”，覆盖重要区域，比如：…
           </div>
           
         </div>
@@ -373,7 +377,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>4.1k</span>
+                <span>380</span>
               </span>
             </div>
           </div>
@@ -400,7 +404,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -411,7 +415,7 @@
 
           
           <div class="excerpt">
-            
+            编码过程演示 让我们通过一个具体的例子来看看它是如何工作的。 假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M = 77 = 01001101 a = 97 = 01100001 n = 110 = 01101110 将它们连成一串 24 bit 的数据流： 01001101011000…
           </div>
           
         </div>
@@ -428,7 +432,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>12.8k</span>
+                <span>1.1k</span>
               </span>
             </div>
           </div>
@@ -455,7 +459,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -466,7 +470,7 @@
 
           
           <div class="excerpt">
-            
+            特征 小端序是以四个字节倒序过来，也就是讲读入的字符转化为一个个32位的整数。 读取的字符在内存中以ACSII码的形式储存，小端序也是讲这些个ACSII码，四个为一组，倒叙过来，组成一个32位整数 小端序拼接 0x66 6E 6A 73 32 位整数 0x666E6A73 后面接什么 后面一般会接MD5、部分SHA、T…
           </div>
           
         </div>
@@ -483,7 +487,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>4.8k</span>
+                <span>163</span>
               </span>
             </div>
           </div>
@@ -527,7 +531,7 @@
 
           
           <div class="excerpt">
-            
+            引言 我希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ ezVBS 我不得不说，要听劝。原题都告诉我了，不让我打开，我还就偏打开了，然后去网上搜VBS逆向，最后在赛博厨子那里逆向出了 当时没怎么注意文字，就去看官方WP了，结果打开记事本看了看，和WP上的不一样啊，我还以为题出错了，回来又下了一遍…
           </div>
           
         </div>
@@ -544,7 +548,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>75.9k</span>
+                <span>2.1k</span>
               </span>
             </div>
           </div>
@@ -588,7 +592,7 @@
 
           
           <div class="excerpt">
-            
+            引言 我是一名CTF萌新啊，做这么详细的WP，也是希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ 16 bit 这个官方文档写的比较详细，那我就仔细的讲一下过程 运行这个exe会发现运行不了，据官方WP所说，这个是16位的应⽤程序，是由汇编语⾔直接编写再编译的，现代操作系统⼀般都无法直接运行，但…
           </div>
           
         </div>
@@ -605,7 +609,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>36.0k</span>
+                <span>2.5k</span>
               </span>
             </div>
           </div>
@@ -649,7 +653,7 @@
 
           
           <div class="excerpt">
-            
+            引言 我是一名入门的CTF玩家，看了看0xGame 2025 Week1 Reverse官方的WriteUp，感觉写的太简略了，这边以新手的视角开启0xGame 2025 Week1 Reverse SignIn 这个题目我们需要准备好IDA，我在这里下载的 [原创] IDA Pro 9 安装和插件配置-安全工具-看雪…
           </div>
           
         </div>
@@ -666,7 +670,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>13.3k</span>
+                <span>2.4k</span>
               </span>
             </div>
           </div>
@@ -693,7 +697,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -704,7 +708,7 @@
 
           
           <div class="excerpt">
-            
+            ✅ 1. 使用 uncompyle6 （最常用） 支持 Python 2.7 ~ 3.7 的 .pyc。 安装 pip install uncompyle6 反编译 .pyc 到 .py uncompyle6 -o . yourfile.pyc -o . 表示输出到当前目录 会自动生成对应的 .py 文件 ✅ 2. 使…
           </div>
           
         </div>
@@ -721,7 +725,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>2.0k</span>
+                <span>540</span>
               </span>
             </div>
           </div>
@@ -749,6 +753,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 

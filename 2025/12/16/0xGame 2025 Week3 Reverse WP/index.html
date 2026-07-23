@@ -163,7 +163,6 @@
   
   
   
-  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -255,6 +254,7 @@
 
     <main id="main-content" data-pagefind-body>
       
+
 <article class="post">
   
   <div class="meta-card">
@@ -450,24 +450,95 @@
   </div>
   
 
-  <div class="container post-prev-next" data-pagefind-ignore>
+  
     
-    <a href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" class="next">
-      <div class="text">
-        <p class="label">下一篇</p>
-        <h3 class="title">小端序</h3>
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“Reverse_Writeup”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:Reverse_Writeup" selected>Reverse_Writeup</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:CTF-WP">CTF_WP</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">Reverse_Writeup · 第 6 / 8 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a class="post-navigation-link" data-nav-link href="/2026/01/31/UniCTF2026_WP/?line=t%3AReverse_Writeup&amp;sort=date-desc">
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>UniCTF2026_WP</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a class="post-navigation-link" data-nav-link href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/?line=t%3AReverse_Writeup&amp;sort=date-desc">
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>0xGame 2025 Week2 Reverse WP</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
       </div>
-    </a>
+    </div>
+
     
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:Reverse_Writeup","defaultSort":"date-desc","contexts":[{"key":"t:Reverse_Writeup","type":"tag","name":"Reverse_Writeup","path":"tags/Reverse-Writeup/","modes":{"date-desc":{"previous":{"title":"UniCTF2026_WP","path":"2026/01/31/UniCTF2026_WP/","date":"2026-01-30T16:00:00.000Z"},"next":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"position":6,"total":8},"date-asc":{"previous":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"next":{"title":"UniCTF2026_WP","path":"2026/01/31/UniCTF2026_WP/","date":"2026-01-30T16:00:00.000Z"},"position":3,"total":8},"title-asc":{"previous":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"next":{"title":"2026数字中国数字安全赛道网络安全团队赛WP","path":"2026/04/23/2026数字中国数字安全赛道网络安全团队赛WP/","date":"2026-04-22T16:00:00.000Z"},"position":3,"total":8},"title-desc":{"previous":{"title":"2026数字中国数字安全赛道网络安全团队赛WP","path":"2026/04/23/2026数字中国数字安全赛道网络安全团队赛WP/","date":"2026-04-22T16:00:00.000Z"},"next":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"position":6,"total":8}}},{"key":"c:CTF-WP","type":"category","name":"CTF_WP","path":"categories/CTF-WP/","modes":{"date-desc":{"previous":{"title":"UniCTF2026_WP","path":"2026/01/31/UniCTF2026_WP/","date":"2026-01-30T16:00:00.000Z"},"next":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"position":6,"total":8},"date-asc":{"previous":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"next":{"title":"UniCTF2026_WP","path":"2026/01/31/UniCTF2026_WP/","date":"2026-01-30T16:00:00.000Z"},"position":3,"total":8},"title-asc":{"previous":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"next":{"title":"2026数字中国数字安全赛道网络安全团队赛WP","path":"2026/04/23/2026数字中国数字安全赛道网络安全团队赛WP/","date":"2026-04-22T16:00:00.000Z"},"position":3,"total":8},"title-desc":{"previous":{"title":"2026数字中国数字安全赛道网络安全团队赛WP","path":"2026/04/23/2026数字中国数字安全赛道网络安全团队赛WP/","date":"2026-04-22T16:00:00.000Z"},"next":{"title":"0xGame 2025 Week2 Reverse WP","path":"2025/11/20/0xGame 2025 Week2 Reverse WP/","date":"2025-11-19T16:00:00.000Z"},"position":6,"total":8}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
     
-    <a href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/" class="prev">
-      <div class="text">
-        <p class="label">上一篇</p>
-        <h3 class="title">0xGame 2025 Week2 Reverse WP</h3>
-      </div>
-    </a>
-    
-  </div>
+  
 
   
     
@@ -483,6 +554,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 
@@ -508,6 +581,9 @@
 
     
 <script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
 
     
 

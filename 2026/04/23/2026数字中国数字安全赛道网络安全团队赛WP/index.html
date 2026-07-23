@@ -55,7 +55,7 @@
 <meta property="og:image" content="https://baiguqing.github.io/Images/202606230815.png">
 <meta property="og:image" content="https://baiguqing.github.io/Images/202606230911.png">
 <meta property="article:published_time" content="2026-04-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-17T11:47:20.569Z">
+<meta property="article:modified_time" content="2026-07-23T07:24:24.905Z">
 <meta property="article:author" content="GuQing">
 <meta property="article:tag" content="Reverse_Writeup">
 <meta name="twitter:card" content="summary">
@@ -155,7 +155,6 @@
   
   
   
-  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -247,6 +246,7 @@
 
     <main id="main-content" data-pagefind-body>
       
+
 <article class="post">
   
   <div class="meta-card">
@@ -490,7 +490,7 @@
 <thead>
 <tr>
 <th>地址</th>
-<th>功能</th>
+<th>xxxxxxxxxx220 1#!&#x2F;usr&#x2F;bin&#x2F;env python32# -<em>- coding: utf-8 -</em>-3​4import base645import struct6from typing import List, Tuple7​8# ———————————————————–9# 辅助函数：模拟 C 语言的 32 位无符号整数溢出10# 因为 Python 的整数是无限精度的，而 C 语言中 uint32 超过 0xFFFFFFFF 会截断11# ———————————————————–12def u32(x: int) -&gt; int:13    return x &amp; 0xFFFFFFFF14​15​16# ———————————————————–17# 模拟 Windows C 运行时库 (MSVCRT) 的随机数生成器18# 题目通常是 Windows 下的 exe，其 rand() 实现是固定的线性同余生成器 (LCG)19# ———————————————————–20class MSVCRTRand:21    def <strong>init</strong>(self, seed: int):22        self.state &#x3D; seed &amp; 0xFFFFFFFF23​24    def rand(self) -&gt; int:25        # 经典的 MSVCRT 参数：乘 214013，加 253101126        self.state &#x3D; (self.state * 214013 + 2531011) &amp; 0xFFFFFFFF27        # 返回高位部分 (15 bits)28        return (self.state &gt;&gt; 16) &amp; 0x7FFF29​30​31# ———————————————————–32# 第一步：重建最终的密文数据33# 逆向时发现密文在内存中是以 QWORD (8字节) 数组形式存在的，需要拼起来34# ———————————————————–35def build_expected_60() -&gt; bytes:36    # 从 IDA Pro 等工具中提取的硬编码数据37    v57_qwords &#x3D; [38        0x280D30732B077874,39        0x242D00103573060B,40        0x141C3406727D2F73,41        0x0A71137676362833,42        0x0E232B242F04742A,43        0x2F373F03033D7310,44        0x77067C3612772D7D,45    ]46    n925 &#x3D; 925053188 # 尾部的 4 字节数据47​48    # struct.pack(“&lt;Q”) 表示以小端序 (Little-Endian) 将整数打包成 bytes49    v57_bytes &#x3D; b””.join(struct.pack(“&lt;Q”, q) for q in v57_qwords)  # 共 7*8 &#x3D; 56 字节50    tail4 &#x3D; struct.pack(“&lt;I”, n925)  # 4 字节51​52    # 逻辑还原：53    # 原始比较逻辑可能是：先比较第0个字节是否为 0x74，然后比较后面的一串54    # 这里把它们拼接成完整的 60 字节目标密文55    expected &#x3D; bytes([0x74]) + (v57_bytes[1:] + tail4)  # 60 bytes56    assert len(expected) &#x3D;&#x3D; 6057    return expected58​59​60# ———————————————————–61# 第二步：逆向 Fisher–Yates 乱序算法62# 正向加密时：从后往前遍历，每次生成一个随机位置并交换63# 逆向解密时：必须重现完全一样的随机数序列，然后倒着交换回去64# ———————————————————–65def unshuffle_msvcrt(shuffled: bytes, seed: int &#x3D; 0x65) -&gt; bytes:66    # 初始化随机数生成器，种子为 0x65 (十进制 101)67    r &#x3D; MSVCRTRand(seed)68    69    # 1. 先把正向加密时产生的所有 swap 操作记录下来70    # 注意：必须按正向的顺序调用 r.rand()，才能保证随机数序列一致71    swaps: List[Tuple[int, int]] &#x3D; []72    for i in range(59, -1, -1):73        j &#x3D; r.rand() % (i + 1)74        swaps.append((i, j))75​76    # 2. 开始执行逆向交换77    a &#x3D; bytearray(shuffled)78    # reversed(swaps) -&gt; 后发生的交换先还原79    for i, j in reversed(swaps):80        a[i], a[j] &#x3D; a[j], a[i] # 交换回原位81    return bytes(a)82​83​84# ———————————————————–85# 第三步：XXTEA 变种算法解密86# 这是一个典型的“魔改”TEA算法，通常涉及 DELTA 常量和复杂的移位异或87# ———————————————————–88DELTA_SUB &#x3D; 1640531527            # 0x61C88647 (常见的 TEA 魔数 0x9E3779B9 的变体或计算结果)89DELTA_ADD &#x3D; 0x9E3779B9            90​91# 逆向工程得到的初始 SUM 和结束 SUM92SUM_START &#x3D; u32(-1640531527)      # 0x9E3779B993SUM_STOP  &#x3D; u32(-865977613)       # 0xCC623AF394KEY2_FIRST &#x3D; u32(1634492739)      # 初始的 Key2 变量值95​96# 核心混合函数1 (处理数组中间元素的)97def mx_inner(z: int, y: int, sum_: int, k: int, key4: List[int]) -&gt; int:98    “””99    对应加密代码中的：100    e &#x3D; ((sum &gt;&gt; 2) &amp; 3)101    z &#x3D; v[n-1], y &#x3D; v[i+1]102    mx &#x3D; ((z&gt;&gt;5^y&lt;&lt;2) + (y&gt;&gt;3^z&lt;&lt;4)) ^ ((sum^y) + (key[(i&amp;3)^e]^z))103    “””104    # 这里计算 key 的索引： ((sum&gt;&gt;2) ^ k) &amp; 3105    idx &#x3D; (((sum_ &gt;&gt; 2) &amp; 0xFF) ^ (k &amp; 0xFF)) &amp; 3106    return u32(((z ^ key4[idx]) + (y ^ sum_)) ^ (((4 * y) ^ (z &gt;&gt; 5)) + ((16 * z) ^ (y &gt;&gt; 3))))107​108# 核心混合函数2 (处理数组最后一个元素的)109def mx_last(z: int, v0: int, sum_old: int, key2: int) -&gt; int:110    “””111    对应加密循环中每一轮结尾对 v[n] 的特殊处理112    “””113    return u32((((z &gt;&gt; 5) ^ (4 * v0)) + ((16 * z) ^ (v0 &gt;&gt; 3))) ^ ((v0 ^ sum_old) + (key2 ^ z)))114​115​116def build_round_params(key4: List[int]) -&gt; Tuple[List[int], List[int]]:117    “””118    预计算每一轮的参数。119    因为 XXTEA 是多轮加密（这里是 10 轮），解密时需要知道每一轮对应的 sum 值和 key2 值。120    加密是从 sum &#x3D; START 加到 STOP，解密我们先算出来存表里，方便倒着用。121    “””122    sums: List[int] &#x3D; []123    key2s: List[int] &#x3D; []124​125    sum_ &#x3D; SUM_START126    key2 &#x3D; KEY2_FIRST127​128    for _ in range(10): # 循环 10 轮129        sums.append(sum_)130        key2s.append(key2)131​132        # 模拟加密时的更新逻辑133        sum_ &#x3D; u32(sum_ - DELTA_SUB) 134        if sum_ &#x3D;&#x3D; SUM_STOP:135            break136        # 计算下一轮用到的 key2137        idx2 &#x3D; (((sum_ &gt;&gt; 2) &amp; 0xFF) ^ 0x0A) &amp; 3138        key2 &#x3D; key4[idx2]139​140    return sums, key2s141​142​143def decrypt_variant(words: List[int], key4: List[int]) -&gt; List[int]:144    “””145    解密主函数146    words: 11 个 32位整数 (密文)147    key4:  4 个 32位整数 (密钥)148    “””149    v &#x3D; [u32(x) for x in words]150    151    # 获取每一轮的 sum 和 key2152    sums, key2s &#x3D; build_round_params(key4)153​154    # 倒着遍历每一轮 (Round 10 -&gt; Round 1)155    for sum_old, key2 in zip(reversed(sums), reversed(key2s)):156        # 1. 先逆向处理最后一个元素 v[10]157        # 加密时：v[10] +&#x3D; mx_last(…)158        # 解密时：v[10] -&#x3D; mx_last(…)159        z_new_v9 &#x3D; v[9]160        v0_new &#x3D; v[0]161        v[10] &#x3D; u32(v[10] - mx_last(z_new_v9, v0_new, sum_old, key2))162​163        # 2. 逆向处理前面的元素 v[9] 到 v[0]164        # 加密时是从 0 到 9 顺序处理，解密时要从 9 到 0 倒序处理165        for k in range(9, -1, -1):166            y_old &#x3D; v[k + 1]            # 后一个元素 (已经是解密后的旧值了)167            z &#x3D; v[10] if k &#x3D;&#x3D; 0 else v[k - 1]  # 前一个元素168            # 执行减法操作逆向169            v[k] &#x3D; u32(v[k] - mx_inner(z, y_old, sum_old, k, key4))170​171    return v172​173​174# ———————————————————–175# 主程序入口176# ———————————————————–177def main():178    # 1. 获取目标字节串 (60 bytes)179    expected &#x3D; build_expected_60()180​181    # 2. 逆向 XOR 操作182    # 加密逻辑推测：data[i] ^ 0x45183    # 解密逻辑：result[i] ^ 0x45 (异或的逆运算还是异或)184    shuffled_b64 &#x3D; bytes(b ^ 0x45 for b in expected)185​186    # 3. 逆向 Shuffle 操作187    # 还原出 Base64 字符串188    b64_text &#x3D; unshuffle_msvcrt(shuffled_b64, seed&#x3D;0x65)189    print(f”[+] Base64 字符串: {b64_text}”)190​191    # 4. Base64 解码192    # 将 60 字节的 Base64 字符串解码为 44 字节的二进制数据193    ct &#x3D; base64.b64decode(b64_text, validate&#x3D;False)194    if len(ct) !&#x3D; 44:195        raise SystemExit(f”[!] base64 len&#x3D;{len(ct)} !&#x3D; 44”)196    197    print(“[+] Ciphertext (Hex):”, ct.hex())198​199    # 5. 准备解密密钥和密文数组200    # 将 44 字节解包成 11 个整数 (11 * 4 &#x3D; 44)201    v &#x3D; list(struct.unpack(“&lt;11I”, ct))202​203    # 密钥是 “Calamity_Fortune”，转成 4 个整数204    key4 &#x3D; list(struct.unpack(“&lt;4I”, b”Calamity_Fortune”))205​206    # 6. 执行核心算法解密207    pt_words &#x3D; decrypt_variant(v, key4)208    209    # 7. 将解密后的整数数组打包回字符串210    pt &#x3D; struct.pack(“&lt;11I”, *pt_words)211​212    print(“[+] 最终 Flag (Hex):”, pt.hex())213    try:214        print(“[+] 最终 Flag (UTF-8):”, pt.decode(“utf-8”))215    except UnicodeDecodeError:216        print(“[!] 解码失败，可能包含非打印字符:”, pt)217​218​219if <strong>name</strong> &#x3D;&#x3D; “<strong>main</strong>“:220    main()python</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -623,24 +623,95 @@
   </div>
   
 
-  <div class="container post-prev-next" data-pagefind-ignore>
+  
     
-    <a href="/2026/05/25/LitCTF2026_WP/" class="next">
-      <div class="text">
-        <p class="label">下一篇</p>
-        <h3 class="title">LitCTF2026_WP</h3>
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“Reverse_Writeup”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:Reverse_Writeup" selected>Reverse_Writeup</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:CTF-WP">CTF_WP</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">Reverse_Writeup · 第 3 / 8 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a class="post-navigation-link" data-nav-link href="/2026/05/25/LitCTF2026_WP/?line=t%3AReverse_Writeup&amp;sort=date-desc">
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>LitCTF2026_WP</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a class="post-navigation-link" data-nav-link href="/2026/02/13/FurryCTF2026/?line=t%3AReverse_Writeup&amp;sort=date-desc">
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>FurryCTF2026</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
       </div>
-    </a>
+    </div>
+
     
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:Reverse_Writeup","defaultSort":"date-desc","contexts":[{"key":"t:Reverse_Writeup","type":"tag","name":"Reverse_Writeup","path":"tags/Reverse-Writeup/","modes":{"date-desc":{"previous":{"title":"LitCTF2026_WP","path":"2026/05/25/LitCTF2026_WP/","date":"2026-05-24T16:00:00.000Z"},"next":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"position":3,"total":8},"date-asc":{"previous":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"next":{"title":"LitCTF2026_WP","path":"2026/05/25/LitCTF2026_WP/","date":"2026-05-24T16:00:00.000Z"},"position":6,"total":8},"title-asc":{"previous":{"title":"0xGame 2025 Week3 Reverse WP","path":"2025/12/16/0xGame 2025 Week3 Reverse WP/","date":"2025-12-15T16:00:00.000Z"},"next":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"position":4,"total":8},"title-desc":{"previous":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"next":{"title":"0xGame 2025 Week3 Reverse WP","path":"2025/12/16/0xGame 2025 Week3 Reverse WP/","date":"2025-12-15T16:00:00.000Z"},"position":5,"total":8}}},{"key":"c:CTF-WP","type":"category","name":"CTF_WP","path":"categories/CTF-WP/","modes":{"date-desc":{"previous":{"title":"LitCTF2026_WP","path":"2026/05/25/LitCTF2026_WP/","date":"2026-05-24T16:00:00.000Z"},"next":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"position":3,"total":8},"date-asc":{"previous":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"next":{"title":"LitCTF2026_WP","path":"2026/05/25/LitCTF2026_WP/","date":"2026-05-24T16:00:00.000Z"},"position":6,"total":8},"title-asc":{"previous":{"title":"0xGame 2025 Week3 Reverse WP","path":"2025/12/16/0xGame 2025 Week3 Reverse WP/","date":"2025-12-15T16:00:00.000Z"},"next":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"position":4,"total":8},"title-desc":{"previous":{"title":"FurryCTF2026","path":"2026/02/13/FurryCTF2026/","date":"2026-02-12T16:00:00.000Z"},"next":{"title":"0xGame 2025 Week3 Reverse WP","path":"2025/12/16/0xGame 2025 Week3 Reverse WP/","date":"2025-12-15T16:00:00.000Z"},"position":5,"total":8}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
     
-    <a href="/2026/02/13/FurryCTF2026/" class="prev">
-      <div class="text">
-        <p class="label">上一篇</p>
-        <h3 class="title">FurryCTF2026</h3>
-      </div>
-    </a>
-    
-  </div>
+  
 
   
     
@@ -656,6 +727,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 
@@ -681,6 +754,9 @@
 
     
 <script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
 
     
 

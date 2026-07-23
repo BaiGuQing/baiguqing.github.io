@@ -19,7 +19,7 @@
 <meta property="og:description" content="编码过程演示让我们通过一个具体的例子来看看它是如何工作的。假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M &#x3D; 77 &#x3D; 01001101 a &#x3D; 97 &#x3D; 01100001 n &#x3D; 110 &#x3D; 01101110将它们连成一串 24 bit 的数据流：010011010110000101101110  第二">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-26T04:44:20.256Z">
+<meta property="article:modified_time" content="2026-07-23T07:24:00.126Z">
 <meta property="article:author" content="GuQing">
 <meta property="article:tag" content="Note_For_Reverse">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,6 @@
   
 <link rel="stylesheet" href="/css/content-fold.css">
 
-  
   
   
   
@@ -226,6 +225,7 @@
 
     <main id="main-content" data-pagefind-body>
       
+
 <article class="post">
   
   <div class="meta-card">
@@ -243,7 +243,7 @@
       <span class="meta-item categories text-uppercase">
         <i class="bi bi-folder2-open"></i>
         
-          <a href="/categories/Notes/">Notes</a>
+          <a href="/categories/CTF-Notes/">CTF_Notes</a>
         
       </span>
       
@@ -320,24 +320,103 @@
   </div>
   
 
-  <div class="container post-prev-next" data-pagefind-ignore>
+  
     
-    <a href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/" class="next">
-      <div class="text">
-        <p class="label">下一篇</p>
-        <h3 class="title">简单栈溢出</h3>
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“Note_For_Reverse”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:Note_For_Reverse" selected>Note_For_Reverse</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:CTF-Notes">CTF_Notes</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">Note_For_Reverse · 第 2 / 3 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/?line=t%3ANote_For_Reverse&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>小端序</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/?line=t%3ANote_For_Reverse&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>Python反编译</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
       </div>
-    </a>
+    </div>
+
     
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:Note_For_Reverse","defaultSort":"date-desc","contexts":[{"key":"t:Note_For_Reverse","type":"tag","name":"Note_For_Reverse","path":"tags/Note-For-Reverse/","modes":{"date-desc":{"previous":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"next":{"title":"Python反编译","path":"2025/11/19/Python反编译/","date":"2025-11-18T16:00:00.000Z"},"position":2,"total":3},"date-asc":{"previous":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"next":null,"position":3,"total":3},"title-asc":{"previous":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"next":{"title":"Python反编译","path":"2025/11/19/Python反编译/","date":"2025-11-18T16:00:00.000Z"},"position":2,"total":3},"title-desc":{"previous":{"title":"Python反编译","path":"2025/11/19/Python反编译/","date":"2025-11-18T16:00:00.000Z"},"next":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"position":2,"total":3}}},{"key":"c:CTF-Notes","type":"category","name":"CTF_Notes","path":"categories/CTF-Notes/","modes":{"date-desc":{"previous":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"next":{"title":"Python反编译","path":"2025/11/19/Python反编译/","date":"2025-11-18T16:00:00.000Z"},"position":5,"total":6},"date-asc":{"previous":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"next":{"title":"不能用cat和sh指令","path":"2025/12/27/不能用cat和sh指令/","date":"2025-12-26T16:00:00.000Z"},"position":3,"total":6},"title-asc":{"previous":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"next":{"title":"Python反编译","path":"2025/11/19/Python反编译/","date":"2025-11-18T16:00:00.000Z"},"position":4,"total":6},"title-desc":{"previous":{"title":"Python反编译","path":"2025/11/19/Python反编译/","date":"2025-11-18T16:00:00.000Z"},"next":{"title":"小端序","path":"2025/12/22/小端序/","date":"2025-12-21T16:00:00.000Z"},"position":3,"total":6}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
     
-    <a href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/" class="prev">
-      <div class="text">
-        <p class="label">上一篇</p>
-        <h3 class="title">小端序</h3>
-      </div>
-    </a>
-    
-  </div>
+  
 
   
     
@@ -353,6 +432,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 
@@ -378,6 +459,9 @@
 
     
 <script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
 
     
 

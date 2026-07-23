@@ -391,7 +391,7 @@ body[data-color-scheme=dark] .hero {
   pointer-events: none;
 }
 
-.hero-reveal--split {
+.hero-reveal--split.is-js-split {
   pointer-events: none;
   position: relative;
   z-index: 7;
@@ -399,24 +399,24 @@ body[data-color-scheme=dark] .hero {
   --hero-split-left: 0%;
   --hero-split-right: 0%;
 }
-.hero-reveal--split > .hero {
+.hero-reveal--split.is-js-split > .hero {
   position: sticky;
   top: 56px;
 }
-.hero-reveal--split .hero-panel--left,
-.hero-reveal--split .hero-panel--right {
+.hero-reveal--split.is-js-split .hero-panel--left,
+.hero-reveal--split.is-js-split .hero-panel--right {
   will-change: transform;
   backface-visibility: hidden;
   animation: none !important;
 }
-.hero-reveal--split .hero-panel--left {
+.hero-reveal--split.is-js-split .hero-panel--left {
   transform: translate3d(var(--hero-split-left), 0, 0) !important;
 }
-.hero-reveal--split .hero-panel--right {
+.hero-reveal--split.is-js-split .hero-panel--right {
   transform: translate3d(var(--hero-split-right), 0, 0) !important;
 }
 
-.hero-reveal--split + .home-container,
+.hero-reveal--split.is-js-split + .home-container,
 .home-container--under-hero {
   margin-top: -175svh;
   isolation: isolate;

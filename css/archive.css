@@ -1,1 +1,122 @@
-/* In archive page, we now use the same beautiful card list view as the homepage */
+.taxonomy-detail-sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 44px;
+  margin-bottom: 28px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-medium);
+  background: var(--color-background-primary-translucent);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: var(--filter-blur);
+}
+
+.taxonomy-detail-sort-copy {
+  min-width: 0;
+  max-width: 330px;
+}
+
+.taxonomy-detail-sort-kicker,
+.taxonomy-detail-sort-description {
+  margin: 0;
+}
+
+.taxonomy-detail-sort-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 700;
+}
+.taxonomy-detail-sort-kicker i {
+  color: var(--color-text-accent);
+  font-size: 17px;
+}
+
+.taxonomy-detail-sort-description {
+  margin-top: 6px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.taxonomy-detail-sort-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 8px;
+  min-width: min(100%, 356px);
+}
+
+.taxonomy-detail-sort-option {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-small);
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.taxonomy-detail-sort-option:hover {
+  border-color: rgba(var(--color-accent-rgb), 0.35);
+  background: var(--color-background-secondary-hover);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.taxonomy-detail-sort-option:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), 0.24);
+  outline-offset: 2px;
+  text-decoration: none;
+}
+.taxonomy-detail-sort-option.is-active {
+  border-color: rgba(var(--color-accent-rgb), 0.42);
+  background: rgba(var(--color-accent-rgb), 0.11);
+  color: var(--color-text-accent);
+}
+.taxonomy-detail-sort-option > i:first-child {
+  flex: 0 0 auto;
+  font-size: 15px;
+}
+
+.taxonomy-detail-sort-check {
+  margin-left: auto;
+}
+
+@media (max-width: 760px) {
+  .taxonomy-detail-sort {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .taxonomy-detail-sort-copy {
+    max-width: none;
+  }
+  .taxonomy-detail-sort-options {
+    min-width: 0;
+    width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  .taxonomy-detail-sort {
+    margin-top: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .taxonomy-detail-sort-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .taxonomy-detail-sort-option {
+    padding: 0 10px;
+  }
+}

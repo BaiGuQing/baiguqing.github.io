@@ -113,7 +113,6 @@
   
   
   
-  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -220,7 +219,9 @@
 </nav>
 
     <main id="main-content">
-      <div>
+      
+
+<div>
   <div class="meta">
     <div class="date">
       
@@ -235,12 +236,80 @@
   </div>
 </div>
 
+
+<section class="container taxonomy-detail-sort" aria-labelledby="taxonomy-detail-sort-title">
+  <div class="taxonomy-detail-sort-copy">
+    <p class="taxonomy-detail-sort-kicker" id="taxonomy-detail-sort-title">
+      <i class="bi bi-signpost-split" aria-hidden="true"></i>
+      线路排序
+    </p>
+    <p class="taxonomy-detail-sort-description">排序作用于当前分类或标签的全部文章，翻页后仍会延续同一顺序。</p>
+  </div>
+
+  <div class="taxonomy-detail-sort-options" role="list" aria-label="排序">
+    
+    
+    <a
+      class="taxonomy-detail-sort-option is-active"
+      href="/tags/Note-For-Pwn/"
+      role="listitem"
+      aria-current="page"
+    >
+      <i class="bi bi-sort-down-alt" aria-hidden="true"></i>
+      <span>最新优先</span>
+      
+      <i class="bi bi-check2 taxonomy-detail-sort-check" aria-hidden="true"></i>
+      <span class="sr-only">当前排序</span>
+      
+    </a>
+    
+    
+    <a
+      class="taxonomy-detail-sort-option"
+      href="/tags/Note-For-Pwn/sort/date-asc/"
+      role="listitem"
+      
+    >
+      <i class="bi bi-sort-up" aria-hidden="true"></i>
+      <span>最早优先</span>
+      
+    </a>
+    
+    
+    <a
+      class="taxonomy-detail-sort-option"
+      href="/tags/Note-For-Pwn/sort/title-asc/"
+      role="listitem"
+      
+    >
+      <i class="bi bi-sort-alpha-down" aria-hidden="true"></i>
+      <span>标题 A→Z</span>
+      
+    </a>
+    
+    
+    <a
+      class="taxonomy-detail-sort-option"
+      href="/tags/Note-For-Pwn/sort/title-desc/"
+      role="listitem"
+      
+    >
+      <i class="bi bi-sort-alpha-up-alt" aria-hidden="true"></i>
+      <span>标题 Z→A</span>
+      
+    </a>
+    
+  </div>
+</section>
+
+
 <div class="container">
-  <div class="post-list archives">
+  
+<div class="post-list archives">
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2025/12/30/ret2libc/">
+    <a class="post-card-link" href="/2025/12/30/ret2libc/?line=t%3ANote_For_Pwn&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -251,7 +320,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -262,7 +331,7 @@
 
           
           <div class="excerpt">
-            
+            题目 要想实现ret2libc，有以下几个必要条件： 存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。…
           </div>
           
         </div>
@@ -279,7 +348,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>10.9k</span>
+                <span>2.0k</span>
               </span>
             </div>
           </div>
@@ -295,7 +364,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/">
+    <a class="post-card-link" href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/?line=t%3ANote_For_Pwn&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -306,7 +375,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -317,7 +386,7 @@
 
           
           <div class="excerpt">
-            
+            在字符串层⾯过滤了”cat”和”sh” 绕过手段很多 在正常命令中加⼊⽆关紧要的分隔符,如:ca\t flag 输⼊$0返回自身的shell
           </div>
           
         </div>
@@ -334,7 +403,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>110</span>
+                <span>66</span>
               </span>
             </div>
           </div>
@@ -350,7 +419,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/">
+    <a class="post-card-link" href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/?line=t%3ANote_For_Pwn&amp;sort=date-desc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -361,7 +430,7 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
@@ -372,7 +441,7 @@
 
           
           <div class="excerpt">
-            
+            例子 read(0, buf, 0x100u) 出现了明显的栈溢出 从标准输入（fd=0）中读取 0x100 = 256 字节到 buf 中。 但是 buf 只有 48 字节！所以 直接构成栈缓冲区溢出漏洞 。 当有 溢出漏洞 （比如 buffer overflow）时，程序允许我们“写太多数据”，覆盖重要区域，比如：…
           </div>
           
         </div>
@@ -389,7 +458,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>4.1k</span>
+                <span>380</span>
               </span>
             </div>
           </div>
@@ -417,6 +486,8 @@
     
 <script src="/js/main.js"></script>
 
+
+    
 
     
 
