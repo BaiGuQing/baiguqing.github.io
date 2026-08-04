@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>归档: 2025/7 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GuQing&#39;s Blog">
+<meta property="og:url" content="https://baiguqing.github.io/archives/2025/07/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="CTF,Reverse,Note">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/archive.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="6"
+    
+    
+    
+    data-scroll-reveal-disappear="true"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+
+<div>
+  <div class="meta">
+    <div class="date">
+      
+      
+    </div>
+
+    <h1 class="title">
+      
+      
+      归档
+    </h1>
+  </div>
+</div>
+
+
+
+<div class="container">
+  
+<div class="post-list archives">
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/07/28/15.%E7%AC%AC%E4%B8%80%E4%B8%AAWindows%E7%A8%8B%E5%BA%8F/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            15.第一个Windows程序
+          </div>
+
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-07-28T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-7-28
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>0</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/07/25/10.%E4%B8%B4%E7%95%8C%E5%8C%BA/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            10.临界区
+          </div>
+
+          
+          <div class="excerpt">
+            线程安全问题 每个线程都有自己的栈，而局部变量是存储在栈中的，这就意味着每个线程都有一份自己的“局部变量”，如果线程仅仅使用“局部变量”，那么就不存在线程安全问题。如果多个线程公用一个全局变量呢？ 线程锁
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-07-25T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-7-25
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>100</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+</div>
+
+</div>
+
+
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

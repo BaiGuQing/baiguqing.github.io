@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>归档: 2026 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GuQing&#39;s Blog">
+<meta property="og:url" content="https://baiguqing.github.io/archives/2026/page/3/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="CTF,Reverse,Note">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/archive.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+
+<div>
+  <div class="meta">
+    <div class="date">
+      
+      
+    </div>
+
+    <h1 class="title">
+      
+      
+      归档
+    </h1>
+  </div>
+</div>
+
+
+
+<div class="container">
+  
+<div class="post-list archives">
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/25/8.%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            8.创建线程
+          </div>
+
+          
+          <div class="excerpt">
+            线程 线程是附属在进程上的执行实体，是代码的执行流程 一个进程可以包含多个线程，但是一个进程至少要包含一个线程 创建线程
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-25T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-25
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>57</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/23/4.%E8%BF%9B%E7%A8%8B/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            4.进程
+          </div>
+
+          
+          <div class="excerpt">
+            什么是进程？ 进程是提供程序所需的资源，如：数据、代码等等 进程内存空间的地址划分 分区 x86 32位Windows 空指针赋值区 0x00000000-0x00000FFFF 用户模式区 0x00010000-0x7FFEFFFFF 64KB禁入区 0x7FFF0000-0x7FFFFFFFF 内核 0x80000…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>297</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/23/5.%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            5.创建进程
+          </div>
+
+          
+          <div class="excerpt">
+            以上是利用win32创建进程的例子 可以利用GetStartupInfo()函数来做一些反调试
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>46</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/23/6.%E5%8F%A5%E6%9F%84%E8%A1%A8/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            6.句柄表
+          </div>
+
+          
+          <div class="excerpt">
+            内核对象 像进程、线程、文件、互斥体、事件等在内核都有一个对应的结构体，这些结构体由内核负责管理。我们管这样的对象叫做内核对象。 管理内核对象 每个进程都有一个句柄表 用户层通过句柄表来操作内核层的结构体 句柄表属于进程（EPROCESS）对象，每个进程拥有自己的句柄表。 多进程可以共享一个内核对象,CreatePro…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>298</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/23/7.%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3API/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            7.进程相关API
+          </div>
+
+          
+          <div class="excerpt">
+            ID与句柄 进程句柄：当前进程私有句柄表中的索引，用于访问对应的内核对象。 进程ID（PID）：操作系统分配给进程的唯一标识符，在整个系统范围内唯一。 线程句柄和TID同理 以挂起的形式创建进程 CreateProcess中的第六个参数creation flag 模块目录和工作目录 GetModuleFileName：…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>332</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/22/1.%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            1.字符编码
+          </div>
+
+          
+          <div class="excerpt">
+            ASCII编码 美国信息交换标准代码 原始ASCII码表 0-7F 扩展ASCII码表 0-FF GB2312：两个扩展ASCII码组成一个汉字 弊端：每个国家用的格式不同，本机是GB2312可能显示是中文，在他机上就可能会是乱码 Unicode编码 0-0x10FFFF 把所有符号全部存储，每个符号都是唯一编码 问题…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-22
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>431</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/22/2.C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%AE%BD%E5%AD%97%E7%AC%A6/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            2.C语言中的宽字符
+          </div>
+
+          
+          <div class="excerpt">
+            字符和字符串在内存中的值 宽字符和宽字符串的函数调用也与普通字符和字符串调用的函数不一样
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-22
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>43</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/22/3.Win32%20API%E4%B8%AD%E7%9A%84%E5%AE%BD%E5%AD%97%E7%AC%A6/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            3.Win32 API中的宽字符
+          </div>
+
+          
+          <div class="excerpt">
+            Win32 API 主要存放在 C:\\WINDWOS\system32 下面所有的dll 重要DLL： Kernel32.dll：最核心的功能模块，比如管理内存、进程和线程相关的函数等 User32.dll：是Winodws用户界面相关应用程序接口，如创建窗口和发送消息等 GDI32.dll：全称是Graphical…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-22
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>237</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/05/26/ZeroG_CTF2026/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202606171551.png" alt="ZeroG_CTF2026" loading="lazy" decoding="async" width="2049" height="1146">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            ZeroG_CTF2026
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse Docking Check 红线部分是编译器优化 实际上v7就应该是strlen(input) 加密方式也给出来了，就可以写脚本了 Nebula VM 根据题目并把文件拖到IDA中分析可知这是一个vm题 这里可以看到对opcode进行了个解密 这里可以看到把v49简单初始化了一下 然后用v17代替v9作…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-05-26T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-5-26
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>548</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/05/25/LitCTF2026_WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/2bb2b475-3def-44e1-b41f-2d6d8621cb69.png" alt="LitCTF2026_WP" loading="lazy" decoding="async" width="791" height="576">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            LitCTF2026_WP
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse Re题的考点基本在题目中都说了，非常的贴心，爱了爱了 lit_xor_chain 丢到IDA中分析一下 发现就是异或后加一个数 用赛博厨子即可 lit_b64_alphabet 改了字母表 依旧赛博厨子 lit_tea_standard 考点题目说的很明确了 搓个脚本即可 lit_xtea_tweak…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-05-25T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-5-25
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>439</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+</div>
+
+</div>
+
+
+<div class="paginator">
+  <a class="extend prev" rel="prev" href="/archives/2026/page/2/">上一页</a><a class="page-number" href="/archives/2026/">1</a><a class="page-number" href="/archives/2026/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2026/page/4/">4</a><a class="extend next" rel="next" href="/archives/2026/page/4/">下一页</a>
+</div>
+
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

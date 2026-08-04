@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>23.静态链接库 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="C 语言调用静态库静态库是把多个目标文件（.o）打包成一个归档文件，链接时直接把代码复制进可执行文件。下面以最简单的例子说明整个过程。 1. 编写库源码mylib.h（头文件，声明接口）: 123456#ifndef MYLIB_H#define MYLIB_Hint add(int a, int b);#endif  mylib.c（实现）: 12345#include &quot;mylib.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="23.静态链接库">
+<meta property="og:url" content="https://baiguqing.github.io/2026/08/01/23.%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="C 语言调用静态库静态库是把多个目标文件（.o）打包成一个归档文件，链接时直接把代码复制进可执行文件。下面以最简单的例子说明整个过程。 1. 编写库源码mylib.h（头文件，声明接口）: 123456#ifndef MYLIB_H#define MYLIB_Hint add(int a, int b);#endif  mylib.c（实现）: 12345#include &quot;mylib.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-01T13:38:19.116Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="滴水基础_Win32">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="6"
+    
+    
+    
+    data-scroll-reveal-disappear="true"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+
+<article class="post">
+  
+  <div class="meta-card">
+    <h1 class="title" data-pagefind-meta="title">23.静态链接库</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-08-01T00:00:00+08:00">2026-8-1</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/Notes/">Notes</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80-Win32/" class="tag">#滴水基础_Win32</a>
+        
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="C-语言调用静态库"><a href="#C-语言调用静态库" class="headerlink" title="C 语言调用静态库"></a>C 语言调用静态库</h1><p>静态库是把多个目标文件（<code>.o</code>）打包成一个归档文件，链接时直接把代码复制进可执行文件。下面以最简单的例子说明整个过程。</p>
+<h2 id="1-编写库源码"><a href="#1-编写库源码" class="headerlink" title="1. 编写库源码"></a>1. 编写库源码</h2><p><code>mylib.h</code>（头文件，声明接口）:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MYLIB_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MYLIB_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p><code>mylib.c</code>（实现）:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;mylib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-生成静态库"><a href="#2-生成静态库" class="headerlink" title="2. 生成静态库"></a>2. 生成静态库</h2><p><strong>Linux &#x2F; macOS（gcc + ar）:</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c mylib.c -o mylib.o      <span class="comment"># 编译成目标文件</span></span><br><span class="line">ar rcs libmylib.a mylib.o      <span class="comment"># 打包成静态库，命名必须以 lib 开头、.a 结尾</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Windows（MSVC）:</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cl /c mylib.c                  <span class="comment"># 编译成 mylib.obj</span></span><br><span class="line">lib /OUT:mylib.lib mylib.obj   <span class="comment"># 生成 .lib 静态库</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-在主程序中调用"><a href="#3-在主程序中调用" class="headerlink" title="3. 在主程序中调用"></a>3. 在主程序中调用</h2><p><code>main.c</code>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;mylib.h&quot;</span>     <span class="comment">// 包含库的头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, add(<span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-编译并链接"><a href="#4-编译并链接" class="headerlink" title="4. 编译并链接"></a>4. 编译并链接</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux / macOS（gcc）</span></span><br><span class="line">gcc main.c -I./include -L./lib -lmylib -o main</span><br><span class="line"></span><br><span class="line"><span class="comment"># Windows（gcc 同样适用；MSVC 则用 cl main.c mylib.lib）</span></span><br><span class="line">gcc main.c -I. mylib.lib -o main.exe</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-I路径</code></td>
+<td>指定头文件搜索路径（<code>mylib.h</code> 所在目录）</td>
+</tr>
+<tr>
+<td><code>-L路径</code></td>
+<td>指定库文件搜索路径</td>
+</tr>
+<tr>
+<td><code>-lmylib</code></td>
+<td>链接库，规则：去掉 <code>lib</code> 前缀和 <code>.a</code> 后缀，即 <code>-l</code> + <code>libmylib.a</code> → <code>-lmylib</code></td>
+</tr>
+</tbody></table>
+<p>如果库文件就在当前目录，也可以直接写文件名 <code>gcc main.c mylib.a -o main</code>，更直观。</p>
+<h1 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h1><ul>
+<li>使用静态链接生成的可执行文件体积比较大</li>
+<li>包含相同的公共代码，造成浪费</li>
+</ul>
+
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+
+    
+  </div>
+  
+
+  
+    
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“滴水基础_Win32”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:滴水基础_Win32" selected>滴水基础_Win32</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:Notes">Notes</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">滴水基础_Win32 · 第 7 / 30 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/08/02/27.%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_Win32&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>27.远程线程注入</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/08/01/24.%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_Win32&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>24.动态链接库</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:滴水基础_Win32","defaultSort":"date-desc","contexts":[{"key":"t:滴水基础_Win32","type":"tag","name":"滴水基础_Win32","path":"tags/滴水基础-Win32/","modes":{"date-desc":{"previous":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"next":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"position":7,"total":30},"date-asc":{"previous":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"next":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"position":23,"total":30},"title-asc":{"previous":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"next":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"position":23,"total":30},"title-desc":{"previous":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"next":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"position":8,"total":30}}},{"key":"c:Notes","type":"category","name":"Notes","path":"categories/Notes/","modes":{"date-desc":{"previous":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"next":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"position":7,"total":30},"date-asc":{"previous":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"next":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"position":23,"total":30},"title-asc":{"previous":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"next":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"position":23,"total":30},"title-desc":{"previous":{"title":"24.动态链接库","path":"2026/08/01/24.动态链接库/","date":"2026-07-31T16:00:00.000Z"},"next":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"position":8,"total":30}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
+    
+  
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

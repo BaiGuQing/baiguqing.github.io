@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>归档 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GuQing&#39;s Blog">
+<meta property="og:url" content="https://baiguqing.github.io/archives/page/4/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="CTF,Reverse,Note">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/archive.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+
+<div>
+  <div class="meta">
+    <div class="date">
+      
+      
+    </div>
+
+    <h1 class="title">
+      
+      
+      归档
+    </h1>
+  </div>
+</div>
+
+
+
+<div class="container">
+  
+<div class="post-list archives">
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/04/23/2026%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD%E6%95%B0%E5%AD%97%E5%AE%89%E5%85%A8%E8%B5%9B%E9%81%93%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E8%B5%9BWP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202606220922.png" alt="2026数字中国数字安全赛道网络安全团队赛WP" loading="lazy" decoding="async" width="1737" height="929">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            2026数字中国数字安全赛道网络安全团队赛WP
+          </div>
+
+          
+          <div class="excerpt">
+            2026数字中国数字安全赛道网络安全团体赛决赛WP Reverse Re手因身体原因未到现场，但因现场题就Re较为简单，其他方向题目比较难，导致团队未能获奖，Re手表示非常抱歉未能到现场。 FlagVault 这题题目说的很明确了，加密在Native层 定位到关键函数 发现整体逻辑较为简单，且有用函数为getFlag…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-04-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-4-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>8.5k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/02/13/FurryCTF2026/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202602011856.png" alt="FurryCTF2026" loading="lazy" decoding="async" width="899" height="520">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            FurryCTF2026
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse 签到题 丢进DIE查了下 发现有VMP的壳子，直接找工具脱掉（之前正好参加了Lilac CTF，官方wp中提到了个脱壳工具，在这正好用上了） 再丢进IDA 未来程序 有个c++的源码，因为不会c++，所以让ai协助我理解了下代码 发现encoder.txt，把内容按源码改了改 简单了解了下源码 把out…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-02-13T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-2-13
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>1.0k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/01/31/UniCTF2026_WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202601262057.png" alt="UniCTF2026_WP" loading="lazy" decoding="async" width="1298" height="835">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            UniCTF2026_WP
+          </div>
+
+          
+          <div class="excerpt">
+            Reverse c_polynomial 这道题我一开始还以为是一道动态调试的题目，发现并不是，直接静态就可以看 发现是一个道很综合的计算题 丢给ai写出计算脚本 c_sm4.py 这道题打开ida发现根本分析不明白 查了下壳是UPX的，用的最新版5.1 发现官方脱壳器脱不了 网上搜手动脱壳自己脱了 然后发现是到魔改的…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-01-31T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-1-31
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.2k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/30/ret2libc/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            ret2libc
+          </div>
+
+          
+          <div class="excerpt">
+            题目 要想实现ret2libc，有以下几个必要条件： 存在溢出，且溢出范围足够大，可以覆盖到main函数的返回地址，还可以覆盖更远的区域。 存在类似于puts，write这样的打印函数。可以被利用，劫持程序的执行流程后，执行puts,write这样的函数打印一些已经执行过的函数的真实地址，以便我们寻找libc的基地址。…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-30T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-30
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.0k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            不能用cat和sh指令
+          </div>
+
+          
+          <div class="excerpt">
+            在字符串层⾯过滤了”cat”和”sh” 绕过手段很多 在正常命令中加⼊⽆关紧要的分隔符,如:ca\t flag 输⼊$0返回自身的shell
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-27T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-27
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>66</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            简单栈溢出
+          </div>
+
+          
+          <div class="excerpt">
+            例子 read(0, buf, 0x100u) 出现了明显的栈溢出 从标准输入（fd=0）中读取 0x100 = 256 字节到 buf 中。 但是 buf 只有 48 字节！所以 直接构成栈缓冲区溢出漏洞 。 当有 溢出漏洞 （比如 buffer overflow）时，程序允许我们“写太多数据”，覆盖重要区域，比如：…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-27T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-27
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>380</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/22/Base64%E7%BC%96%E7%A0%81/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            Base64编码
+          </div>
+
+          
+          <div class="excerpt">
+            编码过程演示 让我们通过一个具体的例子来看看它是如何工作的。 假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M = 77 = 01001101 a = 97 = 01100001 n = 110 = 01101110 将它们连成一串 24 bit 的数据流： 01001101011000…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-22
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>1.1k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            小端序
+          </div>
+
+          
+          <div class="excerpt">
+            特征 小端序是以四个字节倒序过来，也就是讲读入的字符转化为一个个32位的整数。 读取的字符在内存中以ACSII码的形式储存，小端序也是讲这些个ACSII码，四个为一组，倒叙过来，组成一个32位整数 小端序拼接 0x66 6E 6A 73 32 位整数 0x666E6A73 后面接什么 后面一般会接MD5、部分SHA、T…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-22T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-22
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>163</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/20251123174856.png" alt="0xGame 2025 Week3 Reverse WP" loading="lazy" decoding="async" width="1374" height="630">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week3 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ ezVBS 我不得不说，要听劝。原题都告诉我了，不让我打开，我还就偏打开了，然后去网上搜VBS逆向，最后在赛博厨子那里逆向出了 当时没怎么注意文字，就去看官方WP了，结果打开记事本看了看，和WP上的不一样啊，我还以为题出错了，回来又下了一遍…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-16T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-16
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.1k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy" decoding="async" width="594" height="50">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week2 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我是一名CTF萌新啊，做这么详细的WP，也是希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ 16 bit 这个官方文档写的比较详细，那我就仔细的讲一下过程 运行这个exe会发现运行不了，据官方WP所说，这个是16位的应⽤程序，是由汇编语⾔直接编写再编译的，现代操作系统⼀般都无法直接运行，但…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-11-20T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-11-20
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.5k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+</div>
+
+</div>
+
+
+<div class="paginator">
+  <a class="extend prev" rel="prev" href="/archives/page/3/">上一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">下一页</a>
+</div>
+
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

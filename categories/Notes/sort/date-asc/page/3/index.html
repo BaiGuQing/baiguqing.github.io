@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>分类: Notes - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GuQing&#39;s Blog">
+<meta property="og:url" content="https://baiguqing.github.io/categories/Notes/sort/date-asc/page/3/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="欢迎来到我的Blog，嘿嘿😄">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="CTF,Reverse,Note">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/archive.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content">
+      
+
+<div>
+  <div class="meta">
+    <div class="date">
+      分类
+      
+    </div>
+
+    <h1 class="title">
+      Notes
+      
+      
+    </h1>
+  </div>
+</div>
+
+
+<section class="container taxonomy-detail-sort" aria-labelledby="taxonomy-detail-sort-title">
+  <div class="taxonomy-detail-sort-copy">
+    <p class="taxonomy-detail-sort-kicker" id="taxonomy-detail-sort-title">
+      <i class="bi bi-signpost-split" aria-hidden="true"></i>
+      线路排序
+    </p>
+    <p class="taxonomy-detail-sort-description">排序作用于当前分类或标签的全部文章，翻页后仍会延续同一顺序。</p>
+  </div>
+
+  <div class="taxonomy-detail-sort-options" role="list" aria-label="排序">
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/categories/Notes/" role="listitem">
+      <i class="bi bi-sort-down-alt" aria-hidden="true"></i>
+      <span>最新优先</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option is-active" href="/categories/Notes/sort/date-asc/" role="listitem" aria-current="page">
+      <i class="bi bi-sort-up" aria-hidden="true"></i>
+      <span>最早优先</span>
+      
+      <i class="bi bi-check2 taxonomy-detail-sort-check" aria-hidden="true"></i>
+      <span class="sr-only">当前排序</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/categories/Notes/sort/title-asc/" role="listitem">
+      <i class="bi bi-sort-alpha-down" aria-hidden="true"></i>
+      <span>标题 A→Z</span>
+      
+    </a>
+    
+    
+    <a class="taxonomy-detail-sort-option" href="/categories/Notes/sort/title-desc/" role="listitem">
+      <i class="bi bi-sort-alpha-up-alt" aria-hidden="true"></i>
+      <span>标题 Z→A</span>
+      
+    </a>
+    
+  </div>
+</section>
+
+
+<div class="container">
+  
+<div class="post-list archives">
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/30/21.%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            21.文件系统
+          </div>
+
+          
+          <div class="excerpt">
+            文件系统 文件系统是操作系统用于管理磁盘上文件的方法和数据结构；简单点说就是在磁盘上如何组织文件的方法。 以32位系统为例 NTFS FAT32 磁盘分区容量 2T（2048G） 32G 单个文件容量 4G以上 最大4G EFS加密 支持 不支持 磁盘配额 支持 不支持 卷相关API 目录相关API 文件相关API
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-30T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-30
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>139</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/31/22.%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/202607312015.png" alt="22.内存映射文件" loading="lazy" decoding="async" width="598" height="485">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            22.内存映射文件
+          </div>
+
+          
+          <div class="excerpt">
+            什么是内存映射文件？ 操作方便，对大文件的读取友好 内存映射文件之共享 内存映射文件之写拷贝
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-31T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-31
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>43</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/01/23.%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            23.静态链接库
+          </div>
+
+          
+          <div class="excerpt">
+            C 语言调用静态库 静态库是把多个目标文件（ .o ）打包成一个归档文件，链接时直接把代码复制进可执行文件。下面以最简单的例子说明整个过程。 1. 编写库源码 mylib.h （头文件，声明接口）: mylib.c （实现）: 2. 生成静态库 Linux / macOS（gcc + ar）: Windows（MSVC…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-01T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-1
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>347</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/01/24.%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            24.动态链接库
+          </div>
+
+          
+          <div class="excerpt">
+            动态链接库 动态链接库是微软公司在微软Windows操作系统中，实现共享函数库的一种方式。 这些库函数的扩展名是”.dll”、”.ocx”。
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-01T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-1
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>68</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/02/25.%E9%9A%90%E5%BC%8F%E9%93%BE%E6%8E%A5/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            25.隐式链接
+          </div>
+
+          
+          <div class="excerpt">
+            隐式链接使用DLL DLL的优点 1. 节省内存 多个程序可以共享同一个 DLL。 系统只需要把 DLL 加载到内存一次，所有调用它的进程都可以使用同一份代码，减少内存占用。 2. 减小可执行文件体积 常用功能（比如数学运算、界面控件、网络通信等）放在 DLL 里，主程序（.exe）就不需要包含这些代码，文件更小。 3…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-02T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-2
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>445</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/02/26.%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            26.远程线程
+          </div>
+
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-02T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-2
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>0</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/02/27.%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            27.远程线程注入
+          </div>
+
+          
+          <div class="excerpt">
+            注入 所谓注入就是在第三方进程不知道或者不允许的情况下将模块或者代码写入对方进程空间，并设法执行的技术 已知注入方式 远程线程注入，APC注入、消息钩子注入、注册表注入、导入表注入、输入法注入等等。 流程 思路：在进程A中创建线程，将线程函数指向为：LoadLibrary() 具体实现步骤 在进程A中分配空间，存储“A…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-02T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-2
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>236</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/03/28.%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            29.进程通信
+          </div>
+
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-03T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-3
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>0</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/03/29.%E6%A8%A1%E5%9D%97%E9%9A%90%E8%97%8F/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            29.模块隐藏
+          </div>
+
+          
+          <div class="excerpt">
+            模块隐藏之断链 TEB(Thread Environment Block),它记录的相关线程的信息，每一个线程都有自己的TEB，FS:[0]即是当前现成的TEB PEB(Process Environment Block),存放进程信息，每个进程都有自己的PEB信息，TEB偏移0x30即当前进程的PEB TEB和PEB…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-03T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-3
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>187</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/04/30.%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81/?line=c%3ANotes&amp;sort=date-asc">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            30.注入代码
+          </div>
+
+          
+          <div class="excerpt">
+            什么是机器码，机器码与汇编的关系？ 什么是机器码 机器码也叫机器语言，是 CPU 能够直接识别并且执行的指令，全部由 0 和 1 组成，是程序在硬件上真实存在的形式。 平时为了方便查看，机器码经常写成十六进制。机器码人很难阅读和手写，不同 CPU 架构，比如 x86、ARM，它们的机器码互不兼容。 举个例子，x86 下…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-04T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-4
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>484</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+</div>
+
+</div>
+
+
+<div class="paginator">
+  <a class="extend prev" rel="prev" href="/categories/Notes/sort/date-asc/page/2/">上一页</a><a class="page-number" href="/categories/Notes/sort/date-asc/">1</a><a class="page-number" href="/categories/Notes/sort/date-asc/page/2/">2</a><span class="page-number current">3</span>
+</div>
+
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

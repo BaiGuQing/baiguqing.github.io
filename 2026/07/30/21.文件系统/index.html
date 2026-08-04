@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>21.文件系统 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="文件系统 文件系统是操作系统用于管理磁盘上文件的方法和数据结构；简单点说就是在磁盘上如何组织文件的方法。 以32位系统为例      NTFS FAT32    磁盘分区容量 2T（2048G） 32G   单个文件容量 4G以上 最大4G   EFS加密 支持 不支持   磁盘配额 支持 不支持   卷相关API123456789101112131415161718192021222324252">
+<meta property="og:type" content="article">
+<meta property="og:title" content="21.文件系统">
+<meta property="og:url" content="https://baiguqing.github.io/2026/07/30/21.%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="文件系统 文件系统是操作系统用于管理磁盘上文件的方法和数据结构；简单点说就是在磁盘上如何组织文件的方法。 以32位系统为例      NTFS FAT32    磁盘分区容量 2T（2048G） 32G   单个文件容量 4G以上 最大4G   EFS加密 支持 不支持   磁盘配额 支持 不支持   卷相关API123456789101112131415161718192021222324252">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-30T06:03:08.643Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="滴水基础_Win32">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="6"
+    
+    
+    
+    data-scroll-reveal-disappear="true"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+
+<article class="post">
+  
+  <div class="meta-card">
+    <h1 class="title" data-pagefind-meta="title">21.文件系统</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-07-30T00:00:00+08:00">2026-7-30</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/Notes/">Notes</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80-Win32/" class="tag">#滴水基础_Win32</a>
+        
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><ul>
+<li>文件系统是操作系统用于管理磁盘上文件的方法和数据结构；简单点说就是在磁盘上如何组织文件的方法。</li>
+<li>以32位系统为例</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NTFS</th>
+<th>FAT32</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>磁盘分区容量</td>
+<td>2T（2048G）</td>
+<td>32G</td>
+</tr>
+<tr>
+<td>单个文件容量</td>
+<td>4G以上</td>
+<td>最大4G</td>
+</tr>
+<tr>
+<td>EFS加密</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>磁盘配额</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+</tbody></table>
+<h1 id="卷相关API"><a href="#卷相关API" class="headerlink" title="卷相关API"></a>卷相关API</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">VOID <span class="title function_">TestVolumn</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//获取卷</span></span><br><span class="line">    DWORD dwLogicalDrives = GetLogicalDrives();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取一个所卷的盘符的字符串</span></span><br><span class="line">    DWORD dwMaxLength = <span class="number">100</span>;</span><br><span class="line">    <span class="type">char</span> szBuffer[<span class="number">100</span>];</span><br><span class="line">    GetLogicalDriveStringsA(dwMaxLength, szBuffer);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取卷的类型</span></span><br><span class="line">    UINT uType = GetDriveType(<span class="string">&quot;A:\\&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取卷的信息</span></span><br><span class="line">    TCHAR szVolumeName[<span class="number">260</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    DWORD dwVolumeSerial = <span class="number">0</span>;</span><br><span class="line">    DWORD dwMaxLength_1 = <span class="number">0</span>;</span><br><span class="line">    DWORD dwFileSystem = <span class="number">0</span>;</span><br><span class="line">    TCHAR szFileSystem = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    GetVolumeInformation(</span><br><span class="line">        <span class="string">&quot;A:\\&quot;</span>,             <span class="comment">//IN    磁盘驱动器代码字符串</span></span><br><span class="line">        szVolumeName,       <span class="comment">//OUT   磁盘驱动器卷标名称</span></span><br><span class="line">        <span class="number">260</span>,                <span class="comment">//IN    磁盘驱动卷标名称长度</span></span><br><span class="line">        &amp;dwVolumeSerial,    <span class="comment">//OUT   磁盘驱动器卷标序列号（不是硬盘序列号，该号是硬盘出厂时生产厂家为区别产品而设置的，就像人的身份证号一样）</span></span><br><span class="line">        &amp;dwMaxLength_1,     <span class="comment">//OUT   系统允许的最大文件名长度</span></span><br><span class="line">        &amp;dwFileSystem,      <span class="comment">//OUT   文件系统标识</span></span><br><span class="line">        &amp;szFileSystem,      <span class="comment">//OUT   文件系统名称</span></span><br><span class="line">        <span class="number">260</span>                 <span class="comment">//IN    文件系统名称长度</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="目录相关API"><a href="#目录相关API" class="headerlink" title="目录相关API"></a>目录相关API</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">VOID <span class="title function_">TestDirectory</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//创建目录</span></span><br><span class="line">    CreateDirectory(<span class="string">&quot;Z:\\hello&quot;</span>,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">//删除目录</span></span><br><span class="line">    RemoveDirectory(<span class="string">&quot;Z:\\hello&quot;</span>);</span><br><span class="line">    <span class="comment">//修改目录名</span></span><br><span class="line">    MoveFile(<span class="string">&quot;Z:\\hello&quot;</span>,<span class="string">&quot;z:\\hello1&quot;</span>);</span><br><span class="line">    <span class="comment">//获取程序当前目录</span></span><br><span class="line">    CHAR szCurrentDirectoryPath[MAX_PATH] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    GetCurrentDirectory(MAX_PATH,szCurrentDirectoryPath);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Current Directory Path: %s\n&quot;</span>,szCurrentDirectoryPath);</span><br><span class="line">    <span class="comment">//设置程序当前目录</span></span><br><span class="line">    SetCurrentDirectory(<span class="string">&quot;Z:\\&quot;</span>);</span><br><span class="line">    CreateDirectoryA(<span class="string">&quot;ABC&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="文件相关API"><a href="#文件相关API" class="headerlink" title="文件相关API"></a>文件相关API</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">VOID <span class="title function_">TestFile</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//创建文件</span></span><br><span class="line">    HANDLE hFile = CreateFile(</span><br><span class="line">        <span class="string">&quot;C:\\A.txt&quot;</span>,</span><br><span class="line">        GENERIC_READ | GENERIC_WRITE,</span><br><span class="line">        <span class="number">0</span>,</span><br><span class="line">        <span class="literal">NULL</span>,</span><br><span class="line">        CREATE_ALWAYS,</span><br><span class="line">        FILE_ATTRIBUTE_NORMAL,</span><br><span class="line">        <span class="literal">NULL</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//文件的关闭</span></span><br><span class="line">    CloseHandle(hFile);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取文件长度</span></span><br><span class="line">    DWORD dwHigh = <span class="number">0</span>;</span><br><span class="line">    DWORD dwLow = GetFileSize(hFile, &amp;dwHigh);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取文件的属性和信息</span></span><br><span class="line">    WIN32_FILE_ATTRIBUTE_DATA data = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    GetFileAttributesEx(<span class="string">&quot;z:\\hello&quot;</span>,GetFileExInfoStandard,&amp;data);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Attri=%lx\n&quot;</span>,data.dwFileAttributes);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;SizeHigh=%lx\n&quot;</span>,data.nFileSizeHigh);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;SizeLow=%lx\n&quot;</span>,data.nFileSizeLow);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;CreationTime=%lx\n&quot;</span>,data.ftCreationTime);<span class="comment">//可以用FileTimeToSystemTime转换</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;LastAccessTime=%lx\n&quot;</span>,data.ftLastAccessTime);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;LastWriteTime=%lx\n&quot;</span>,data.ftLastWriteTime);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//读取文件</span></span><br><span class="line">    <span class="comment">//分配空间</span></span><br><span class="line">    LPSTR pszBuffer = (LPSTR)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">    ZeroMemory(pszBuffer,<span class="number">10</span>);</span><br><span class="line">    <span class="comment">//设置当前读取的位置</span></span><br><span class="line">    SetFilePointer(hFile, <span class="number">1</span>, <span class="literal">NULL</span>, FILE_END);</span><br><span class="line">    <span class="comment">//读取数据</span></span><br><span class="line">    DWORD dwReadLength = <span class="number">0</span>;</span><br><span class="line">    ReadFile(hFile, pszBuffer, <span class="number">10</span>, &amp;dwReadLength, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,pszBuffer);</span><br><span class="line">    <span class="comment">//释放内存</span></span><br><span class="line">    <span class="built_in">free</span>(pszBuffer);</span><br><span class="line">    <span class="comment">//关闭文件</span></span><br><span class="line">    CloseHandle(hFile);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//写入文件</span></span><br><span class="line">    <span class="comment">// 写文件</span></span><br><span class="line">    TCHAR szBuffer[] = TEXT(<span class="string">&quot;中国&quot;</span>);</span><br><span class="line">    DWORD dwWritten = <span class="number">0</span>;</span><br><span class="line">    WriteFile(hFile, szBuffer, <span class="built_in">strlen</span>(szBuffer),&amp;dwWritten, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">// 关闭文件</span></span><br><span class="line">    CloseHandle(hFile);</span><br><span class="line">    <span class="comment">//拷贝文件</span></span><br><span class="line">    CopyFile(<span class="string">&quot;Z:\\old.txt&quot;</span>,<span class="string">&quot;z:\\new.txt&quot;</span>,FALSE);</span><br><span class="line">    <span class="comment">//删除文件</span></span><br><span class="line">    DeleteFile(<span class="string">&quot;z:\\old.txt&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+
+    
+  </div>
+  
+
+  
+    
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“滴水基础_Win32”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:滴水基础_Win32" selected>滴水基础_Win32</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:Notes">Notes</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">滴水基础_Win32 · 第 11 / 30 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/07/30/20.%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E7%94%B3%E8%AF%B7%E4%B8%8E%E9%87%8A%E6%94%BE/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_Win32&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>20.共享内存的申请与释放</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/07/29/16.%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_Win32&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>16.消息类型</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:滴水基础_Win32","defaultSort":"date-desc","contexts":[{"key":"t:滴水基础_Win32","type":"tag","name":"滴水基础_Win32","path":"tags/滴水基础-Win32/","modes":{"date-desc":{"previous":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"next":{"title":"16.消息类型","path":"2026/07/29/16.消息类型/","date":"2026-07-28T16:00:00.000Z"},"position":11,"total":30},"date-asc":{"previous":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"next":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"position":21,"total":30},"title-asc":{"previous":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"next":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"position":21,"total":30},"title-desc":{"previous":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"next":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"position":10,"total":30}}},{"key":"c:Notes","type":"category","name":"Notes","path":"categories/Notes/","modes":{"date-desc":{"previous":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"next":{"title":"16.消息类型","path":"2026/07/29/16.消息类型/","date":"2026-07-28T16:00:00.000Z"},"position":11,"total":30},"date-asc":{"previous":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"next":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"position":21,"total":30},"title-asc":{"previous":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"next":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"position":21,"total":30},"title-desc":{"previous":{"title":"22.内存映射文件","path":"2026/07/31/22.内存映射文件/","date":"2026-07-30T16:00:00.000Z"},"next":{"title":"20.共享内存的申请与释放","path":"2026/07/30/20.共享内存的申请与释放/","date":"2026-07-29T16:00:00.000Z"},"position":10,"total":30}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
+    
+  
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>

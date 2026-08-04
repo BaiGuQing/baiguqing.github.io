@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>29.进程通信 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142#include &lt;stdio.h&gt;#include &quot;Windows.h&quot;void Attack() &#123;	printf(&quot;Attack\n&quot;);&#125;void Help() &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="29.进程通信">
+<meta property="og:url" content="https://baiguqing.github.io/2026/08/03/28.%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142#include &lt;stdio.h&gt;#include &quot;Windows.h&quot;void Attack() &#123;	printf(&quot;Attack\n&quot;);&#125;void Help() &amp;#1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-03T08:36:47.007Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="滴水基础_Win32">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="6"
+    
+    
+    
+    data-scroll-reveal-disappear="true"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" data-pagefind-body>
+      
+
+<article class="post">
+  
+  <div class="meta-card">
+    <h1 class="title" data-pagefind-meta="title">29.进程通信</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-08-03T00:00:00+08:00">2026-8-3</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/Notes/">Notes</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80-Win32/" class="tag">#滴水基础_Win32</a>
+        
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Windows.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Attack</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Attack\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Help</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Help\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Injection</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Inject!\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Game Start!\n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="type">int</span> opCode;</span><br><span class="line">		<span class="type">int</span> over = <span class="number">0</span>;</span><br><span class="line">		scanf_s(<span class="string">&quot;%d&quot;</span>, &amp;opCode);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (over)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">switch</span> (opCode) &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				Attack();</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">				Help();</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">777</span>:</span><br><span class="line">				Injection();</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">				over = <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dllmain.cpp : 定义 DLL 应用程序的入口点。</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pch.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标函数地址（x64 下直接函数指针调用）</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _Attack_     0x07FF6304A13FCULL</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _Help_       0x07FF6304A140BULL</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _Injection_  0x07FF7CAC113F7ULL</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须和注入器完全一致</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __Map__      <span class="string">&quot;Share&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAP_SIZE     0x1000</span></span><br><span class="line"></span><br><span class="line">HMODULE g_hModule;</span><br><span class="line">HANDLE  g_hMapFile = <span class="literal">NULL</span>;</span><br><span class="line">LPVOID  lpBuff = <span class="literal">NULL</span>;</span><br><span class="line">DWORD   dwType = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果目标函数带参数，改成对应签名，例如 typedef void (__cdecl *FN)(int, int);</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span><span class="params">(__cdecl* FN_GameFunc)</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">DWORD WINAPI <span class="title function_">ThreadProc</span><span class="params">(LPVOID lpParameter)</span> &#123;</span><br><span class="line">    dwType = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    g_hMapFile = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, __Map__);</span><br><span class="line">    <span class="keyword">if</span> (g_hMapFile == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;[DLL] OpenFileMapping Error!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    lpBuff = MapViewOfFile(g_hMapFile, FILE_MAP_ALL_ACCESS, <span class="number">0</span>, <span class="number">0</span>, MAP_SIZE);</span><br><span class="line">    <span class="keyword">if</span> (lpBuff == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;[DLL] MapViewOfFile Error!\n&quot;</span>);</span><br><span class="line">        CloseHandle(g_hMapFile);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    OutputDebugStringA(<span class="string">&quot;[DLL] Shared memory OK, waiting for commands...\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (lpBuff != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            CopyMemory(&amp;dwType, lpBuff, <span class="keyword">sizeof</span>(dwType));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (dwType == <span class="number">1</span>) &#123;</span><br><span class="line">            OutputDebugStringA(<span class="string">&quot;[DLL] Call Attack\n&quot;</span>);</span><br><span class="line">            ((FN_GameFunc)_Attack_)();      <span class="comment">// 原来的 __asm &#123; mov eax,_Attack_; call eax &#125;</span></span><br><span class="line">            dwType = <span class="number">0</span>;</span><br><span class="line">            CopyMemory(lpBuff, &amp;dwType, <span class="keyword">sizeof</span>(dwType));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (dwType == <span class="number">2</span>) &#123;</span><br><span class="line">            OutputDebugStringA(<span class="string">&quot;[DLL] Call Help\n&quot;</span>);</span><br><span class="line">            ((FN_GameFunc)_Help_)();        <span class="comment">// 原来的 __asm &#123; mov eax,_Help_; call eax &#125;</span></span><br><span class="line">            dwType = <span class="number">0</span>;</span><br><span class="line">            CopyMemory(lpBuff, &amp;dwType, <span class="keyword">sizeof</span>(dwType));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (dwType == <span class="number">3</span>) &#123;</span><br><span class="line">            OutputDebugStringA(<span class="string">&quot;[DLL] Call Injection\n&quot;</span>);</span><br><span class="line">            ((FN_GameFunc)_Injection_)();   <span class="comment">// 原来的 __asm &#123; mov eax,_Injection_; call eax &#125;</span></span><br><span class="line">            dwType = <span class="number">0</span>;</span><br><span class="line">            CopyMemory(lpBuff, &amp;dwType, <span class="keyword">sizeof</span>(dwType));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (dwType == <span class="number">4</span>) &#123;</span><br><span class="line">            OutputDebugStringA(<span class="string">&quot;[DLL] Unloading...\n&quot;</span>);</span><br><span class="line">            UnmapViewOfFile(lpBuff);</span><br><span class="line">            CloseHandle(g_hMapFile);</span><br><span class="line">            FreeLibraryAndExitThread(g_hModule, <span class="number">4</span>);  <span class="comment">// 卸载 DLL 并结束线程</span></span><br><span class="line">        &#125;</span><br><span class="line">        Sleep(<span class="number">500</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BOOL APIENTRY <span class="title function_">DllMain</span><span class="params">(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)</span> &#123;</span><br><span class="line">    g_hModule = hModule;</span><br><span class="line">    <span class="keyword">switch</span> (ul_reason_for_call) &#123;</span><br><span class="line">    <span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">        <span class="comment">// 注入后开线程（DllMain 里 CreateThread 是注入的常规做法）</span></span><br><span class="line">        CreateThread(<span class="literal">NULL</span>, <span class="number">0</span>, ThreadProc, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;[DLL] DLL_PROCESS_DETACH\n&quot;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;debugapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;errhandlingapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;handleapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libloaderapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memoryapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;minwinbase.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;minwindef.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;processthreadsapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;synchapi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;winnt.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __MAP__ <span class="string">&quot;Share&quot;</span></span></span><br><span class="line"></span><br><span class="line">HANDLE g_hMapFile;</span><br><span class="line">LPTSTR lpBuff;</span><br><span class="line"></span><br><span class="line">BOOL <span class="title function_">Init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//创建共享内存</span></span><br><span class="line">    g_hMapFile = CreateFileMappingA(INVALID_HANDLE_VALUE, <span class="literal">NULL</span>,PAGE_READWRITE,<span class="number">0</span>,<span class="number">0x1000</span>,__MAP__);</span><br><span class="line">    <span class="keyword">if</span> (g_hMapFile == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;CreateFileMappingA Error\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>  FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//映射内存（大小和 CreateFileMapping 保持一致）</span></span><br><span class="line">    lpBuff = MapViewOfFile(g_hMapFile,FILE_MAP_ALL_ACCESS,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0x1000</span>);</span><br><span class="line">    <span class="keyword">if</span> (lpBuff == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;MapViewOfFile Error\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>  FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BOOL <span class="title function_">LoadDll</span><span class="params">(DWORD dwProcessID,<span class="type">char</span> *szDllPathName)</span>&#123;</span><br><span class="line">    BOOL bRet;</span><br><span class="line">    HANDLE hProcess;</span><br><span class="line">    HANDLE hThread;</span><br><span class="line">    DWORD dwLength;</span><br><span class="line">    FARPROC dwLoadAddr;</span><br><span class="line">    LPVOID lpAllocAddr;</span><br><span class="line">    HMODULE hModule;</span><br><span class="line"></span><br><span class="line">    bRet = FALSE;</span><br><span class="line">    dwLoadAddr = <span class="number">0</span>;</span><br><span class="line">    hProcess = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取进程句柄</span></span><br><span class="line">    hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE,dwProcessID);</span><br><span class="line">    <span class="keyword">if</span> (hProcess == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;OpenProcess Error! \n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计算DLL路径名字长度，并且要加上0结尾的长度</span></span><br><span class="line">    dwLength = <span class="built_in">strlen</span>(szDllPathName) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在目标进程分配内存</span></span><br><span class="line">    lpAllocAddr = VirtualAllocEx(hProcess, <span class="literal">NULL</span>, dwLength, MEM_COMMIT,PAGE_READWRITE);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (lpAllocAddr == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;VirtualAllocEx Error! \n&quot;</span>);</span><br><span class="line">        CloseHandle(hProcess);</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//拷贝DLL路径名字到目标进程的内存</span></span><br><span class="line">    bRet = WriteProcessMemory(hProcess, lpAllocAddr, szDllPathName,dwLength,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (!bRet) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;WriteProcessMemory Error! \n&quot;</span>);</span><br><span class="line">        CloseHandle(hProcess);</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取模块地址</span></span><br><span class="line">    hModule = GetModuleHandleA(<span class="string">&quot;Kernel32.dll&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (hModule == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;GetModuleHandleA Error! \n&quot;</span>);</span><br><span class="line">        CloseHandle(hProcess);</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取LoadLibraryA函数地址</span></span><br><span class="line">    dwLoadAddr = GetProcAddress(hModule, <span class="string">&quot;LoadLibraryA&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (dwLoadAddr == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;GetProcAddress Error! \n&quot;</span>);</span><br><span class="line">        CloseHandle(hProcess);</span><br><span class="line">        CloseHandle(hModule);</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建远程线程，加载DLL</span></span><br><span class="line">    hThread = CreateRemoteThread(hProcess, <span class="literal">NULL</span>, <span class="number">0</span>,(LPTHREAD_START_ROUTINE)dwLoadAddr,lpAllocAddr,<span class="number">0</span>,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (hThread == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        OutputDebugStringA(<span class="string">&quot;CreateRemoteThread Error! \n&quot;</span>);</span><br><span class="line">        CloseHandle(hProcess);</span><br><span class="line">        CloseHandle(hModule);</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    CloseHandle(hProcess);</span><br><span class="line">    CloseHandle(hThread);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> &#123;</span><br><span class="line">    DWORD dwCtrlCode;</span><br><span class="line">    DWORD dwOrderList[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">    dwCtrlCode = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (Init()) &#123;</span><br><span class="line">        LoadDll(<span class="number">111</span>, <span class="string">&quot;Dll1.dll&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dwOrderList[<span class="number">0</span>] = <span class="number">3</span>;</span><br><span class="line">    dwOrderList[<span class="number">1</span>] = <span class="number">3</span>;</span><br><span class="line">    dwOrderList[<span class="number">2</span>] = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        dwCtrlCode = dwOrderList[i];</span><br><span class="line">        CopyMemory(lpBuff,&amp;dwCtrlCode,<span class="number">4</span>);</span><br><span class="line">        Sleep(<span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+
+    
+  </div>
+  
+
+  
+    
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“滴水基础_Win32”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:滴水基础_Win32" selected>滴水基础_Win32</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:Notes">Notes</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">滴水基础_Win32 · 第 2 / 30 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/08/04/30.%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_Win32&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>30.注入代码</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/08/03/29.%E6%A8%A1%E5%9D%97%E9%9A%90%E8%97%8F/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_Win32&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>29.模块隐藏</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:滴水基础_Win32","defaultSort":"date-desc","contexts":[{"key":"t:滴水基础_Win32","type":"tag","name":"滴水基础_Win32","path":"tags/滴水基础-Win32/","modes":{"date-desc":{"previous":{"title":"30.注入代码","path":"2026/08/04/30.注入代码/","date":"2026-08-03T16:00:00.000Z"},"next":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"position":2,"total":30},"date-asc":{"previous":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"next":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"position":28,"total":30},"title-asc":{"previous":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"next":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"position":28,"total":30},"title-desc":{"previous":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"next":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"position":3,"total":30}}},{"key":"c:Notes","type":"category","name":"Notes","path":"categories/Notes/","modes":{"date-desc":{"previous":{"title":"30.注入代码","path":"2026/08/04/30.注入代码/","date":"2026-08-03T16:00:00.000Z"},"next":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"position":2,"total":30},"date-asc":{"previous":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"next":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"position":28,"total":30},"title-asc":{"previous":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"next":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"position":28,"total":30},"title-desc":{"previous":{"title":"29.模块隐藏","path":"2026/08/03/29.模块隐藏/","date":"2026-08-02T16:00:00.000Z"},"next":{"title":"27.远程线程注入","path":"2026/08/02/27.远程线程注入/","date":"2026-08-01T16:00:00.000Z"},"position":3,"total":30}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
+    
+  
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>
