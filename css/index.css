@@ -395,7 +395,7 @@ body[data-color-scheme=dark] .hero {
   pointer-events: none;
   position: relative;
   z-index: 7;
-  height: 210svh;
+  height: 240svh;
   --hero-split-left: 0%;
   --hero-split-right: 0%;
 }
@@ -418,11 +418,11 @@ body[data-color-scheme=dark] .hero {
 
 .hero-reveal--split.is-js-split + .home-container,
 .home-container--under-hero {
-  margin-top: -175svh;
+  margin-top: -205svh;
   isolation: isolate;
   opacity: 0;
   visibility: hidden;
-  will-change: opacity, filter, transform;
+  will-change: opacity;
   transition: none;
 }
 

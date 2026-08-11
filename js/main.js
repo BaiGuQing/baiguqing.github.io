@@ -192,10 +192,15 @@
             // 计算适合观察者 (IntersectionObserver) 高亮区间的位置
             const offset = window.innerHeight * 0.25
             const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset
+            const targetHash = link.getAttribute('href')
 
-            if (window.lenis) {
-              // 使用 Lenis 的 API，避免与虚拟滚动动量冲突导致跳转失败
-              window.lenis.scrollTo(targetPosition)
+            if (window.location.hash !== targetHash) {
+              window.history.pushState(null, '', targetHash)
+            }
+
+            if (typeof window.themeSmoothScrollTo === 'function') {
+              // 使用统一滚动驱动，避免标题距离改变跳转手感
+              window.themeSmoothScrollTo(targetPosition)
             } else {
               window.scrollTo({
                 top: targetPosition,
@@ -207,10 +212,19 @@
             // 使用 scrollend 事件（现代浏览器）或定时器作为后备
             const unlockObserver = () => {
               isTocScrolling = false;
+              clearTimeout(tocScrollTimeout);
               window.removeEventListener('scrollend', unlockObserver);
+              const hadTabIndex = targetElement.hasAttribute('tabindex')
+              if (!hadTabIndex) {
+                targetElement.setAttribute('tabindex', '-1')
+                targetElement.addEventListener('blur', () => {
+                  targetElement.removeAttribute('tabindex')
+                }, { once: true })
+              }
+              targetElement.focus({ preventScroll: true })
             };
             window.addEventListener('scrollend', unlockObserver);
-            tocScrollTimeout = setTimeout(unlockObserver, 1200); // 1200ms 后备解锁，适应 Lenis 的持续时间
+            tocScrollTimeout = setTimeout(unlockObserver, 1500); // 覆盖最远标题跳转的最长持续时间
           }
         })
       })

@@ -440,9 +440,14 @@
       feed.style.transform = 'none';
     }
 
-    const MAX = 160; // percent — large amplitude, clears the gap
+    const MAX_TRAVEL = 112; // percent — enough overshoot to clear both panels
+    const FOLLOW_RATE = 12; // exponential response; about 95% settled in 250ms
+    const MAX_FRAME_SECONDS = 1 / 20;
+    const SETTLE_EPSILON = 0.00005;
     let raf = 0;
-    let last = -1;
+    let renderedProgress = 0;
+    let lastAppliedOpen = -1;
+    let lastFrameTime = 0;
     let running = true;
 
     function clamp01(v) {
@@ -450,8 +455,13 @@
     }
 
     function easeScroll(t) {
-      // Soft ease-in-out; travel tracks scroll instead of snapping open early
+      // Spatial easing shapes the runway; temporal damping below absorbs wheel steps.
       return t * t * (3 - 2 * t);
+    }
+
+    function dampProgress(current, target, frameSeconds) {
+      const response = 1 - Math.exp(-FOLLOW_RATE * frameSeconds);
+      return current + (target - current) * response;
     }
 
     function scrollY() {
@@ -470,53 +480,70 @@
 
     function apply(progress) {
       const open = easeScroll(progress); // 0..1
-      const dist = open * MAX;
-      if (Math.abs(dist - last) < 0.05) return;
-      last = dist;
+      if (Math.abs(open - lastAppliedOpen) < SETTLE_EPSILON) return;
+      lastAppliedOpen = open;
+      const dist = open * MAX_TRAVEL;
       const l = (-dist).toFixed(2) + '%';
       const r = dist.toFixed(2) + '%';
       reveal.style.setProperty('--hero-split-left', l);
       reveal.style.setProperty('--hero-split-right', r);
       // 0 = closed cover, 1 = fully open (used by CSS to unhide the feed)
       reveal.style.setProperty('--hero-open', open.toFixed(3));
-      left.style.setProperty('transform', 'translate3d(' + l + ', 0, 0)', 'important');
-      right.style.setProperty('transform', 'translate3d(' + r + ', 0, 0)', 'important');
 
       if (feed) {
-        // 若隐若现 via opacity only (heavy blur made titles unreadable and forced
-        // extra scroll that pushed the first post away before it cleared).
+        // Reveal through opacity only. Filtering this large container every frame
+        // adds compositor work and makes wheel-driven motion visibly uneven.
         // open 0    → hidden
-        // open 0.06 → faint peek in the gap
-        // open 0.4  → already readable (can see first title)
-        // open 0.75 → solid
+        // open 0.05 → faint peek in the gap
+        // open 0.45 → readable
+        // open 0.67 → solid
         let feedOpacity = 0;
-        if (open > 0.04) {
-          // Reach ~readable (~0.85) by open≈0.35 so first title is clear mid-split
-          const t = clamp01((open - 0.04) / 0.55);
-          feedOpacity = 1 - Math.pow(1 - t, 1.8);
+        if (open > 0.05) {
+          const t = clamp01((open - 0.05) / 0.62);
+          feedOpacity = 1 - Math.pow(1 - t, 1.45);
         }
-        // Almost no blur — 若隐若现 is opacity, titles must stay legible
-        const blurPx = feedOpacity >= 0.7 ? 0 : (1 - feedOpacity) * 1.2;
 
         feed.style.opacity = feedOpacity.toFixed(3);
-        feed.style.filter = blurPx < 0.2 ? 'none' : ('blur(' + blurPx.toFixed(2) + 'px)');
         feed.style.transform = 'none';
-        feed.style.visibility = feedOpacity < 0.02 ? 'hidden' : 'visible';
-        feed.style.pointerEvents = feedOpacity < 0.15 ? 'none' : 'auto';
+        feed.style.visibility = feedOpacity < 0.01 ? 'hidden' : 'visible';
+        feed.style.pointerEvents = feedOpacity < 0.18 ? 'none' : 'auto';
         // Sticky cover is above the feed — never let the wrapper eat clicks.
         reveal.style.pointerEvents = 'none';
       }
 
     }
 
-    function frame() {
+    function syncToScroll() {
+      renderedProgress = readProgress();
+      lastAppliedOpen = -1;
+      lastFrameTime = 0;
+      apply(renderedProgress);
+    }
+
+    function frame(timestamp) {
       if (!running) return;
-      apply(readProgress());
+      const targetProgress = readProgress();
+      const frameSeconds = lastFrameTime
+        ? Math.min(Math.max((timestamp - lastFrameTime) / 1000, 0), MAX_FRAME_SECONDS)
+        : 1 / 60;
+      lastFrameTime = timestamp;
+      renderedProgress = dampProgress(renderedProgress, targetProgress, frameSeconds);
+      if (Math.abs(targetProgress - renderedProgress) < SETTLE_EPSILON) {
+        renderedProgress = targetProgress;
+      }
+      apply(renderedProgress);
       raf = requestAnimationFrame(frame);
     }
 
     function start() {
       if (raf) return;
+      const targetProgress = readProgress();
+      if (Math.abs(targetProgress - renderedProgress) > 0.5) {
+        renderedProgress = targetProgress;
+        lastAppliedOpen = -1;
+        apply(renderedProgress);
+      }
+      lastFrameTime = 0;
       running = true;
       raf = requestAnimationFrame(frame);
     }
@@ -527,6 +554,7 @@
         cancelAnimationFrame(raf);
         raf = 0;
       }
+      lastFrameTime = 0;
     }
 
     // Pause when hero runway is far off-screen to save CPU
@@ -535,7 +563,7 @@
         if (entries[0] && entries[0].isIntersecting) start();
         else {
           // one last apply so end state is correct, then stop
-          apply(readProgress());
+          syncToScroll();
           stop();
         }
       }, { rootMargin: '20% 0px' });
@@ -543,21 +571,20 @@
     }
 
     window.addEventListener('resize', function () {
-      last = -1;
-      apply(readProgress());
+      syncToScroll();
     }, { passive: true });
 
+    syncToScroll();
     start();
     window.addEventListener('load', function () {
-      last = -1;
-      apply(readProgress());
+      syncToScroll();
       start();
     }, { once: true });
   }
 
   function initAnchorScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      if (anchor.closest('.toc') || anchor.closest('.toc-sidebar') || anchor.classList.contains('toc-link')) {
+      if (anchor.id === 'skip-to-content' || anchor.closest('.toc') || anchor.closest('.toc-sidebar') || anchor.classList.contains('toc-link')) {
         return;
       }
 
@@ -570,7 +597,7 @@
           if (!target) return;
           const offset = window.innerHeight * 0.1;
           const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          if (window.lenis) window.lenis.scrollTo(top);
+          if (typeof window.themeSmoothScrollTo === 'function') window.themeSmoothScrollTo(top);
           else window.scrollTo({ top, behavior: 'smooth' });
         } catch (err) {
           console.error('Scroll error:', err);
