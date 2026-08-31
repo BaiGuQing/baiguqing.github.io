@@ -2,20 +2,18 @@
 (function() {
   'use strict';
 
-  // 数字滚动动画
-  function animateNumber(element, target, duration = 2000) {
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = start;
+  // 数字滚动动画（rAF 驱动 + easeOutCubic，匀速不掉步）
+  function animateNumber(element, target, duration = 1600) {
+    const start = performance.now();
 
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      element.textContent = Math.floor(current);
-    }, 16);
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      element.textContent = Math.round(target * eased);
+      if (t < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
   }
 
   // 初始化统计动画

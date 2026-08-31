@@ -310,7 +310,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/09/0.%E6%B1%87%E7%BC%96%E6%A6%82%E5%86%B5/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/12/15.%E5%A0%86%E6%A0%88%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -327,12 +327,12 @@
           
 
           <div class="title">
-            0.汇编概况
+            15.堆栈相关指令
           </div>
 
           
           <div class="excerpt">
-            汇编语言 汇编语言-&gt;编译器-&gt;机器码 INC EAX-&gt;编译器-&gt;0100 0000
+            什么是堆栈 就是一块内存，操作系统在程序启动的时候已经分配好的，供程序执行时使用 和数据结构的堆栈无关 PUSH指令 POP指令
           </div>
           
         </div>
@@ -340,16 +340,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-09T00:00:00+08:00">
+            <time class="time" datetime="2026-08-12T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-9
+              2026-8-12
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>39</span>
+                <span>60</span>
               </span>
             </div>
           </div>
@@ -365,7 +365,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/09/1.%E8%BF%9B%E5%88%B6/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/12/16.%E4%BF%AE%E6%94%B9EIP%E7%9A%84%E6%8C%87%E4%BB%A4/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -382,12 +382,12 @@
           
 
           <div class="title">
-            1.进制
+            16.修改EIP的指令
           </div>
 
           
           <div class="excerpt">
-            学习进制 先忘记十进制，也要忘记进制间的转换 进制的定义 八进制：缝八进一 十进制：缝十进一 二进制：缝二进一 N进制：逢N进一
+            JMP指令 本质 CALL指令 本质 修改EIP的同时，对堆栈有影响，会把CALL下面指令的地址压入栈中（也就是esp-4，把值压到栈顶） RET指令 本质 和CALL相反，把栈顶的值放到EIP，ESP加4
           </div>
           
         </div>
@@ -395,16 +395,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-09T00:00:00+08:00">
+            <time class="time" datetime="2026-08-12T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-9
+              2026-8-12
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>58</span>
+                <span>96</span>
               </span>
             </div>
           </div>
@@ -420,7 +420,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/09/2.%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/12/17.%E5%8F%8D%E8%B0%83%E8%AF%95%E4%B9%8BFake_F8/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -437,12 +437,12 @@
           
 
           <div class="title">
-            2.进制运算
+            17.反调试之Fake_F8
           </div>
 
           
           <div class="excerpt">
-            八进制运算
+            修改栈顶地址 f8就飞了
           </div>
           
         </div>
@@ -450,16 +450,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-09T00:00:00+08:00">
+            <time class="time" datetime="2026-08-12T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-9
+              2026-8-12
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>5</span>
+                <span>11</span>
               </span>
             </div>
           </div>
@@ -475,7 +475,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/09/3.%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%AE%80%E5%86%99%E5%BD%A2%E5%BC%8F/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/12/18.%E6%B1%87%E7%BC%96%E7%9C%BC%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -492,12 +492,12 @@
           
 
           <div class="title">
-            3.二进制简写形式
+            18.汇编眼中的函数
           </div>
 
           
           <div class="excerpt">
-            计算机为什么使用二进制 计算机是需要用电的，电路只有两个状态，1 真（通电），0 假（断电） 计算机中存储的任何文件、接受的任何指令都是由0和1组成的 二进制的简写形式
+            什么是函数 函数就是一系列指令的集合，为了完成某个会重复使用的特定功能 例子：向寄存器中赋值 如何执行一个函数 JMP CALL
           </div>
           
         </div>
@@ -505,16 +505,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-09T00:00:00+08:00">
+            <time class="time" datetime="2026-08-12T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-9
+              2026-8-12
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>79</span>
+                <span>59</span>
               </span>
             </div>
           </div>
@@ -530,7 +530,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/09/4.%E6%95%B0%E6%8D%AE%E5%AE%BD%E5%BA%A6/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/20/19.%E5%A0%86%E6%A0%88%E4%BC%A0%E5%8F%82_%E5%A0%86%E6%A0%88%E5%B9%B3%E8%A1%A1/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -547,12 +547,12 @@
           
 
           <div class="title">
-            4.数据宽度
+            19.堆栈传参_堆栈平衡
           </div>
 
           
           <div class="excerpt">
-            数据宽度 数学上的数字，是没有大小限制的，可以无限大。但在计算机中，由于受硬件的约束，数据都是由长度限制的（我们成为数据宽度），超过最多宽度的数据会被丢弃 计算机中常见的数据宽度 位（BIT） 字节（Byte）：0-0xFF 字（Word）：0-0xFFFF 双字（DoubleWord）：0-0xFFFFFFFF 超过…
+            堆栈平衡 如果要返回父程序，则当我们在堆栈中进行堆栈的操作的时候，一定要保证在RET这条指令之前，ESP指向的是我们压入栈中的地址 如果通过堆栈传递参数了，那么在函数执行完毕后，要平衡参数导致的堆栈变化
           </div>
           
         </div>
@@ -560,16 +560,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-09T00:00:00+08:00">
+            <time class="time" datetime="2026-08-20T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-9
+              2026-8-20
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>159</span>
+                <span>99</span>
               </span>
             </div>
           </div>
@@ -585,7 +585,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/09/5.%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B0%E5%92%8C%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%95%B0/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/20/20.%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%96%E6%8C%82/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -602,12 +602,12 @@
           
 
           <div class="title">
-            5.无符号数和有符号数
+            20.什么是外挂
           </div>
 
           
           <div class="excerpt">
-            无符号数的编码规则 10011010-&gt;9A 有符号数的编码规则 10011010-&gt;-1A
+            修改内存
           </div>
           
         </div>
@@ -615,16 +615,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-09T00:00:00+08:00">
+            <time class="time" datetime="2026-08-20T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-9
+              2026-8-20
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>43</span>
+                <span>4</span>
               </span>
             </div>
           </div>
@@ -640,7 +640,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/10/6.%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/20/21.ESP%E5%AF%BB%E5%9D%80/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -657,12 +657,12 @@
           
 
           <div class="title">
-            6.原码反码补码
+            21.ESP寻址
           </div>
 
           
           <div class="excerpt">
-            编码规则 不同文件有不同的编码规则 有符号数的编码规则 原码：最高位为符号位，其余各位为数值本身的绝对值 反码： 正数：反码与原码相同 负数：符号位为1，其余位为原码取反 补码 正数：补码与原码相同 负数：符号位为1，其余位对原码取反加1 总结： 正数：原码存储 负数：补码存储
+            缺点：要平衡栈
           </div>
           
         </div>
@@ -670,16 +670,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-10T00:00:00+08:00">
+            <time class="time" datetime="2026-08-20T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-10
+              2026-8-20
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>127</span>
+                <span>7</span>
               </span>
             </div>
           </div>
@@ -695,7 +695,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/10/7.%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8D%E4%BC%9A%E5%81%9A%E5%8A%A0%E6%B3%95/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/20/22.EBP%E5%AF%BB%E5%9D%80/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -712,29 +712,25 @@
           
 
           <div class="title">
-            7.计算机不会做加法
+            22.EBP寻址
           </div>
 
-          
-          <div class="excerpt">
-            为什么要学习位运算 有些功能必须通过位运算才能实现：比如写调试器，判断CPU的各种状态位 大公司面试题：比如2x8效率最高的实现方式 位运算 与运算（and &amp;） 两个位都为1，结果才为1 或运算（or |） 两个只要有一个为1就是1 异或运算（xor ^） 不一样的时候是1 非运算（not ~） 0就是1 1就是0…
-          </div>
           
         </div>
 
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-10T00:00:00+08:00">
+            <time class="time" datetime="2026-08-20T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-10
+              2026-8-20
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>235</span>
+                <span>0</span>
               </span>
             </div>
           </div>
@@ -750,7 +746,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/10/8.%E4%BD%8D%E8%BF%90%E7%AE%97%E4%B9%8B%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/?line=c%3ANotes&amp;sort=date-asc">
+    <a class="post-card-link" href="/2026/08/20/23.JCC/?line=c%3ANotes&amp;sort=date-asc">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -767,12 +763,12 @@
           
 
           <div class="title">
-            8.位运算之加减乘除
+            23.JCC
           </div>
 
           
           <div class="excerpt">
-            加法流程 异或 与运算（判断是否进位） 左移一位（如果进位） 继续异或 继续判断是否进位，如果没有进位，那么结果就是继续异或的结果 减法流程 与加法流程基本一致 乘法流程 乘法本质就是不断地加 除法流程 除法本质就是不断减
+            标志寄存器：EFLAGS CF[0] 若算数操作产生的结果在最高有效位发成进位或者错位则将其置1，反之清零 这个标志通常用来只是无符号整形运算的溢出状态 PF[2] 如果结果的最低有效字节包含偶数个1位则该位置1，否则清零 常用于数据核对 AF[4] 如果算数操作在结果的第3位发生进位或借位则将该位置1，否则清零 常用…
           </div>
           
         </div>
@@ -780,71 +776,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-10T00:00:00+08:00">
+            <time class="time" datetime="2026-08-20T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-10
+              2026-8-20
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>100</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/10/9.%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/?line=c%3ANotes&amp;sort=date-asc">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            9.汇编学习环境搭建
-          </div>
-
-          
-          <div class="excerpt">
-            学汇编不是为了写代码
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-08-10T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-10
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>10</span>
+                <span>332</span>
               </span>
             </div>
           </div>
@@ -864,7 +805,7 @@
 
 
 <div class="paginator">
-  <a class="extend prev" rel="prev" href="/categories/Notes/sort/date-asc/page/3/">上一页</a><a class="page-number" href="/categories/Notes/sort/date-asc/">1</a><a class="page-number" href="/categories/Notes/sort/date-asc/page/2/">2</a><a class="page-number" href="/categories/Notes/sort/date-asc/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/categories/Notes/sort/date-asc/page/5/">5</a><a class="page-number" href="/categories/Notes/sort/date-asc/page/6/">6</a><a class="extend next" rel="next" href="/categories/Notes/sort/date-asc/page/5/">下一页</a>
+  <a class="extend prev" rel="prev" href="/categories/Notes/sort/date-asc/page/3/">上一页</a><a class="page-number" href="/categories/Notes/sort/date-asc/">1</a><a class="page-number" href="/categories/Notes/sort/date-asc/page/2/">2</a><a class="page-number" href="/categories/Notes/sort/date-asc/page/3/">3</a><span class="page-number current">4</span>
 </div>
 
 

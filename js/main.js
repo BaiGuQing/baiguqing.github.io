@@ -46,7 +46,16 @@
     document.querySelectorAll('.color-scheme-toggle input').forEach(option => {
       option.addEventListener('change', ev => {
         var value = ev.target.value
-        ThemeCupertino.ColorScheme.set(value)
+        // Crossfade the palette swap: for one beat every element transitions
+        // its color-bearing properties instead of the whole page flash-cutting.
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        if (reduceMotion) {
+          ThemeCupertino.ColorScheme.set(value)
+        } else {
+          document.body.classList.add('theme-switching')
+          ThemeCupertino.ColorScheme.set(value)
+          setTimeout(() => document.body.classList.remove('theme-switching'), 480)
+        }
         syncColorSchemeToggles(value)
       })
     })

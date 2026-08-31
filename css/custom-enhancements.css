@@ -20,8 +20,8 @@ body::before {
 .nav,
 #skip-to-content {
   background-color: var(--color-background-primary) !important;
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: var(--filter-blur);
+  -webkit-backdrop-filter: var(--filter-blur);
   border: 1px solid var(--color-border-primary);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-md);
@@ -54,7 +54,7 @@ button {
   border: 1px solid var(--color-border-secondary);
   color: var(--color-text-primary);
   backdrop-filter: blur(12px);
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .button:hover,
 button:hover {
@@ -157,7 +157,7 @@ body.cursor-active::after {
   margin-top: 0;
   width: -moz-max-content;
   width: max-content;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 .nav-item.color-scheme-toggle:hover {
   box-shadow: var(--glow-accent);
@@ -189,7 +189,7 @@ body.cursor-active::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   cursor: pointer;
 }
 .nav-item.color-scheme-toggle label span:hover {
@@ -216,7 +216,7 @@ body.cursor-active::after {
   backdrop-filter: blur(8px);
   color: var(--color-text-secondary);
   font-size: 16px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 #theme-particle-toggle:hover {
   color: var(--color-text-primary);
@@ -239,4 +239,11 @@ body.cursor-active::after {
   height: 100vh;
   pointer-events: none;
   opacity: 0.55;
+}
+
+body.theme-switching,
+body.theme-switching *,
+body.theme-switching *::before,
+body.theme-switching *::after {
+  transition: background-color 0.42s ease, border-color 0.42s ease, box-shadow 0.42s ease, color 0.2s ease !important;
 }

@@ -39,8 +39,8 @@
   background: linear-gradient(165deg, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 42%), var(--color-background-primary);
   border: 1px solid var(--color-border-primary);
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   transform: perspective(1200px) rotateX(var(--rx)) rotateY(var(--ry)) translate3d(0, var(--lift), 0);
   transform-style: preserve-3d;
   transition: transform 0.55s var(--post-card-ease), border-color 0.45s ease, box-shadow 0.55s var(--post-card-ease), background 0.45s ease;
@@ -346,5 +346,11 @@
   }
   .post-list-item:hover, .post-list-item:focus-within {
     --lift: 0px !important;
+  }
+}
+@media (min-width: 2200px) {
+  .post-list-item .post-card-link {
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
   }
 }

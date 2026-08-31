@@ -146,23 +146,7 @@
   
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body
-    data-color-scheme="auto"
-    data-uppercase-categories="true"
-    
-    data-config-root="/"
-    
-    data-toc="true"
-    data-toc-max-depth="6"
-    
-    
-    
-    data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
-    
-    data-nav-blur-gradient="false"
-    data-corner-squircle="true"
-  >
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-nav-blur-gradient="false" data-corner-squircle="true">
     
 <script src="/js/body-top.js"></script>
 
@@ -230,7 +214,7 @@
         <span class="home-feed-kicker">Writing</span>
         <h2 class="section-title">最新文章</h2>
       </div>
-      <span class="home-feed-count">10 / 68</span>
+      <span class="home-feed-count">8 / 68</span>
     </header>
   </section>
   
@@ -241,7 +225,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/27/13.%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+    <a class="post-card-link" href="/2025/12/27/%E4%B8%8D%E8%83%BD%E7%94%A8cat%E5%92%8Csh%E6%8C%87%E4%BB%A4/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -252,18 +236,18 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
 
           <div class="title">
-            13.窗口的本质
+            不能用cat和sh指令
           </div>
 
           
           <div class="excerpt">
-            窗口的本质 win32k.sys模块实现图形界面、消息管理 ntoskrnl.exe模块实现进程、线程、内存管理等 GDI 图形设备接口 设备对象HWND：画在哪里？ DC（设备上下文，Device Contexts） 图形对象 图形对象 作用 画笔（Pen） 影响线条，包括颜色、粗细、虚实、箭头形状等 画刷（Brus…
+            在字符串层⾯过滤了”cat”和”sh” 绕过手段很多 在正常命令中加⼊⽆关紧要的分隔符,如:ca\t flag 输⼊$0返回自身的shell
           </div>
           
         </div>
@@ -271,16 +255,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-07-27T00:00:00+08:00">
+            <time class="time" datetime="2025-12-27T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-27
+              2025-12-27
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>220</span>
+                <span>66</span>
               </span>
             </div>
           </div>
@@ -296,7 +280,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/27/14.%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+    <a class="post-card-link" href="/2025/12/27/%E7%AE%80%E5%8D%95%E6%A0%88%E6%BA%A2%E5%87%BA/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -307,18 +291,18 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
 
           <div class="title">
-            14.消息队列
+            简单栈溢出
           </div>
 
           
           <div class="excerpt">
-            消息 当我们点击鼠标的时候，或者当我们按下键盘的时候，操作系统都要把这些动作记录下来，存储到一个结构体中，这个结构体就是消息 消息队列 每个线程只有一个消息队列 窗口与线程
+            例子 read(0, buf, 0x100u) 出现了明显的栈溢出 从标准输入（fd=0）中读取 0x100 = 256 字节到 buf 中。 但是 buf 只有 48 字节！所以 直接构成栈缓冲区溢出漏洞 。 当有 溢出漏洞 （比如 buffer overflow）时，程序允许我们“写太多数据”，覆盖重要区域，比如：…
           </div>
           
         </div>
@@ -326,16 +310,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-07-27T00:00:00+08:00">
+            <time class="time" datetime="2025-12-27T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-27
+              2025-12-27
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>82</span>
+                <span>380</span>
               </span>
             </div>
           </div>
@@ -351,7 +335,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/26/12.%E4%BA%8B%E4%BB%B6/">
+    <a class="post-card-link" href="/2025/12/22/Base64%E7%BC%96%E7%A0%81/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -362,18 +346,18 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
 
           <div class="title">
-            12.事件
+            Base64编码
           </div>
 
           
           <div class="excerpt">
-            通知类型 线程同步 线程互斥：线程互斥是指对于共享的进程系统资源，在各单个线程访问时的排他性。当有若干个线程都要使用某一个共享资源时，任何时刻最多只允许一个线程去使用，其他要使用该资源的线程必须等待，直到占用资源者释放该资源。 线程同步：线程同步是指线程之间所具有的一种制约关系，一个线程的执行依赖另一个线程的消息，当它…
+            编码过程演示 让我们通过一个具体的例子来看看它是如何工作的。 假设我们要编码字符串：”Man” 第一步：获取 ASCII 码并转换为二进制 M = 77 = 01001101 a = 97 = 01100001 n = 110 = 01101110 将它们连成一串 24 bit 的数据流： 01001101011000…
           </div>
           
         </div>
@@ -381,16 +365,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-07-26T00:00:00+08:00">
+            <time class="time" datetime="2025-12-22T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-26
+              2025-12-22
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>186</span>
+                <span>1.1k</span>
               </span>
             </div>
           </div>
@@ -406,7 +390,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/26/11.%E4%BA%92%E6%96%A5%E4%BD%93/">
+    <a class="post-card-link" href="/2025/12/22/%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -417,18 +401,18 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
 
           <div class="title">
-            11.互斥体
+            小端序
           </div>
 
           
           <div class="excerpt">
-            互斥体 互斥体与线程锁的区别 线程锁只能用于单个进程间的线程控制 互斥体可以设定等待超时，但线程锁不能 线程意外终结时，Mutex可以避免无限等待 Mutex效率没有线程锁高
+            特征 小端序是以四个字节倒序过来，也就是讲读入的字符转化为一个个32位的整数。 读取的字符在内存中以ACSII码的形式储存，小端序也是讲这些个ACSII码，四个为一组，倒叙过来，组成一个32位整数 小端序拼接 0x66 6E 6A 73 32 位整数 0x666E6A73 后面接什么 后面一般会接MD5、部分SHA、T…
           </div>
           
         </div>
@@ -436,16 +420,199 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-07-26T00:00:00+08:00">
+            <time class="time" datetime="2025-12-22T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-26
+              2025-12-22
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>82</span>
+                <span>163</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/12/16/0xGame%202025%20Week3%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/20251123174856.png" alt="0xGame 2025 Week3 Reverse WP" loading="lazy" decoding="async" width="1374" height="630">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week3 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ ezVBS 我不得不说，要听劝。原题都告诉我了，不让我打开，我还就偏打开了，然后去网上搜VBS逆向，最后在赛博厨子那里逆向出了 当时没怎么注意文字，就去看官方WP了，结果打开记事本看了看，和WP上的不一样啊，我还以为题出错了，回来又下了一遍…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-12-16T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-12-16
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.1k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/20/0xGame%202025%20Week2%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/20251119232320.png" alt="0xGame 2025 Week2 Reverse WP" loading="lazy" decoding="async" width="594" height="50">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week2 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我是一名CTF萌新啊，做这么详细的WP，也是希望能够帮助像我一样的新手，如果大佬发现WP有问题可以评论，我会改进！ 16 bit 这个官方文档写的比较详细，那我就仔细的讲一下过程 运行这个exe会发现运行不了，据官方WP所说，这个是16位的应⽤程序，是由汇编语⾔直接编写再编译的，现代操作系统⼀般都无法直接运行，但…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-11-20T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-11-20
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.5k</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal has-cover" data-post-card>
+    <a class="post-card-link" href="/2025/11/19/0xGame%202025%20Week1%20Reverse%20WP/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+      <div class="cover-img">
+        <img src="/Images/083720wzd4p1zx66f8pfp4.png" alt="0xGame 2025 Week1 Reverse WP" loading="lazy" decoding="async" width="1920" height="1002">
+        <span class="cover-veil" aria-hidden="true"></span>
+        <span class="cover-frame" aria-hidden="true"></span>
+      </div>
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>CTF_WP</span>
+          
+          </div>
+          
+
+          <div class="title">
+            0xGame 2025 Week1 Reverse WP
+          </div>
+
+          
+          <div class="excerpt">
+            引言 我是一名入门的CTF玩家，看了看0xGame 2025 Week1 Reverse官方的WriteUp，感觉写的太简略了，这边以新手的视角开启0xGame 2025 Week1 Reverse SignIn 这个题目我们需要准备好IDA，我在这里下载的 [原创] IDA Pro 9 安装和插件配置-安全工具-看雪…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2025-11-19T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2025-11-19
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>2.4k</span>
               </span>
             </div>
           </div>
@@ -461,7 +628,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/25/10.%E4%B8%B4%E7%95%8C%E5%8C%BA/">
+    <a class="post-card-link" href="/2025/11/19/Python%E5%8F%8D%E7%BC%96%E8%AF%91/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -472,18 +639,18 @@
           
           <div class="categories text-uppercase">
           
-            <span>Notes</span>
+            <span>CTF_Notes</span>
           
           </div>
           
 
           <div class="title">
-            10.临界区
+            Python反编译
           </div>
 
           
           <div class="excerpt">
-            线程安全问题 每个线程都有自己的栈，而局部变量是存储在栈中的，这就意味着每个线程都有一份自己的“局部变量”，如果线程仅仅使用“局部变量”，那么就不存在线程安全问题。如果多个线程公用一个全局变量呢？ 线程锁
+            ✅ 1. 使用 uncompyle6 （最常用） 支持 Python 2.7 ~ 3.7 的 .pyc。 安装 pip install uncompyle6 反编译 .pyc 到 .py uncompyle6 -o . yourfile.pyc -o . 表示输出到当前目录 会自动生成对应的 .py 文件 ✅ 2. 使…
           </div>
           
         </div>
@@ -491,291 +658,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-07-25T00:00:00+08:00">
+            <time class="time" datetime="2025-11-19T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-25
+              2025-11-19
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>100</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/25/8.%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            8.创建线程
-          </div>
-
-          
-          <div class="excerpt">
-            线程 线程是附属在进程上的执行实体，是代码的执行流程 一个进程可以包含多个线程，但是一个进程至少要包含一个线程 创建线程
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-25T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-25
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>57</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/25/9.%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            9.线程控制
-          </div>
-
-          
-          <div class="excerpt">
-            线程控制
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-25T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-25
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>4</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/23/4.%E8%BF%9B%E7%A8%8B/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            4.进程
-          </div>
-
-          
-          <div class="excerpt">
-            什么是进程？ 进程是提供程序所需的资源，如：数据、代码等等 进程内存空间的地址划分 分区 x86 32位Windows 空指针赋值区 0x00000000-0x00000FFFF 用户模式区 0x00010000-0x7FFEFFFFF 64KB禁入区 0x7FFF0000-0x7FFFFFFFF 内核 0x80000…
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-23T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-23
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>297</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/23/5.%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            5.创建进程
-          </div>
-
-          
-          <div class="excerpt">
-            以上是利用win32创建进程的例子 可以利用GetStartupInfo()函数来做一些反调试
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-23T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-23
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>46</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/23/7.%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3API/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            7.进程相关API
-          </div>
-
-          
-          <div class="excerpt">
-            ID与句柄 进程句柄：当前进程私有句柄表中的索引，用于访问对应的内核对象。 进程ID（PID）：操作系统分配给进程的唯一标识符，在整个系统范围内唯一。 线程句柄和TID同理 以挂起的形式创建进程 CreateProcess中的第六个参数creation flag 模块目录和工作目录 GetModuleFileName：…
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-23T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-23
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>332</span>
+                <span>540</span>
               </span>
             </div>
           </div>
@@ -795,7 +687,7 @@
 
   
 <div class="paginator">
-  <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+  <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
 </div>
 
 

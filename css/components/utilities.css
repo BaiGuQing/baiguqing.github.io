@@ -2,7 +2,7 @@
 /* Neutral shadow tokens — one consistent elevation system instead of
    scattered hard-coded rgba shadows. Used by cards, nav, buttons, etc. */
 :root {
-  --filter-blur: blur(24px) saturate(150%);
+  --filter-blur: blur(14px) saturate(140%);
   --radius-tiny: 8px;
   --radius-small: 12px;
   --radius-medium: 16px;
@@ -18,6 +18,11 @@
   }
 }
 
+@media (min-width: 2200px) {
+  :root {
+    --filter-blur: blur(8px) saturate(120%);
+  }
+}
 body[data-color-scheme=auto],
 body[data-color-scheme=light] {
   /* Clean, bright background for light mode */

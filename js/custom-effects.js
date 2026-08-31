@@ -90,12 +90,20 @@
       return t * t * (3 - 2 * t);
     }
 
+    // Hard budgets so 2K/4K screens stay smooth:
+    // - Backing store never exceeds ~3.7M pixels (2560x1440 @1x). Higher-DPI
+    //   screens trade sharpness for raster cost the eye cannot see anyway.
+    // - Particle count is capped by area, so per-frame math stays roughly
+    //   constant from 1080p up to 4K instead of scaling with screen size.
+    const MAX_CANVAS_PIXELS = 2560 * 1440;
+    const MAX_PARTICLES = 520;
+
     function resize() {
-      // Cap at 1.25: the field is soft glowing dust, extra pixels are invisible
-      // but multiply raster cost on HiDPI laptops.
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
       width = window.innerWidth;
       height = window.innerHeight;
+      const dprCap = Math.min(window.devicePixelRatio || 1, 1.25);
+      const areaCap = Math.sqrt(MAX_CANVAS_PIXELS / (width * height || 1));
+      pixelRatio = Math.min(dprCap, areaCap, 1.25);
       canvas.width = Math.round(width * pixelRatio);
       canvas.height = Math.round(height * pixelRatio);
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
@@ -104,7 +112,9 @@
 
     function initSetup() {
       particles = [];
-      const spacing = 62;
+      // 62px spacing at 1080p (~500 particles) is the baseline density;
+      // larger viewports widen the spacing to stay under MAX_PARTICLES.
+      const spacing = Math.max(62, Math.sqrt((width * height) / MAX_PARTICLES));
       const cols = Math.ceil(width / spacing);
       const rows = Math.ceil(height / spacing);
       for (let i = 0; i < cols; i++) {
@@ -144,7 +154,14 @@
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerdown', onPointerMove, { passive: true });
     document.addEventListener('mouseleave', onPointerLeave);
-    window.addEventListener('resize', resize);
+    let resizeTimer = null;
+    window.addEventListener('resize', function () {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        resize();
+        frameInterval = (width * height) > 2300000 ? 1000 / 30 : 0;
+      }, 180);
+    });
     resize();
     ringX = width / 2;
     ringY = height / 2;
@@ -152,6 +169,20 @@
     mouseY = ringY;
 
     let lastFrameTs = 0;
+    let lastRenderTs = -1000;
+    // Above ~1080p the per-frame cost is raster-bound, not motion-critical —
+    // soft dust at 30fps looks identical and halves CPU/GPU load.
+    let frameInterval = (width * height) > 2300000 ? 1000 / 30 : 0;
+    // Scrolling already invalidates every backdrop-filter on the page; the
+    // field is fixed and purely decorative, so freeze it mid-scroll.
+    let isScrolling = false;
+    let scrollIdleTimer = null;
+
+    window.addEventListener('scroll', function () {
+      isScrolling = true;
+      if (scrollIdleTimer) clearTimeout(scrollIdleTimer);
+      scrollIdleTimer = setTimeout(function () { isScrolling = false; }, 160);
+    }, { passive: true });
 
     function animateParticles(ts) {
       if (!window.themeParticlesEnabled || document.hidden) {
@@ -161,6 +192,12 @@
         }
         return;
       }
+
+      if (isScrolling || (frameInterval && ts !== undefined && ts - lastRenderTs < frameInterval - 2)) {
+        particlesAnimFrame = requestAnimationFrame(animateParticles);
+        return;
+      }
+      lastRenderTs = ts === undefined ? lastRenderTs : ts;
 
       ctx.clearRect(0, 0, width, height);
       // Simulation runs on a real time base so motion is identical at any
@@ -479,6 +516,7 @@
     let lastAppliedOpen = -1;
     let lastFrameTime = 0;
     let running = true;
+    let scrubbing = false;
 
     function clamp01(v) {
       return v < 0 ? 0 : v > 1 ? 1 : v;
@@ -527,6 +565,15 @@
       reveal.style.setProperty('--hero-split-right', r);
       // 0 = closed cover, 1 = fully open (used by CSS to unhide the feed)
       reveal.style.setProperty('--hero-open', open.toFixed(3));
+
+      // Promote the big layers only while the gesture is actually moving;
+      // holding them permanently starves the compositor on 2K+ screens.
+      const nowScrubbing = open > 0.001 && open < 0.999;
+      if (nowScrubbing !== scrubbing) {
+        scrubbing = nowScrubbing;
+        reveal.classList.toggle('hero-reveal--scrubbing', scrubbing);
+        if (feed) feed.classList.toggle('home-container--scrubbing', scrubbing);
+      }
 
       if (feed) {
         // Reveal through opacity only. Filtering this large container every frame

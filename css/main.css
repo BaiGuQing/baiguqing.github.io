@@ -64,3 +64,15 @@ a:hover, a:focus-visible {
   margin-bottom: 24px;
   color: var(--color-text-primary);
 }
+
+body.is-scrolling,
+body.reveal-animating {
+  --filter-blur: none;
+}
+body.is-scrolling .post-list-item .post-card-link,
+body.is-scrolling .nav-mask > [order],
+body.reveal-animating .post-list-item .post-card-link,
+body.reveal-animating .nav-mask > [order] {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}

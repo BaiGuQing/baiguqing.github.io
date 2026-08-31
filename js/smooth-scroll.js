@@ -1,7 +1,22 @@
 ;(() => {
-  const WHEEL_LERP = 0.07
+  const WHEEL_LERP = 0.12
   const MIN_JUMP_DURATION = 0.72
   const MAX_JUMP_DURATION = 1.25
+
+  // While the page is scrolling, CSS (main.scss) strips every backdrop-filter
+  // via body.is-scrolling — blurs under fixed chrome are recomputed per frame
+  // otherwise, which is the dominant fast-scroll cost at 2K+.
+  let scrollClassTimer = null
+  window.addEventListener('scroll', () => {
+    if (!document.body.classList.contains('is-scrolling')) {
+      document.body.classList.add('is-scrolling')
+    }
+    if (scrollClassTimer) clearTimeout(scrollClassTimer)
+    scrollClassTimer = setTimeout(() => {
+      document.body.classList.remove('is-scrolling')
+      scrollClassTimer = null
+    }, 180)
+  }, { passive: true })
 
   const easeInOutSine = progress =>
     0.5 - Math.cos(Math.PI * progress) / 2

@@ -405,7 +405,6 @@ body[data-color-scheme=dark] .hero {
 }
 .hero-reveal--split.is-js-split .hero-panel--left,
 .hero-reveal--split.is-js-split .hero-panel--right {
-  will-change: transform;
   backface-visibility: hidden;
   animation: none !important;
 }
@@ -422,8 +421,16 @@ body[data-color-scheme=dark] .hero {
   isolation: isolate;
   opacity: 0;
   visibility: hidden;
-  will-change: opacity;
   transition: none;
+}
+
+.home-container--scrubbing {
+  will-change: opacity;
+}
+
+.hero-reveal--scrubbing .hero-panel--left,
+.hero-reveal--scrubbing .hero-panel--right {
+  will-change: transform;
 }
 
 @keyframes hero-split-left {
