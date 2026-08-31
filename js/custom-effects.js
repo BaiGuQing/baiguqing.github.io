@@ -69,6 +69,7 @@
     const ctx = canvas.getContext('2d');
     let width = 0;
     let height = 0;
+    let pixelRatio = 1;
     let particles = [];
     let particlesAnimFrame = null;
 
@@ -90,7 +91,9 @@
     }
 
     function resize() {
-      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+      // Cap at 1.25: the field is soft glowing dust, extra pixels are invisible
+      // but multiply raster cost on HiDPI laptops.
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = Math.round(width * pixelRatio);
@@ -101,7 +104,7 @@
 
     function initSetup() {
       particles = [];
-      const spacing = 52;
+      const spacing = 62;
       const cols = Math.ceil(width / spacing);
       const rows = Math.ceil(height / spacing);
       for (let i = 0; i < cols; i++) {
@@ -148,7 +151,9 @@
     mouseX = ringX;
     mouseY = ringY;
 
-    function animateParticles() {
+    let lastFrameTs = 0;
+
+    function animateParticles(ts) {
       if (!window.themeParticlesEnabled || document.hidden) {
         if (particlesAnimFrame) {
           cancelAnimationFrame(particlesAnimFrame);
@@ -158,10 +163,16 @@
       }
 
       ctx.clearRect(0, 0, width, height);
-      time += 0.016;
+      // Simulation runs on a real time base so motion is identical at any
+      // frame rate (throttled tabs, skipped frames, slow GPUs).
+      const dt = lastFrameTs ? Math.min(Math.max((ts - lastFrameTs) / 1000, 0.001), 0.05) : 0.016;
+      lastFrameTs = ts;
+      time += dt;
 
       const isLight = document.body.dataset.currentColorScheme === 'light';
-      const lerpFactor = mouseInside ? 0.03 : 0.015;
+      // Per-60fps-frame factors 0.03 / 0.015 converted to rate form.
+      const lerpFactor = 1 - Math.exp(-(mouseInside ? 1.9 : 0.94) * dt);
+      const scaleLerp = 1 - Math.exp(-3.2 * dt);
       const noiseOffX = Math.sin(time * 0.66 + 94.234) * 15;
       const noiseOffY = Math.cos(time * 0.75 + 21.028) * 10;
       const targetRingX = mouseInside ? mouseX + noiseOffX : width / 2 + noiseOffX * 3;
@@ -206,8 +217,8 @@
         t += Math.pow((bgNoise + 1.5) * 0.5, 2) * 0.15;
 
         p.targetScale = t;
-        p.scale += (p.targetScale - p.scale) * 0.05;
-        p.baseScale += (baseT - p.baseScale) * 0.05;
+        p.scale += (p.targetScale - p.scale) * scaleLerp;
+        p.baseScale += (baseT - p.baseScale) * scaleLerp;
 
         let pushX = 0, pushY = 0;
         if (dist > 1 && outerRing > 0.01) {
@@ -234,33 +245,52 @@
 
         const dashW = size;
         const dashH = size * 0.42;
-        ctx.save();
-        ctx.translate(finalX, finalY);
-        ctx.rotate(dashAngle);
-        ctx.globalAlpha = drawAlpha;
+
+        const cosA = Math.cos(dashAngle);
+        const sinA = Math.sin(dashAngle);
+        const m0 = cosA * pixelRatio;
+        const m1 = sinA * pixelRatio;
+        // One setTransform does rotate+translate; no save/restore per particle.
+        ctx.setTransform(m0, m1, -m1, m0, finalX * pixelRatio, finalY * pixelRatio);
+
         const light = isLight ? 50 : 62;
         const h = hue >= 0 ? hue : hue + 360;
-        ctx.fillStyle = 'hsl(' + h + ', 95%, ' + light + '%)';
-        ctx.shadowColor = 'hsla(' + h + ', 95%, ' + light + '%, 0.55)';
-        ctx.shadowBlur = Math.max(2, size * 0.4);
+        const bodyColor = 'hsl(' + h + ', 95%, ' + light + '%)';
+
+        // Soft halo via one low-alpha rect. Per-particle shadowBlur was the
+        // single most expensive call in this loop; two cheap fills beat it
+        // by an order of magnitude while looking nearly identical at 0.55
+        // canvas opacity.
+        if (size > 2.5) {
+          ctx.globalAlpha = drawAlpha * 0.3;
+          ctx.fillStyle = bodyColor;
+          ctx.fillRect(-dashW, -dashH * 1.1, dashW * 2, dashH * 2.2);
+        }
+
+        ctx.globalAlpha = drawAlpha;
+        ctx.fillStyle = bodyColor;
 
         const r = Math.min(dashH * 0.5, dashW * 0.25);
         const x = -dashW / 2, y = -dashH / 2;
         ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.lineTo(x + dashW - r, y);
-        ctx.quadraticCurveTo(x + dashW, y, x + dashW, y + r);
-        ctx.lineTo(x + dashW, y + dashH - r);
-        ctx.quadraticCurveTo(x + dashW, y + dashH, x + dashW - r, y + dashH);
-        ctx.lineTo(x + r, y + dashH);
-        ctx.quadraticCurveTo(x, y + dashH, x, y + dashH - r);
-        ctx.lineTo(x, y + r);
-        ctx.quadraticCurveTo(x, y, x + r, y);
+        if (ctx.roundRect) {
+          ctx.roundRect(x, y, dashW, dashH, r);
+        } else {
+          ctx.moveTo(x + r, y);
+          ctx.lineTo(x + dashW - r, y);
+          ctx.quadraticCurveTo(x + dashW, y, x + dashW, y + r);
+          ctx.lineTo(x + dashW, y + dashH - r);
+          ctx.quadraticCurveTo(x + dashW, y + dashH, x + dashW - r, y + dashH);
+          ctx.lineTo(x + r, y + dashH);
+          ctx.quadraticCurveTo(x, y + dashH, x, y + dashH - r);
+          ctx.lineTo(x, y + r);
+          ctx.quadraticCurveTo(x, y, x + r, y);
+        }
         ctx.closePath();
         ctx.fill();
-        ctx.restore();
       }
 
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       ctx.globalAlpha = 1;
       particlesAnimFrame = requestAnimationFrame(animateParticles);
     }
@@ -472,10 +502,18 @@
       return window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
     }
 
-    function readProgress() {
+    // Runway length is layout-dependent but stable between resizes; reading
+    // offsetHeight every frame forced a synchronous layout per frame.
+    let pinDistance = 0;
+
+    function measurePin() {
       const measured = reveal.offsetHeight - hero.offsetHeight;
-      const pin = measured > 40 ? measured : Math.max(1, window.innerHeight * 1.35);
-      return clamp01(scrollY() / pin);
+      pinDistance = measured > 40 ? measured : Math.max(1, window.innerHeight * 1.35);
+    }
+
+    function readProgress() {
+      if (!pinDistance) measurePin();
+      return clamp01(scrollY() / pinDistance);
     }
 
     function apply(progress) {
@@ -514,6 +552,7 @@
     }
 
     function syncToScroll() {
+      measurePin();
       renderedProgress = readProgress();
       lastAppliedOpen = -1;
       lastFrameTime = 0;

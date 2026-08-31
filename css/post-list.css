@@ -44,7 +44,6 @@
   transform: perspective(1200px) rotateX(var(--rx)) rotateY(var(--ry)) translate3d(0, var(--lift), 0);
   transform-style: preserve-3d;
   transition: transform 0.55s var(--post-card-ease), border-color 0.45s ease, box-shadow 0.55s var(--post-card-ease), background 0.45s ease;
-  will-change: transform;
 }
 .post-list-item .post-card-glow,
 .post-list-item .post-card-sheen {
@@ -159,7 +158,6 @@
   display: block;
   transform: scale(1.01);
   transition: transform 0.9s var(--post-card-ease-out), filter 0.6s ease;
-  will-change: transform;
 }
 .post-list-item .cover-veil {
   position: absolute;

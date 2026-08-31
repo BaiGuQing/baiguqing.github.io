@@ -229,7 +229,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/23/7.%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3API/">
+    <a class="post-card-link" href="/2026/07/23/6.%E5%8F%A5%E6%9F%84%E8%A1%A8/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -246,12 +246,12 @@
           
 
           <div class="title">
-            7.进程相关API
+            6.句柄表
           </div>
 
           
           <div class="excerpt">
-            ID与句柄 进程句柄：当前进程私有句柄表中的索引，用于访问对应的内核对象。 进程ID（PID）：操作系统分配给进程的唯一标识符，在整个系统范围内唯一。 线程句柄和TID同理 以挂起的形式创建进程 CreateProcess中的第六个参数creation flag 模块目录和工作目录 GetModuleFileName：…
+            内核对象 像进程、线程、文件、互斥体、事件等在内核都有一个对应的结构体，这些结构体由内核负责管理。我们管这样的对象叫做内核对象。 管理内核对象 每个进程都有一个句柄表 用户层通过句柄表来操作内核层的结构体 句柄表属于进程（EPROCESS）对象，每个进程拥有自己的句柄表。 多进程可以共享一个内核对象,CreatePro…
           </div>
           
         </div>
@@ -268,7 +268,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>332</span>
+                <span>298</span>
               </span>
             </div>
           </div>
