@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>14.常见汇编指令 - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="MOV指令12345678910111213141516171819MOV r&#x2F;m8,  r8MOV r&#x2F;m16, r16MOV r&#x2F;m32, r32MOV r&#x2F;m64, r64MOV r8,  r&#x2F;m8MOV r16, r&#x2F;m16MOV r32, r&#x2F;m32MOV r64, r&#x2F;m64MOV r&#x2F;m8,  imm8MOV r&#x2F;m16, imm16MOV r&#x2F;m32, imm32MOV r&#x2F;m64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14.常见汇编指令">
+<meta property="og:url" content="https://baiguqing.github.io/2026/08/11/14.%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="MOV指令12345678910111213141516171819MOV r&#x2F;m8,  r8MOV r&#x2F;m16, r16MOV r&#x2F;m32, r32MOV r&#x2F;m64, r64MOV r8,  r&#x2F;m8MOV r16, r&#x2F;m16MOV r32, r&#x2F;m32MOV r64, r&#x2F;m64MOV r&#x2F;m8,  imm8MOV r&#x2F;m16, imm16MOV r&#x2F;m32, imm32MOV r&#x2F;m64">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-12T13:14:39.408Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="滴水基础_汇编">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="6"
+    
+    
+    
+    data-scroll-reveal-disappear="true"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" tabindex="-1" data-pagefind-body>
+      
+
+<article class="post">
+  
+  <div class="meta-card">
+    <h1 class="title" data-pagefind-meta="title">14.常见汇编指令</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-08-11T00:00:00+08:00">2026-8-11</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/Notes/">Notes</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80-%E6%B1%87%E7%BC%96/" class="tag">#滴水基础_汇编</a>
+        
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="MOV指令"><a href="#MOV指令" class="headerlink" title="MOV指令"></a>MOV指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MOV r/m8,  r8</span><br><span class="line">MOV r/m16, r16</span><br><span class="line">MOV r/m32, r32</span><br><span class="line">MOV r/m64, r64</span><br><span class="line"></span><br><span class="line">MOV r8,  r/m8</span><br><span class="line">MOV r16, r/m16</span><br><span class="line">MOV r32, r/m32</span><br><span class="line">MOV r64, r/m64</span><br><span class="line"></span><br><span class="line">MOV r/m8,  imm8</span><br><span class="line">MOV r/m16, imm16</span><br><span class="line">MOV r/m32, imm32</span><br><span class="line">MOV r/m64, imm32    ; 64 位模式下会符号扩展</span><br><span class="line"></span><br><span class="line">MOV r8,  imm8</span><br><span class="line">MOV r16, imm16</span><br><span class="line">MOV r32, imm32</span><br><span class="line">MOV r64, imm64</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>r8</code>：8 位寄存器，例如 <code>AL</code></li>
+<li><code>r16</code>：16 位寄存器，例如 <code>AX</code></li>
+<li><code>r32</code>：32 位寄存器，例如 <code>EAX</code></li>
+<li><code>r64</code>：64 位寄存器，例如 <code>RAX</code></li>
+<li><code>r/m8</code>：8 位寄存器或内存</li>
+<li><code>imm8</code>：8 位立即数</li>
+</ul>
+<h1 id="ADD指令"><a href="#ADD指令" class="headerlink" title="ADD指令"></a>ADD指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ADD r/m8,  r8</span><br><span class="line">ADD r/m16, r16</span><br><span class="line">ADD r/m32, r32</span><br><span class="line">ADD r/m64, r64</span><br><span class="line"></span><br><span class="line">ADD r8,  r/m8</span><br><span class="line">ADD r16, r/m16</span><br><span class="line">ADD r32, r/m32</span><br><span class="line">ADD r64, r/m64</span><br><span class="line"></span><br><span class="line">ADD r/m8,  imm8</span><br><span class="line">ADD r/m16, imm16</span><br><span class="line">ADD r/m32, imm32</span><br><span class="line">ADD r/m64, imm32</span><br></pre></td></tr></table></figure>
+<h1 id="SUB指令"><a href="#SUB指令" class="headerlink" title="SUB指令"></a>SUB指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SUB r/m8,  r8</span><br><span class="line">SUB r/m16, r16</span><br><span class="line">SUB r/m32, r32</span><br><span class="line">SUB r/m64, r64</span><br><span class="line"></span><br><span class="line">SUB r8,  r/m8</span><br><span class="line">SUB r16, r/m16</span><br><span class="line">SUB r32, r/m32</span><br><span class="line">SUB r64, r/m64</span><br><span class="line"></span><br><span class="line">SUB r/m8,  imm8</span><br><span class="line">SUB r/m16, imm16</span><br><span class="line">SUB r/m32, imm32</span><br><span class="line">SUB r/m64, imm32</span><br></pre></td></tr></table></figure>
+<h1 id="AND指令"><a href="#AND指令" class="headerlink" title="AND指令"></a>AND指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">AND r/m8,  r8</span><br><span class="line">AND r/m16, r16</span><br><span class="line">AND r/m32, r32</span><br><span class="line">AND r/m64, r64</span><br><span class="line"></span><br><span class="line">AND r8,  r/m8</span><br><span class="line">AND r16, r/m16</span><br><span class="line">AND r32, r/m32</span><br><span class="line">AND r64, r/m64</span><br><span class="line"></span><br><span class="line">AND r/m8,  imm8</span><br><span class="line">AND r/m16, imm16</span><br><span class="line">AND r/m32, imm32</span><br><span class="line">AND r/m64, imm32</span><br></pre></td></tr></table></figure>
+<h1 id="OR指令"><a href="#OR指令" class="headerlink" title="OR指令"></a>OR指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">OR r/m8,  r8</span><br><span class="line">OR r/m16, r16</span><br><span class="line">OR r/m32, r32</span><br><span class="line">OR r/m64, r64</span><br><span class="line"></span><br><span class="line">OR r8,  r/m8</span><br><span class="line">OR r16, r/m16</span><br><span class="line">OR r32, r/m32</span><br><span class="line">OR r64, r/m64</span><br><span class="line"></span><br><span class="line">OR r/m8,  imm8</span><br><span class="line">OR r/m16, imm16</span><br><span class="line">OR r/m32, imm32</span><br><span class="line">OR r/m64, imm32</span><br></pre></td></tr></table></figure>
+<h1 id="XOR指令"><a href="#XOR指令" class="headerlink" title="XOR指令"></a>XOR指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">XOR r/m8,  r8</span><br><span class="line">XOR r/m16, r16</span><br><span class="line">XOR r/m32, r32</span><br><span class="line">XOR r/m64, r64</span><br><span class="line"></span><br><span class="line">XOR r8,  r/m8</span><br><span class="line">XOR r16, r/m16</span><br><span class="line">XOR r32, r/m32</span><br><span class="line">XOR r64, r/m64</span><br><span class="line"></span><br><span class="line">XOR r/m8,  imm8</span><br><span class="line">XOR r/m16, imm16</span><br><span class="line">XOR r/m32, imm32</span><br><span class="line">XOR r/m64, imm32</span><br></pre></td></tr></table></figure>
+<h1 id="NOT指令"><a href="#NOT指令" class="headerlink" title="NOT指令"></a>NOT指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NOT r/m8</span><br><span class="line">NOT r/m16</span><br><span class="line">NOT r/m32</span><br><span class="line">NOT r/m64</span><br></pre></td></tr></table></figure>
+<h1 id="MOVS指令"><a href="#MOVS指令" class="headerlink" title="MOVS指令"></a>MOVS指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MOVS m8,  m8</span><br><span class="line">MOVS m16, m16</span><br><span class="line">MOVS m32, m32</span><br><span class="line">MOVS m64, m64</span><br><span class="line"></span><br><span class="line">MOVSB    ; 传送 1 字节</span><br><span class="line">MOVSW    ; 传送 2 字节</span><br><span class="line">MOVSD    ; 传送 4 字节</span><br><span class="line">MOVSQ    ; 传送 8 字节</span><br><span class="line"></span><br><span class="line">movsb    ; [rdi]  = [rsi]</span><br><span class="line">movsw    ; [rdi]  = [rsi]</span><br><span class="line">movsd    ; [rdi]  = [rsi]</span><br><span class="line">movsq    ; [rdi]  = [rsi]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>DF标志寄存器表示运行后rdi和rsi自加还是自减</li>
+</ul>
+<h1 id="STOS指令"><a href="#STOS指令" class="headerlink" title="STOS指令"></a>STOS指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">STOS m8</span><br><span class="line">STOS m16</span><br><span class="line">STOS m32</span><br><span class="line">STOS m64</span><br><span class="line"></span><br><span class="line">STOSB    ; AL  -&gt; [RDI]</span><br><span class="line">STOSW    ; AX  -&gt; [RDI]</span><br><span class="line">STOSD    ; EAX -&gt; [RDI]</span><br><span class="line">STOSQ    ; RAX -&gt; [RDI]</span><br><span class="line"></span><br><span class="line">stosb    ; byte  ptr [rdi] = AL</span><br><span class="line">stosw    ; word  ptr [rdi] = AX</span><br><span class="line">stosd    ; dword ptr [rdi] = EAX</span><br><span class="line">stosq    ; qword ptr [rdi] = RAX</span><br></pre></td></tr></table></figure>
+<h1 id="REP指令"><a href="#REP指令" class="headerlink" title="REP指令"></a>REP指令</h1><ul>
+<li>按照RCX中的值为执行次数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">REP MOVSB</span><br><span class="line">REP MOVSW</span><br><span class="line">REP MOVSD</span><br><span class="line">REP MOVSQ</span><br><span class="line"></span><br><span class="line">REP STOSB</span><br><span class="line">REP STOSW</span><br><span class="line">REP STOSD</span><br><span class="line">REP STOSQ</span><br></pre></td></tr></table></figure>
+
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+
+    
+  </div>
+  
+
+  
+    
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“滴水基础_汇编”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:滴水基础_汇编" selected>滴水基础_汇编</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:Notes">Notes</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">滴水基础_汇编 · 第 13 / 24 篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous" data-nav-target="previous" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/08/11/13.%E5%B0%8F%E7%AB%AF%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_%E6%B1%87%E7%BC%96&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title>13.小端存储模式</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路已到起点</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next" data-nav-target="next" aria-disabled="false">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            href="/2026/08/10/6.%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/?line=t%3A%E6%BB%B4%E6%B0%B4%E5%9F%BA%E7%A1%80_%E6%B1%87%E7%BC%96&amp;sort=date-desc"
+          >
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title>6.原码反码补码</span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary hidden>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路已到终点</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:滴水基础_汇编","defaultSort":"date-desc","contexts":[{"key":"t:滴水基础_汇编","type":"tag","name":"滴水基础_汇编","path":"tags/滴水基础-汇编/","modes":{"date-desc":{"previous":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"next":{"title":"6.原码反码补码","path":"2026/08/10/6.原码反码补码/","date":"2026-08-09T16:00:00.000Z"},"position":13,"total":24},"date-asc":{"previous":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"next":{"title":"15.堆栈相关指令","path":"2026/08/12/15.堆栈相关指令/","date":"2026-08-11T16:00:00.000Z"},"position":15,"total":24},"title-asc":{"previous":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"next":{"title":"15.堆栈相关指令","path":"2026/08/12/15.堆栈相关指令/","date":"2026-08-11T16:00:00.000Z"},"position":15,"total":24},"title-desc":{"previous":{"title":"15.堆栈相关指令","path":"2026/08/12/15.堆栈相关指令/","date":"2026-08-11T16:00:00.000Z"},"next":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"position":10,"total":24}}},{"key":"c:Notes","type":"category","name":"Notes","path":"categories/Notes/","modes":{"date-desc":{"previous":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"next":{"title":"6.原码反码补码","path":"2026/08/10/6.原码反码补码/","date":"2026-08-09T16:00:00.000Z"},"position":13,"total":54},"date-asc":{"previous":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"next":{"title":"15.堆栈相关指令","path":"2026/08/12/15.堆栈相关指令/","date":"2026-08-11T16:00:00.000Z"},"position":45,"total":54},"title-asc":{"previous":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"next":{"title":"14.消息队列","path":"2026/07/27/14.消息队列/","date":"2026-07-26T16:00:00.000Z"},"position":28,"total":54},"title-desc":{"previous":{"title":"14.消息队列","path":"2026/07/27/14.消息队列/","date":"2026-07-26T16:00:00.000Z"},"next":{"title":"13.小端存储模式","path":"2026/08/11/13.小端存储模式/","date":"2026-08-10T16:00:00.000Z"},"position":27,"total":54}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
+    
+  
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>
