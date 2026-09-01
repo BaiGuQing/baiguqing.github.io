@@ -387,6 +387,20 @@ body {
     animation-range: 0 var(--range);
   }
 }
+@media (min-width: 2200px) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes cover-exit {
+      100% {
+        opacity: 0;
+        scale: 1.2;
+        filter: var(--filter-blur);
+      }
+    }
+    .post > .cover > .cover-img {
+      will-change: filter, opacity, scale;
+    }
+  }
+}
 .post > .content {
   margin-top: 64px;
   font-size: 19px;

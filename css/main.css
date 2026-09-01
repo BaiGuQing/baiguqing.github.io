@@ -70,9 +70,15 @@ body.reveal-animating {
   --filter-blur: none;
 }
 body.is-scrolling .post-list-item .post-card-link,
+body.is-scrolling .taxonomy-branch,
 body.is-scrolling .nav-mask > [order],
 body.reveal-animating .post-list-item .post-card-link,
+body.reveal-animating .taxonomy-branch,
 body.reveal-animating .nav-mask > [order] {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+body.is-scrolling .nav-mask > [order],
+body.reveal-animating .nav-mask > [order] {
+  transition-property: height;
 }
