@@ -214,7 +214,7 @@
         <span class="home-feed-kicker">Writing</span>
         <h2 class="section-title">最新文章</h2>
       </div>
-      <span class="home-feed-count">15 / 68</span>
+      <span class="home-feed-count">15 / 69</span>
     </header>
   </section>
   
@@ -225,7 +225,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/01/24.%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/">
+    <a class="post-card-link" href="/2026/08/02/27.%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -242,12 +242,12 @@
           
 
           <div class="title">
-            24.动态链接库
+            27.远程线程注入
           </div>
 
           
           <div class="excerpt">
-            动态链接库 动态链接库是微软公司在微软Windows操作系统中，实现共享函数库的一种方式。 这些库函数的扩展名是”.dll”、”.ocx”。
+            注入 所谓注入就是在第三方进程不知道或者不允许的情况下将模块或者代码写入对方进程空间，并设法执行的技术 已知注入方式 远程线程注入，APC注入、消息钩子注入、注册表注入、导入表注入、输入法注入等等。 流程 思路：在进程A中创建线程，将线程函数指向为：LoadLibrary() 具体实现步骤 在进程A中分配空间，存储“A…
           </div>
           
         </div>
@@ -255,16 +255,16 @@
         <div class="content-bottom">
           <div class="meta-info">
             
-            <time class="time" datetime="2026-08-01T00:00:00+08:00">
+            <time class="time" datetime="2026-08-02T00:00:00+08:00">
               <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-1
+              2026-8-2
             </time>
             
             <div class="stats">
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>68</span>
+                <span>236</span>
               </span>
             </div>
           </div>
@@ -320,6 +320,61 @@
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
                 <span>347</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/01/24.%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            24.动态链接库
+          </div>
+
+          
+          <div class="excerpt">
+            动态链接库 动态链接库是微软公司在微软Windows操作系统中，实现共享函数库的一种方式。 这些库函数的扩展名是”.dll”、”.ocx”。
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-01T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-1
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>68</span>
               </span>
             </div>
           </div>
@@ -994,61 +1049,6 @@
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
                 <span>186</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/25/10.%E4%B8%B4%E7%95%8C%E5%8C%BA/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            10.临界区
-          </div>
-
-          
-          <div class="excerpt">
-            线程安全问题 每个线程都有自己的栈，而局部变量是存储在栈中的，这就意味着每个线程都有一份自己的“局部变量”，如果线程仅仅使用“局部变量”，那么就不存在线程安全问题。如果多个线程公用一个全局变量呢？ 线程锁
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-25T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-25
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>100</span>
               </span>
             </div>
           </div>
