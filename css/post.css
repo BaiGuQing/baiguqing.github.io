@@ -631,6 +631,21 @@ body {
 .post > .content .highlight .gutter {
   padding-right: 16px;
 }
+.post > .content .highlight {
+  /* Hexo renders a highlighted code block as
+     <figure class="highlight"><table><tr><td.gutter><td.code></table></figure>,
+     so the generic `& > .content table tr` rule above also matches it. That
+     paints var(--color-background-secondary) on the single <tr>, which stacks
+     a *second* 60%-alpha layer on top of the figure's own background of the
+     same colour. Because the table is shrink-to-fit, the row only spans the
+     width of the code content, so the extra tint stops mid-block and shows up
+     as a second colour band. Neutralise it: one flat background per block. */
+}
+.post > .content .highlight table,
+.post > .content .highlight table tr,
+.post > .content .highlight table td {
+  background-color: transparent;
+}
 .post > .content > pre {
   max-width: 752px;
   padding: 20px 24px;
