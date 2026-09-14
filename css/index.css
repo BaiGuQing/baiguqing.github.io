@@ -409,10 +409,10 @@ body[data-color-scheme=dark] .hero {
   animation: none !important;
 }
 .hero-reveal--split.is-js-split .hero-panel--left {
-  transform: translate3d(var(--hero-split-left), 0, 0) !important;
+  transform: translate3d(var(--hero-split-left), 0, 0);
 }
 .hero-reveal--split.is-js-split .hero-panel--right {
-  transform: translate3d(var(--hero-split-right), 0, 0) !important;
+  transform: translate3d(var(--hero-split-right), 0, 0);
 }
 
 .hero-reveal--split.is-js-split + .home-container,

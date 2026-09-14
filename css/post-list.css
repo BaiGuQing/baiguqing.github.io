@@ -57,7 +57,6 @@
   opacity: 0;
   transition: opacity 0.55s var(--post-card-ease);
   background: radial-gradient(520px circle at var(--mx) var(--my), rgba(var(--color-accent-rgb), 0.22), transparent 42%);
-  mix-blend-mode: soft-light;
 }
 .post-list-item .post-card-sheen {
   opacity: 0;
@@ -98,6 +97,9 @@
 .post-list-item:hover .post-card-sheen, .post-list-item:focus-within .post-card-glow,
 .post-list-item:focus-within .post-card-sheen {
   opacity: 1;
+}
+.post-list-item:hover .post-card-glow, .post-list-item:focus-within .post-card-glow {
+  mix-blend-mode: soft-light;
 }
 .post-list-item:hover .post-card-link::before, .post-list-item:focus-within .post-card-link::before {
   opacity: 0.9;

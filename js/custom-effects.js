@@ -159,7 +159,7 @@
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
         resize();
-        frameInterval = (width * height) > 2300000 ? 1000 / 30 : 0;
+        frameInterval = particleFrameInterval();
       }, 180);
     });
     resize();
@@ -170,9 +170,17 @@
 
     let lastFrameTs = 0;
     let lastRenderTs = -1000;
-    // Above ~1080p the per-frame cost is raster-bound, not motion-critical —
-    // soft dust at 30fps looks identical and halves CPU/GPU load.
-    let frameInterval = (width * height) > 2300000 ? 1000 / 30 : 0;
+    // Frame budget: theme config `particle_frame_rate` decides whether the
+    // dust is capped. auto = 30fps above ~1080p, where the per-frame cost is
+    // raster-bound and soft dust at 30fps looks identical; unlimited = every
+    // animation frame (display refresh rate).
+    const unlimitedParticleRate =
+      document.body.dataset.particleFrameRate === 'unlimited';
+    const particleFrameInterval = () => {
+      if (unlimitedParticleRate || width * height <= 2300000) return 0;
+      return 1000 / 30;
+    };
+    let frameInterval = particleFrameInterval();
     // Scrolling already invalidates every backdrop-filter on the page; the
     // field is fixed and purely decorative, so freeze it mid-scroll.
     let isScrolling = false;
@@ -498,6 +506,8 @@
 
     reveal.classList.add('hero-reveal--split');
     reveal.classList.add('is-js-split');
+    // Sticky cover sits above the feed — never let the wrapper eat clicks.
+    reveal.style.pointerEvents = 'none';
     if (feed) {
       feed.classList.add('home-container--under-hero');
       feed.style.opacity = '0';
@@ -510,13 +520,18 @@
     const MAX_TRAVEL = 112; // percent — enough overshoot to clear both panels
     const FOLLOW_RATE = 12; // exponential response; about 95% settled in 250ms
     const MAX_FRAME_SECONDS = 1 / 20;
-    const SETTLE_EPSILON = 0.00005;
+    const SETTLE_EPSILON = 0.0002;
     let raf = 0;
     let renderedProgress = 0;
     let lastAppliedOpen = -1;
     let lastFrameTime = 0;
     let running = true;
     let scrubbing = false;
+    let lastLeft = null;
+    let lastRight = null;
+    let lastFeedOpacity = null;
+    let lastFeedVisible = null;
+    let lastFeedInteractive = null;
 
     function clamp01(v) {
       return v < 0 ? 0 : v > 1 ? 1 : v;
@@ -558,13 +573,23 @@
       const open = easeScroll(progress); // 0..1
       if (Math.abs(open - lastAppliedOpen) < SETTLE_EPSILON) return;
       lastAppliedOpen = open;
+
+      // Inline transforms on the panels themselves: a custom property set on
+      // .hero-reveal is inherited and forces a style recalc of the whole hero
+      // subtree every frame (~6ms at 2K). A transform change only dirties the
+      // panel it belongs to, and target values are cached so identical frames
+      // never touch the CSSOM.
       const dist = open * MAX_TRAVEL;
       const l = (-dist).toFixed(2) + '%';
       const r = dist.toFixed(2) + '%';
-      reveal.style.setProperty('--hero-split-left', l);
-      reveal.style.setProperty('--hero-split-right', r);
-      // 0 = closed cover, 1 = fully open (used by CSS to unhide the feed)
-      reveal.style.setProperty('--hero-open', open.toFixed(3));
+      if (l !== lastLeft) {
+        left.style.transform = 'translate3d(' + l + ', 0, 0)';
+        lastLeft = l;
+      }
+      if (r !== lastRight) {
+        right.style.transform = 'translate3d(' + r + ', 0, 0)';
+        lastRight = r;
+      }
 
       // Promote the big layers only while the gesture is actually moving;
       // holding them permanently starves the compositor on 2K+ screens.
@@ -588,12 +613,25 @@
           feedOpacity = 1 - Math.pow(1 - t, 1.45);
         }
 
-        feed.style.opacity = feedOpacity.toFixed(3);
-        feed.style.transform = 'none';
-        feed.style.visibility = feedOpacity < 0.01 ? 'hidden' : 'visible';
-        feed.style.pointerEvents = feedOpacity < 0.18 ? 'none' : 'auto';
-        // Sticky cover is above the feed — never let the wrapper eat clicks.
-        reveal.style.pointerEvents = 'none';
+        // 1% opacity steps are invisible but cut the per-frame write rate to
+        // roughly the number of visible levels in the curve.
+        const quantized = Math.round(feedOpacity * 100) / 100;
+        if (quantized !== lastFeedOpacity) {
+          feed.style.opacity = quantized.toFixed(2);
+          lastFeedOpacity = quantized;
+
+          const visible = quantized >= 0.01;
+          if (visible !== lastFeedVisible) {
+            feed.style.visibility = visible ? 'visible' : 'hidden';
+            lastFeedVisible = visible;
+          }
+
+          const interactive = quantized >= 0.18;
+          if (interactive !== lastFeedInteractive) {
+            feed.style.pointerEvents = interactive ? 'auto' : 'none';
+            lastFeedInteractive = interactive;
+          }
+        }
       }
 
     }
