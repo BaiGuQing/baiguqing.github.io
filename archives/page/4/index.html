@@ -113,6 +113,7 @@
   
   
   
+  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -146,7 +147,7 @@
   
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img" data-particle-frame-rate="unlimited" data-nav-blur-gradient="false" data-corner-squircle="true">
+  <body data-color-scheme="auto" data-uppercase-categories="true" data-config-root="/" data-toc="true" data-toc-max-depth="6" data-scroll-reveal-disappear="true" data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .friend-grid-item, .friend-apply, .content p img, .content li img, .content figure img, .content .block-large img" data-particle-frame-rate="unlimited" data-nav-blur-gradient="false" data-corner-squircle="true">
     
 <script src="/js/body-top.js"></script>
 
@@ -166,21 +167,24 @@
       <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
       
       
-      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      <a class="nav-item" href="/friends" style="--index: 2">友链</a>
       
       
-      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      <a class="nav-item" href="/archives" style="--index: 3">归档</a>
       
       
-      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      <a class="nav-item" href="/tags" style="--index: 4">标签</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      <a class="nav-item" href="/categories" style="--index: 5">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 6" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 7; margin-left: auto;">
         <label>
           <input type="radio" value="light" aria-label="浅色模式">
           <span><i class="bi bi-sun" aria-hidden="true"></i></span>
@@ -195,7 +199,7 @@
         </label>
       </div>
       
-      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 8; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
         <i class="bi bi-stars" aria-hidden="true"></i>
       </button>
       
@@ -614,6 +618,61 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/07/23/6.%E5%8F%A5%E6%9F%84%E8%A1%A8/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            6.句柄表
+          </div>
+
+          
+          <div class="excerpt">
+            内核对象 像进程、线程、文件、互斥体、事件等在内核都有一个对应的结构体，这些结构体由内核负责管理。我们管这样的对象叫做内核对象。 管理内核对象 每个进程都有一个句柄表 用户层通过句柄表来操作内核层的结构体 句柄表属于进程（EPROCESS）对象，每个进程拥有自己的句柄表。 多进程可以共享一个内核对象,CreatePro…
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-07-23T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-7-23
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>298</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
     <a class="post-card-link" href="/2026/07/23/5.%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
@@ -709,61 +768,6 @@
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
                 <span>332</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/07/23/6.%E5%8F%A5%E6%9F%84%E8%A1%A8/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            6.句柄表
-          </div>
-
-          
-          <div class="excerpt">
-            内核对象 像进程、线程、文件、互斥体、事件等在内核都有一个对应的结构体，这些结构体由内核负责管理。我们管这样的对象叫做内核对象。 管理内核对象 每个进程都有一个句柄表 用户层通过句柄表来操作内核层的结构体 句柄表属于进程（EPROCESS）对象，每个进程拥有自己的句柄表。 多进程可以共享一个内核对象,CreatePro…
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-07-23T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-7-23
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>298</span>
               </span>
             </div>
           </div>

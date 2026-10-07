@@ -113,6 +113,7 @@
   
   
   
+  
 <link rel="stylesheet" href="/css/scroll-reveal.css">
 
   
@@ -158,7 +159,7 @@
     
     
     data-scroll-reveal-disappear="true"
-    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .content p img, .content li img, .content figure img, .content .block-large img"
+    data-scroll-reveal-query=".scroll-reveal, .post-list-item, .card, .friend-grid-item, .friend-apply, .content p img, .content li img, .content figure img, .content .block-large img"
     
     data-particle-frame-rate="unlimited"
     data-nav-blur-gradient="false"
@@ -183,21 +184,24 @@
       <a class="nav-item" href="/About-Me" style="--index: 1">关于我</a>
       
       
-      <a class="nav-item" href="/archives" style="--index: 2">归档</a>
+      <a class="nav-item" href="/friends" style="--index: 2">友链</a>
       
       
-      <a class="nav-item" href="/tags" style="--index: 3">标签</a>
+      <a class="nav-item" href="/archives" style="--index: 3">归档</a>
       
       
-      <a class="nav-item" href="/categories" style="--index: 4">分类</a>
+      <a class="nav-item" href="/tags" style="--index: 4">标签</a>
       
       
-      <a class="nav-item is-icon" href="/search" style="--index: 5" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
+      <a class="nav-item" href="/categories" style="--index: 5">分类</a>
+      
+      
+      <a class="nav-item is-icon" href="/search" style="--index: 6" aria-label="搜索" title="搜索"><i class="bi bi-search"></i></a>
       
       
 
       
-      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 6; margin-left: auto;">
+      <div class="nav-item color-scheme-toggle" role="radiogroup" aria-label="颜色模式" style="--index: 7; margin-left: auto;">
         <label>
           <input type="radio" value="light" aria-label="浅色模式">
           <span><i class="bi bi-sun" aria-hidden="true"></i></span>
@@ -212,7 +216,7 @@
         </label>
       </div>
       
-      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 7; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
+      <button type="button" class="nav-item" id="theme-particle-toggle" style="--index: 8; margin-left: 10px;" aria-label="切换首页粒子效果" aria-pressed="true" title="切换首页粒子效果">
         <i class="bi bi-stars" aria-hidden="true"></i>
       </button>
       
@@ -243,61 +247,6 @@
 <div class="container">
   
 <div class="post-list archives">
-  
-  
-  <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/01/24.%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/">
-      <span class="post-card-glow" aria-hidden="true"></span>
-      <span class="post-card-sheen" aria-hidden="true"></span>
-
-      
-
-      <div class="content">
-        <div class="content-top">
-          
-          <div class="categories text-uppercase">
-          
-            <span>Notes</span>
-          
-          </div>
-          
-
-          <div class="title">
-            24.动态链接库
-          </div>
-
-          
-          <div class="excerpt">
-            动态链接库 动态链接库是微软公司在微软Windows操作系统中，实现共享函数库的一种方式。 这些库函数的扩展名是”.dll”、”.ocx”。
-          </div>
-          
-        </div>
-
-        <div class="content-bottom">
-          <div class="meta-info">
-            
-            <time class="time" datetime="2026-08-01T00:00:00+08:00">
-              <i class="bi bi-calendar3" aria-hidden="true"></i>
-              2026-8-1
-            </time>
-            
-            <div class="stats">
-              <span class="stat-item">
-                <i class="bi bi-file-text icon" aria-hidden="true"></i>
-                <span class="sr-only">字数</span>
-                <span>68</span>
-              </span>
-            </div>
-          </div>
-
-          <span class="read-more">
-            <span>阅读全文</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-  </article>
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
@@ -341,6 +290,61 @@
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
                 <span>347</span>
+              </span>
+            </div>
+          </div>
+
+          <span class="read-more">
+            <span>阅读全文</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
+    </a>
+  </article>
+  
+  
+  <article class="post-list-item scroll-reveal no-cover" data-post-card>
+    <a class="post-card-link" href="/2026/08/01/24.%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/">
+      <span class="post-card-glow" aria-hidden="true"></span>
+      <span class="post-card-sheen" aria-hidden="true"></span>
+
+      
+
+      <div class="content">
+        <div class="content-top">
+          
+          <div class="categories text-uppercase">
+          
+            <span>Notes</span>
+          
+          </div>
+          
+
+          <div class="title">
+            24.动态链接库
+          </div>
+
+          
+          <div class="excerpt">
+            动态链接库 动态链接库是微软公司在微软Windows操作系统中，实现共享函数库的一种方式。 这些库函数的扩展名是”.dll”、”.ocx”。
+          </div>
+          
+        </div>
+
+        <div class="content-bottom">
+          <div class="meta-info">
+            
+            <time class="time" datetime="2026-08-01T00:00:00+08:00">
+              <i class="bi bi-calendar3" aria-hidden="true"></i>
+              2026-8-1
+            </time>
+            
+            <div class="stats">
+              <span class="stat-item">
+                <i class="bi bi-file-text icon" aria-hidden="true"></i>
+                <span class="sr-only">字数</span>
+                <span>68</span>
               </span>
             </div>
           </div>
