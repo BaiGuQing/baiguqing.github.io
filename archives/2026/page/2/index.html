@@ -305,7 +305,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/11/12.%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E7%9A%84%E4%BA%94%E7%A7%8D%E5%BD%A2%E5%BC%8F/">
+    <a class="post-card-link" href="/2026/08/11/13.%E5%B0%8F%E7%AB%AF%E5%AD%98%E5%82%A8%E6%A8%A1%E5%BC%8F/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -322,12 +322,12 @@
           
 
           <div class="title">
-            12.内存地址的五种形式
+            13.小端存储模式
           </div>
 
           
           <div class="excerpt">
-            形式一 Mov eax,dword ptr ds:[0x1111] 形式二 Mov eax,0x1111 Mov dword ptr ds:[eax],0x1234568 形式三 Mov ecx,0x1011 Mov eax,dword ptr ds:[ecx+4] 形式四 Mov eax,0x1111 Mov ecx…
+            存储模式 小端模式：数据低位在低位，数据高位在高位 大端模式：数据高位在低位，数据低位在高位
           </div>
           
         </div>
@@ -344,7 +344,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>254</span>
+                <span>44</span>
               </span>
             </div>
           </div>
@@ -1020,7 +1020,7 @@
   
   
   <article class="post-list-item scroll-reveal no-cover" data-post-card>
-    <a class="post-card-link" href="/2026/08/03/28.%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/">
+    <a class="post-card-link" href="/2026/08/03/29.%E6%A8%A1%E5%9D%97%E9%9A%90%E8%97%8F/">
       <span class="post-card-glow" aria-hidden="true"></span>
       <span class="post-card-sheen" aria-hidden="true"></span>
 
@@ -1037,9 +1037,13 @@
           
 
           <div class="title">
-            28.进程通信
+            29.模块隐藏
           </div>
 
+          
+          <div class="excerpt">
+            模块隐藏之断链 TEB(Thread Environment Block),它记录的相关线程的信息，每一个线程都有自己的TEB，FS:[0]即是当前现成的TEB PEB(Process Environment Block),存放进程信息，每个进程都有自己的PEB信息，TEB偏移0x30即当前进程的PEB TEB和PEB…
+          </div>
           
         </div>
 
@@ -1055,7 +1059,7 @@
               <span class="stat-item">
                 <i class="bi bi-file-text icon" aria-hidden="true"></i>
                 <span class="sr-only">字数</span>
-                <span>0</span>
+                <span>187</span>
               </span>
             </div>
           </div>
